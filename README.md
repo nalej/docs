@@ -1,0 +1,2 @@
+# docs
+Platform documentation
