@@ -4,7 +4,7 @@
 
 ## Organization
 
-* [organization 1](developer/organization-1.md)
+* [organization 1](organization/organization-1.md)
 
 ## Resources
 
@@ -12,5 +12,5 @@
 
 ## Applications
 
-* [applications 1](administrator-organization-owner/applications-1.md)
+* [applications 1](applications/applications-1.md)
 
