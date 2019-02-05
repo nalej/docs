@@ -1,6 +1,6 @@
 # Table of contents
 
-* [docs](README.md)
+* [Landing page](README.md)
 
 ## Organization
 
