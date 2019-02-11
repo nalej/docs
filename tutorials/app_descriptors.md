@@ -16,14 +16,23 @@
  }  
 ```
 
-An application descriptor contains a name and a descriptor to describe the purpose of the application to the users that will deploy them. It also contains a set of labels that will be used in the future to facilitate queries, and two main sections: rules and services. The rules define how the different services are connected among themselves, the services contain the list of services that need to be deployed in order for the application to work properly. The full list of options can be easily accessed through:
+An application descriptor contains a name and a descriptor to describe the purpose of the application to the users that will deploy them. It also contains a set of labels that will be used in the future to facilitate queries, and two main sections: rules and services. The rules define how the different services are connected among themselves, the services contain the list of services that need to be deployed in order for the application to work properly. 
 
 ## Rules
 
 The rule entity determines the connectivity of a service with the others. To specify a service:
 
 ```json
-
+{
+  "rule_id": "<rule_id>",       
+  "name": "description...",       
+  "source_service_id": "<service_id>",       
+  "source_port": <service_source_port>,       
+  "access": 1,       
+    "auth_services": [         
+    "<service_id_that_wants_to_access_the_service>"       
+  ]     
+},
 ```
 
 
