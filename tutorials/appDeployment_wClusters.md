@@ -132,7 +132,7 @@ This example is the output of the following command:
 ./public-api-cli app desc help > appDescExample.json
 ```
 
-It creates a basic application descriptor for you (called `appDescExample.json`in this case), with a Wordpress instance and a mySQL database associated to it. 
+It creates a basic application descriptor for you (called `appDescExample.json`in this case), with a Wordpress instance and a mySQL database associated to it. To learn more about them, please visit [this link](tutorials/app_descriptors), where you can find an extensive tutorial on how to make your own.
 
 > this needs to be another document in the system and not redirect to our private documentation.
 >
