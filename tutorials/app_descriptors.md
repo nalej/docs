@@ -1,7 +1,19 @@
  The system supports specifying the application structure in the form of an application descriptor. An application descriptor is an entity that contains all the information required to launch a complex application composed of different services. The overall structure of an application descriptor is as follows:
 
 ```json
-`{   "name": "Sample application",   "description": "This is a basic descriptor of an application",   "labels": { 	...   },   "rules": [     ...   ],   "services": [    ...   ] }  `
+{   
+	"name": "Sample application",   
+    "description": "This is a basic descriptor of an application",   
+    "labels": {
+        ...   
+    },
+    "rules": [
+        ...   
+    ],
+    "services": [
+        ...   
+    ] 
+ }  
 ```
 
 
