@@ -14,5 +14,13 @@ All the information related to cluster managing will be available in this sectio
 
 This section will have all the documents related to app deployment, management and removal. You will also find what you need about application descriptors: what they are, how to create one, and how to use one in the system.
 
+-----
+
+## Tutorials
+
+We also prepared some documents to get you started easily with Nalej. If everything else seems overwhelming, start here!
+
+
+
 Have fun!
 
