@@ -36,7 +36,7 @@ So, let's log in! This process needs the **email** and **password** you used to 
 
 Congratulations! You're in the system. Now, the first thing you should do is create your own application descriptor. Then, you have to add it to the system, and after that the app will be deployed in what we call an instance. Let's go through this process.
 
-> TODO: a diagram would be nice here.
+> diagram here
 
 ##### Creating an application descriptor
 
@@ -133,10 +133,6 @@ This example is the output of the following command:
 ```
 
 It creates a basic application descriptor for you (called `appDescExample.json`in this case), with a Wordpress instance and a mySQL database associated to it. To learn more about them, please visit [this link](app_descriptors.md), where you can find an extensive tutorial on how to make your own.
-
-> this needs to be another document in the system and not redirect to our private documentation.
->
-> To learn more about them, please visit [this link](https://daisho.atlassian.net/wiki/spaces/NP/pages/582713431/Application+descriptors), where you can find an extensive tutorial on how to make your own.
 
 ##### Adding the application descriptor to the system
 
