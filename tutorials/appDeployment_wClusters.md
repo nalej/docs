@@ -1,22 +1,35 @@
 So, you just got Nalej and are itching to start working with it, but don't know where to start. No worries! This document will walk you through the process of deploying your very first application with Nalej.
 
-#### Environment
+#### Environment setup
 
 For this tutorial we are assuming that there is at least one deployed cluster, and that you are already registered in the system. Also, to use Nalej you need to install the `public-api-cli`package that was sent to you by an administrator. This is what will allow us to interact with the system.
 
+##### Setting your user options
+
+There are some variables that are needed for each interaction, so establishing them before starting we won't have to write them down in each request. These variables, or options, are the **certificate** you received, and the addresses of the **Nalej login server** and the **Nalej API server**. So, gather all this data, go to the `public-api-cli/bin` folder in your computer and execute the following instructions:
+
+```bash
+./public-api-cli options set --key=cacert --value=/Users/youruser/.../certificate.crt
+
+./public-api-cli options set --key=loginAddress --value=login.server.nalej.com
+
+./public-api-cli options set --key=nalejAddress --value=api.server.nalej.com
+```
+
+To check if these commands have executed correctly and the options are in fact set, you can use the command:
+
+```bash
+./public-api-cli options list
+```
+
 #### Login
 
-So, let's log in! This process needs the **email** and **password** you used to register in Nalej, the **certificate** you received and the **connection info** of the Nalej server (address and port), so gather all this data and then execute the following commands (from inside the `public-api-cli/bin`folder in your computer):
+So, let's log in! This process needs the **email** and **password** you used to register in Nalej, and the **connection info** of the Nalej login server (which is different from the API server),:
 
 ```bash
 ./public-api-cli login 
 	--email=user@nalej.com 
-	--password=password 
-	--cacert=/Users/user/.../certificate/cluster_ca.crt 
-	--port=443 
-	--nalejAddress=login.nalejrelease4.nalej.tech 
-	--loginPort=443
-	
+	--password=password 	
 ```
 
 ####  Application descriptor
@@ -136,10 +149,10 @@ It returns an application descriptor ID, which we will need for deploying an ins
 And how would we deploy that instance? With this other command:
 
 ```bash
-./public-api-cli app inst deploy --descriptorID=xxxxxxx --name=name-app --description XXXXXX
+./public-api-cli app inst deploy --descriptorID=xxxxxxx --name=name-app
 ```
 
-Here, as you may have noticed, is also the moment where we name the app with a human-readable name and description. When this command exits, it returns a JSON with an application **instance** ID, which is what we will use to connect with this specific instance of the application.
+Here, as you may have noticed, is also the moment where we name the app with a human-readable name. When this command exits, it returns a JSON with an application **instance** ID, which is what we will use to work with the deployed instance.
 
 #### Working with the deployed instance: getting related info
 
@@ -241,7 +254,7 @@ This command returns a JSON with all the information related to the instance we 
         }
       ],
       "environment_variables": {
-        "WORDPRESS_DB_HOST": "NALEJ_SERV_1:xxxx",
+        "WORDPRESS_DB_HOST": "YOUR_SERVER:xxxx",
         "WORDPRESS_DB_PASSWORD": "xxxx"
       },
       "labels": {
@@ -253,7 +266,7 @@ This command returns a JSON with all the information related to the instance we 
       ],
       "status_name": "SERVICE_RUNNING",
       "endpoints": [
-        "xxxx.xxxxx.appcluster.nalejrelease4app2.nalej.tech"
+          "xxxx.xxxxx.appcluster.<yourcluster>.com"
       ],
       "deployed_on_cluster_id": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
     }
