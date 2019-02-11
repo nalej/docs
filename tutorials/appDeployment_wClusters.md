@@ -132,7 +132,11 @@ This example is the output of the following command:
 ./public-api-cli app desc help > appDescExample.json
 ```
 
-It creates a basic application descriptor for you (called `appDescExample.json`in this case), with a Wordpress instance and a mySQL database associated to it. To learn more about them, please visit [this link](https://daisho.atlassian.net/wiki/spaces/NP/pages/582713431/Application+descriptors), where you can find an extensive tutorial on how to make your own.
+It creates a basic application descriptor for you (called `appDescExample.json`in this case), with a Wordpress instance and a mySQL database associated to it. 
+
+> this needs to be another document in the system and not redirect to our private documentation.
+>
+> To learn more about them, please visit [this link](https://daisho.atlassian.net/wiki/spaces/NP/pages/582713431/Application+descriptors), where you can find an extensive tutorial on how to make your own.
 
 ##### Adding the application descriptor to the system
 
@@ -283,9 +287,17 @@ Here you can see several interesting things, like the user and password for the 
 
 Where it tells you the status of the current instance. Since it is "RUNNING", we can start working with it immediately!
 
-> There is only one part missing, "navigate to the endpoint".
+#### Navigating to the endpoint
 
+The JSON obtained with `app inst get` has another piece of information that can be very useful for us, which is the **endpoint** where the instance is deployed. This information looks like this:
 
+```json
+"endpoints": [
+          "xxxx.xxxxx.appcluster.<yourcluster>.com"
+      ],
+```
+
+This collection of addresses is where the instance is deployed, and you can access it from any browser and get more information about the instance and the services it uses.
 
 ------
 
@@ -363,9 +375,11 @@ I seriously doubt so (but we will check its feelings matrix, just in case). The 
 
 
 
+#### Error 404 when trying to access the endpoint
+
+*Everything went ok, and I fixed all the problems that have appeared until now. But as I was ready to access the endpoint, a* `404 Not Found` *hit me from out of nowhere. I'm determined to do this. What's happening now?*
+
+There are several variables that can be the issue here, but I'm sure you have already checked any connectivity problems that may be happening. If everything seems fine and it should be working, please get the instance info again with `app inst get` and check if the status is still `"RUNNING"`.
 
 
-
-
-More questions? Please look through the documentation to see if they're answered, and if they aren't, feel free to contact us at preguntasdelagente@daisho.group
 

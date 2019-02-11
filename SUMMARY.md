@@ -17,4 +17,5 @@
 ## Tutorials
 
 * [Application Deployment with Nalej](tutorials/appDeployment_wClusters.md)
+* [How to create an application descriptor](tutorials/app_descriptors.md)
 
