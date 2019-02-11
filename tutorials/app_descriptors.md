@@ -23,16 +23,7 @@ An application descriptor contains a name and a descriptor to describe the purpo
 The rule entity determines the connectivity of a service with the others. To specify a service:
 
 ```json
-{
-	"rule_id": "<rule_id>",       
-	"name": "description...",       
-	"source_service_id": "<service_id>",       
-	"source_port": <service_source_port>,       
-	"access": 1,       
-    "auth_services": [         
-		"<service_id_that_wants_to_access_the_service>"       
-	]     
-},
+
 ```
 
 
@@ -49,16 +40,16 @@ Where:
 Example:
 
 ```json
-{       
-	"rule_id": "002",       
-	"name": "allow access to mysql",       
-	"source_service_id": "mysql",       
-	"source_port": 3306,       
-	"access": 1,       
-	"auth_services": [
-    	"wordpress"       
-    ]    
- },
+{
+  "rule_id": "<rule_id>",       
+  "name": "description...",       
+  "source_service_id": "<service_id>",       
+  "source_port": <service_source_port>,       
+  "access": 1,       
+    "auth_services": [         
+    "<service_id_that_wants_to_access_the_service>"       
+  ]     
+},
 ```
 
 
