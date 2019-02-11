@@ -1,13 +1,14 @@
-## Application deployment with Nalej
-
 So, you just got Nalej and are itching to start working with it, but don't know where to start. No worries! This document will walk you through the process of deploying your very first application with Nalej.
 
+#### Environment
+
 For this tutorial we are assuming that there is at least one deployed cluster, and that you are already registered in the system. Also, to use Nalej you need to install the `public-api-cli`package that was sent to you by an administrator. This is what will allow us to interact with the system.
+
+#### Login
 
 So, let's log in! This process needs the **email** and **password** you used to register in Nalej, the **certificate** you received and the **connection info** of the Nalej server (address and port), so gather all this data and then execute the following commands (from inside the `public-api-cli/bin`folder in your computer):
 
 ```bash
-
 ./public-api-cli login 
 	--email=user@nalej.com 
 	--password=password 
@@ -18,9 +19,13 @@ So, let's log in! This process needs the **email** and **password** you used to 
 	
 ```
 
+####  Application descriptor
+
 Congratulations! You're in the system. Now, the first thing you should do is create your own application descriptor. Then, you have to add it to the system, and after that the app will be deployed in what we call an instance. Let's go through this process.
 
 > TODO: a diagram would be nice here.
+
+##### Creating an application descriptor
 
 An **application descriptor** is a file with all the essential info to deploy a complex app on Nalej. A very basic application descriptor would look like this:
 
@@ -116,13 +121,19 @@ This example is the output of the following command:
 
 It creates a basic application descriptor for you (called `appDescExample.json`in this case), with a Wordpress instance and a mySQL database associated to it. To learn more about them, please visit [this link](https://daisho.atlassian.net/wiki/spaces/NP/pages/582713431/Application+descriptors), where you can find an extensive tutorial on how to make your own.
 
+##### Adding the application descriptor to the system
+
 After creating the application descriptor, the next step is adding it to the system, which can be done with the following command:
 
 ```bash
 ./public-api-cli app desc add --descriptorPath=/pathtodescriptor
 ```
 
-It returns an application descriptor ID, which we will need for deploying an instance of this application. And how would we deploy that instance? With this other command:
+It returns an application descriptor ID, which we will need for deploying an instance of this application. 
+
+##### Deploying the associated instance
+
+And how would we deploy that instance? With this other command:
 
 ```bash
 ./public-api-cli app inst deploy --descriptorID=xxxxxxx --name=name-app --description XXXXXX
@@ -130,7 +141,9 @@ It returns an application descriptor ID, which we will need for deploying an ins
 
 Here, as you may have noticed, is also the moment where we name the app with a human-readable name and description. When this command exits, it returns a JSON with an application **instance** ID, which is what we will use to connect with this specific instance of the application.
 
-And now we can start working with the deployed instance, doing things like, for example, getting all the information related to it in the system.
+#### Working with the deployed instance: getting related info
+
+Now we can start working with the deployed instance, doing things like, for example, getting all the information related to it in the system.
 
 ```bash
 ./public-api-cli app inst get --instanceID=XXXXXXXXXX
@@ -263,6 +276,8 @@ Where it tells you the status of the current instance. Since it is "RUNNING", we
 
 ------
 
+#### Undeploying the instance
+
 OK, so we finished working with this instance, and don't want it to be in the system anymore. In this case, we need to undeploy it:
 
 ```bash
@@ -270,6 +285,8 @@ OK, so we finished working with this instance, and don't want it to be in the sy
 ```
 
 That may be all the cleanup needed if this application is something we will use again in the system, since we can deploy it again tomorrow with the same application descriptor. 
+
+#### Deleting the app
 
 But what if we just don't want the application to be available again? In that case, we need to delete the application from the system, undoing the `add` we executed before:
 
@@ -281,7 +298,7 @@ This last step is optional, only needed if we want to delete a specific app from
 
 
 
------
+------
 
 ## Troubleshooting
 
@@ -338,3 +355,4 @@ I seriously doubt so (but we will check its feelings matrix, just in case). The 
 
 
 More questions? Please look through the documentation to see if they're answered, and if they aren't, feel free to contact us at preguntasdelagente@daisho.group
+
