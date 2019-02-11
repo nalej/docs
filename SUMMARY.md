@@ -14,7 +14,7 @@
 
 * [applications 1](applications/applications-1.md)
 
-## TUTORIALS
+## Tutorials
 
 * [Untitled](tutorials/untitled.md)
 
