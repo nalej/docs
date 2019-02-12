@@ -1,18 +1,18 @@
 # Table of contents
 
-* [Landing page](README.md)
+* [Welcome to Nalej](README.md)
 
 ## Organization
 
-* [organization 1](organization/organization-1.md)
+* [Getting started with organization-related topics](organization/organization-1.md)
 
 ## Resources
 
-* [resources 1](resources/resources-1.md)
+* [Getting started with resources-related topics](resources/resources-1.md)
 
 ## Applications
 
-* [applications 1](applications/applications-1.md)
+* [Getting started with application-related topics](applications/applications-1.md)
 
 ## Tutorials
 
