@@ -1,4 +1,4 @@
-# Getting started with resources-related topics
+# Deprecated resources-related topics
 
-All the information related to cluster managing will be available in this section.
+All the information related to how we managed the clusters before should be available in this section.
 
