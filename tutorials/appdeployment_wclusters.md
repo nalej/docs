@@ -28,6 +28,7 @@ To check if these commands have executed correctly and the options are in fact s
 
 So, let's log in!
 
+
 ```bash
 ./public-api-cli login 
     --email=user@nalej.com 
