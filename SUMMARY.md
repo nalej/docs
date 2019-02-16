@@ -16,6 +16,7 @@
 
 ## Tutorials
 
+- [Initial Login in the system](tutorials/initialLogin.md)
 - [Application Deployment with Nalej](tutorials/appdeployment_wclusters.md)
 - [How to create an application descriptor](tutorials/app_descriptors.md)
 
