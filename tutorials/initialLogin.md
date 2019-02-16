@@ -38,7 +38,7 @@ After this, we can log in normally:
 
 With a browser, we can go to the login page provided by the Nalej administration team, and use our Nalej user and password to get in the system.
 
-![Login page](/Users/svillanueva/nalej_docs/docs/.gitbook/assets/login_web.png)
+![Login page](Users/svillanueva/nalej_docs/docs/.gitbook/assets/login_web.png)
 
 Once you enter, you can see the platform structure at a glance, and start interacting with it.
 
