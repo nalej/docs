@@ -1,4 +1,4 @@
-# Deprecated organization-related topics
+# Getting started with organization-related topics
 
-Older organization information.
+Here you will find all there is to know about to user management, as well as role management and organization information.
 
