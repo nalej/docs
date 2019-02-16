@@ -8,7 +8,7 @@ For this tutorial we are assuming that there is at least one deployed cluster, a
 
 #### Setting your user options
 
-There are some variables that are needed for each interaction, so establishing them before starting we won't have to write them down in each request. These variables, or options, are the **certificate** you received, and the addresses of the **Nalej login server** and the **Nalej API server**. So, gather all this data, go to the `public-api-cli/bin` folder in your computer and execute the following instructions:
+Is this the very first time you log in the platform? There are some variables that are needed for each interaction, so establishing them before starting means we won't have to write them down in each request. These variables, or options, are the **certificate** you received, and the addresses of the **Nalej login server** and the **Nalej API server**. Gather all this data, go to the `public-api-cli/bin` folder in your computer and execute the following instructions:
 
 ```bash
 ./public-api-cli options set --key=cacert --value=/Users/youruser/.../certificate.crt
@@ -26,8 +26,7 @@ To check if these commands have executed correctly and the options are in fact s
 
 ### Login
 
-So, let's log in!
-
+Now you can log in with only your email and password:
 
 ```bash
 ./public-api-cli login 
