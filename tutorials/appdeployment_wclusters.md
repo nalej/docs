@@ -26,7 +26,7 @@ To check if these commands have executed correctly and the options are in fact s
 
 ### Login
 
-So, let's log in! This process needs the **email** and **password** you used to register in Nalej, and the **connection info** of the Nalej login server \(which is different from the API server\),:
+This process needs the **email** and **password** you used to register in Nalej, and the **connection info** of the Nalej login server \(which is different from the API server\),:
 
 ```bash
 ./public-api-cli login 
