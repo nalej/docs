@@ -1,12 +1,10 @@
-# Getting started with organization-related topics
+# Organization area
 
 Here you will find all there is to know about to user management, as well as role management and organization information.
 
 The Organization area contains all the information related to the organization, as well as the management of its members. In this area you will be able to create, manage and delete users, as well as create and assign them different roles in the platform.
 
-##Creating users
-
-You need to be an Owner of the organization to be able to create, manage or delete a user. 
+## Getting the organization information
 
 ### Web Interface
 
@@ -14,11 +12,9 @@ The Organization view is the first view presented to you after logging in. Just 
 
 > TODO: image
 
-Here, the information we can see depends on the role we have been assigned, and so, if the person logging in is the Owner of the organization...
+Here, the information we can see depends on the role we have been assigned, and so, if the person logging in is the Owner of the organization, the info shown is this:
 
 > TODO: How can I say this without naming the specific role ("Owner")? Which permissions does the user have to have to see the Owner interface?
-
-The different sections are:
 
 - **Organization info card**. Here you can see the most relevant information related to the company: name, type of subscription, and number of members.
 
@@ -40,7 +36,32 @@ The different sections are:
     >
     > This is a different functionality than the "change password" in edit, where you enter as the user to change your password (you remember the old one, or you got a default one, and you want to change it).
 
-Under the "Member list" there is an **"Add user"** button. If we click on that, a form appears.
+### Public API CLI
+
+The only organization information we can see  through the Public API CLI is the organization name and ID. To check this, the command you can use is:
+
+```bash
+./public-api-cli org info
+```
+
+which returns the following JSON:
+
+```json
+{
+  "organization_id": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+  "name": <org_name>
+}
+```
+
+
+
+##Creating users
+
+You need to be an Owner of the organization to be able to create, manage or delete a user. 
+
+### Web Interface
+
+In the Organization view, under the "Member list" there is an **"Add user"** button. If we click on that, a form appears.
 
 > This should change too: this form should be the sign-up form (with password and confirm password).
 >
@@ -87,6 +108,8 @@ where the **email** is the parameter we will use to locate the user in future in
 
 The response to this command would be the same JSON we received when creating the user, with their current information. If we don't add the `—email`parameter, the info returned would be our own.
 
+
+
 ## Editing users
 
 There are several operations you can do with the members who belong to your organization, if you're the Owner. 
@@ -115,13 +138,34 @@ This shows the member card, and on it you can see the "Change password" button. 
 
 ### Public API CLI
 
-As you don't have an accessible list of users in plain view, the first thing you may want to do is to get one, so you know which users are actually in your organization. To do so, we will use the `users`command again, like so:
+As you don't have an accessible list of users in plain view, the first thing you may want to do is to get one, so you know which users are actually in your organization. To do so, we will use the `users`command again:
 
 ```bash
 ./public-api-cli users list
 ```
 
-> TODO: responses!!!
+The response to this is a JSON with a list of the users in your organization, and their info:
+
+```json
+{
+  "users": [
+    {
+      "organization_id": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+      "email": <email-name@email-domain>,
+      "name": <name>,
+      "role_name": <role_name>
+    },
+    {
+      "organization_id": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+      "email": <email-name2@email-domain>,
+      "name": <name2>,
+      "role_name": <role_name>
+    }
+  ]
+}
+```
+
+
 
 To edit a specific user's information, we need their email. With that we can:
 
@@ -131,19 +175,21 @@ To edit a specific user's information, we need their email. With that we can:
   ./public-api-cli users update --name=<new_name> --email=<email-name>@<email-domain>
   ```
 
-- Update their role:
-
-  ```bash
-  ./public-api-cli users update --role_name="Developer" --email=<email-name>@<email-domain>
-  ```
+  > We can't update the user role like this!
+  >
+  > 
 
 - Reset their password (we also need the current password for this):
 
-  ```bash
+- ```bash
   ./public-api-cli users reset-password --email=<email-name>@<email-domain> --password=<password> --newPassword=<newpassword>
   ```
 
->We need to know the response to these commands!
+  For this to work, the new password must not be empty.
+
+When these operations are successful, the return is an empty JSON, like so: `{}`
+
+
 
 ## Deleting users
 
@@ -163,3 +209,4 @@ To delete a user, execute the following command:
 ./public-api-cli users del --email=<email-name>@<email-domain>
 ```
 
+When this operation exits successfully, the return is an empty JSON: `{}`
