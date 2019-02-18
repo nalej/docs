@@ -4,7 +4,7 @@
 
 ## Organization
 
-- [Getting started with organization-related topics](organization/organization-1.md)
+- [Organization and user management](organization/organization-1.md)
 
 ## Resources
 
