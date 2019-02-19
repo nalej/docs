@@ -47,7 +47,6 @@ An **application descriptor** is a file with all the essential info to deploy a 
 ```javascript
 {
   "name": "Sample application",
-  "description": "This is a basic descriptor of an application",
   "labels": {
     "app": "simple-app"
   },
@@ -55,73 +54,95 @@ An **application descriptor** is a file with all the essential info to deploy a 
     {
       "rule_id": "001",
       "name": "allow access to wordpress",
-      "source_service_id": "2",
-      "source_port": 80,
+      "target_service_group_name": "g1",
+      "target_service_name": "2",
+      "target_port": 80,
       "access": 2
     }
   ],
-  "services": [
+  "groups": [
     {
-      "service_id": "1",
-      "name": "simple-mysql",
-      "description": "A MySQL instance",
-      "image": "mysql:5.6",
-      "specs": {
-        "replicas": 1
-      },
-      "storage": [
+      "name": "g1",
+      "services": [
         {
-          "mount_path": "/tmp"
+          "name": "simple-mysql",
+          "image": "mysql:5.6",
+          "specs": {
+            "replicas": 1
+          },
+          "configs": [
+        {
+          "config_file_id": "1",
+          "content": "SG9sYQo=",
+          "mount_path": "/config/saludo.conf"
+        },
+        {
+          "config_file_id": "2",
+          "content": "QWRpb3MK",
+          "mount_path": "/config/despedida.conf"
         }
       ],
-      "exposed_ports": [
-        {
-          "name": "mysqlport",
-          "internal_port": 3306,
-          "exposed_port": 3306
-        }
-      ],
-      "environment_variables": {
-        "MYSQL_ROOT_PASSWORD": "root"
-      },
-      "labels": {
-        "app": "simple-mysql",
-        "component": "simple-app"
-      }
-    },
-    {
-      "service_id": "2",
-      "name": "simple-wordpress",
-      "description": "A Wordpress instance",
-      "image": "wordpress:5.0.0",
-      "specs": {
-        "replicas": 1
-      },
-      "storage": [
-        {
-          "mount_path": "/tmp"
-        }
-      ],
-      "exposed_ports": [
-        {
-          "name": "wordpressport",
-          "internal_port": 80,
-          "exposed_port": 80,
-          "endpoints": [
+          "storage": [
             {
-              "type": 2,
-              "path": "/"
+              "size": 104857600,
+              "mount_path": "/tmp"
             }
+          ],
+          "exposed_ports": [
+            {
+              "name": "mysqlport",
+              "internal_port": 3306,
+              "exposed_port": 3306
+            }
+          ],
+          "environment_variables": {
+            "MYSQL_ROOT_PASSWORD": "root"
+          },
+          "labels": {
+            "app": "simple-mysql",
+            "component": "simple-app"
+          }
+        },
+        {
+          "name": "simple-wordpress",
+          "image": "wordpress:5.0.0",
+          "specs": {
+            "replicas": 1
+          },
+          "storage": [
+            {
+              "size": 104857600,
+              "mount_path": "/tmp"
+            }
+          ],
+          "exposed_ports": [
+            {
+              "name": "wordpressport",
+              "internal_port": 80,
+              "exposed_port": 80,
+              "endpoints": [
+                {
+                  "type": 2,
+                  "path": "/"
+                }
+              ]
+            }
+          ],
+          "environment_variables": {
+            "WORDPRESS_DB_HOST": "NALEJ_SERV_SIMPLE-MYSQL:3306",
+            "WORDPRESS_DB_PASSWORD": "root"
+          },
+          "labels": {
+            "app": "simple-wordpress",
+            "component": "simple-app"
+          },
+          "deploy_after": [
+            "1"
           ]
         }
       ],
-      "environment_variables": {
-        "WORDPRESS_DB_HOST": "NALEJ_SERV_1:3306",
-        "WORDPRESS_DB_PASSWORD": "root"
-      },
-      "labels": {
-        "app": "simple-wordpress",
-        "component": "simple-app"
+      "specs": {
+        "num_replicas": 1
       }
     }
   ]
@@ -135,10 +156,6 @@ This example is the output of the following command:
 ```
 
 It creates a basic application descriptor for you \(called `appDescExample.json`in this case\), with a Wordpress instance and a mySQL database associated to it. To learn more about them, please visit [this link](app_descriptors.md), where you can find an extensive tutorial on how to make your own.
-
-> this needs to be another document in the system and not redirect to our private documentation.
->
-> To learn more about them, please visit [this link](https://daisho.atlassian.net/wiki/spaces/NP/pages/582713431/Application+descriptors), where you can find an extensive tutorial on how to make your own.
 
 #### Adding the application descriptor to the system
 

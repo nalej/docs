@@ -12,7 +12,7 @@
 
 ## Applications
 
-- [Getting started with application-related topics](applications/applications-1.md)
+- [Application deployment, management and removal](applications/applications-1.md)
 - [How to create an application descriptor](tutorials/app_descriptors.md)
 
 ## Tutorials
