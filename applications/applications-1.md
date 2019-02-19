@@ -217,3 +217,4 @@ By clicking on the info button, the user can view the cluster modal window, wher
 
 The application graph provides users with a visualization of deployed and running application instances. 
 
+> I need to see this functionality working to be able to describe it properly.
