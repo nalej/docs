@@ -13,7 +13,7 @@
 ## Applications
 
 - [Application deployment, management and removal](applications/applications-1.md)
-- [Structure of an application descriptor](application/app_descriptors.md)
+- [Structure of an application descriptor](applications/app_descriptors.md)
 
 ## Tutorials
 
