@@ -42,15 +42,43 @@ The rule entity determines the connectivity of a service with the others. To spe
 Where:
 
 * *rule\_id* is the rule identifier.
-* *name* is the user friendly name of the rule
-* *target\_service\_group\_name* contains the name of the group where the service to be accessed can be found.
-* *target\_service\_name* contains the name of the service to be accessed.
-* *target\_port* contains the port that is affected by the current rule.
-* *access* contains the type of access allowed. Use 1 to signal that the service is accessible by other app services and 2 to signal that the service is publicly available.
 
-> I have some doubts about the structure about the ACCESS parameters when the value is not 2, but 1 (for example). I don't know if there have been changes regarding this, or how to integrate authServiceGroupName and DeviceGroups in the rule structure.
->
-> Also, is there a way to assign a rule to all the services in a group?
+* *name* is the user friendly name of the rule.
+
+* *target\_service\_group\_name* contains the name of the group where the service to be accessed can be found.
+
+* *target\_service\_name* contains the name of the service to be accessed.
+
+* *target\_port* contains the port that is affected by the current rule.
+
+* *access* contains the type of access allowed. 
+
+  * Use 1 to signal that the service is accessible by other app services. The correct way to specify the services would be:
+
+    ```json
+    "access": 1
+    "auth_service_group": {
+        "name": <service_group_name>,
+    	"auth_services": [
+            <service_name_1>,
+        	<service_name_2>,
+        	...
+        ]    
+    }
+    ```
+
+  * Use 2 to signal that the service is publicly available.
+
+  * Use 3 to signal that the service is available only for some devices.
+
+    ```json
+    "access": 3
+    "device_groups": [
+        <device_name_1>,
+        <device_name_2>,
+        ....
+    ]
+    ```
 
 Example:
 
@@ -71,55 +99,76 @@ Example:
 
 ## ServiceGroups
 
-A service group is a collection of services that must be deployed following a given collocation policy.
+A service group is a collection of services that can be replicated together. The structure of a service group is as follows:
 
-> var CollocationPolicy_name = map[int32]string{
-> 	0: "SAME_CLUSTER",
-> 	1: "SEPARATE_CLUSTERS",
-> }
->
-> I would need an explanation about this, since I didn't see it in the example. I understand that 0 is the default value, so by default the services are deployed in the same cluster. Is this the only reason to put a service in a specific service group? The collocation policy?
+```json
+  "groups": [
+    {
+      "name": "g1",
+      "services": [
+        ...       
+      ],
+      "specs": {
+        "num_replicas": 1
+      }
+    }
+  ]
+```
+
+Where:
+
+- *name* is the name we give to the service group.
+- *services* is the collection of services the group contains.
+- *specs* defines the specifications for the group. The different parameters here are *num\_replicas*, which is the number of replicas of this group that are going to be deployed, and *multicluster_replica*, which is a boolean that states whether or not the replicas will be deployed in the same cluster.
 
 ### Services
 
 A service defines a component of the application. The elements that describe a service are:
 
 ```javascript
-{       
-    "service_id": <service_identifier>,       
+{              
     "name": <service_name>,           
-    "image": "<docker image>",       
+    "image": <docker image>,       
     "specs": {         
         "replicas": <num_replicas>       
-    },       
+    },
+    "configs": [
+        {
+          "config_file_id": <config_file_id>,
+          "content": <config_file_content>,
+          "mount_path": <config_file_path>
+        }
+      ],
     "storage": [         
         {           
-            "mount_path": "<path_to_be_mounted>"         
+            "mount_path": <path_to_be_mounted>         
         }       
     ],
     "exposed_ports": [         
         {           
-            "name": "<port_name>",           
+            "name": <port_name>,           
             "internal_port": <port_number>,           
             "exposed_port": <port_number>         
         }       
     ],       
     "environment_variables": {         
-        "<env_name>": "<env_value>"       
+        "<env_name>": <env_value>       
     },       
     "labels": {         
-        "app": "<app_name>"       
+        "app": <app_name>       
     }     
  },
 ```
 
 Where:
 
-* *service\_identifier* is the identifier that will be used to refer to this service in the application descriptor.
-* *service\_name* is the user friendly name of the service.
-* *service\_description* is the user friendly description of the service.
+* *service\_name* is the name of the service.
 * *image* is the name of the docker image.
-* *num\_replicas* is the number of replicas to be deployed.
+* [NOT USED] *specs* defines the specifications for the service. In it, *replicas* is the number of replicas of this service to be deployed.
+* *configs* defines the configuration files that the service may need. In it, 
+  * *config\_file\_id* is the identifier of each specific configuration file, 
+  * *content* is the content the configuration file should have, and
+  * *mount\_file* is the path where the file should be in the cluster, so the system can create it and fill it with what is in the *content* parameter.
 * *storage* defines the storage required by the image. It is an optional field.
 * *exposed\_ports* defines the ports that are exposed by the container.
 * *environment\_variables* specifies the environment variables required by the containers.
@@ -128,14 +177,25 @@ Where:
 Example:
 
 ```javascript
-{       
-    "service_id": "mysql",       
+{         
     "name": "simple-mysql",       
     "description": "A MySQL instance",       
     "image": "mysql:5.6",       
     "specs": {         
         "replicas": 1       
     },       
+    "configs": [
+        {
+            "config_file_id": "1",
+            "content": "SG9sYQo=",
+            "mount_path": "/config/saludo.conf"
+        },
+        {
+            "config_file_id": "2",
+            "content": "QWRpb3MK",
+            "mount_path": "/config/despedida.conf"
+        }
+    ],    
     "storage": [         
         {           
             "mount_path": "/tmp"         
@@ -165,15 +225,13 @@ Example:
 In order to access private images, the user should provide the credentials for downloading them. To use them, add the following options to the service descriptor:
 
 ```javascript
-{       
-    "service_id": "server",       
-    "name": "performance-server",       
-    "description": "Performance test server",       
+{            
+    "name": "performance-server",            
     "image": "myrepo/myorg/performance-server:v0.2.0",      
     "credentials": {         
-        "username": "username",         
-        "password": "password",         
-        "email": "email@email.com",         
+        "username": <username>,         
+        "password": <password>,         
+        "email": <email@email.com>,         
         "docker_repository": "https://myrepo.url"       
     },        
  ...     
@@ -182,20 +240,18 @@ In order to access private images, the user should provide the credentials for d
 
 Where:
 
-* username is the username to log into the remote repository
-* password is the password to log into the remote repository
-* email is the email of the user. Depending on the type of remote repository, use the email of the user required to log into the system.
-* docker\_repository contains the HTTPS url of the remote repository
+* *username* is the username to log into the remote repository.
+* *password* is the password to log into the remote repository.
+* *email* is the email of the user. Depending on the type of remote repository, use the email of the user required to log into the system.
+* *docker\_repository* contains the HTTPS url of the remote repository
 
 ### Passing arguments to the images
 
-To pass arguments to the docker images, use the run\_arguments attribute as in the following example:
+To pass arguments to the docker images, use the *run\_arguments* attribute as in the following example:
 
 ```javascript
 {       
-    "service_id": "myservice",       
-    "name": "Sample service",       
-    "description": "A sample image accepting run arguments", 
+    "name": "Sample service with image accepting run arguments",       
     "image": "run-test:v0.1.0",       
     "run_arguments" : ["arg1", "arg2", ..., "argN"] 
         ...     
@@ -207,10 +263,8 @@ To pass arguments to the docker images, use the run\_arguments attribute as in t
 To attach storage to a given service, use the following construct:
 
 ```javascript
-{       
-    "service_id": "myservice",       
+{           
     "name": "Sample service",       
-    "description": "A sample image accepting run arguments", 
     "image": "run-test:v0.1.0",       
     "storage": [         
         {           
@@ -223,7 +277,10 @@ To attach storage to a given service, use the following construct:
  }
 ```
 
-To create ephemeral storage use type 0, type 1 will provide persistent storage.
+Where *type* will define the type of storage to create, being:
+
+- 0: ephemeral storage.
+- 1: persistent storage.
 
 ## Example
 
@@ -232,7 +289,6 @@ As an example, the following descriptor contains an application composed of mysq
 ```javascript
 {
   "name": "Sample application",
-  "description": "This is a basic descriptor of an application",
   "labels": {
     "app": "simple-app"
   },
@@ -240,153 +296,95 @@ As an example, the following descriptor contains an application composed of mysq
     {
       "rule_id": "001",
       "name": "allow access to wordpress",
-      "source_service_id": "2",
-      "source_port": 80,
+      "target_service_group_name": "g1",
+      "target_service_name": "2",
+      "target_port": 80,
       "access": 2
     }
   ],
-  "services": [
+  "groups": [
     {
-      "service_id": "1",
-      "name": "simple-mysql",
-      "description": "A MySQL instance",
-      "image": "mysql:5.6",
-      "specs": {
-        "replicas": 1
-      },
-      "storage": [
+      "name": "g1",
+      "services": [
         {
-          "mount_path": "/tmp"
+          "name": "simple-mysql",
+          "image": "mysql:5.6",
+          "specs": {
+            "replicas": 1
+          },
+          "configs": [
+        {
+          "config_file_id": "1",
+          "content": "SG9sYQo=",
+          "mount_path": "/config/saludo.conf"
+        },
+        {
+          "config_file_id": "2",
+          "content": "QWRpb3MK",
+          "mount_path": "/config/despedida.conf"
         }
       ],
-      "exposed_ports": [
-        {
-          "name": "mysqlport",
-          "internal_port": 3306,
-          "exposed_port": 3306
-        }
-      ],
-      "environment_variables": {
-        "MYSQL_ROOT_PASSWORD": "root"
-      },
-      "labels": {
-        "app": "simple-mysql",
-        "component": "simple-app"
-      }
-    },
-    {
-      "service_id": "2",
-      "name": "simple-wordpress",
-      "description": "A Wordpress instance",
-      "image": "wordpress:5.0.0",
-      "specs": {
-        "replicas": 1
-      },
-      "storage": [
-        {
-          "mount_path": "/tmp"
-        }
-      ],
-      "exposed_ports": [
-        {
-          "name": "wordpressport",
-          "internal_port": 80,
-          "exposed_port": 80,
-          "endpoints": [
+          "storage": [
             {
-              "type": 2,
-              "path": "/"
+              "size": 104857600,
+              "mount_path": "/tmp"
             }
+          ],
+          "exposed_ports": [
+            {
+              "name": "mysqlport",
+              "internal_port": 3306,
+              "exposed_port": 3306
+            }
+          ],
+          "environment_variables": {
+            "MYSQL_ROOT_PASSWORD": "root"
+          },
+          "labels": {
+            "app": "simple-mysql",
+            "component": "simple-app"
+          }
+        },
+        {
+          "name": "simple-wordpress",
+          "image": "wordpress:5.0.0",
+          "specs": {
+            "replicas": 1
+          },
+          "storage": [
+            {
+              "size": 104857600,
+              "mount_path": "/tmp"
+            }
+          ],
+          "exposed_ports": [
+            {
+              "name": "wordpressport",
+              "internal_port": 80,
+              "exposed_port": 80,
+              "endpoints": [
+                {
+                  "type": 2,
+                  "path": "/"
+                }
+              ]
+            }
+          ],
+          "environment_variables": {
+            "WORDPRESS_DB_HOST": "NALEJ_SERV_SIMPLE-MYSQL:3306",
+            "WORDPRESS_DB_PASSWORD": "root"
+          },
+          "labels": {
+            "app": "simple-wordpress",
+            "component": "simple-app"
+          },
+          "deploy_after": [
+            "1"
           ]
         }
       ],
-      "environment_variables": {
-        "WORDPRESS_DB_HOST": "NALEJ_SERV_1:3306",
-        "WORDPRESS_DB_PASSWORD": "root"
-      },
-      "labels": {
-        "app": "simple-wordpress",
-        "component": "simple-app"
-      }
-    }
-  ]
-}{
-  "name": "Sample application",
-  "description": "This is a basic descriptor of an application",
-  "labels": {
-    "app": "simple-app"
-  },
-  "rules": [
-    {
-      "rule_id": "001",
-      "name": "allow access to wordpress",
-      "source_service_id": "2",
-      "source_port": 80,
-      "access": 2
-    }
-  ],
-  "services": [
-    {
-      "service_id": "1",
-      "name": "simple-mysql",
-      "description": "A MySQL instance",
-      "image": "mysql:5.6",
       "specs": {
-        "replicas": 1
-      },
-      "storage": [
-        {
-          "mount_path": "/tmp"
-        }
-      ],
-      "exposed_ports": [
-        {
-          "name": "mysqlport",
-          "internal_port": 3306,
-          "exposed_port": 3306
-        }
-      ],
-      "environment_variables": {
-        "MYSQL_ROOT_PASSWORD": "root"
-      },
-      "labels": {
-        "app": "simple-mysql",
-        "component": "simple-app"
-      }
-    },
-    {
-      "service_id": "2",
-      "name": "simple-wordpress",
-      "description": "A Wordpress instance",
-      "image": "wordpress:5.0.0",
-      "specs": {
-        "replicas": 1
-      },
-      "storage": [
-        {
-          "mount_path": "/tmp"
-        }
-      ],
-      "exposed_ports": [
-        {
-          "name": "wordpressport",
-          "internal_port": 80,
-          "exposed_port": 80,
-          "endpoints": [
-            {
-              "type": 2,
-              "path": "/"
-            }
-          ]
-        }
-      ],
-      "environment_variables": {
-        "WORDPRESS_DB_HOST": "NALEJ_SERV_1",
-        "WORDPRESS_DB_PASSWORD": "root"
-      },
-      "labels": {
-        "app": "simple-wordpress",
-        "component": "simple-app"
+        "num_replicas": 1
       }
     }
   ]
