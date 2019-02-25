@@ -8,7 +8,7 @@
 
 ## Resources
 
-- [Getting started with resources-related topics](resources/resources-1.md)
+- [Clusters and nodes](resources/resources-1.md)
 
 ## Applications
 
