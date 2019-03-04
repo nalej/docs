@@ -18,8 +18,6 @@ Here, the information we can see depends on the role we have been assigned, and 
 
 - **Organization info card**. Here you can see the most relevant information related to the company: name, type of subscription, and number of members.
 
-- > Question: why is there a "members" list and then a "users" count in the organization info card? Are they different?
-
 - **Subscription**. The subscription plan the company is currently on.
 
 - > Question: here, if we have a subscription fee, does the due date for the payments appear? Maybe it has reminders if you missed a payment?
@@ -63,11 +61,7 @@ You need to be an Owner of the organization to be able to create, manage or dele
 
 In the Organization view, under the "Member list" there is an **"Add user"** button. If we click on that, a form appears.
 
-> This should change too: this form should be the sign-up form (with password and confirm password).
->
-> Here we should only have: name, email, and the "send new password" button, so the new user gets a default password and has to enter the system and change it. At most, it could have the role too.
->
-> I would also change the text of the button "save" to "create user.
+> TODO: image.
 
 By now, the form to sign a user up requires a name, an email, a password and a role. You can save the information, creating a user, or discard it. You can also discard the information by clicking the cross in the upper right corner.
 
@@ -106,7 +100,7 @@ where the **email** is the parameter we will use to locate the user in future in
 ./public-api-cli users info --email=<email-name>@<email-domain>
 ```
 
-The response to this command would be the same JSON we received when creating the user, with their current information. If we don't add the `—email`parameter, the info returned would be our own.
+The response to this command would be the same JSON we received when creating the user, with their current information. If we don't add the `--email` parameter, the info returned would be our own.
 
 
 
@@ -132,9 +126,7 @@ We can also reset their password, which means we send a default one to the email
 
 This shows the member card, and on it you can see the "Change password" button. To reset the password, click it.
 
-> TODO: this does NOT send an email with a default password so the user can log in the system. Instead, it opens the "change password" form, for which you need the current password.
->
-> Expected behavior: on click, the system sends an email to the user email address with a password, and the only thing we see is a confirmation message in the upper right corner of the screen (like the ones confirming the changes to the user info) saying that the message has been sent.
+> TODO: Expected behavior: on click, the system sends an email to the user email address with a password, and the only thing we see is a confirmation message in the upper right corner of the screen (like the ones confirming the changes to the user info) saying that the message has been sent.
 
 ### Public API CLI
 

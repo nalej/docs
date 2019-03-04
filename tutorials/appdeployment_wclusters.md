@@ -91,12 +91,12 @@ An **application descriptor** is a file with all the essential info to deploy a 
           "exposed_ports": [
             {
               "name": "mysqlport",
-              "internal_port": 3306,
-              "exposed_port": 3306
+              "internal_port": <port>,
+              "exposed_port": <port>
             }
           ],
           "environment_variables": {
-            "MYSQL_ROOT_PASSWORD": "root"
+            "MYSQL_ROOT_PASSWORD": <password>
           },
           "labels": {
             "app": "simple-mysql",
@@ -129,8 +129,8 @@ An **application descriptor** is a file with all the essential info to deploy a 
             }
           ],
           "environment_variables": {
-            "WORDPRESS_DB_HOST": "NALEJ_SERV_SIMPLE-MYSQL:3306",
-            "WORDPRESS_DB_PASSWORD": "root"
+            "WORDPRESS_DB_HOST": <db_host:port>,
+            "WORDPRESS_DB_PASSWORD": <password>
           },
           "labels": {
             "app": "simple-wordpress",
@@ -155,7 +155,7 @@ This example is the output of the following command:
 ./public-api-cli app desc help > appDescExample.json
 ```
 
-It creates a basic application descriptor for you \(called `appDescExample.json`in this case\), with a Wordpress instance and a mySQL database associated to it. To learn more about them, please visit [this link](app_descriptors.md), where you can find an extensive tutorial on how to make your own.
+It creates a basic application descriptor for you \(called `appDescExample.json`in this case\), with a Wordpress instance and a mySQL database associated to it. To learn more about them, please visit [this link](../applications/app_descriptors.md), where you can find an extensive tutorial on how to make your own.
 
 #### Adding the application descriptor to the system
 
@@ -185,120 +185,87 @@ Now we can start working with the deployed instance, doing things like, for exam
 ./public-api-cli app inst get --instanceID=XXXXXXXXXX
 ```
 
-This command returns a JSON with all the information related to the instance we are checking. Below you can see the JSON obtained while getting the information of an application instance composed by a WordPress server and a MySQL server associated to it:
+This command returns a JSON with all the information related to the instance we are checking, which looks like this:
 
 ```javascript
 {
-  "organization_id": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
-  "app_descriptor_id": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
-  "app_instance_id": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
-  "name": "wordpress-for-testing",
-  "description": "testing instance of WordPress",
+  "organization_id": <org_id>,
+  "app_descriptor_id": <app_desc_id>,
+  "app_instance_id": <app_inst_id>,
+  "name": <name>,
   "labels": {
     "app": "simple-app"
   },
   "rules": [
     {
-      "app_descriptor_id": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
-      "rule_id": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
-      "name": "allow access to wordpress",
-      "source_service_id": "2",
-      "source_port": 80,
+      "organization_id": <org_id>,
+      "app_descriptor_id": <app_desc_id>,
+      "rule_id": <rule_id>,
+      "name": <name>,
+      "target_service_group_name": <service_group_name>,
+      "target_service_name": <service_name>,
+      "target_port": <port>,
       "access_name": "PUBLIC"
-    }
-  ],
-  "services": [
-    {
-      "organization_id": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
-      "app_descriptor_id": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
-      "app_instance_id": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
-      "service_id": "1",
-      "name": "simple-mysql",
-      "description": "A MySQL instance",
-      "type_name": "DOCKER",
-      "image": "mysql:5.6",
-      "specs": {
-        "replicas": 1
-      },
-      "storage": [
-        {
-          "size": 104857600,
-          "mount_path": "/tmp",
-          "type_name": "EPHEMERAL"
-        }
-      ],
-      "exposed_ports": [
-        {
-          "name": "mysqlport",
-          "internal_port": 3306,
-          "exposed_port": 3306
-        }
-      ],
-      "environment_variables": {
-        "MYSQL_ROOT_PASSWORD": "xxxxxx"
-      },
-      "labels": {
-        "app": "simple-mysql",
-        "component": "simple-app"
-      },
-      "status_name": "SERVICE_RUNNING",
-      "deployed_on_cluster_id": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
     },
+    ...
+    
+  ],
+  "groups": [
     {
-      "organization_id": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
-      "app_descriptor_id": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
-      "app_instance_id": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
-      "service_id": "2",
-      "name": "simple-wordpress",
-      "description": "A Wordpress instance",
-      "type_name": "DOCKER",
-      "image": "wordpress:5.0.0",
-      "specs": {
-        "replicas": 1
-      },
-      "storage": [
+      "organization_id": <org_id>,
+      "app_descriptor_id": <app_desc_id>,
+      "app_instance_id": <app_inst_id>,
+      "service_group_id": <service_group_id>,
+      "service_group_instance_id": <service_group_instance_id>,
+      "name": <service_group_name>,
+      "service_instances": [
         {
-          "size": 104857600,
-          "mount_path": "/tmp",
-          "type_name": "EPHEMERAL"
-        }
-      ],
-      "exposed_ports": [
-        {
-          "name": "wordpressport",
-          "internal_port": 80,
-          "exposed_port": 80,
-          "endpoints": [
+          "organization_id": <org_id>,
+          "app_descriptor_id": <app_desc_id>,
+          "app_instance_id": <app_inst_id>,
+          "service_group_id": <service_group_id>,
+          "service_id": <service_id>,
+          "service_instance_id": <service_instance_id>,
+          "name": <service_name>,
+          "type_name": "DOCKER",
+          "image": <image>,
+          "specs": {
+            "replicas": 1
+          },
+          "exposed_ports": [
             {
-              "type_name": "WEB",
-              "path": "/"
+              "name": "simple-app-port",
+              "internal_port": <port>,
+              "exposed_port": <port>
             }
-          ]
-        }
+          ],
+          "environment_variables": {
+            ...
+          },
+          "labels": {
+            "app": "simple-app",
+            "component": "simple-app"
+          },
+          "status_name": "SERVICE_RUNNING",
+          "endpoints": [
+            	"xxxx.xxxxx.appcluster.<yourcluster>.com"
+          ],
+          "deployed_on_cluster_id": <cluster_id>
+        },
+        ...  
       ],
-      "environment_variables": {
-        "WORDPRESS_DB_HOST": "YOUR_SERVER:xxxx",
-        "WORDPRESS_DB_PASSWORD": "xxxx"
-      },
-      "labels": {
-        "app": "simple-wordpress",
-        "component": "simple-app"
-      },
-      "deploy_after": [
-        "1"
-      ],
-      "status_name": "SERVICE_RUNNING",
-      "endpoints": [
-          "xxxx.xxxxx.appcluster.<yourcluster>.com"
-      ],
-      "deployed_on_cluster_id": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+      "policy_name": "SAME_CLUSTER",
+      "status_name": "SERVICE_SCHEDULED",
+      "specs": {
+        "num_replicas": 1
+      }
     }
   ],
   "status_name": "RUNNING"
 }
 ```
 
-Here you can see several interesting things, like the user and password for the admin in this instance of MySQL, or the size of the instance in the cluster, but one of the most important parameters is:
+Here you can see several interesting things, like the user and password for the admin in this instance of MySQL, but one of the most important parameters is:
 
 ```javascript
 "status_name": "RUNNING"

@@ -99,8 +99,8 @@ So, first you need to create an application descriptor. The documentation for do
             }
           ],
           "environment_variables": {
-            "WORDPRESS_DB_HOST": "NALEJ_SERV_SIMPLE-MYSQL:3306",
-            "WORDPRESS_DB_PASSWORD": "root"
+            "WORDPRESS_DB_HOST": <db_host>,
+            "WORDPRESS_DB_PASSWORD": <db_password>
           },
           "labels": {
             "app": "simple-wordpress",
@@ -202,12 +202,8 @@ We can see the information related to all the deployed instances of an organizat
 This screen has the following areas:
 
 - A **summary**, where the number of deployed instances and registered applications are shown.
-
 - An **app status timeline**, where the down time of the different instances is displayed.
-
 - A **deployed app list**, where we can see all the info regarding each instance, including its ID, tags and status.
-
-  > I'm not sure about the real meaning of the app status timeline.
 
 Once an application instance is deployed, it is listed in the main application dashboard. The platform provides users with operational information about the deployed instances. 
 
