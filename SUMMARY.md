@@ -17,6 +17,6 @@
 
 ## Tutorials
 
-- [Initial Login in the system](tutorials/initialLogin.md)
+- [Initial login in the system](tutorials/initialLogin.md)
 - [Application Deployment with Nalej](tutorials/appdeployment_wclusters.md)
 

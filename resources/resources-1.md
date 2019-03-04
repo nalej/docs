@@ -1,25 +1,14 @@
 # Clusters and nodes
 
-All the information related to cluster managing will be available in this section.
-
-- Navigate through clusters
-- Explain what a label is at cluster/node level.
-- List nodes
-- Install application cluster commands. The full cluster install guide should be another document in itself.
-
-Notice:
-
-- Adding/removing labels to nodes may produce collateral damage. Labels have also a meaning in kubernetes
-
-----
-
 The application you're deploying will be deployed in a **cluster**. A cluster is a logical group of **nodes**, which are physical devices. When an application is deployed, the cluster will decide if there is a need to deploy it in one or several nodes, and will manage it accordingly.
 
-### Label-related warning
+### *Label-related warning*
 
-In this document there will be references to **labels** in clusters and nodes. A label is an 
+*In this document there will be references to **labels** in clusters and nodes. A label is a string that describes the component and helps the system manage them more efficiently.*
 
-These labels have internal meaning, and deleting labels from a node or a cluster may produce collateral damage. Also, Kubernetes uses labels for management, so adding new ones could be potentially dangerous too. So, the general rule for labels is: DO NOT touch them unless you really know what you're doing.
+*These labels have internal meaning, and deleting labels from a node or a cluster may produce collateral damage. Also, Kubernetes uses labels for management, so adding new ones could be potentially dangerous too, since we could unknowingly add a label that Kubernetes interprets wrongly.* 
+
+*So, the general rule for labels is: DO NOT touch them unless you really know what you're doing.*
 
 ## Cluster monitoring
 
