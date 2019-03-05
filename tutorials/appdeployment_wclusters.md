@@ -38,7 +38,7 @@ Now you can log in with only your email and password:
 
 Congratulations! You're in the system. Now, the first thing you should do is create your own application descriptor. Then, you have to add it to the system, and after that the app will be deployed in what we call an instance. Let's go through this process.
 
-![This is the process to follow when deploying an instance of an application.](../.gitbook/assets/screen-shot-2019-02-11-at-5.58.28-pm.png)
+![This is the process to follow when deploying an instance of an application.](../.gitbook/assets/app_deployment.png)
 
 #### Creating an application descriptor
 

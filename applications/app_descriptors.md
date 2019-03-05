@@ -394,6 +394,5 @@ As an example, the following descriptor contains an application composed of mysq
 ## Known limitations
 
 * In this version, connectivity among services is not limited
-* Ephemeral storage is used for user applications
 * Labels must be set on each service.
 

@@ -10,9 +10,9 @@ The Organization area contains all the information related to the organization, 
 
 The Organization view is the first view presented to you after logging in. Just in case you have been navigating around, you only have to click the "Organization" menu option on the left column to go back to it.
 
-> TODO: image
+![Organization view](../.gitbook/assets/org_ppal.png)
 
-Here, the information we can see depends on the role we have been assigned, and so, if the person logging in is the Owner of the organization, the info shown is this:
+Here, the information we can see depends on the role we have been assigned, and so, if the person logging in is categorized as Owner of the organization, the info shown is this:
 
 > TODO: How can I say this without naming the specific role ("Owner")? Which permissions does the user have to have to see the Owner interface?
 
@@ -25,14 +25,7 @@ Here, the information we can see depends on the role we have been assigned, and 
 - **Member list**. Here you can find all the members in your organization, with their name, role and email, and several actions you can do:
 
   - *Info*: this button shows the member card, and gives us the option of resetting the password and deleting the user.
-
   - *Edit*: here we can edit the member name, change the password, and edit the role this person has.
-
-  - > Change password: the action should be different in different places:
-    >
-    > in info, this should be called "reset password" or "send new password", since it should send the user a default password for when they forget or lose it.
-    >
-    > This is a different functionality than the "change password" in edit, where you enter as the user to change your password (you remember the old one, or you got a default one, and you want to change it).
 
 ### Public API CLI
 
@@ -46,7 +39,7 @@ which returns the following JSON:
 
 ```json
 {
-  "organization_id": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+  "organization_id": <org_id>,
   "name": <org_name>
 }
 ```
@@ -61,7 +54,7 @@ You need to be an Owner of the organization to be able to create, manage or dele
 
 In the Organization view, under the "Member list" there is an **"Add user"** button. If we click on that, a form appears.
 
-> TODO: image.
+!["Add user" feature view](../.gitbook/assets/add_user.png)
 
 By now, the form to sign a user up requires a name, an email, a password and a role. You can save the information, creating a user, or discard it. You can also discard the information by clicking the cross in the upper right corner.
 
@@ -112,21 +105,25 @@ There are several operations you can do with the members who belong to your orga
 
 In the Member list, you can click on the Edit button of the user you want to edit. The following page appears:
 
-> TODO: image
+!["Edit user" feature view](../.gitbook/assets/edit_user.png)
+
+
 
 As you can see, the editable fields here are the user's name and role. We can also change the password if we know the current one.
-
-> this option should only be available for the user, who is the only one who knows their current password. 
 
 Once we hit "Save", a notification message appears in the upper right corner of the browser, confirming the changes that have been made.
 
 We can also reset their password, which means we send a default one to the email given when the user was created. To do this, click on the Info button of the user.
 
-> TODO: image
+!["User info" feature view](../.gitbook/assets/change_password_prev.png)
 
 This shows the member card, and on it you can see the "Change password" button. To reset the password, click it.
 
 > TODO: Expected behavior: on click, the system sends an email to the user email address with a password, and the only thing we see is a confirmation message in the upper right corner of the screen (like the ones confirming the changes to the user info) saying that the message has been sent.
+
+A new form appears, where we can write the old password and the new one, and confirm the new one.
+
+!["Change password" feature view](../.gitbook/assets/change_password.png)
 
 ### Public API CLI
 
@@ -168,8 +165,6 @@ To edit a specific user's information, we need their email. With that we can:
   ```
 
   > We can't update the user role like this!
-  >
-  > 
 
 - Reset their password (we also need the current password for this):
 
@@ -181,15 +176,13 @@ To edit a specific user's information, we need their email. With that we can:
 
 When these operations are successful, the return is an empty JSON, like so: `{}`
 
-
-
 ## Deleting users
 
 ### Web Interface
 
  To delete a user, click on the Info button of that user.
 
-> TODO: image
+!["Edit user" feature view](../.gitbook/assets/delete_user.png)
 
 Once in this screen, hit the "Delete user" button. A message will appear on the upper right part of the screen confirming  the action.
 

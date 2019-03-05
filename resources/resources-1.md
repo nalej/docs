@@ -16,17 +16,21 @@ The application you're deploying will be deployed in a **cluster**. A cluster is
 
 In the web management interface, click on Resources on the left column, so the Resources view is displayed.
 
-> TODO: image
+![Resources view](/Users/svillanueva/capturas_docs/resources_ppal.png)
 
 In the upper part of the screen we can see:
+
+![Resources, upper section of the view](/Users/svillanueva/capturas_docs/resources_ppal_upper.png)
 
 - **Summary card**: the number of clusters and nodes in the system.
 - **Clusters card**: a carousel of charts with information about each cluster and the nodes in it (like how many nodes are running in the cluster).
 - **Node status timeline**: a timeline of the status of all the nodes.
 
-> TODO: image
+The lower section displays a **cluster list**. 
 
-The lower section displays a **cluster list**. Each row of the list refers to a different cluster, with some information about it:
+![Cluster list](/Users/svillanueva/capturas_docs/resources_ppal_lower.png)
+
+Each row of the list refers to a different cluster, with some information about it:
 
 - its **name**.
 - its **identifier**.
@@ -38,9 +42,13 @@ The lower section displays a **cluster list**. Each row of the list refers to a 
 
 In the same list, on the far right, each cluster has an **Edit** button. When clicked, a dialog appears where we can change the name and the labels associated to the cluster.
 
+!["Edit cluster" view](/Users/svillanueva/capturas_docs/edit_cluster.png)
+
+
+
 When we click on the name of the cluster, the view changes, and the information displayed refers to that specific cluster and its nodes.
 
-> TODO: image
+![Cluster view](/Users/svillanueva/capturas_docs/cluster_view.png)
 
 In the upper part of the screen we can see the **status** of the cluster (which is "RUNNING" only if all the nodes in it are running, and if not it shows the most serious problem in the clusters), and a **summary** of the cluster information we saw in the previous list.
 
@@ -52,7 +60,19 @@ In the lower part of the screen we can see another list, this time of nodes. The
 - The **labels** it has.
 - Its current **status** (again, it can be *running*, *processing* or *error*).
 
+Regarding **labels**, although adding and/or deleting them is not encouraged, there is an easy way of doing it through the web interface. At the end of the label list there is a `+` button to **add** new labels.
 
+![Adding a label](/Users/svillanueva/capturas_docs/cluster_add_label.png)
+
+After clicking on that button, we can see a form where we can enter the name and value of the label, and we can save or discard this new information.
+
+![Adding a label: form](/Users/svillanueva/capturas_docs/cluster_add_label_2.png)
+
+If, however, in the list of labels we click on one or more labels (selecting them), this `+` button changes its function to **delete**, and its image to one of a bin, so we can delete the selected labels.
+
+![Deleting one or several labels](/Users/svillanueva/capturas_docs/cluster_delete_label.png)
+
+As stated above, please handle these features with care.
 
 ### Public API CLI
 

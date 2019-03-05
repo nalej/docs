@@ -1,0 +1,499 @@
+{
+  //Nombre
+  "name": "Sample application",
+  //--> falta DESCRIPCION
+  //Etiquetas de la aplicación
+  "labels": {
+    "app": "simple-app"
+  },
+  //Reglas
+  "rules": [
+    //sólo tiene una    
+    {
+        /*  // OrganizationId with the organization identifier.
+      OrganizationId string `protobuf:"bytes,1,opt,name=organization_id,json=organizationId,proto3" json:"organization_id,omitempty"`
+      
+      // AppDescriptorId with the application descriptor identifier.
+      AppDescriptorId string `protobuf:"bytes,2,opt,name=app_descriptor_id,json=appDescriptorId,proto3" json:"app_descriptor_id,omitempty"`
+      
+      // RuleId with the security rule identifier.
+      RuleId string `protobuf:"bytes,3,opt,name=rule_id,json=ruleId,proto3" json:"rule_id,omitempty"`
+      
+      // Name of the security rule.
+      Name string `protobuf:"bytes,4,opt,name=name,proto3" json:"name,omitempty"`
+      
+      // TargetServiceGroupName defining the name of the service group to be accessed.
+      TargetServiceGroupName string `protobuf:"bytes,5,opt,name=target_service_group_name,json=targetServiceGroupName,proto3" json:"target_service_group_name,omitempty"`
+      
+      // TargetServiceName name of the service belonging to be source group mentioned above to be accessed.
+      TargetServiceName string `protobuf:"bytes,6,opt,name=target_service_name,json=targetServiceName,proto3" json:"target_service_name,omitempty"`
+      
+      // TargetPort defining the port that is affected by the current rule.
+      TargetPort int32 `protobuf:"varint,7,opt,name=target_port,json=targetPort,proto3" json:"target_port,omitempty"`
+      
+      // Access level to that port defining who can access the port.
+      Access PortAccess `protobuf:"varint,8,opt,name=access,proto3,enum=application.PortAccess" json:"access,omitempty"`
+      
+      // Name of the service group
+      AuthServiceGroupName string `protobuf:"bytes,9,opt,name=auth_service_group_name,json=authServiceGroupName,proto3" json:"auth_service_group_name,omitempty"`
+      
+      // AuthServices defining a list of services that can access the port.
+      AuthServices []string `protobuf:"bytes,10,rep,name=auth_services,json=authServices,proto3" json:"auth_services,omitempty"`
+      
+      // DeviceGroups defining a list of device groups that can access the port.
+      DeviceGroups         []string `protobuf:"bytes,11,rep,name=device_groups,json=deviceGroups,proto3" json:"device_groups,omitempty"`
+  
+
+      
+      type AppDescriptorId struct {
+        // OrganizationId with the organization identifier.
+        OrganizationId string `protobuf:"bytes,1,opt,name=organization_id,json=organizationId,proto3" json:"organization_id,omitempty"`
+  
+        // AppDescriptorId with the application descriptor identifier.
+        AppDescriptorId      string   `protobuf:"bytes,2,opt,name=app_descriptor_id,json=appDescriptorId,proto3" json:"app_descriptor_id,omitempty"`
+  
+
+      */
+
+      "rule_id": "001",
+      //nombre
+      "name": "allow access to wordpress",
+      "target_service_group_name": "g1",
+      "target_service_name": "2",
+      "target_port": 80,
+
+      "access": 2
+      /*
+      // PortAccess enumeration defining the actor with access to a given port.
+      var PortAccess_name = map[int32]string{
+        0: "ALL_APP_SERVICES",
+        1: "APP_SERVICES",
+        2: "PUBLIC",
+        3: "DEVICE_GROUP",
+      }
+      */
+
+    }
+  ],
+  //grupos de servicios
+  //--> antes SERVICES DIRECTAMENTE
+  "groups": [
+    {
+/*    // ServiceGroup structure to represent a collection of services that must be deployed following a given collocation
+      // policy.
+      type ServiceGroup struct {
+        // OrganizationId with the organization identifier.
+        OrganizationId string `protobuf:"bytes,1,opt,name=organization_id,json=organizationId,proto3" json:"organization_id,omitempty"`
+        
+        // AppDescriptorId with the application descriptor identifier.
+        AppDescriptorId string `protobuf:"bytes,2,opt,name=app_descriptor_id,json=appDescriptorId,proto3" json:"app_descriptor_id,omitempty"`
+        
+        // ServiceGroupId with the group identifier.
+        ServiceGroupId string `protobuf:"bytes,3,opt,name=service_group_id,json=serviceGroupId,proto3" json:"service_group_id,omitempty"`
+        
+        // Name of the service group.
+        Name string `protobuf:"bytes,4,opt,name=name,proto3" json:"name,omitempty"`
+        
+        // Services defining a list of service identifiers that belong to the group.
+        Services []*Service `protobuf:"bytes,6,rep,name=services,proto3" json:"services,omitempty"`
+        
+        // Policy indicating the deployment collocation policy.
+        Policy CollocationPolicy `protobuf:"varint,7,opt,name=policy,proto3,enum=application.CollocationPolicy" json:"policy,omitempty"`
+        
+        // Particular deployment specs for this service
+        Specs *ServiceGroupDeploymentSpecs `protobuf:"bytes,8,opt,name=specs,proto3" json:"specs,omitempty"`
+        
+        // Labels defined by the user.
+        Labels               map[string]string `protobuf:"bytes,9,rep,name=labels,proto3" json:"labels,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
+        
+        XXX_NoUnkeyedLiteral struct{}          `json:"-"`
+        XXX_unrecognized     []byte            `json:"-"`
+        XXX_sizecache        int32             `json:"-"`
+      }
+
+
+
+
+
+
+
+
+    type ServiceGroupInstance struct {
+          // OrganizationId with the organization identifier.
+          OrganizationId string `protobuf:"bytes,1,opt,name=organization_id,json=organizationId,proto3" json:"organization_id,omitempty"`
+          
+          // AppDescriptorId with the application descriptor identifier.
+          AppDescriptorId string `protobuf:"bytes,2,opt,name=app_descriptor_id,json=appDescriptorId,proto3" json:"app_descriptor_id,omitempty"`
+          
+          // AppInstanceId with the application instance identifier.
+          AppInstanceId string `protobuf:"bytes,3,opt,name=app_instance_id,json=appInstanceId,proto3" json:"app_instance_id,omitempty"`
+          
+          // ServiceGroupId with the group identifier.
+          ServiceGroupId string `protobuf:"bytes,4,opt,name=service_group_id,json=serviceGroupId,proto3" json:"service_group_id,omitempty"`
+          
+          // Unique identifier for this instance
+          ServiceGroupInstanceId string `protobuf:"bytes,5,opt,name=service_group_instance_id,json=serviceGroupInstanceId,proto3" json:"service_group_instance_id,omitempty"`
+          
+          // Name of the service group.
+          Name string `protobuf:"bytes,6,opt,name=name,proto3" json:"name,omitempty"`
+          
+          // ServicesInstances with the list of instance objects for this group
+          ServiceInstances []*ServiceInstance `protobuf:"bytes,7,rep,name=service_instances,json=serviceInstances,proto3" json:"service_instances,omitempty"`
+          
+          // Policy indicating the deployment collocation policy.
+          Policy CollocationPolicy `protobuf:"varint,8,opt,name=policy,proto3,enum=application.CollocationPolicy" json:"policy,omitempty"`
+          
+          // The status for this service group instance will be the worst status of its services
+          Status ServiceStatus `protobuf:"varint,9,opt,name=status,proto3,enum=application.ServiceStatus" json:"status,omitempty"`
+          
+          // Metadata for this service group
+          Metadata *InstanceMetadata `protobuf:"bytes,10,opt,name=metadata,proto3" json:"metadata,omitempty"`
+          
+          // Particular deployment specs for this service
+          Specs *ServiceGroupDeploymentSpecs `protobuf:"bytes,11,opt,name=specs,proto3" json:"specs,omitempty"`
+          
+          // Labels defined by the user.
+          Labels               map[string]string `protobuf:"bytes,12,rep,name=labels,proto3" json:"labels,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
+          
+          XXX_NoUnkeyedLiteral struct{}          `json:"-"`
+          XXX_unrecognized     []byte            `json:"-"`
+          XXX_sizecache        int32             `json:"-"`
+    }
+*/
+
+
+      //Grupo 1 de servicios (NUEVO)
+      "name": "g1",
+      //Servicios. tiene 2
+      "services": [
+      /*  
+      type ServiceInstance struct {
+          // OrganizationId with the organization identifier.
+          OrganizationId string `protobuf:"bytes,1,opt,name=organization_id,json=organizationId,proto3" json:"organization_id,omitempty"`
+          
+          // AppDescriptorId with the application descriptor identifier.
+          AppDescriptorId string `protobuf:"bytes,2,opt,name=app_descriptor_id,json=appDescriptorId,proto3" json:"app_descriptor_id,omitempty"`
+          
+          // AppInstanceId with the application instance identifier.
+          AppInstanceId string `protobuf:"bytes,3,opt,name=app_instance_id,json=appInstanceId,proto3" json:"app_instance_id,omitempty"`
+          
+          // ServiceGroupId with the group identifier.
+          ServiceGroupId string `protobuf:"bytes,4,opt,name=service_group_id,json=serviceGroupId,proto3" json:"service_group_id,omitempty"`
+          
+          // ServiceGroupInstanceId with the service group instance identifier.
+          ServiceGroupInstanceId string `protobuf:"bytes,5,opt,name=service_group_instance_id,json=serviceGroupInstanceId,proto3" json:"service_group_instance_id,omitempty"`
+          
+          // ServiceId with the service identifier.
+          ServiceId string `protobuf:"bytes,6,opt,name=service_id,json=serviceId,proto3" json:"service_id,omitempty"`
+          
+          // Unique identifier for this instance
+          ServiceInstanceId string `protobuf:"bytes,7,opt,name=service_instance_id,json=serviceInstanceId,proto3" json:"service_instance_id,omitempty"`
+          
+          // Name of the service.
+          Name string `protobuf:"bytes,8,opt,name=name,proto3" json:"name,omitempty"`
+          
+          // ServiceType represents the underlying technology of the service to be launched.
+          Type ServiceType `protobuf:"varint,9,opt,name=type,proto3,enum=application.ServiceType" json:"type,omitempty"`
+          
+          // Image contains the URL/name of the image to be executed.
+          Image string `protobuf:"bytes,10,opt,name=image,proto3" json:"image,omitempty"`
+          
+          // ImageCredentials with the data required to access the repository the image is available at.
+          Credentials *ImageCredentials `protobuf:"bytes,11,opt,name=credentials,proto3" json:"credentials,omitempty"`
+          
+          // DeploySpecs with the resource specs required by the service.
+          Specs *DeploySpecs `protobuf:"bytes,12,opt,name=specs,proto3" json:"specs,omitempty"`
+          
+          // Storage restrictions
+          Storage []*Storage `protobuf:"bytes,13,rep,name=storage,proto3" json:"storage,omitempty"`
+          
+          // ExposedPorts contains the list of ports exposed by the current service.
+          ExposedPorts []*Port `protobuf:"bytes,14,rep,name=exposed_ports,json=exposedPorts,proto3" json:"exposed_ports,omitempty"`
+          
+          // EnvironmentVariables defines a key-value map of environment variables and values that will be passed to all
+          // running services.
+          EnvironmentVariables map[string]string `protobuf:"bytes,15,rep,name=environment_variables,json=environmentVariables,proto3" json:"environment_variables,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
+          
+          // Configs contains the configuration files required by the service.
+          Configs []*ConfigFile `protobuf:"bytes,16,rep,name=configs,proto3" json:"configs,omitempty"`
+          
+          // Labels with the user defined labels.
+          Labels map[string]string `protobuf:"bytes,17,rep,name=labels,proto3" json:"labels,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
+          
+          // DeployAfter contains the list of services that must be running before launching a service.
+          DeployAfter []string `protobuf:"bytes,18,rep,name=deploy_after,json=deployAfter,proto3" json:"deploy_after,omitempty"`
+          
+          // Status of the deployed service
+          Status ServiceStatus `protobuf:"varint,19,opt,name=status,proto3,enum=application.ServiceStatus" json:"status,omitempty"`
+          
+          // Endpoints instances exposing content to the users in his service.
+          Endpoints []*EndpointInstance `protobuf:"bytes,20,rep,name=endpoints,proto3" json:"endpoints,omitempty"`
+          
+          // DeployedOnClusterId specifies which is the cluster where the service is running.
+          DeployedOnClusterId string `protobuf:"bytes,21,opt,name=deployed_on_cluster_id,json=deployedOnClusterId,proto3" json:"deployed_on_cluster_id,omitempty"`
+          
+          // Run arguments
+          RunArguments []string `protobuf:"bytes,22,rep,name=run_arguments,json=runArguments,proto3" json:"run_arguments,omitempty"`
+          
+          // Relevant information about this instance
+          Info string `protobuf:"bytes,23,opt,name=info,proto3" json:"info,omitempty"`
+          
+          // DeploymentSelectors defines a key-value map of deployment selectors
+          DeploymentSelectors  map[string]string `protobuf:"bytes,24,rep,name=deployment_selectors,json=deploymentSelectors,proto3" json:"deployment_selectors,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
+          
+          XXX_NoUnkeyedLiteral struct{}          `json:"-"`
+          XXX_unrecognized     []byte            `json:"-"`
+          XXX_sizecache        int32             `json:"-"`
+        }
+
+
+ */
+
+
+
+
+
+
+        //servicio 1: mysql 
+        {
+          //--> falta SERVICE_ID
+          "name": "simple-mysql",
+          //--> falta DESCRIPTION
+          "image": "mysql:5.6",
+          "specs": {
+            "replicas": 1
+          },
+          //configuración (2 ficheros) (esto es NUEVO)
+          "configs": [
+            {
+              "config_file_id": "1",
+              "content": "SG9sYQo=",
+              "mount_path": "/config/saludo.conf"
+/*            // OrganizationId with the organization identifier.
+              OrganizationId string `protobuf:"bytes,1,opt,name=organization_id,json=organizationId,proto3" json:"organization_id,omitempty"`
+              
+              // AppDescriptorId with the application descriptor identifier.
+              AppDescriptorId string `protobuf:"bytes,2,opt,name=app_descriptor_id,json=appDescriptorId,proto3" json:"app_descriptor_id,omitempty"`
+              
+              // ConfigFileId with the config file identifier.
+              ConfigFileId string `protobuf:"bytes,3,opt,name=config_file_id,json=configFileId,proto3" json:"config_file_id,omitempty"`
+              
+              // Name with the config file name
+              Name string `protobuf:"bytes,4,opt,name=name,proto3" json:"name,omitempty"`
+              
+              // Content of the configuration file.
+              Content []byte `protobuf:"bytes,5,opt,name=content,proto3" json:"content,omitempty"`
+              
+              // MountPath of the configuration file in the service instance.
+              MountPath            string   */
+            },
+            {
+              "config_file_id": "2",
+              "content": "QWRpb3MK",
+              "mount_path": "/config/despedida.conf"
+            }
+          ],
+          //almacenamiento
+          "storage": [
+            {
+              //--> SIZE es nuevo
+              "size": 104857600,
+              "mount_path": "/tmp"
+
+/*              Size                 int64       `protobuf:"varint,1,opt,name=size,proto3" json:"size,omitempty"`
+                MountPath            string      `protobuf:"bytes,2,opt,name=mount_path,json=mountPath,proto3" json:"mount_path,omitempty"`
+                Type                 StorageType
+
+                var StorageType_name = map[int32]string{
+                  0: "EPHEMERAL",
+                  1: "CLUSTER_LOCAL",
+                  2: "CLUSTER_REPLICA",
+                  3: "CLOUD_PERSISTENT",
+
+                */
+            }
+          ],
+          //puertos expuestos
+          "exposed_ports": [
+            {
+              "name": "mysqlport",
+              "internal_port": 3306,
+              "exposed_port": 3306
+            }
+/*          Name                 string      `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
+            InternalPort         int32       `protobuf:"varint,2,opt,name=internal_port,json=internalPort,proto3" json:"internal_port,omitempty"`
+            ExposedPort          int32       `protobuf:"varint,3,opt,name=exposed_port,json=exposedPort,proto3" json:"exposed_port,omitempty"`
+            Endpoints            []*Endpoint */
+          ],
+          //variables de entorno
+          "environment_variables": {
+            "MYSQL_ROOT_PASSWORD": "root"
+          },
+          //etiquetas
+          "labels": {
+            "app": "simple-mysql",
+            "component": "simple-app"
+          }
+        },
+
+        //servicio 2: wordpress
+        {
+          "name": "simple-wordpress",
+          "image": "wordpress:5.0.0",
+          "specs": {
+            "replicas": 1
+          },
+          //almacenamiento
+          "storage": [
+            {
+              "size": 104857600,
+              "mount_path": "/tmp"
+            }
+          ],
+          //puertos expuestos
+          "exposed_ports": [
+            {
+              "name": "wordpressport",
+              "internal_port": 80,
+              "exposed_port": 80,
+              "endpoints": [
+                {
+/*                Type                 EndpointType `protobuf:"varint,1,opt,name=type,proto3,enum=application.EndpointType" json:"type,omitempty"`
+                  Path                 string      
+                  
+                  types:
+                  0: "IS_ALIVE",
+                  1: "REST",
+                  2: "WEB",
+                  3: "PROMETHEUS",
+                  4: "INGESTION",*/
+                  "type": 2,
+                  "path": "/"
+                }
+              ]
+            }
+          ],
+          //variables de entorno
+          "environment_variables": {
+            "WORDPRESS_DB_HOST": "NALEJ_SERV_SIMPLE-MYSQL:3306",
+            "WORDPRESS_DB_PASSWORD": "root"
+          },
+          //etiquetas
+          "labels": {
+            "app": "simple-wordpress",
+            "component": "simple-app"
+          },
+          //cuándo desplegar (???) (NUEVO)
+          "deploy_after": [
+            "1"
+          ]
+        }
+      ],
+      //especificaciones (NUEVO)
+      "specs": {
+        //de este grupo sólo va a haber una réplica (puede haber distintas copias de cada grupo)
+        "num_replicas": 1
+/*        
+          // How many times this service group must be replicated
+          NumReplicas int32 `protobuf:"varint,1,opt,name=num_replicas,json=numReplicas,proto3" json:"num_replicas,omitempty"`
+         
+          // Indicate if this service group must be replicated in every cluster
+          MultiClusterReplica  bool     `protobuf:"varint,2,opt,name=multi_cluster_replica,json=multiClusterReplica,proto3" json:"multi_cluster_replica,omitempty"`
+          XXX_NoUnkeyedLiteral struct{} `json:"-"`
+          XXX_unrecognized     []byte   `json:"-"`
+          XXX_sizecache        int32    `json:"-"`*/
+      }
+    }
+  ]
+}
+
+
+//COSAS 
+/*
+type ImageCredentials struct {
+  // Name of the user in the platform
+  Username string `protobuf:"bytes,1,opt,name=username,proto3" json:"username,omitempty"`
+  
+  // Password
+  Password string `protobuf:"bytes,2,opt,name=password,proto3" json:"password,omitempty"`
+  
+  // User email
+  Email string `protobuf:"bytes,3,opt,name=email,proto3" json:"email,omitempty"`
+  
+  // Docker repository url
+  DockerRepository     string   `protobuf:"bytes,4,opt,name=docker_repository,json=dockerRepository,proto3" json:"docker_repository,omitempty"`
+  
+  XXX_NoUnkeyedLiteral struct{} `json:"-"`
+  XXX_unrecognized     []byte   `json:"-"`
+  XXX_sizecache        int32    `json:"-"`
+}
+
+
+type DeploySpecs struct {
+  Cpu                  int64    `protobuf:"varint,1,opt,name=cpu,proto3" json:"cpu,omitempty"`
+  Memory               int64    `protobuf:"varint,2,opt,name=memory,proto3" json:"memory,omitempty"`
+  Replicas             int32   
+
+
+
+type AddAppDescriptorRequest struct {
+  RequestId string `protobuf:"bytes,1,opt,name=request_id,json=requestId,proto3" json:"request_id,omitempty"`
+  
+  // OrganizationId with the organization identifier.
+  OrganizationId string `protobuf:"bytes,2,opt,name=organization_id,json=organizationId,proto3" json:"organization_id,omitempty"`
+  
+  // Name of the application.
+  Name string `protobuf:"bytes,3,opt,name=name,proto3" json:"name,omitempty"`
+  
+  // ConfigurationOptions defines a key-value map of configuration options.
+  ConfigurationOptions map[string]string `protobuf:"bytes,4,rep,name=configuration_options,json=configurationOptions,proto3" json:"configuration_options,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
+  
+  // EnvironmentVariables defines a key-value map of environment variables and values that will be passed to all
+  // running services.
+  EnvironmentVariables map[string]string `protobuf:"bytes,5,rep,name=environment_variables,json=environmentVariables,proto3" json:"environment_variables,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
+  
+  // Labels defined by the user.
+  Labels map[string]string `protobuf:"bytes,6,rep,name=labels,proto3" json:"labels,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
+  
+  // Rules that define the connectivity between the elements of an application.
+  Rules []*SecurityRule `protobuf:"bytes,7,rep,name=rules,proto3" json:"rules,omitempty"`
+  
+  // Groups with the Service collocation strategies.
+  Groups               []*ServiceGroup `protobuf:"bytes,8,rep,name=groups,proto3" json:"groups,omitempty"`
+  
+  XXX_NoUnkeyedLiteral struct{}        `json:"-"`
+  XXX_unrecognized     []byte          `json:"-"`
+  XXX_sizecache        int32           `json:"-"`
+}
+
+
+type AppDescriptorList struct {
+  Descriptors          []*AppDescriptor `protobuf:"bytes,1,rep,name=descriptors,proto3" json:"descriptors,omitempty"`
+  XXX_NoUnkeyedLiteral struct{}         `json:"-"`
+  XXX_unrecognized     []byte           `json:"-"`
+  XXX_sizecache        int32            `json:"-"`
+}
+
+
+
+// UpdateAppDescriptorRequest allows the user to update some of the fields of a registered descriptor.
+type UpdateAppDescriptorRequest struct {
+  // OrganizationId with the organization identifier.
+  OrganizationId string `protobuf:"bytes,1,opt,name=organization_id,json=organizationId,proto3" json:"organization_id,omitempty"`
+  // AppDescriptorId with the application descriptor identifier.
+  AppDescriptorId string `protobuf:"bytes,2,opt,name=app_descriptor_id,json=appDescriptorId,proto3" json:"app_descriptor_id,omitempty"`
+  // Add Label flag to indicate that the set of labels need to be added.
+  AddLabels bool `protobuf:"varint,3,opt,name=add_labels,json=addLabels,proto3" json:"add_labels,omitempty"`
+  // Remove label flag to indicate that the set of labels need to be removed.
+  RemoveLabels bool `protobuf:"varint,4,opt,name=remove_labels,json=removeLabels,proto3" json:"remove_labels,omitempty"`
+  // Labels for the cluster.
+  Labels               map[string]string `protobuf:"bytes,5,rep,name=labels,proto3" json:"labels,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
+  XXX_NoUnkeyedLiteral struct{}          `json:"-"`
+  XXX_unrecognized     []byte            `json:"-"`
+  XXX_sizecache        int32             `json:"-"`
+}
+
+
+
+
+*/

@@ -10,7 +10,7 @@ The management of the life cycle of an application is only available through the
 
 The process of deploying an application is as follows:
 
-![This is the process to follow when deploying an instance of an application.](../.gitbook/assets/screen-shot-2019-02-11-at-5.58.28-pm.png)
+![This is the process to follow when deploying an instance of an application.](../.gitbook/assets/app_deployment.png)
 
 So, first you need to create an application descriptor. The documentation for doing so is [over here](app_descriptors.md), but by now let's just say that it should be a JSON file with more or less this aspect:
 
