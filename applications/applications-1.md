@@ -6,7 +6,7 @@ Now that we know how the clusters work, it's time to start deploying application
 
 ## Application deployment
 
-The management of the life cycle of an application is only available through the Public API CLI by now. The Web Interface allows us to check the current status of the different applications already deployed in the system. With that in mind, we will focus in the commands needed to manage the life cycle through the CLI, and afterwards we will 
+The management of the life cycle of an application is only available through the Public API CLI by now. The Web Interface allows us to check the current status of the different applications already deployed in the system. With that in mind, we will focus in the commands needed to manage the life cycle through the CLI, and afterwards we will show how to check the information related to the application in the Web Interface.
 
 The process of deploying an application is as follows:
 
