@@ -285,6 +285,37 @@ The JSON obtained with `app inst get` has another piece of information that can 
 
 This collection of addresses is where the instance is deployed, and you can access it from any browser and get more information about the instance and the services it uses.
 
+### Getting logs from the instance
+
+Once the application is running, it's generating logs and storing them in the system. To access these logs, we can use:
+
+```bash
+./public-api-cli log search --instanceID=xxxx > appLogs.json
+```
+
+This will return a (most likely) very long JSON file, with the following format:
+
+```json
+{
+  "organization_id": <org_id>,
+  "app_instance_id": <app_inst_id>,
+  "entries": [
+    {
+      "timestamp": {
+        "seconds": 1551796628,
+        "nanos": 902000000
+      },
+      "msg": "<logged_info> "
+    },
+    ...
+  ]
+}
+```
+
+Where each **entry** has a **timestamp** and a **msg**, which is completely dependant on the application that generates the log. Typically, the logged info contains the **log_level**, which can be useful to differentiate an informative log from an error one. Please check the log message format of the application you're consulting before diving in this file.
+
+
+
 ### Undeploying the instance
 
 OK, so we finished working with this instance, and don't want it to be in the system anymore. In this case, we need to undeploy it:

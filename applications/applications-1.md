@@ -167,6 +167,35 @@ will tell us that the application is running correctly, and
 
 will tell us where the instance is deployed, so we can navigate to it and start working.
 
+### Getting logs from the instance
+
+Once the application is running, it's generating logs and storing them in the system. To access these logs, we can use:
+
+```bash
+./public-api-cli log search --instanceID=xxxx > appLogs.json
+```
+
+This will return a (most likely) very long JSON file, with the following format:
+
+```json
+{
+  "organization_id": <org_id>,
+  "app_instance_id": <app_inst_id>,
+  "entries": [
+    {
+      "timestamp": {
+        "seconds": 1551796628,
+        "nanos": 902000000
+      },
+      "msg": "<logged_info> "
+    },
+    ...
+  ]
+}
+```
+
+Where each **entry** has a **timestamp** and a **msg**, which is completely dependant on the application that generates the log. Typically, the logged info contains the **log_level**, which can be useful to differentiate an informative log from an error one. Please check the log message format of the application you're consulting before diving in this file.
+
 
 
 ## Application removal
@@ -213,4 +242,3 @@ By clicking on the info button, the user can view the cluster modal window, wher
 
 The application graph provides users with a visualization of deployed and running application instances. 
 
-> I need to see this functionality working to be able to describe it properly.
