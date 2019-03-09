@@ -19,7 +19,7 @@ The upper part of the screen displays the following:
 
 The lower part of the screen is a list of devices divided by groups. The default group is `ALL`, and it shows all the devices in the system. But the rest of the groups appear there, easily clickable, and so when we click on one of them...
 
-![dev_devgroup_view](../.gitbook/assets/dev_devgroup_view.png)
+![Device group view](../.gitbook/assets/dev_devgroup_view.png)
 
 The view slightly changes. Now, the summary displays the information of only this group, like:
 
@@ -40,16 +40,6 @@ The list of devices also displays the devices in this group, with the following 
 
 We can also search by any `string` included in any part of the device information (for example, we can search `online` to see which devices are online at any given moment, or a specific date of inclusion in the system).
 
-
-
-
-
-
-
-![dev_devgroup_config](../.gitbook/assets/dev_devgroup_config.png)
-
-
-
 ### Public API CLI
 
 > TODO: find the correct instructions to manage devices and see their info.
@@ -68,7 +58,7 @@ We can add a new device group easily, clicking on the option **"Add group"** in 
 
 This opens a dialog like the one below:
 
-![dev_add_devgroup](../.gitbook/assets/dev_add_devgroup.png)
+![Device group add dialog](../.gitbook/assets/dev_add_devgroup.png)
 
 To create a device group, we need:
 
@@ -88,7 +78,7 @@ To create a device group, we need:
 
 In the device group view, we can easily access its configuration by clicking on the link highlighted below.
 
-![dev_devgroup_config](../.gitbook/assets/dev_devgroup_config_prev.png)
+![Device group configuration option](../.gitbook/assets/dev_devgroup_config_prev.png)
 
 
 
@@ -97,7 +87,7 @@ The only options that can be changed in a group are:
 - The **group device availability**.
 - If the **devices** are **enabled by default**.
 
-![dev_devgroup_config](../.gitbook/assets/dev_devgroup_config.png)
+![Device group configuration dialog](../.gitbook/assets/dev_devgroup_config.png)
 
 ### Public API CLI
 
@@ -111,11 +101,11 @@ The only options that can be changed in a group are:
 
 Now, we want to delete an entire device group. From that group view, we can click on "Delete group"...
 
-![dev_delete_devgroup_confirm](../.gitbook/assets/dev_delete_devgroup_prev.png)
+![Deleting a device group](../.gitbook/assets/dev_delete_devgroup_prev.png)
 
 And the system will confirm the deletion with a notification in the upper right part of the screen.
 
-![dev_delete_devgroup_confirm](../.gitbook/assets/dev_delete_devgroup_confirm.png)
+![Confirmation of the deletion of a device group](../.gitbook/assets/dev_delete_devgroup_confirm.png)
 
 
 
