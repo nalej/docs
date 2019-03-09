@@ -15,6 +15,10 @@
 - [Application deployment, management and removal](applications/applications-1.md)
 - [Structure of an application descriptor](applications/app_descriptors.md)
 
+## Devices
+
+- [Devices in Nalej](devices/devices-1.md)
+
 ## Tutorials
 
 - [Initial login in the system](tutorials/initialLogin.md)
