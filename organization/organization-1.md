@@ -54,7 +54,7 @@ You need to be an Owner of the organization to be able to create, manage or dele
 
 In the Organization view, under the "Member list" there is an **"Add user"** button. If we click on that, a form appears.
 
-!["Add user" feature view](../.gitbook/assets/add_user.png)
+!["Add user" feature view](../.gitbook/assets/org_add_user.png)
 
 By now, the form to sign a user up requires a name, an email, a password and a role. You can save the information, creating a user, or discard it. You can also discard the information by clicking the cross in the upper right corner.
 
@@ -105,7 +105,7 @@ There are several operations you can do with the members who belong to your orga
 
 In the Member list, you can click on the Edit button of the user you want to edit. The following page appears:
 
-!["Edit user" feature view](../.gitbook/assets/edit_user.png)
+!["Edit user" feature view](../.gitbook/assets/org_edit_user.png)
 
 
 
@@ -115,15 +115,13 @@ Once we hit "Save", a notification message appears in the upper right corner of 
 
 We can also reset their password, which means we send a default one to the email given when the user was created. To do this, click on the Info button of the user.
 
-!["User info" feature view](../.gitbook/assets/change_password_prev.png)
+!["User info" feature view](../.gitbook/assets/org_change_password_prev.png)
 
 This shows the member card, and on it you can see the "Change password" button. To reset the password, click it.
 
-> TODO: Expected behavior: on click, the system sends an email to the user email address with a password, and the only thing we see is a confirmation message in the upper right corner of the screen (like the ones confirming the changes to the user info) saying that the message has been sent.
-
 A new form appears, where we can write the old password and the new one, and confirm the new one.
 
-!["Change password" feature view](../.gitbook/assets/change_password.png)
+!["Change password" feature view](../.gitbook/assets/org_change_password.png)
 
 ### Public API CLI
 
@@ -154,8 +152,6 @@ The response to this is a JSON with a list of the users in your organization, an
 }
 ```
 
-
-
 To edit a specific user's information, we need their email. With that we can:
 
 - Update their name:
@@ -163,8 +159,6 @@ To edit a specific user's information, we need their email. With that we can:
   ```bash
   ./public-api-cli users update --name=<new_name> --email=<email-name>@<email-domain>
   ```
-
-  > We can't update the user role like this!
 
 - Reset their password (we also need the current password for this):
 
@@ -182,7 +176,7 @@ When these operations are successful, the return is an empty JSON, like so: `{}`
 
  To delete a user, click on the Info button of that user.
 
-!["Edit user" feature view](../.gitbook/assets/delete_user.png)
+!["Edit user" feature view](../.gitbook/assets/org_delete_user.png)
 
 Once in this screen, hit the "Delete user" button. A message will appear on the upper right part of the screen confirming  the action.
 
