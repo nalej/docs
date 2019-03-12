@@ -42,7 +42,71 @@ We can also search by any `string` included in any part of the device informatio
 
 ### Public API CLI
 
-> TODO: find the correct instructions to manage devices and see their info.
+The commands we can use to manage device groups and devices are `devicegroup` and `device`, respectively.
+
+So, to chech the device groups in the system, the command is:
+
+```bash
+./public-api-cli devicegroup list
+```
+
+And it returns a JSON document with the following structure:
+
+```json
+{
+  "groups": [
+    {
+      "organization_id": <org_id>,
+      "device_group_id": <devgroup_id>,
+      "name": <devgroup_name>,
+      "created": 1551775603,
+      "enabled": true,
+      "default_device_connectivity": true,
+      "device_group_api_key": <devgroup_API_key>
+    },
+    ...
+  ]
+}
+
+```
+
+Where we can see:
+
+- the **organization_id**.
+- the **device_group_id**.
+- the human readable **name** we give the device group.
+- a timestamp registering when it was **created**.
+- whether it is **enabled** or not.
+- a **default_device_connectivity** flag, which indicates whether the devices are connected by default or not.
+- the **device_group_api_key**.
+
+
+
+Once we have obtained the list of device groups with their IDs, we can list the devices contained in each of them. To do so, we would use the command:
+
+```bash
+./public-api-cli devices list --deviceGroupId=<devgroup_id>
+```
+
+The response to this command is a JSON document similar to this one:
+
+```json
+{
+  "devices": [
+    {
+      "organization_id": <org_id>,
+      "device_group_id": <devgroup_id>,
+      "device_id": "device1",
+      "register_since": 1552295026,
+      "enabled": true,
+      "device_status_name": "OFFLINE"
+    },
+    ...
+  ]
+}
+```
+
+Where we can see the timestamp where the device was registered (in **register_since**), whether or not it is **enabled**, and the **device_status_name**, which can be `ONLINE` or `OFFLINE`. 
 
 
 
@@ -68,9 +132,36 @@ To create a device group, we need:
 
 ### Public API CLI
 
-> TODO: find command
+To add a device group through the CLI, the command needed is:
 
+```bash
+./public-api-cli devicegroup add
+	--name <devgroup_name>
+	--disabled
+	--enabled
+	--disabledDefaultConnectivity
+	--enabledDefaultConnectivity
+```
 
+We don't need all these parameters, but we need:
+
+- the **name** of the group.
+- a flag indicating if the group is **enabled** or **disabled**.
+- a flag indicating the default connectivity for the devices joining the group, whether it is enabled (**enabledDefaultConnectivity**) or disabled (**disabledDefaultConnectivity**).
+
+The response to this command is something like this:
+
+```json
+{
+  "organization_id": <org_id>,
+  "device_group_id": <devgroup_id>,
+  "name": <devgroup_name>,
+  "created": 1552389164,
+  "device_group_api_key": <devgroup_API_key>
+}
+```
+
+This includes all the information related to the device group, which is, its **id**, its **name**, when it was **created**, and its **API key**.
 
 ## Configuration of a device group
 
@@ -91,7 +182,34 @@ The only options that can be changed in a group are:
 
 ### Public API CLI
 
-> TODO find appropriate commands
+To update the configuration of a device group, the command to use is:
+
+```bash
+./public-api-cli devicegroup update
+	--deviceGroupId <devgroup_id>
+	--disable
+	--enable
+	--disableDefaultConnectivity
+	--enableDefaultConnectivity
+```
+
+This information is very similar to what we need to create the group.
+
+- **deviceGroupId** (when we create a group we need a **name** instead).
+- a flag indicating if we want to **enable** or **disable** the group.
+- a flag indicating how to change the default connectivity for the devices joining the group, whether we want to enable it (**enableDefaultConnectivity**) or disable it (**disableDefaultConnectivity**).
+
+The result of executing this command is the same as with the `devicegroup add` command, which is:
+
+```json
+{
+  "organization_id": <org_id>,
+  "device_group_id": <devgroup_id>,
+  "name": <devgroup_name>,
+  "created": 1552389164,
+  "device_group_api_key": <devgroup_API_key>
+}
+```
 
 
 
