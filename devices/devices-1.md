@@ -4,7 +4,7 @@ This section will talk about devices in Nalej.
 
 > TODO write intro. What is a device? What does it do? Why do we need it?
 
-## Getting device information
+## Getting device-related information
 
 ### Web Interface
 
@@ -80,8 +80,6 @@ Where we can see:
 - a **default_device_connectivity** flag, which indicates whether the devices are connected by default or not.
 - the **device_group_api_key**.
 
-
-
 Once we have obtained the list of device groups with their IDs, we can list the devices contained in each of them. To do so, we would use the command:
 
 ```bash
@@ -107,6 +105,35 @@ The response to this command is a JSON document similar to this one:
 ```
 
 Where we can see the timestamp where the device was registered (in **register_since**), whether or not it is **enabled**, and the **device_status_name**, which can be `ONLINE` or `OFFLINE`. 
+
+We can update the information of a device with:
+
+```bash
+ ./public-api-cli device update
+ 	--deviceGroupId=<devgroup_id>
+ 	--deviceId=<dev_id>
+ 	--disabled
+ 	--enabled
+```
+
+The only thing we can change for a given device is whether the device is **enabled** or **disabled**. 
+
+The result to this command is the device information in a JSON, like so:
+
+```json
+{
+  "organization_id": <org_id>,
+  "device_group_id": <devgroup_id>,
+  "device_id": "device1",
+  "register_since": 1552295026,
+  "enabled": true,
+  "device_status_name": "OFFLINE"
+}
+```
+
+If the device is disabled, the `enabled` field does not appear in the JSON.
+
+> TODO: add/remove labels through CLI not yet implemented
 
 
 
@@ -229,5 +256,16 @@ And the system will confirm the deletion with a notification in the upper right 
 
 ### Public API CLI
 
-> TODO find appropriate commands
+To remove a device group from the system, we need:
+
+```bash
+ ./public-api-cli devicegroup remove 
+ 	--deviceGroupId=<devgroup_id>
+```
+
+And, if this command exits successfully, it will return a message like this one:
+
+```bash
+{"msg":"device group has been removed"}
+```
 
