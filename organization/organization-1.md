@@ -48,7 +48,7 @@ You need to be an Owner of the organization to be able to create, manage or dele
 
 In the Organization view, under the "Member list" there is an **"Add user"** button. If we click on that, a form appears.
 
-!["Add user" feature view](../.gitbook/asset/org_add_user.png)
+!["Add user" feature view](../.gitbook/assets/org_add_user.png)
 
 By now, the form to sign a user up requires a name, an email, a password and a role. You can save the information, creating a user, or discard it. You can also discard the information by clicking the cross in the upper right corner.
 
