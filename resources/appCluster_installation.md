@@ -9,9 +9,11 @@ This installation requires that there is already:
 
 The management cluster must know that an application cluster will be installed, and the user must log in the system with a role that allows them to execute the required actions.
 
+Currently the platform supports adding Azure Kubernetes clusters as application clusters. 
+
 ## Installation of an application cluster
 
-For this process, we also need some information from the Nalej management department, which is a configuration file for the Kubernetes cluster. This configuration file is commonly called **kubeconfig**, it's a YAML file, and it contains all the information the cluster needs to be configured as an application cluster.
+For this process, we need some information from the Nalej management department, which is a configuration file for the Kubernetes cluster. This configuration file is commonly called **kubeconfig**, it's a YAML file, and it contains all the information the cluster needs to be configured as an application cluster.
 
 Once we have this file, we can execute the installation command, which is:
 
@@ -26,9 +28,9 @@ Once we have this file, we can execute the installation command, which is:
 
 Which uses these parameters:
 
-- **targetPlatform** indicates the platform of the cluster. By now, the most common value for this parameter is `AZURE`.
+- **targetPlatform** indicates the platform of the cluster, between `minikube` and  `azure` (default `minikube`). By now, it must be set to `azure`.
 - **ingressHostname** states the new URL for the application cluster. This URL must be unique in the system.
-- **kubeConfigPath** indicates the path to the configuration file mentioned above.
+- **kubeConfigPath** indicates the path to the configuration file mentioned above. Notice that the kubeconfig file must contain a single entry for the new cluster.
 
 These are the mandatory parameters. There are two more optional ones:
 
