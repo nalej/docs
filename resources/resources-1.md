@@ -16,7 +16,7 @@ The application you're deploying will be deployed in a **cluster**. A cluster is
 
 In the web management interface, click on Resources on the left column, so the Resources view is displayed.
 
-![Resources view](../.gitbook/assets/res_ppal.png)
+![Resources view](../.gitbook/assets/resources_ppal.png)
 
 In the upper part of the screen we can see:
 
