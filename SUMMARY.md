@@ -9,7 +9,7 @@
 ## Resources
 
 - [Clusters and nodes](resources/resources-1.md)
-- [Application cluster installation](resources/Application-cluster-installation.md)
+- [Application cluster installation](resources/application-cluster-installation.md)
 
 ## Applications
 
