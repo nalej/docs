@@ -1,8 +1,6 @@
 # Devices in Nalej
 
-This section will talk about devices in Nalej.
-
-> TODO write intro. What is a device? What does it do? Why do we need it?
+This section will talk about devices in Nalej. The system understands the concept of **device** as an abstract entity that the user can manage as part of the applications installed in the cluster.
 
 ## Getting device-related information
 
@@ -145,8 +143,6 @@ We can add a new device group easily, clicking on the option **"Add group"** in 
 
 ![The "Add Group" option in the main Devices view](../.gitbook/assets/dev_add_devgroup_prev.png)
 
-
-
 This opens a dialog like the one below:
 
 ![Device group add dialog](../.gitbook/assets/dev_add_devgroup.png)
@@ -198,8 +194,6 @@ In the device group view, we can easily access its configuration by clicking on 
 
 ![Device group configuration option](../.gitbook/assets/dev_devgroup_config_prev.png)
 
-
-
 The only options that can be changed in a group are:
 
 - The **group device availability**.
@@ -238,8 +232,6 @@ The result of executing this command is the same as with the `devicegroup add` c
 }
 ```
 
-
-
 ## Deleting a device group
 
 ### Web Interface
@@ -251,8 +243,6 @@ Now, we want to delete an entire device group. From that group view, we can clic
 And the system will confirm the deletion with a notification in the upper right part of the screen.
 
 ![Confirmation of the deletion of a device group](../.gitbook/assets/dev_delete_devgroup_confirm.png)
-
-
 
 ### Public API CLI
 
