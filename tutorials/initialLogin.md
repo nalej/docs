@@ -4,7 +4,7 @@ Before getting started with the different parts of the platform, we're going to 
 
 ## CLI Login
 
-#### Setting your user options
+### Setting your user options
 
 The very first time you log in the system there are some variables that need to be established. They are needed for each interaction, so setting them up before starting lets us omit them in each request. These variables are the **certificate** you received, and the addresses of the **Nalej login server** and the **Nalej API server**. Gather all data (from the information the Nalej administration provided when signing up for the service), go to the `public-api-cli/bin` folder in your computer and execute the following instructions:
 
@@ -48,7 +48,7 @@ With a browser, we can go to the login page provided by the Nalej administration
 
 Once you enter, you can see the platform structure at a glance, and start interacting with it.
 
-#### Components and terminology
+### Web interface views
 
 The first screen is the **Organization** section, which contains a view of all members of the organization and its subscription plan. There is a section column in the left part of the screen.
 

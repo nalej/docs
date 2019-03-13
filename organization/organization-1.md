@@ -74,7 +74,7 @@ This command will return a JSON with this structure
 
 ```json
 {
-  "organization_id": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+  "organization_id": <org_id>,
   "email": <newuser_email-name>@<email-domain>,
   "name": <newuser_name>,
   "role_name": <newuser_role>
@@ -84,7 +84,8 @@ This command will return a JSON with this structure
 where the **email** is the parameter we will use to locate the user in future interactions. For example, if we want to obtain the info related to a specific user, we would need to know their email, like so:
 
 ```bash
-./public-api-cli users info --email=<email-name>@<email-domain>
+./public-api-cli users info 
+	--email=<email-name>@<email-domain>
 ```
 
 The response to this command would be the same JSON we received when creating the user, with their current information. If we don't add the `--email` parameter, the info returned would be our own.
@@ -127,13 +128,13 @@ The response to this is a JSON with a list of the users in your organization, an
 {
   "users": [
     {
-      "organization_id": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+      "organization_id": <org_id>,
       "email": <email-name@email-domain>,
       "name": <name>,
       "role_name": <role_name>
     },
     {
-      "organization_id": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+      "organization_id": <org_id>,
       "email": <email-name2@email-domain>,
       "name": <name2>,
       "role_name": <role_name>
@@ -147,13 +148,18 @@ To edit a specific user's information, we need their email. With that we can:
 - Update their name:
 
   ```bash
-  ./public-api-cli users update --name=<new_name> --email=<email-name>@<email-domain>
+  ./public-api-cli users update 
+  	--name=<new_name> 
+  	--email=<email-name>@<email-domain>
   ```
 
 - Reset their password (we also need the current password for this):
 
 - ```bash
-  ./public-api-cli users reset-password --email=<email-name>@<email-domain> --password=<password> --newPassword=<newpassword>
+  ./public-api-cli users reset-password 
+  	--email=<email-name>@<email-domain> 
+  	--password=<password> 
+  	--newPassword=<newpassword>
   ```
 
   For this to work, the new password must not be empty.
@@ -175,7 +181,8 @@ Once in this screen, hit the "Delete user" button. A message will appear on the 
 To delete a user, execute the following command:
 
 ```bash
-./public-api-cli users del --email=<email-name>@<email-domain>
+./public-api-cli users del 
+	--email=<email-name>@<email-domain>
 ```
 
 When this operation exits successfully, the return is an empty JSON: `{}`
