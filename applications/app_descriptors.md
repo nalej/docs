@@ -99,7 +99,9 @@ Example:
 
 ## ServiceGroups
 
-A service group is a collection of services that can be replicated together. The structure of a service group is as follows:
+A service group is a collection of services that can be replicated together. Usually, a service group specifies highly coupled applications, like Wordpress and MySQL. A service group is defined by a **group name**, a list of **services** and **deployment specifications**.
+
+The structure of a service group is as follows:
 
 ```json
   "groups": [
@@ -109,7 +111,11 @@ A service group is a collection of services that can be replicated together. The
         ...       
       ],
       "specs": {
-        "num_replicas": 1
+        "multi_cluster_replica": <true|false>,
+        "replicas": <num_replicas>,
+        "deployment_selectors": {
+          "<label_name>": "<label_value>",
+        }
       }
     }
   ]
@@ -117,11 +123,12 @@ A service group is a collection of services that can be replicated together. The
 
 Where:
 
-- **name** is the name we give to the service group.
+- **name** is the name we give to the service group. It must be unique in the context of the application.
 - **services** is the collection of services the group contains.
-- **specs** defines the specifications for the group. The different parameters here are 
-  - **num\_replicas**, which is the number of replicas of this group that are going to be deployed, and 
-  - **multicluster_replica**, which is a boolean that states whether or not the replicas will be deployed in the same cluster.
+- **specs** defines the deployment specifications for the group. The different parameters here are:
+  - **multicluster_replica**, which is a boolean that states whether  the replicas will be deployed in the same cluster (=*false*), or on the contrary they will be deployed into any available cluster (=*true*).
+  - **num\_replicas**, which is the number of replicas of this group that are going to be deployed.
+  - **deployment_selectors**, which is a collection of labels and values that is checked against the available clusters. Only those clusters with all the labels and values indicated by the deployment_selectors are considered to be candidates.
 
 ### Services
 
@@ -206,12 +213,12 @@ Example:
     "exposed_ports": [         
         {           
             "name": "mysqlport",           
-            "internal_port": 3306,           
-            "exposed_port": 3306         
+            "internal_port": 3316,           
+            "exposed_port": 3316         
         }       
     ],       
     "environment_variables": {         
-        "MYSQL_ROOT_PASSWORD": "root"       
+        "MYSQL_ROOT_PASSWORD": <mysql_pword>      
     },       
     "labels": {         
         "app": "simple-mysql",         
@@ -337,12 +344,12 @@ As an example, the following descriptor contains an application composed of mysq
           "exposed_ports": [
             {
               "name": "mysqlport",
-              "internal_port": 3306,
-              "exposed_port": 3306
+              "internal_port": 3316,
+              "exposed_port": 3316
             }
           ],
           "environment_variables": {
-            "MYSQL_ROOT_PASSWORD": "root"
+            "MYSQL_ROOT_PASSWORD": "pass"
           },
           "labels": {
             "app": "simple-mysql",
@@ -375,8 +382,8 @@ As an example, the following descriptor contains an application composed of mysq
             }
           ],
           "environment_variables": {
-            "WORDPRESS_DB_HOST": "NALEJ_SERV_SIMPLE-MYSQL:3306",
-            "WORDPRESS_DB_PASSWORD": "root"
+            "WORDPRESS_DB_HOST": "SIMPLE-MYSQL:3316",
+            "WORDPRESS_DB_PASSWORD": "pass"
           },
           "labels": {
             "app": "simple-wordpress",
