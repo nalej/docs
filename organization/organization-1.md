@@ -14,13 +14,9 @@ The Organization view is the first view presented to you after logging in. Just 
 
 Here, the information we can see depends on the role we have been assigned, and so, if the person logging in is categorized as Owner of the organization, the info shown is this:
 
-> TODO: How can I say this without naming the specific role ("Owner")? Which permissions does the user have to have to see the Owner interface?
-
 - **Organization info card**. Here you can see the most relevant information related to the company: name, type of subscription, and number of members.
 
 - **Subscription**. The subscription plan the company is currently on.
-
-- > Question: here, if we have a subscription fee, does the due date for the payments appear? Maybe it has reminders if you missed a payment?
 
 - **Member list**. Here you can find all the members in your organization, with their name, role and email, and several actions you can do:
 
@@ -44,8 +40,6 @@ which returns the following JSON:
 }
 ```
 
-
-
 ##Creating users
 
 You need to be an Owner of the organization to be able to create, manage or delete a user. 
@@ -54,7 +48,7 @@ You need to be an Owner of the organization to be able to create, manage or dele
 
 In the Organization view, under the "Member list" there is an **"Add user"** button. If we click on that, a form appears.
 
-!["Add user" feature view](../.gitbook/assets/org_add_user.png)
+!["Add user" feature view](../.gitbook/asset/org_add_user.png)
 
 By now, the form to sign a user up requires a name, an email, a password and a role. You can save the information, creating a user, or discard it. You can also discard the information by clicking the cross in the upper right corner.
 
@@ -95,8 +89,6 @@ where the **email** is the parameter we will use to locate the user in future in
 
 The response to this command would be the same JSON we received when creating the user, with their current information. If we don't add the `--email` parameter, the info returned would be our own.
 
-
-
 ## Editing users
 
 There are several operations you can do with the members who belong to your organization, if you're the Owner. 
@@ -106,8 +98,6 @@ There are several operations you can do with the members who belong to your orga
 In the Member list, you can click on the Edit button of the user you want to edit. The following page appears:
 
 !["Edit user" feature view](../.gitbook/assets/org_edit_user.png)
-
-
 
 As you can see, the editable fields here are the user's name and role. We can also change the password if we know the current one.
 

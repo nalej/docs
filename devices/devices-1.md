@@ -131,10 +131,6 @@ The result to this command is the device information in a JSON, like so:
 
 If the device is disabled, the `enabled` field does not appear in the JSON.
 
-> TODO: add/remove labels through CLI not yet implemented
-
-
-
 ## Adding a device group
 
 ### Web Interface
