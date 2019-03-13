@@ -8,7 +8,7 @@ Here you will find all there is to know about to user management, as well as rol
 
 ## Resources
 
-All the information related to cluster managing will be available in this section.
+All the information related to cluster managing will be available in this section. There is also a tutorial on how to install an application cluster in your system.
 
 ## Applications
 
