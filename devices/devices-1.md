@@ -1,4 +1,4 @@
-# Devices in Nalej
+# Adding, managing and deleting devices
 
 This section will talk about devices in Nalej. The system understands the concept of **device** as an abstract entity that the user can manage as part of the applications installed in the cluster.
 

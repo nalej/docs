@@ -9,11 +9,17 @@ Before getting started with the different parts of the platform, we're going to 
 The very first time you log in the system there are some variables that need to be established. They are needed for each interaction, so setting them up before starting lets us omit them in each request. These variables are the **certificate** you received, and the addresses of the **Nalej login server** and the **Nalej API server**. Gather all data (from the information the Nalej administration provided when signing up for the service), go to the `public-api-cli/bin` folder in your computer and execute the following instructions:
 
 ```bash
-./public-api-cli options set --key=cacert --value=/Users/youruser/.../certificate.crt
+./public-api-cli options set 
+	--key=cacert 
+	--value=/Users/youruser/.../certificate.crt
 
-./public-api-cli options set --key=loginAddress --value=login.server.nalej.com
+./public-api-cli options set 
+	--key=loginAddress 
+	--value=login.server.nalej.com
 
-./public-api-cli options set --key=nalejAddress --value=api.server.nalej.com
+./public-api-cli options set 
+	--key=nalejAddress 
+	--value=api.server.nalej.com
 ```
 
 To check if these commands have executed correctly and the options are in fact set, you can use the command:
@@ -44,24 +50,12 @@ Once you enter, you can see the platform structure at a glance, and start intera
 
 #### Components and terminology
 
-The first screen we see is the **Organization** section, which contains a view of all members of the organization and its subscription plan.
+The first screen is the **Organization** section, which contains a view of all members of the organization and its subscription plan. There is a section column in the left part of the screen.
 
-> TODO: revise this. It's copied from the doc in the Drive.
+From here you can go to the **Resources** view and interact with the clusters in the system, and the nodes they manage.
 
-- Organization info card: the most relevant organization information.
-- Members card: organization members card allows the Owner to create, edit or delete users from the organization. 
+You can also go to the **Devices** view, where you can see all the devices in the system and the device groups that contain them.
 
-**Resources** - a view that contains the clusters that contain nodes.
+Finally, in the **Applications** view you can interact with the registered and deployed apps.
 
-- Summary card: briefing of applications information that includes deployed applications and registered apps count.
-- Clusters card: extended information related to a specific cluster.
-- Nodes timeline: line chart that enables the user to know the nodes current status.
-- Cluster list: an updated list that contains the clusters information. This card allows the user to edit name and description.
-
-**Applications** - a view that contains the registered and deployed apps.
-
-- Summary card: a briefing of the organization resources, including a number of total clusters and nodes, and clusters status.
-- Status timeline: aggregation of applications current status represented as a line chart
-- Deployed app list: list of deployed applications that shows some basic information.
-- App extended info: a partial view that shows a specific application extended info, including a graph with the services relations and an endpoints list. 
-
+For more information on any of these views, please go to the corresponding section of this documentation, where the different views are described in detail.

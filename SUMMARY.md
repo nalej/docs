@@ -18,7 +18,7 @@
 
 ## Devices
 
-- [Devices in Nalej](devices/devices-1.md)
+- NEW! [Adding, managing and deleting devices](devices/devices-1.md)
 
 ## Tutorials
 
