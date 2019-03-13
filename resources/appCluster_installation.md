@@ -56,7 +56,7 @@ We can check if the installation was successful and the cluster is up and runnin
 
 We just have to navigate to the Resources view.
 
-> TODO: captura de pantalla
+![Resources list view.](../.gitbook/assets/res_list.png)
 
 Here, we can see the list of available application clusters in the system, and our brand new cluster should appear on the list.
 
