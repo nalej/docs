@@ -1,6 +1,10 @@
-# Monitoring clusters
+# Cluster monitoring
 
 The application you're deploying will be deployed in a **cluster**. A cluster is a logical group of **nodes**, which are physical devices. When an application is deployed, the cluster will decide if there is a need to deploy it in one or several nodes, and will manage it accordingly.
+
+
+
+------
 
 ### *Label-related warning*
 

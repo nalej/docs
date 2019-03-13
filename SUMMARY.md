@@ -8,7 +8,7 @@
 
 ## Resources
 
-- [Clusters and nodes](resources/resources-1.md)
+- [Cluster monitoring](resources/resources-1.md)
 - [Application cluster installation](resources/appCluster_installation.md)
 
 ## Applications

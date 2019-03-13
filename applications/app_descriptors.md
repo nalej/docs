@@ -1,4 +1,4 @@
-# How to create an application descriptor
+# Structure of an application descriptor
 
 The system supports specifying the application structure in the form of an application descriptor. An application descriptor is an entity that contains all the information required to launch a complex application composed of different services. The overall structure of an application descriptor is as follows:
 
@@ -41,19 +41,19 @@ The rule entity determines the connectivity of a service with the others. To spe
 
 Where:
 
-* *rule\_id* is the rule identifier.
+* **rule\_id** is the rule identifier.
 
-* *name* is the user friendly name of the rule.
+* **name** is the user friendly name of the rule.
 
-* *target\_service\_group\_name* contains the name of the group where the service to be accessed can be found.
+* **target\_service\_group\_name** contains the name of the group where the service to be accessed can be found.
 
-* *target\_service\_name* contains the name of the service to be accessed.
+* **target\_service\_name** contains the name of the service to be accessed.
 
-* *target\_port* contains the port that is affected by the current rule.
+* **target\_port** contains the port that is affected by the current rule.
 
-* *access* contains the type of access allowed. 
+* **access** contains the type of access allowed. 
 
-  * Use 1 to signal that the service is accessible by other app services. The correct way to specify the services would be:
+  * Use **1** to signal that the service is accessible by other app services. The correct way to specify the services would be:
 
     ```json
     "access": 1
@@ -67,9 +67,9 @@ Where:
     }
     ```
 
-  * Use 2 to signal that the service is publicly available.
+  * Use **2** to signal that the service is publicly available.
 
-  * Use 3 to signal that the service is available only for some devices.
+  * Use **3** to signal that the service is available only for some devices.
 
     ```json
     "access": 3
@@ -117,9 +117,11 @@ A service group is a collection of services that can be replicated together. The
 
 Where:
 
-- *name* is the name we give to the service group.
-- *services* is the collection of services the group contains.
-- *specs* defines the specifications for the group. The different parameters here are *num\_replicas*, which is the number of replicas of this group that are going to be deployed, and *multicluster_replica*, which is a boolean that states whether or not the replicas will be deployed in the same cluster.
+- **name** is the name we give to the service group.
+- **services** is the collection of services the group contains.
+- **specs** defines the specifications for the group. The different parameters here are 
+  - **num\_replicas**, which is the number of replicas of this group that are going to be deployed, and 
+  - **multicluster_replica**, which is a boolean that states whether or not the replicas will be deployed in the same cluster.
 
 ### Services
 
@@ -162,17 +164,17 @@ A service defines a component of the application. The elements that describe a s
 
 Where:
 
-* *service\_name* is the name of the service.
-* *image* is the name of the docker image.
-* [NOT USED] *specs* defines the specifications for the service. In it, *replicas* is the number of replicas of this service to be deployed.
-* *configs* defines the configuration files that the service may need. In it, 
-  * *config\_file\_id* is the identifier of each specific configuration file, 
-  * *content* is the content the configuration file should have, and
-  * *mount\_file* is the path where the file should be in the cluster, so the system can create it and fill it with what is in the *content* parameter.
-* *storage* defines the storage required by the image. It is an optional field.
-* *exposed\_ports* defines the ports that are exposed by the container.
-* *environment\_variables* specifies the environment variables required by the containers.
-* *labels* define the labels of the service. Notice that the app label is mandatory.
+* **service\_name** is the name of the service.
+* **image** is the name of the docker image.
+* **specs** defines the specifications for the service. In it, **replicas** is the number of replicas of this service to be deployed.
+* **configs** defines the configuration files that the service may need. In it, 
+  * **config\_file\_id** is the identifier of each specific configuration file, 
+  * **content** is the content the configuration file should have, and
+  * **mount\_file** is the path where the file should be in the cluster, so the system can create it and fill it with what is in the **content** parameter.
+* **storage** defines the storage required by the image. It is an optional field.
+* **exposed\_ports** defines the ports that are exposed by the container.
+* **environment\_variables** specifies the environment variables required by the containers.
+* **labels** define the labels of the service. Notice that the app label is mandatory.
 
 Example:
 
@@ -220,7 +222,7 @@ Example:
 
 
 
-### Using private images
+## Using private images
 
 In order to access private images, the user should provide the credentials for downloading them. To use them, add the following options to the service descriptor:
 
@@ -240,14 +242,14 @@ In order to access private images, the user should provide the credentials for d
 
 Where:
 
-* *username* is the username to log into the remote repository.
-* *password* is the password to log into the remote repository.
-* *email* is the email of the user. Depending on the type of remote repository, use the email of the user required to log into the system.
-* *docker\_repository* contains the HTTPS url of the remote repository
+* **username** is the username to log into the remote repository.
+* **password** is the password to log into the remote repository.
+* **email** is the email of the user. Depending on the type of remote repository, use the email of the user required to log into the system.
+* **docker\_repository** contains the HTTPS url of the remote repository
 
 ### Passing arguments to the images
 
-To pass arguments to the docker images, use the *run\_arguments* attribute as in the following example:
+To pass arguments to the docker images, use the **run\_arguments** attribute as in the following example:
 
 ```javascript
 {       
@@ -258,7 +260,7 @@ To pass arguments to the docker images, use the *run\_arguments* attribute as in
  },
 ```
 
-### Attaching storage to services
+## Attaching storage to services
 
 To attach storage to a given service, use the following construct:
 
@@ -277,10 +279,12 @@ To attach storage to a given service, use the following construct:
  }
 ```
 
-Where *type* will define the type of storage to create, being:
+Where **type** will define the type of storage to create, being:
 
-- 0: ephemeral storage.
-- 1: persistent storage.
+- **0**: ephemeral storage.
+- **1**: persistent storage.
+
+
 
 ## Example
 
@@ -390,9 +394,4 @@ As an example, the following descriptor contains an application composed of mysq
   ]
 }
 ```
-
-## Known limitations
-
-* In this version, connectivity among services is not limited
-* Labels must be set on each service.
 
