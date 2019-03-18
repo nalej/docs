@@ -29,8 +29,7 @@ An application descriptor contains a **name**,  a set of **labels** that will be
 The rule entity determines the connectivity of a service with the others. To specify a service:
 
 ```javascript
-{
-  "rule_id": <rule_id>,       
+{     
   "name": "this is what this rule does",       
   "target_service_group_name": <service_group_name>,       
   "target_service_name": <service_name>,
@@ -40,8 +39,6 @@ The rule entity determines the connectivity of a service with the others. To spe
 ```
 
 Where:
-
-* **rule\_id** is the rule identifier.
 
 * **name** is the user friendly name of the rule.
 
@@ -84,7 +81,6 @@ Example:
 ```json
   "rules": [
     {
-      "rule_id": "001",
       "name": "allow access to wordpress",
       "target_service_group_name": "g1",
       "target_service_name": "2",
@@ -304,7 +300,6 @@ As an example, the following descriptor contains an application composed of mysq
   },
   "rules": [
     {
-      "rule_id": "001",
       "name": "allow access to wordpress",
       "target_service_group_name": "g1",
       "target_service_name": "2",
