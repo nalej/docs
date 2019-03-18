@@ -22,7 +22,7 @@ The system supports specifying the application structure in the form of an appli
  }
 ```
 
-An application descriptor contains a **name** and a **descriptor** to describe the purpose of the application to the users that will deploy them. It also contains a set of **labels** that will be used in the future to facilitate queries, and two main sections: **rules** and **service groups**. The *rules* define how the different services are connected among themselves, and the *service groups* contain the list of services that need to be deployed in order for the application to work properly, bundled in groups.
+An application descriptor contains a **name**,  a set of **labels** that will be used in the future to facilitate queries, and two main sections: **rules** and **service groups**. The *rules* define how the different services are connected among themselves, and each *service group* contains a set of services that need to be deployed in order for the application to work properly.
 
 ## Rules
 
@@ -57,8 +57,7 @@ Where:
 
     ```json
     "access": 1
-    "auth_service_group": {
-        "name": <service_group_name>,
+    "auth_service_group_name": <serv_group_name>,
     	"auth_services": [
             <service_name_1>,
         	<service_name_2>,
@@ -73,10 +72,10 @@ Where:
 
     ```json
     "access": 3
-    "device_groups": [
-        <device_name_1>,
-        <device_name_2>,
-        ....
+    "device_group_names": [
+        <device_group_name_1>,
+        <device_group_name_2>,
+        ...
     ]
     ```
 
@@ -97,7 +96,7 @@ Example:
 
 
 
-## ServiceGroups
+## Service groups
 
 A service group is a collection of services that can be replicated together. Usually, a service group specifies highly coupled applications, like Wordpress and MySQL. A service group is defined by a **group name**, a list of **services** and **deployment specifications**.
 
@@ -106,7 +105,7 @@ The structure of a service group is as follows:
 ```json
   "groups": [
     {
-      "name": "g1",
+      "name": <group_name>,
       "services": [
         ...       
       ],
@@ -117,17 +116,18 @@ The structure of a service group is as follows:
           "<label_name>": "<label_value>",
         }
       }
-    }
+    },
+	...
   ]
 ```
 
 Where:
 
 - **name** is the name we give to the service group. It must be unique in the context of the application.
-- **services** is the collection of services the group contains.
+- **services** is the collection of services the group contains. There must be at least one service defined in the group.
 - **specs** defines the deployment specifications for the group. The different parameters here are:
-  - **multicluster_replica**, which is a boolean that states whether  the replicas will be deployed in the same cluster (=*false*), or on the contrary they will be deployed into any available cluster (=*true*).
-  - **num\_replicas**, which is the number of replicas of this group that are going to be deployed.
+  - **multicluster_replica**, which is a boolean that states whether  the replicas will be deployed in the same cluster (=*false*), or on the contrary they will be deployed into any available cluster (=*true*). By default it is set to *false*.
+  - **num\_replicas**, which is the number of replicas of this group that are going to be deployed. These replicas will appear as different instances in the system. By default it is set to 1.
   - **deployment_selectors**, which is a collection of labels and values that is checked against the available clusters. Only those clusters with all the labels and values indicated by the deployment_selectors are considered to be candidates.
 
 ### Services
@@ -143,7 +143,7 @@ A service defines a component of the application. The elements that describe a s
     },
     "configs": [
         {
-          "config_file_id": <config_file_id>,
+          "config_file_name": <config_file_name>,
           "content": <config_file_content>,
           "mount_path": <config_file_path>
         }
@@ -173,7 +173,8 @@ Where:
 
 * **service\_name** is the name of the service.
 * **image** is the name of the docker image.
-* **specs** defines the specifications for the service. In it, **replicas** is the number of replicas of this service to be deployed.
+* **specs** defines the specifications for the service. In it, 
+  * **replicas** is the number of replicas of this service to be deployed. These replicas will be part of the same instance in the system (unlike the replicas at service group level, which will be seen as different instances).
 * **configs** defines the configuration files that the service may need. In it, 
   * **config\_file\_id** is the identifier of each specific configuration file, 
   * **content** is the content the configuration file should have, and
@@ -181,26 +182,25 @@ Where:
 * **storage** defines the storage required by the image. It is an optional field.
 * **exposed\_ports** defines the ports that are exposed by the container.
 * **environment\_variables** specifies the environment variables required by the containers.
-* **labels** define the labels of the service. Notice that the app label is mandatory.
+* **labels** define the labels of the service. The **app** label is mandatory.
 
 Example:
 
 ```javascript
 {         
-    "name": "simple-mysql",       
-    "description": "A MySQL instance",       
+    "name": "simple-mysql",             
     "image": "mysql:5.6",       
     "specs": {         
         "replicas": 1       
     },       
     "configs": [
         {
-            "config_file_id": "1",
+            "config_file_name": "saludo",
             "content": "SG9sYQo=",
             "mount_path": "/config/saludo.conf"
         },
         {
-            "config_file_id": "2",
+            "config_file_name": "despedida",
             "content": "QWRpb3MK",
             "mount_path": "/config/despedida.conf"
         }
@@ -249,10 +249,9 @@ In order to access private images, the user should provide the credentials for d
 
 Where:
 
-* **username** is the username to log into the remote repository.
-* **password** is the password to log into the remote repository.
+* **username** and **password** are the credentials to log into the remote repository.
 * **email** is the email of the user. Depending on the type of remote repository, use the email of the user required to log into the system.
-* **docker\_repository** contains the HTTPS url of the remote repository
+* **docker\_repository** contains the HTTPS url of the remote repository.
 
 ### Passing arguments to the images
 
@@ -260,7 +259,7 @@ To pass arguments to the docker images, use the **run\_arguments** attribute as 
 
 ```javascript
 {       
-    "name": "Sample service with image accepting run arguments",       
+    "name": "Sample image accepting run arguments",       
     "image": "run-test:v0.1.0",       
     "run_arguments" : ["arg1", "arg2", ..., "argN"] 
         ...     
@@ -325,12 +324,12 @@ As an example, the following descriptor contains an application composed of mysq
           },
           "configs": [
         {
-          "config_file_id": "1",
+          "config_file_name": "saludo",
           "content": "SG9sYQo=",
           "mount_path": "/config/saludo.conf"
         },
         {
-          "config_file_id": "2",
+          "config_file_name": "despedida",
           "content": "QWRpb3MK",
           "mount_path": "/config/despedida.conf"
         }
