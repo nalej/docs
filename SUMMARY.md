@@ -23,5 +23,7 @@
 ## Tutorials
 
 - [Initial login in the system](tutorials/initialLogin.md)
-- [Application Deployment with Nalej](tutorials/appdeployment_wclusters.md)
+- [Application Deployment](tutorials/appdeployment_wclusters.md)
+- [Docker Compose applications](tutorials/dockerAppInNalej.md)
+- [Adding users in the system](tutorials/addingUsers.md)
 
