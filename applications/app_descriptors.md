@@ -389,7 +389,7 @@ As an example, the following descriptor contains an application composed of mysq
         }
       ],
       "specs": {
-        "num_replicas": 1
+        "replicas": 1
       }
     }
   ]

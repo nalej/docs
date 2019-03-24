@@ -142,7 +142,7 @@ An **application descriptor** is a file with all the essential info to deploy a 
         }
       ],
       "specs": {
-        "num_replicas": 1
+        "replicas": 1
       }
     }
   ]
@@ -257,7 +257,7 @@ This command returns a JSON with all the information related to the instance we 
       "policy_name": "SAME_CLUSTER",
       "status_name": "SERVICE_SCHEDULED",
       "specs": {
-        "num_replicas": 1
+        "replicas": 1
       }
     }
   ],
