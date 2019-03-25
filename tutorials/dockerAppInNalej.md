@@ -174,7 +174,8 @@ Now you have to deploy it in the system.
 After creating the application descriptor, the next step is adding it to the system, which can be done with the following command:
 
 ```bash
-./public-api-cli app desc add --descriptorPath=/pathtodescriptor
+./public-api-cli app desc add 
+	--descriptorPath=/pathtodescriptor
 ```
 
 It returns an application descriptor ID, which we will need for deploying an instance of this application.
@@ -184,7 +185,9 @@ It returns an application descriptor ID, which we will need for deploying an ins
 And how would we deploy that instance? With this other command:
 
 ```bash
-./public-api-cli app inst deploy --descriptorID=xxxxxxx --name=name-app
+./public-api-cli app inst deploy 
+	--descriptorID=xxxxxxx 
+	--name=name-app
 ```
 
 Here, as you may have noticed, is also the moment where we name the app with a human-readable name. When this command exits, it returns a JSON with an application **instance** ID, which is what we will use to work with the deployed instance.
@@ -193,11 +196,11 @@ Here, as you may have noticed, is also the moment where we name the app with a h
 
 #### Adding the app to the system
 
-> sfdasdfasdfasdfasdfasdf (capturas)
+> TODO: add how-to with screenshots
 
 #### Deploying the associated instance
 
-> Asdfasdfasdfasdfasdf (todo esto con capturas)
+> TODO: add how-to with screenshots
 
 ## Is the application up in the system?
 
@@ -208,7 +211,8 @@ Now an instance of the application should be up and running in Nalej. You can ch
 One of the things we could do to know if the instance is running is getting its information, which we can do with:
 
 ```bash
-./public-api-cli app inst get --instanceID=XXXXXXXXXX
+./public-api-cli app inst get 
+	--instanceID=XXXXXXXXXX
 ```
 
 This command returns a JSON with all the information related to the instance we are checking, which looks like this:
@@ -224,14 +228,7 @@ This command returns a JSON with all the information related to the instance we 
   },
   "rules": [
     {
-      "organization_id": <org_id>,
-      "app_descriptor_id": <app_desc_id>,
-      "rule_id": <rule_id>,
-      "name": <name>,
-      "target_service_group_name": <service_group_name>,
-      "target_service_name": <service_name>,
-      "target_port": <port>,
-      "access_name": "PUBLIC"
+      ...
     },
     ...
     
@@ -242,41 +239,12 @@ This command returns a JSON with all the information related to the instance we 
       "app_descriptor_id": <app_desc_id>,
       "app_instance_id": <app_inst_id>,
       "service_group_id": <service_group_id>,
-      "service_group_instance_id": <service_group_instance_id>,
+      "service_group_instance_id": 
+        	<service_group_instance_id>,
       "name": <service_group_name>,
       "service_instances": [
         {
-          "organization_id": <org_id>,
-          "app_descriptor_id": <app_desc_id>,
-          "app_instance_id": <app_inst_id>,
-          "service_group_id": <service_group_id>,
-          "service_id": <service_id>,
-          "service_instance_id": <service_instance_id>,
-          "name": <service_name>,
-          "type_name": "DOCKER",
-          "image": <image>,
-          "specs": {
-            "replicas": 1
-          },
-          "exposed_ports": [
-            {
-              "name": "simple-app-port",
-              "internal_port": <port>,
-              "exposed_port": <port>
-            }
-          ],
-          "environment_variables": {
-            ...
-          },
-          "labels": {
-            "app": "simple-app",
-            "component": "simple-app"
-          },
-          "status_name": "SERVICE_RUNNING",
-          "endpoints": [
-            	"xxxx.xxxxx.appcluster.<yourcluster>.com"
-          ],
-          "deployed_on_cluster_id": <cluster_id>
+          ...
         },
         ...  
       ],
@@ -301,7 +269,7 @@ Where it tells you the status of the current instance. Since it is "RUNNING", we
 
 ### Web Interface
 
-> Asdfasdfasdfasdfasdf (con capturas)
+> TODO: add how-to with screenshots
 
 
 
