@@ -281,12 +281,10 @@ To attach storage to a given service, use the following construct:
  }
 ```
 
-Where **type** will define the type of storage to create, being:
+Where **size** is the size of the storage we want to attach (in bytes), and the **type** will define the type of storage to create, being:
 
 - **0**: ephemeral storage.
 - **1**: persistent storage.
-
-
 
 ## Example
 

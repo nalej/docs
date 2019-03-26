@@ -141,8 +141,6 @@ Now the application is ready to be deployed! We can do this with:
 
 Here, as you may have noticed, is also the moment where we name the app with a human-readable name. When this command exits, it returns a JSON with an application **instance ID**, which is what we will use to work with the deployed instance.
 
-
-
 ## Application management
 
 We can interact with the application in several ways, now that it's deployed. One of the actions we can take is getting its related info, which can be done with:

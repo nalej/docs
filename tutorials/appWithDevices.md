@@ -67,7 +67,35 @@ Each device will register automatically through the installed Nalej SDK, but the
 
 As we just saw, this data can be easily obtained asking for the device group information through the CLI or the Web Interface. Once it is in the SDK, the devices will register in the correct device group, and the structure for our app will be in place.
 
+To see if the devices are up and running, you can check their status through the web interface or the public API CLI, as explained [in this document](../devices/devices-1.md).
+
 ## Creating the application descriptor
 
-Your app will need to specify which device groups are allowed to interact with it, so the application descriptor needs an extra rule.
+Your app will need to specify which device groups are allowed to interact with its services, so the application descriptor needs an extra rule. The *rules* section of your app descriptor should look like this:
+
+```javascript
+"rules": [
+    {     
+  		"name": "this is what this rule does",       
+  		"target_service_group_name": <service_group_name>,       
+  		"target_service_name": <service_name>,
+  		"target_port": <port>,       
+  		"access": 3
+  		"device_group_names": [
+       	 	<device_group_name_1>,
+        	<device_group_name_2>,
+    		...
+		]
+	},    
+    ...
+]
+```
+
+Here, the **access** parameter has the value of **3**, which means that one or more device groups have access to the service in **target_service_name**. Then, in **device_group_names**, you can include one or more device groups to which this service is available. In the case exposed in this document, you would only need one device group name, which would be the device group you already created in the first step, and the one where all the devices are registered into.
+
+As you can see, each service using the device group will need a new rule, specifying the service group and the service inside it that has access to the device group (or groups) described in the document. So, if there were more services that used our temperature sensors, we would need to declare them with a new rule for each.
+
+## Adding & deploying the app to the system
+
+Once this is done, the only thing left to do is adding the application to the system and deploying an instance of it. These steps are the same for every application, so our suggestion is to check out our [Application deployment](appdeployment_wclusters.md) tutorial to see how to do it.
 
