@@ -6,11 +6,9 @@ As a system owner, you probably have to add new users to the system. First we ne
 
 There are three default roles in the system.
 
-- **Owner**: has almighty powers in the system. They can add, modify and delete users, applications, devices...
-- **Developer**:
-- **Operator**:
-
-> should we say that these are the default roles and we can create our own? is it possible within the system as it is now, or the users have to stick to these roles by now?
+- **Developer**: can add, deploy, manage and remove their own apps from the system. They can also add devices and device groups if their apps need them.
+- **Operator**: can add, deploy, manage and remove apps from the system (even if the apps are not theirs), as well as add and manage devices. They can also manage resources.
+- **Owner**: has almighty powers in the system. They can do everything an Operator can do, but they can also manage users and organization info.
 
 Now that you know about the roles, let's see how the users are created in the system.
 
