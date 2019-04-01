@@ -10,6 +10,14 @@ There are three default roles in the system.
 - **Operator**: can add, deploy, manage and remove apps from the system (even if the apps are not theirs), as well as add and manage devices. They can also manage resources.
 - **Owner**: has almighty powers in the system. They can do everything an Operator can do, but they can also manage users and organization info.
 
+Below you can see a table with the edit permissions of each of the user roles in the system.
+
+|           |   APPS   |   Devices   | Resources | USERS | ORG. INFO |
+| --------- | :------: | :---------: | :-------: | :---: | :-------: |
+| Developer | Own apps | Own devices |    No     |  No   |    No     |
+| Operator  | All apps | All devices |    Yes    |  No   |    No     |
+| Owner     | All apps | All devices |    Yes    |  Yes  |    Yes    |
+
 Now that you know about the roles, let's see how the users are created in the system.
 
 ## Creating users
