@@ -8,13 +8,13 @@ Now that we know how the clusters work, it's time to start deploying application
 
 If we click on the "Application" option at the left column of the screen, a screen similar to this one will appear:
 
-> TODO: image
+![Application View from the Web Interface](../.gitbook/assets/app_ppal.png)
 
 This screen has the following areas:
 
 - A **summary**, where the number of deployed instances and registered applications are shown.
 - An **app status timeline**, where the down time of the different instances is displayed.
-- A **deployed app list**, where we can see all the info regarding the registered apps and the instances in the system.
+- An **app list**, where we can see all the info regarding the registered apps and the deployed instances in the system.
 
 We will talk about this deployed app list later in the document, and explain its use thoroughly.
 
@@ -149,11 +149,11 @@ It returns a JSON with an application **descriptor ID** inside, which we will ne
 
 So, the descriptor is ready and you are already in the Application view of the web interface. Where to go from here? Great question!
 
-> TODO: image - application view - applications list - registered tab (circled), arrow to the "Register application" button.
+![Uploading a descriptor to register an application.](../.gitbook/assets/app_ppal_registered.png)
 
 In the Application view, we can see the already deployed applications in the lower part of the screen, in the Applications list. There, we need to click on the **Registered** tab, and then we can see the **Register application** button. Please click on it.
 
-> TODO: app descriptor upload dialog
+![Descriptor uploading dialog](../.gitbook/assets/app_register_app_dialog.png)
 
 What we can see now is a special dialog where we can upload our application descriptor, so the application gets registered in the system. We can click on it to search the file in our file system, or we can just drag it and drop it in the designed area. After that, just clicking on the **Register** button will register the application in the system.
 
@@ -173,19 +173,19 @@ Here, as you may have noticed, is also the moment where we name the app with a h
 
 Now that the application is registered (and thus appears in the list at the **Registered** tab), we can deploy an instance of it! There are two ways to access the deploying dialog, so let's see both.
 
-> TODO: captura - círculo/flecha botón play en registered tab. 
+![Deploy button from the "Registered" list](../.gitbook/assets/app_ppal_registered_deploy.png)
 
 One of the ways to do that is by clicking the blue *play* button in the **Actions** column of the **Registered** tab.
 
-> TODO: captura - círculo instances tab - flecha botón deploy instance.
+![Deploying an instance from the "Instances" list](../.gitbook/assets/app_ppal_deploy_instance.png)
 
 The other way is to go from the **Registered** tab to the **Instances** tab. To deploy our application we only need to click on the **Deploy instance** button on the right part of the screen.
 
 With both actions we arrive to the same dialog, which looks like this:
 
-> TODO: captura - diálogo deploy instance.
+![Deploying instances dialog](../.gitbook/assets/app_deploy_instance_dialog.png)
 
-Here we need to write the name of the instance and choose the application we want an instance of. Then, the instance will appear in the list under the **Instances** tab.
+Here we need to write the name of the instance and choose the application we want an instance of (if we clicked on the "deploy" button in the **Registered** list, the instance is already established, and we only have to write the name of the instance). Then, the instance will appear in the list under the **Instances** tab.
 
 ## Application management
 
@@ -217,19 +217,24 @@ will tell us where the instance is deployed, so we can navigate to it and start 
 
 We can see the status of an instance directly in the **Instances** tab, in the colored button in the **Status** column of the list. We can also click on the instance to see all the information related to that specific instance. This takes us to a new view:
 
-> TODO: captura App Instance View
->
-> TODO: explicarlo bien. Tengo preguntasssss....
+![Instance View.](../.gitbook/assets/app_instance_view.png)
 
 This view has several sections:
 
 - First, we have the **summary** (upper-left part of the screen). This part will tell us the status of the instance, its application of origin, its ID, the service groups it has, and the service instances it has deployed. We have an **Undeploy application** button to undeploy the instance directly from here (we will talk about this later in this document).
+
 -  Then we have the **services** section. First we can see a diagram that shows us the relationship between the services in the instance, where we can zoom in in case it's necessary. On the upper left part of this section we have the two perspectives we can toggle between. The other perspective is a text view with all the info about the service instances related to this application instance.
+
   - For each service we can see the number of **replicas** that are deployed, the general **status** of the service, the **endpoints** it has, and more info.
   - When we click on the **Info** button we open a dialog where we can see even more information, like the environment variables, the labels assigned to the service or the cluster it's deployed in. 
 
+  ![Service Info dialog.](../.gitbook/assets/app_instance_service_info.png)
+
 - Under the summary we have the **Tags** section, where we can see the tags associated to this app instance.
-- Beside it, there's the **Rules** section, where the rules for the different service groups in the application are displayed.
+- Beside it, there's the **Rules** section, where the rules for the different service groups in the application are displayed. We can click on any of them and the full disclosure of the rule will appear.
+
+![Information for a specific rule.](../.gitbook/assets/app_instance_rules.png)
+
 - And finally, in the lower right corner of the screen, we can see the **Configuration** section, where we can find the environment variables and other settings.
 
 ## Getting logs from the instance
@@ -281,7 +286,7 @@ That may be all the cleanup needed if this application is something we will use 
 
 To undeploy an instance we just have to hit the red X in the **Actions** column in the far right of the Application instances list. This will delete the instance from this list, which will mean that it's no longer in the system.
 
-> TODO: captura
+![Undeploying an instance](../.gitbook/assets/app_ppal_undeploy.png)
 
 ### Deleting the app
 
@@ -301,4 +306,4 @@ What if we just don't want the application to be available again? In that case, 
 
 To delete the application from the system, thus avoiding the generation of instances from it in the future, we just need to go to the **Registered** tab in the Application list, and look for the application. Then, we need to click the red bin under the **Actions** column.
 
-> TODO: captura
+![Deleting an application from the system.](../.gitbook/assets/app_ppal_registered_delete.png)
