@@ -70,7 +70,7 @@ Regarding **labels**, although adding and/or deleting them is not encouraged, th
 
 After clicking on that button, we can see a form where we can enter the name and value of the label, and we can save or discard this new information.
 
-If, however, in the list of labels we click on one or more labels (selecting them), this `+` button changes its function to **delete**, and its image to one of a bin, so we can delete the selected labels.
+If, however, in the list of labels we click on one or more labels (selecting them), this `+` button changes its function to **delete**, and its image to one of a bin, so we can delete the selected labels. 
 
 ![Deleting one or several labels](../.gitbook/assets/res_delete_label.png)
 

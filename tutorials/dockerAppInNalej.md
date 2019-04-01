@@ -167,7 +167,7 @@ And that's everything you need for the application descriptor of your Docker app
 
 Now you have to deploy it in the system. 
 
-### Through the Public API CLI
+### Public API CLI
 
 #### Adding the application descriptor to the system
 
@@ -196,11 +196,33 @@ Here, as you may have noticed, is also the moment where we name the app with a h
 
 #### Adding the app to the system
 
-> TODO: add how-to with screenshots
+So, the descriptor is ready and you are already in the Application view of the web interface. Where to go from here? Great question!
+
+![Uploading a descriptor to register an application.](../.gitbook/assets/app_ppal_registered.png)
+
+In the Application view, we can see the already deployed applications in the lower part of the screen, in the Applications list. There, we need to click on the **Registered** tab, and then we can see the **Register application** button. Please click on it.
+
+![Descriptor uploading dialog](../.gitbook/assets/app_register_app_dialog.png)
+
+What we can see now is a special dialog where we can upload our application descriptor, so the application gets registered in the system. We can click on it to search the file in our file system, or we can just drag it and drop it in the designed area. After that, just clicking on the **Register** button will register the application in the system.
 
 #### Deploying the associated instance
 
-> TODO: add how-to with screenshots
+Now that the application is registered (and thus appears in the list at the **Registered** tab), we can deploy an instance of it! There are two ways to access the deploying dialog, so let's see both.
+
+![Deploy button from the "Registered" list](../.gitbook/assets/app_ppal_registered_deploy.png)
+
+One of the ways to do that is by clicking the blue *play* button in the **Actions** column of the **Registered** tab.
+
+![Deploying an instance from the "Instances" list](../.gitbook/assets/app_ppal_deploy_instance.png)
+
+The other way is to go from the **Registered** tab to the **Instances** tab. To deploy our application we only need to click on the **Deploy instance** button on the right part of the screen.
+
+With both actions we arrive to the same dialog, which looks like this:
+
+![Deploying instances dialog](../.gitbook/assets/app_deploy_instance_dialog.png)
+
+Here we need to write the name of the instance and choose the application we want an instance of (if we clicked on the "deploy" button in the **Registered** list, the instance is already established, and we only have to write the name of the instance). Then, the instance will appear in the list under the **Instances** tab.
 
 ## Is the application up in the system?
 
@@ -269,9 +291,9 @@ Where it tells you the status of the current instance. Since it is "RUNNING", we
 
 ### Web Interface
 
-> TODO: add how-to with screenshots
+How can we know if the instance is already up? Well, the info is right there in the Application View. The list of instances may seem daunting, but all we have to do is use the **Search** box to find a string in the name of our app (or in a tag, or anywhere really), and there it is. And once we find it, the **Status** column will tell us the current status of the app. If it's "RUNNING", we're ready to go!
 
-
+![Finding our instance in the "Instances" list](../.gitbook/assets/app_instance_running.png)
 
 
 

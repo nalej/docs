@@ -223,7 +223,7 @@ This view has several sections:
 
 - First, we have the **summary** (upper-left part of the screen). This part will tell us the status of the instance, its application of origin, its ID, the service groups it has, and the service instances it has deployed. We have an **Undeploy application** button to undeploy the instance directly from here (we will talk about this later in this document).
 
--  Then we have the **services** section. First we can see a diagram that shows us the relationship between the services in the instance, where we can zoom in in case it's necessary. On the upper left part of this section we have the two perspectives we can toggle between. The other perspective is a text view with all the info about the service instances related to this application instance.
+-  Then we have the **services** section. First we can see a diagram that shows us the relationship between the services in the instance, where we can zoom in in case it's necessary (the color of each service depends on its status). On the upper left part of this section we have the two perspectives we can toggle between. The other perspective is a text view with all the info about the service instances related to this application instance.
   - For each service we can see the number of **replicas** that are deployed, the general **status** of the service, the **endpoints** it has, and more info.
   - When we click on the **Info** button we open a dialog where we can see even more information, like the environment variables, the labels assigned to the service or the cluster it's deployed in. 
 
