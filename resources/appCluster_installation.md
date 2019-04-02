@@ -72,22 +72,16 @@ To check the availability through the CLI we just have to list the clusters in t
 
 This will print a response similar to this one:
 
-```json
-{
-  "clusters": [
-    {
-      "organization_id": <org_id>,
-      "cluster_id": <cluster_id>,
-      "name": <cluster_name>,
-      "cluster_type_name": <cluster_type_name>,
-      "multitenant_support": "YES",
-      "status_name": "RUNNING",
-      "total_nodes": x,
-      "running_nodes": x
-    },
-   ...
-  ]
-}
+```bash
+NAME                   ID          		NODES   
+<cluster_name_1>	   <cluster_id_1> 	<total_num_nodes>
+<cluster_name_2>	   <cluster_id_2> 	<total_num_nodes>
+<cluster_name_3>	   <cluster_id_3> 	<total_num_nodes>
+
+LABELS                          			STATUS
+<label11>:<value11>,<label12>:<value12>   	RUNNING
+<label13>:<value13>,<label14>:<value14>   	RUNNING
+<label15>:<value15>,<label15>:<value15>  	RUNNING
 ```
 
-which is already analyzed in [this page of the documentation](resources.md), and in this JSON document the information of the new cluster should appear.
+which is already analyzed in [this page of the documentation](resources.md), and it should show the information of the newly installed cluster.

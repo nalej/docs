@@ -197,18 +197,32 @@ We can interact with the application in several ways, now that it's deployed. On
 ./public-api-cli app inst get --instanceID=XXXXXXXXXX
 ```
 
-This will return a JSON with all the information related to the instance we are checking, for example:
+This will return a table with some information related to the instance we are checking:
 
-```javascript
-"status_name": "RUNNING"
+```bash
+NAME                  REPLICAS   		STATUS            
+[Group] application   <num_replicas>    SERVICE_RUNNING   
+<service_1>           <num_replicas>    SERVICE_RUNNING
+<service_2>		      <num_replicas>    SERVICE_RUNNING   
+
+ENDPOINTS
+"xxxx.xxxxx.appcluster.<yourcluster>.com"
+
+simple-"xxxx.xxxxx.appcluster.<yourcluster>.com"
 ```
 
-will tell us that the application is running correctly, and 
+For example, a status like:
 
 ```javascript
-"endpoints": [
-          "xxxx.xxxxx.appcluster.<yourcluster>.com"
-      ],
+STATUS
+SERVICE_RUNNING
+```
+
+in the first row (the one related to the whole instance) will tell us that the application is running correctly, and 
+
+```javascript
+ENDPOINTS
+"xxxx.xxxxx.appcluster.<yourcluster>.com"
 ```
 
 will tell us where the instance is deployed, so we can navigate to it and start working.
@@ -223,7 +237,7 @@ This view has several sections:
 
 - First, we have the **summary** (upper-left part of the screen). This part will tell us the status of the instance, its application of origin, its ID, the service groups it has, and the service instances it has deployed. We have an **Undeploy application** button to undeploy the instance directly from here (we will talk about this later in this document).
 
--  Then we have the **services** section. First we can see a diagram that shows us the relationship between the services in the instance, where we can zoom in in case it's necessary (the color of each service depends on its status). On the upper left part of this section we have the two perspectives we can toggle between. The other perspective is a text view with all the info about the service instances related to this application instance.
+-  Then we have the **services** section. First we can see a diagram that shows us the relationship between the services in the instance, where we can zoom in in case it's necessary (the color of each service depends on its status). On the upper left part of this section we have the two perspectives we can toggle between. The other perspective is a text view with all the info about the service instances related to this application instance (there is a tab with all the services, and then there is a tab for each service group).
   - For each service we can see the number of **replicas** that are deployed, the general **status** of the service, the **endpoints** it has, and more info.
   - When we click on the **Info** button we open a dialog where we can see even more information, like the environment variables, the labels assigned to the service or the cluster it's deployed in. 
 
@@ -264,8 +278,6 @@ This will return a (most likely) very long JSON file, with the following format:
 ```
 
 Where each **entry** has a **timestamp** and a **msg**, which is completely dependant on the application that generates the log. Typically, the logged info contains the **log_level**, which can be useful to differentiate an informative log from an error one. Please check the log message format of the application you're consulting before diving in this file.
-
-> TODO esto se puede hacer desde la web de alguna forma?
 
 ## Application removal
 

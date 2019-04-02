@@ -84,42 +84,29 @@ We can also obtain information about our clusters and their nodes through the CL
 ./public-api-cli cluster list
 ```
 
-This command will return, as usual, a JSON with all the information the system has about the clusters in it:
+This command will return, as usual, a table with some of the information the system has about the clusters in it:
 
-```json
-{
-  "clusters": [
-    {
-      "organization_id": <org_id>,
-      "cluster_id": <cluster_id>,
-      "name": <cluster_name>,
-      "cluster_type_name": "KUBERNETES",
-      "multitenant_support": "YES",
-      "status_name": "RUNNING",
-      "labels": {
-        <label1>: <value1>,
-        <label2>: <value2>,
-        ...
-      },
-      "total_nodes": <total_num_of_nodes>,
-      "running_nodes": <num_of_running_nodes>
-    }
-	...
-  ]
-}
+```bash
+
+NAME                   ID          		NODES   
+<cluster_name_1>	   <cluster_id_1> 	<total_num_nodes>
+<cluster_name_2>	   <cluster_id_2> 	<total_num_nodes>
+<cluster_name_3>	   <cluster_id_3> 	<total_num_nodes>
+
+LABELS                          			STATUS
+<label11>:<value11>,<label12>:<value12>   	RUNNING
+<label13>:<value13>,<label14>:<value14>   	RUNNING
+<label15>:<value15>,<label15>:<value15>  	RUNNING
 
 ```
 
 This information consists of:
 
-- **cluster\_id**, the cluster identifier.
-- **name**, the name given to the cluster.
-- **cluster_type_name**, the type of cluster it is. Currently, the system only supports Kubernetes clusters.
-- **multitenant_support**, a flag to say if the cluster is available for different organizations.
-- **status_name**, the status of the cluster. It depends on the status of each node, and it can have the values *running*, *processing* or *error*.
-- **labels**, with the labels of the cluster.
-- **total\_nodes**, with the number of nodes in the cluster.
-- **running_nodes**, with the number of running nodes in the cluster.
+- **NAME**, the name given to the cluster.
+- **ID**, the cluster identifier.
+- **NODES**, the number of nodes in the cluster.
+- **LABELS**, the labels of the cluster.
+- **STATUS**, the status of the cluster. It depends on the status of each node, and it can have the values *running*, *processing* or *error*.
 
 Once we know the cluster ID, we can list the nodes belonging to it.
 
@@ -129,32 +116,27 @@ Once we know the cluster ID, we can list the nodes belonging to it.
 
 This is the response to the command above:
 
-```json
-{
-  "nodes": [
-    {
-      "organization_id": <org_id>,
-      "cluster_id": <cluster_id>,
-      "node_id": <node_id>,
-      "ip": <ip_address>,
-      "labels": {
-        <label3>: <value3>,
-        <label4>: <value4>,
-        ...
-      },
-      "status_name": "RUNNING",
-      "state_name": "UNREGISTERED"
-    }
-  ]
-}
+```bash
+ID        	 		IP       		   	STATE      
+<node_id_1>  		<ip_address>  		ASSIGNED
+<node_id_2>  		<ip_address>  		ASSIGNED
+<node_id_3>  		<ip_address>  		ASSIGNED
+
+LABELS										STATUS
+<label3>:<value3>,<label4>:<value4>,... 	RUNNING
+<label5>:<value5>,<label6>:<value6>,... 	RUNNING
+<label7>:<value7>,<label8>:<value8>,... 	RUNNING
+
 ```
 
 The new variables are:
 
-- **node_id**, the node identifier.
-- **ip**, the IP address of the node.
-- **status_name**, the status of this node, which can be *running*, *processing*, or *error*. If one or more nodes have values other than "*running*", the cluster will show the most serious problem in its *status_name* variable.
-- **state_name**, the current state of the node regarding its use. The values can be:
+- **ID**, the node identifier.
+- **IP**, the IP address of the node.
+- **STATE**, the current state of the node regarding its use. The values can be:
   - *UNREGISTERED*: the details of the node are in the platform, but we haven't perfomed any action with them yet.
   - *UNASSIGNED*: the node has been prepared, but has not yet been asigned to a cluster.
   - *ASSIGNED*: the node has been installed and is part of a cluster.
+
+- **LABELS**: the labels of the node.
+- **STATUS**, the status of this node, which can be *running*, *processing*, or *error*. If one or more nodes have values other than "*running*", the cluster will show the most serious problem in its *status_name* variable.

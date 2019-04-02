@@ -31,13 +31,11 @@ The only organization information we can see  through the Public API CLI is the 
 ./public-api-cli org info
 ```
 
-which returns the following JSON:
+which returns the following:
 
-```json
-{
-  "organization_id": <org_id>,
-  "name": <org_name>
-}
+```bash
+ID                 NAME
+<org_id>		   <org_name>
 ```
 
 ##Creating users
@@ -56,9 +54,12 @@ By now, the form to sign a user up requires a name, an email, a password and a r
 
 Once you log in the system, the command you need is `users`. These are the actions you can take with it:
 
-| add                | info           | list        | reset-password         | update            | del            |
-| ------------------ | -------------- | ----------- | ---------------------- | ----------------- | -------------- |
-| Creates a new user | Gets user info | Lists users | Resets user's password | Updates user info | Deletes a user |
+- **Add**: creates a new user.
+- **Info**: gets user info.
+- **List**: lists users.
+- **Reset-password**: resets user's password.
+- **Update**: updates user info.
+- **Del**: deletes a user. 
 
 To create a new user, the command you need would look like this:
 
@@ -66,19 +67,15 @@ To create a new user, the command you need would look like this:
 ./public-api-cli users add 
 	--name=<newuser_name> 
 	--password=<newuser_password> 
-	--role=<newuser_role> 
+	--role=<newuser_role_name> 
 	--email=<newuser_email-name>@<email-domain>
 ```
 
-This command will return a JSON with this structure
+The response to this command would look like this:
 
-```json
-{
-  "organization_id": <org_id>,
-  "email": <newuser_email-name>@<email-domain>,
-  "name": <newuser_name>,
-  "role_name": <newuser_role>
-}
+```bash
+NAME   		  ROLE        		 EMAIL
+<user_name>   <user_role_name>   <user_email>
 ```
 
 where the **email** is the parameter we will use to locate the user in future interactions. For example, if we want to obtain the info related to a specific user, we would need to know their email, like so:
@@ -125,22 +122,12 @@ As you don't have an accessible list of users in plain view, the first thing you
 The response to this is a JSON with a list of the users in your organization, and their info:
 
 ```json
-{
-  "users": [
-    {
-      "organization_id": <org_id>,
-      "email": <email-name@email-domain>,
-      "name": <name>,
-      "role_name": <role_name>
-    },
-    {
-      "organization_id": <org_id>,
-      "email": <email-name2@email-domain>,
-      "name": <name2>,
-      "role_name": <role_name>
-    }
-  ]
-}
+NAME          ROLE        EMAIL
+<name1>       <role1>     <email1>
+<name2>       <role2>     <email2>
+<name3>       <role3>     <email3>
+<name4>       <role4>     <email4>
+...
 ```
 
 To edit a specific user's information, we need their email. With that we can:
@@ -164,7 +151,14 @@ To edit a specific user's information, we need their email. With that we can:
 
   For this to work, the new password must not be empty.
 
-When these operations are successful, the return is an empty JSON, like so: `{}`
+When these operations are successful, the return is an acknowledgment that the operation is done, like:
+
+```bash
+RESULT
+OK
+```
+
+
 
 ## Deleting users
 
@@ -185,4 +179,10 @@ To delete a user, execute the following command:
 	--email=<email-name>@<email-domain>
 ```
 
-When this operation exits successfully, the return is an empty JSON: `{}`
+When this operation exits successfully, the return is:
+
+```
+RESULT
+OK
+```
+
