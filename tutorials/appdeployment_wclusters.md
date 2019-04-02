@@ -36,7 +36,7 @@ Now you can log in with only your email and password:
 
 This command will exit successfully if you receive a response with your session info, like this one:
 
-```
+```javascript
 EMAIL     ROLE   	    ORG_ID      EXPIRES
 <email>   <role_name>   <org_id>    <session_expiration_date>
 ```
@@ -174,7 +174,7 @@ After creating the application descriptor, the next step is adding it to the sys
 
 It returns a table like this:
 
-```bash
+```javascript
 DESCRIPTOR                  ID          LABELS
 SARA - simple application   <desc_id>   <label:value>
 
@@ -354,6 +354,13 @@ But what if we just don't want the application to be available again? In that ca
 
 ```bash
 ./public-api-cli app desc delete  --descriptorID=xxxxx
+```
+
+This, if executed successfully, will return an acknowledgment:
+
+```json
+RESULT
+OK
 ```
 
 #### Web Interface
