@@ -179,8 +179,8 @@ DESCRIPTOR                  ID          LABELS
 SARA - simple application   <desc_id>   <label:value>
 
 NAME                  	IMAGE            LABELS
-[Group] application   	===
-simple-mysql		 	<serv1_img>      <l1:v1>,<l2:v2>
+[Group] application		===
+simple-mysql			<serv1_img>      <l1:v1>,<l2:v2>
 simple-wordpress		<serv2_img>      <l3:v3>,<l4:v4>
 ```
 
