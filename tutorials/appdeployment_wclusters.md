@@ -239,10 +239,10 @@ Now we can start working with the deployed instance, doing things like, for exam
 This command responds with some information related to the instance we are checking, which looks like this:
 
 ```javascript
-NAME                  REPLICAS   		STATUS            
-[Group] application   <num_replicas>    SERVICE_RUNNING   
-<service_1>           <num_replicas>    SERVICE_RUNNING
-<service_2>		      <num_replicas>    SERVICE_RUNNING   
+NAME					REPLICAS		  STATUS            
+[Group] application		<num_replicas>    SERVICE_RUNNING   
+<service_1>				<num_replicas>    SERVICE_RUNNING
+<service_2>				<num_replicas>    SERVICE_RUNNING   
 
 ENDPOINTS
 "xxxx.xxxxx.appcluster.<yourcluster>.com"
