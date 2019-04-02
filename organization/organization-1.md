@@ -158,8 +158,6 @@ RESULT
 OK
 ```
 
-
-
 ## Deleting users
 
 ### Web Interface

@@ -4,7 +4,7 @@ So, you just got Nalej and are itching to start working with it, but don't know 
 
 ### Environment setup
 
-For this tutorial we are assuming that there is at least one deployed cluster, and that you are already registered in the system. Also, to use Nalej you need to install the `public-api-cli`package that was sent to you by an administrator. This is what will allow us to interact with the system.
+For this tutorial we are assuming that there is at least one deployed cluster, and that you are already registered in the system. Also, to use Nalej you need to install the `public-api-cli` package that was sent to you by an administrator. This is what will allow us to interact with the system.
 
 #### Setting your user options
 
@@ -34,13 +34,18 @@ Now you can log in with only your email and password:
     --password=password
 ```
 
-### Application descriptor
+This command will exit successfully if you receive a response with your session info, like this one:
+
+```
+EMAIL     ROLE   	    ORG_ID      EXPIRES
+<email>   <role_name>   <org_id>    <session_expiration_date>
+```
 
 Congratulations! You're in the system. Now, the first thing you should do is create your own application descriptor. Then, you have to add it to the system, and after that the app will be deployed in what we call an instance. Let's go through this process.
 
 ![This is the process to follow when deploying an instance of an application.](../.gitbook/assets/app_deployment.png)
 
-#### Creating an application descriptor
+### Creating an application descriptor
 
 An **application descriptor** is a file with all the essential info to deploy a complex app on Nalej. A very basic application descriptor would look like this:
 
@@ -157,17 +162,43 @@ This example is the output of the following command:
 
 It creates a basic application descriptor for you \(called `appDescExample.json`in this case\), with a Wordpress instance and a mySQL database associated to it. To learn more about them, please visit [this link](../applications/app_descriptors.md), where you can find an extensive tutorial on how to make your own.
 
-#### Adding the application descriptor to the system
+### Adding the application descriptor to the system
+
+#### Public API CLI
 
 After creating the application descriptor, the next step is adding it to the system, which can be done with the following command:
 
 ```bash
-./public-api-cli app desc add --descriptorPath=/pathtodescriptor
+./public-api-cli app desc add /pathtodescriptor
 ```
 
-It returns an application descriptor ID, which we will need for deploying an instance of this application.
+It returns a table like this:
 
-#### Deploying the associated instance
+```bash
+DESCRIPTOR                  ID          LABELS
+SARA - simple application   <desc_id>   <label:value>
+
+NAME                  IMAGE            LABELS
+[Group] application   ===
+simple-mysql      	  <serv1_img>      <l1:v1>,<l2:v2>
+simple-wordpress      <serv2_img>      <l3:v3>,<l4:v4>
+```
+
+with an application **descriptor ID** inside, which we will need for deploying an instance of this application.
+
+#### Web Interface
+
+So, the descriptor is ready and you are already in the Application view of the web interface. Where to go from here? Great question!
+
+![Uploading a descriptor to register an application.](../.gitbook/assets/app_ppal_registered.png)
+
+In the Application view, we can see the already deployed applications in the lower part of the screen, in the Applications list. There, we need to click on the **Registered** tab, and then we can see the **Register application** button. Please click on it.
+
+![Descriptor uploading dialog](../.gitbook/assets/app_register_app_dialog.png)
+
+What we can see now is a special dialog where we can upload our application descriptor, so the application gets registered in the system. We can click on it to search the file in our file system, or we can just drag it and drop it in the designed area. After that, just clicking on the **Register** button will register the application in the system.
+
+### Deploying the associated instance
 
 And how would we deploy that instance? With this other command:
 
@@ -177,7 +208,27 @@ And how would we deploy that instance? With this other command:
 
 Here, as you may have noticed, is also the moment where we name the app with a human-readable name. When this command exits, it returns a JSON with an application **instance** ID, which is what we will use to work with the deployed instance.
 
+#### Web Interface
+
+Now that the application is registered (and thus appears in the list at the **Registered** tab), we can deploy an instance of it! There are two ways to access the deploying dialog, so let's see both.
+
+![Deploy button from the "Registered" list](../.gitbook/assets/app_ppal_registered_deploy.png)
+
+One of the ways to do that is by clicking the blue *play* button in the **Actions** column of the **Registered** tab.
+
+![Deploying an instance from the "Instances" list](../.gitbook/assets/app_ppal_deploy_instance.png)
+
+The other way is to go from the **Registered** tab to the **Instances** tab. To deploy our application we only need to click on the **Deploy instance** button on the right part of the screen.
+
+With both actions we arrive to the same dialog, which looks like this:
+
+![Deploying instances dialog](../.gitbook/assets/app_deploy_instance_dialog.png)
+
+Here we need to write the name of the instance and choose the application we want an instance of (if we clicked on the "deploy" button in the **Registered** list, the instance is already established, and we only have to write the name of the instance). Then, the instance will appear in the list under the **Instances** tab.
+
 ### Working with the deployed instance: getting related info
+
+#### Public API CLI
 
 Now we can start working with the deployed instance, doing things like, for example, getting all the information related to it in the system.
 
@@ -185,93 +236,50 @@ Now we can start working with the deployed instance, doing things like, for exam
 ./public-api-cli app inst get --instanceID=XXXXXXXXXX
 ```
 
-This command returns a JSON with all the information related to the instance we are checking, which looks like this:
+This command responds with some information related to the instance we are checking, which looks like this:
 
 ```javascript
-{
-  "organization_id": <org_id>,
-  "app_descriptor_id": <app_desc_id>,
-  "app_instance_id": <app_inst_id>,
-  "name": <name>,
-  "labels": {
-    "app": "simple-app"
-  },
-  "rules": [
-    {
-      "organization_id": <org_id>,
-      "app_descriptor_id": <app_desc_id>,
-      "rule_id": <rule_id>,
-      "name": <name>,
-      "target_service_group_name": <service_group_name>,
-      "target_service_name": <service_name>,
-      "target_port": <port>,
-      "access_name": "PUBLIC"
-    },
-    ...
-    
-  ],
-  "groups": [
-    {
-      "organization_id": <org_id>,
-      "app_descriptor_id": <app_desc_id>,
-      "app_instance_id": <app_inst_id>,
-      "service_group_id": <service_group_id>,
-      "service_group_instance_id": <service_group_instance_id>,
-      "name": <service_group_name>,
-      "service_instances": [
-        {
-          "organization_id": <org_id>,
-          "app_descriptor_id": <app_desc_id>,
-          "app_instance_id": <app_inst_id>,
-          "service_group_id": <service_group_id>,
-          "service_id": <service_id>,
-          "service_instance_id": <service_instance_id>,
-          "name": <service_name>,
-          "type_name": "DOCKER",
-          "image": <image>,
-          "specs": {
-            "replicas": 1
-          },
-          "exposed_ports": [
-            {
-              "name": "simple-app-port",
-              "internal_port": <port>,
-              "exposed_port": <port>
-            }
-          ],
-          "environment_variables": {
-            ...
-          },
-          "labels": {
-            "app": "simple-app",
-            "component": "simple-app"
-          },
-          "status_name": "SERVICE_RUNNING",
-          "endpoints": [
-            	"xxxx.xxxxx.appcluster.<yourcluster>.com"
-          ],
-          "deployed_on_cluster_id": <cluster_id>
-        },
-        ...  
-      ],
-      "policy_name": "SAME_CLUSTER",
-      "status_name": "SERVICE_SCHEDULED",
-      "specs": {
-        "replicas": 1
-      }
-    }
-  ],
-  "status_name": "RUNNING"
-}
+NAME                  REPLICAS   		STATUS            
+[Group] application   <num_replicas>    SERVICE_RUNNING   
+<service_1>           <num_replicas>    SERVICE_RUNNING
+<service_2>		      <num_replicas>    SERVICE_RUNNING   
+
+ENDPOINTS
+"xxxx.xxxxx.appcluster.<yourcluster>.com"
+
+simple-"xxxx.xxxxx.appcluster.<yourcluster>.com"
 ```
 
 Here you can see several interesting things, like the user and password for the admin in this instance of MySQL, but one of the most important parameters is:
 
-```javascript
-"status_name": "RUNNING"
+```bash
+STATUS
+SERVICE_RUNNING
 ```
 
 Where it tells you the status of the current instance. Since it is "RUNNING", we can start working with it immediately!
+
+#### Web Interface
+
+We can see the status of an instance directly in the **Instances** tab, in the colored button in the **Status** column of the list. We can also click on the instance to see all the information related to that specific instance. This takes us to a new view:
+
+![Instance View.](../.gitbook/assets/app_instance_view.png)
+
+This view has several sections:
+
+- First, we have the **summary** (upper-left part of the screen). This part will tell us the status of the instance, its application of origin, its ID, the service groups it has, and the service instances it has deployed. We have an **Undeploy application** button to undeploy the instance directly from here (we will talk about this later in this document).
+- Then we have the **services** section. First we can see a diagram that shows us the relationship between the services in the instance, where we can zoom in in case it's necessary (the color of each service depends on its status). On the upper left part of this section we have the two perspectives we can toggle between. The other perspective is a text view with all the info about the service instances related to this application instance (there is a tab with all the services, and then there is a tab for each service group).
+  - For each service we can see the number of **replicas** that are deployed, the general **status** of the service, the **endpoints** it has, and more info.
+  - When we click on the **Info** button we open a dialog where we can see even more information, like the environment variables, the labels assigned to the service or the cluster it's deployed in. 
+
+![Service Info dialog.](../.gitbook/assets/app_instance_service_info.png)
+
+- Under the summary we have the **Tags** section, where we can see the tags associated to this app instance.
+- Beside it, there's the **Rules** section, where the rules for the different service groups in the application are displayed. We can click on any of them and the full disclosure of the rule will appear.
+
+![Information for a specific rule.](../.gitbook/assets/app_instance_rules.png)
+
+- And finally, in the lower right corner of the screen, we can see the **Configuration** section, where we can find the environment variables and other settings.
 
 ### Navigating to the endpoint
 
@@ -318,6 +326,8 @@ Where each **entry** has a **timestamp** and a **msg**, which is completely depe
 
 ### Undeploying the instance
 
+#### Public API CLI
+
 OK, so we finished working with this instance, and don't want it to be in the system anymore. In this case, we need to undeploy it:
 
 ```bash
@@ -326,7 +336,19 @@ OK, so we finished working with this instance, and don't want it to be in the sy
 
 That may be all the cleanup needed if this application is something we will use again in the system, since we can deploy it again tomorrow with the same application descriptor.
 
+#### Web Interface
+
+To undeploy an instance we just have to hit the red X in the **Actions** column in the far right of the Application instances list. This will delete the instance from this list, which will mean that it's no longer in the system.
+
+![Undeploying an instance](../.gitbook/assets/app_ppal_undeploy.png)
+
 ### Deleting the app
+
+This last step is optional, only needed if we want to delete a specific app from the system, and doesn't need to be done every time we undeploy an instance.
+
+Also, the system won't let you delete an application while it has deployed instances of it in the system, so first we need to undeploy all the instances first and then delete the application from the system.
+
+#### Public API CLI
 
 But what if we just don't want the application to be available again? In that case, we need to delete the application from the system, undoing the `add` we executed before:
 
@@ -334,7 +356,13 @@ But what if we just don't want the application to be available again? In that ca
 ./public-api-cli app desc delete  --descriptorID=xxxxx
 ```
 
-This last step is optional, only needed if we want to delete a specific app from the system, and doesn't need to be done every time we undeploy an instance.
+#### Web Interface
+
+To delete the application from the system, thus avoiding the generation of instances from it in the future, we just need to go to the **Registered** tab in the Application list, and look for the application. Then, we need to click the red bin under the **Actions** column.
+
+![Deleting an application from the system.](../.gitbook/assets/app_ppal_registered_delete.png)
+
+
 
 ## Troubleshooting
 
