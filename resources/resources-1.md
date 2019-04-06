@@ -123,9 +123,9 @@ ID        	 		IP       		   	STATE
 <node_id_3>  		<ip_address>  		ASSIGNED
 
 LABELS										STATUS
-<label3>:<value3>,<label4>:<value4>,... 	RUNNING
-<label5>:<value5>,<label6>:<value6>,... 	RUNNING
-<label7>:<value7>,<label8>:<value8>,... 	RUNNING
+<label3>:<value3>,<label4>:<value4>,...     RUNNING
+<label5>:<value5>,<label6>:<value6>,...     RUNNING
+<label7>:<value7>,<label8>:<value8>,...     RUNNING
 
 ```
 

@@ -230,7 +230,7 @@ STATUS
 SERVICE_RUNNING
 ```
 
-in the first row (the one related to the whole instance) will tell us that the application is running correctly, and 
+in the  `[Group] application` row (which is the info related to the whole instance) will tell us that the application is running correctly, and 
 
 ```javascript
 ENDPOINTS
@@ -305,6 +305,13 @@ OK, so we finished working with this instance, and don't want it to be in the sy
 
 That may be all the cleanup needed if this application is something we will use again in the system, since we can deploy it again tomorrow with the same application descriptor.
 
+This, if executed successfully, will return an acknowledgment:
+
+```json
+RESULT
+OK
+```
+
 #### Web Interface
 
 To undeploy an instance we just have to hit the red X in the **Actions** column in the far right of the Application instances list. This will delete the instance from this list, which will mean that it's no longer in the system.
@@ -323,6 +330,13 @@ What if we just don't want the application to be available again? In that case, 
 
 ```bash
 ./public-api-cli app desc delete  --descriptorID=xxxxx
+```
+
+This, if executed successfully, will return an acknowledgment:
+
+```json
+RESULT
+OK
 ```
 
 #### Web Interface
