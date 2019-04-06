@@ -270,7 +270,7 @@ STATUS
 SERVICE_RUNNING
 ```
 
-Where it tells you the status of the current instance. Since it is "RUNNING", we can start working with it immediately!
+Where it tells you the status of the current instance. Since it is "SERVICE_RUNNING", we can start working with it immediately!
 
 #### Web Interface
 

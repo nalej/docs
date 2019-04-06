@@ -44,16 +44,11 @@ Where you have:
 The response to this command is something like this:
 
 ```json
-{
-  "organization_id": <org_id>,
-  "device_group_id": <devgroup_id>,
-  "name": <devgroup_name>,
-  "created": 1552389164,
-  "device_group_api_key": <devgroup_API_key>
-}
+ID      NAME              API_KEY        ENABLED   DEV_ENABLED
+<id>    <devgroup_name>   <id_api_key>   true      true
 ```
 
-This includes all the information related to the device group, which is, its **id**, its **name**, when it was **created**, and its **API key**.
+This includes all the information related to the device group, which is, its **id**, its **name**, its **API key**, if it's **enabled**, and if the devices will be **enabled** by default when joining the group.
 
 ## Registering the devices in the system
 

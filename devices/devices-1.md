@@ -51,32 +51,19 @@ So, to chech the device groups in the system, the command is:
 And it returns a JSON document with the following structure:
 
 ```json
-{
-  "groups": [
-    {
-      "organization_id": <org_id>,
-      "device_group_id": <devgroup_id>,
-      "name": <devgroup_name>,
-      "created": 1551775603,
-      "enabled": true,
-      "default_device_connectivity": true,
-      "device_group_api_key": <devgroup_API_key>
-    },
-    ...
-  ]
-}
-
+ID      NAME              API_KEY        ENABLED   DEV_ENABLED
+<id1>  <devgroup_name1>   <id_api_key>   true      true
+<id2>  <devgroup_name2>   <id_api_key>   false     false
+<id3>  <devgroup_name3>   <id_api_key>   true      true
 ```
 
 Where we can see:
 
-- the **organization_id**.
 - the **device_group_id**.
 - the human readable **name** we give the device group.
-- a timestamp registering when it was **created**.
+- the **device_group_api_key**.
 - whether it is **enabled** or not.
 - a **default_device_connectivity** flag, which indicates whether the devices are connected by default or not.
-- the **device_group_api_key**.
 
 Once we have obtained the list of device groups with their IDs, we can list the devices contained in each of them. To do so, we would use the command:
 
@@ -87,22 +74,15 @@ Once we have obtained the list of device groups with their IDs, we can list the 
 The response to this command is a JSON document similar to this one:
 
 ```json
-{
-  "devices": [
-    {
-      "organization_id": <org_id>,
-      "device_group_id": <devgroup_id>,
-      "device_id": "device1",
-      "register_since": 1552295026,
-      "enabled": true,
-      "device_status_name": "OFFLINE"
-    },
-    ...
-  ]
-}
+ID            DATE              STATUS    LABELS   ENABLED
+<dev_id1>     <reg_date>        OFFLINE            false
+<dev_id2>     <reg_date>        OFFLINE            true
+<dev_id3>     <reg_date>        OFFLINE            true
+<dev_id4>     <reg_date>        OFFLINE            true
+...
 ```
 
-Where we can see the timestamp where the device was registered (in **register_since**), whether or not it is **enabled**, and the **device_status_name**, which can be `ONLINE` or `OFFLINE`. 
+Where we can see the timestamp where the device was registered (in **DATE**), the **STATUS**, which can be `ONLINE` or `OFFLINE`, and whether or not it is **ENABLED**. 
 
 We can update the information of a device with:
 
@@ -119,17 +99,9 @@ The only thing we can change for a given device is whether the device is **enabl
 The result to this command is the device information in a JSON, like so:
 
 ```json
-{
-  "organization_id": <org_id>,
-  "device_group_id": <devgroup_id>,
-  "device_id": "device1",
-  "register_since": 1552295026,
-  "enabled": true,
-  "device_status_name": "OFFLINE"
-}
+ID            DATE              STATUS    LABELS   ENABLED
+<dev_id2>     <reg_date>        OFFLINE            false
 ```
-
-If the device is disabled, the `enabled` field does not appear in the JSON.
 
 ## Adding a device group
 
@@ -171,16 +143,11 @@ We don't need all these parameters, but we need:
 The response to this command is something like this:
 
 ```json
-{
-  "organization_id": <org_id>,
-  "device_group_id": <devgroup_id>,
-  "name": <devgroup_name>,
-  "created": 1552389164,
-  "device_group_api_key": <devgroup_API_key>
-}
+ID      NAME              API_KEY        ENABLED   DEV_ENABLED
+<id>    <devgroup_name>   <id_api_key>   true      true
 ```
 
-This includes all the information related to the device group, which is, its **id**, its **name**, when it was **created**, and its **API key**.
+This includes all the information related to the device group, which is, its **id**, its **name**, its **API key**, whether it is **enabled**, and whether the devices will be **enabled** by default when joining the group.
 
 ## Configuration of a device group
 
@@ -216,16 +183,11 @@ This information is very similar to what we need to create the group.
 - a flag indicating if we want to **enable** or **disable** the group.
 - a flag indicating how to change the default connectivity for the devices joining the group, whether we want to enable it (**enableDefaultConnectivity**) or disable it (**disableDefaultConnectivity**).
 
-The result of executing this command is the same as with the `devicegroup add` command, which is:
+The result of executing this command is the same as with the `devicegroup add` command but with the updated information:
 
 ```json
-{
-  "organization_id": <org_id>,
-  "device_group_id": <devgroup_id>,
-  "name": <devgroup_name>,
-  "created": 1552389164,
-  "device_group_api_key": <devgroup_API_key>
-}
+ID      NAME              API_KEY        ENABLED   DEV_ENABLED
+<id>    <devgroup_name>   <id_api_key>   true      true
 ```
 
 ## Deleting a device group
@@ -252,6 +214,7 @@ To remove a device group from the system, we need:
 And, if this command exits successfully, it will return a message like this one:
 
 ```bash
-{"msg":"device group has been removed"}
+RESULT
+OK
 ```
 

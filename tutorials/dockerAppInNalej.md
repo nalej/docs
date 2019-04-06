@@ -240,54 +240,25 @@ One of the things we could do to know if the instance is running is getting its 
 This command returns a JSON with all the information related to the instance we are checking, which looks like this:
 
 ```javascript
-{
-  "organization_id": <org_id>,
-  "app_descriptor_id": <app_desc_id>,
-  "app_instance_id": <app_inst_id>,
-  "name": <name>,
-  "labels": {
-    "app": "simple-app"
-  },
-  "rules": [
-    {
-      ...
-    },
-    ...
-    
-  ],
-  "groups": [
-    {
-      "organization_id": <org_id>,
-      "app_descriptor_id": <app_desc_id>,
-      "app_instance_id": <app_inst_id>,
-      "service_group_id": <service_group_id>,
-      "service_group_instance_id": 
-        	<service_group_instance_id>,
-      "name": <service_group_name>,
-      "service_instances": [
-        {
-          ...
-        },
-        ...  
-      ],
-      "policy_name": "SAME_CLUSTER",
-      "status_name": "SERVICE_SCHEDULED",
-      "specs": {
-        "replicas": 1
-      }
-    }
-  ],
-  "status_name": "RUNNING"
-}
+NAME						REPLICAS		  STATUS            
+[Group] application		<num_replicas>    SERVICE_RUNNING   
+<service_1>				<num_replicas>    SERVICE_RUNNING
+<service_2>				<num_replicas>    SERVICE_RUNNING   
+
+ENDPOINTS
+"xxxx.xxxxx.appcluster.<yourcluster>.com"
+
+simple-"xxxx.xxxxx.appcluster.<yourcluster>.com"
 ```
 
-Here you can see several interesting things, like the user and password for the admin in this instance of MySQL, but one of the most important parameters is:
+Here you can see several interesting things, but one of the most important parameters is:
 
 ```javascript
-"status_name": "RUNNING"
+STATUS
+SERVICE_RUNNING
 ```
 
-Where it tells you the status of the current instance. Since it is "RUNNING", we can start working with it immediately!
+Where it tells you the status of the current instance. Since it is "SERVICE_RUNNING", we can start working with it immediately!
 
 ### Web Interface
 
