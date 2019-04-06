@@ -4,7 +4,9 @@ So, you just got Nalej and are itching to start working with it, but don't know 
 
 ### Environment setup
 
-For this tutorial we are assuming that there is at least one deployed cluster, and that you are already registered in the system. Also, to use Nalej you need to install the `public-api-cli` package that was sent to you by an administrator. This is what will allow us to interact with the system.
+For this tutorial we are assuming that there is at least one deployed cluster, and that you are already registered in the system. Also, to use Nalej through the command-line interface you need to install the `public-api-cli` package that was sent to you by an administrator. This is what will allow us to interact with the system.
+
+*The CLI responses are shown in this document with the default format. If you need the responses in JSON format, you can get them by adding --text="json" at the end of your requests, or as a user option.*
 
 #### Setting your user options
 
@@ -203,10 +205,21 @@ What we can see now is a special dialog where we can upload our application desc
 And how would we deploy that instance? With this other command:
 
 ```bash
-./public-api-cli app inst deploy --descriptorID=xxxxxxx --name=name-app
+./public-api-cli app inst deploy 
+	<desc_id>
+	"<inst_name>"
 ```
 
 Here, as you may have noticed, is also the moment where we name the app with a human-readable name. When this command exits, it returns a JSON with an application **instance** ID, which is what we will use to work with the deployed instance.
+
+The response to this command will look like this:
+
+```json
+REQUEST        ID          STATUS
+<request_id>   <inst_id>   QUEUED
+```
+
+Which contains the **request_id** for the request we just did, the **instance_id** of the instance we are trying to deploy, and the current **status** of the instance, which in the moment after executing the command is **QUEUED** for deployment.
 
 #### Web Interface
 
@@ -283,12 +296,13 @@ This view has several sections:
 
 ### Navigating to the endpoint
 
-The JSON obtained with `app inst get` has another piece of information that can be very useful for us, which is the **endpoint** where the instance is deployed. This information looks like this:
+The JSON obtained with `app inst get` has another piece of information that can be very useful for us, which is the **endpoints** where the instance is deployed. This information looks like this:
 
 ```javascript
-"endpoints": [
-          "xxxx.xxxxx.appcluster.<yourcluster>.com"
-      ],
+ENDPOINTS
+"xxxx.xxxxx.appcluster.<yourcluster>.com"
+
+simple-"xxxx.xxxxx.appcluster.<yourcluster>.com"
 ```
 
 This collection of addresses is where the instance is deployed, and you can access it from any browser and get more information about the instance and the services it uses.
@@ -301,28 +315,14 @@ Once the application is running, it's generating logs and storing them in the sy
 ./public-api-cli log search --instanceID=xxxx > appLogs.json
 ```
 
-This will return a (most likely) very long JSON file, with the following format:
+This will return a (most likely) very long response, with the following format:
 
 ```json
-{
-  "organization_id": <org_id>,
-  "app_instance_id": <app_inst_id>,
-  "entries": [
-    {
-      "timestamp": {
-        "seconds": 1551796628,
-        "nanos": 902000000
-      },
-      "msg": "<logged_info> "
-    },
-    ...
-  ]
-}
+TIMESTAMP   		MSG
+<msg_timestamp>		<logged_info>
 ```
 
-Where each **entry** has a **timestamp** and a **msg**, which is completely dependant on the application that generates the log. Typically, the logged info contains the **log_level**, which can be useful to differentiate an informative log from an error one. Please check the log message format of the application you're consulting before diving in this file.
-
-
+Where each **entry** has a **timestamp** and a **msg** with the logged info related to the instance, which is completely dependant on the application that generates the log. Typically, the logged info contains the **log_level**, which can be useful to differentiate an informative log from an error one. Please check the log message format of the application you're consulting before diving in this file.
 
 ### Undeploying the instance
 
@@ -335,6 +335,13 @@ OK, so we finished working with this instance, and don't want it to be in the sy
 ```
 
 That may be all the cleanup needed if this application is something we will use again in the system, since we can deploy it again tomorrow with the same application descriptor.
+
+This, if executed successfully, will return an acknowledgment:
+
+```json
+RESULT
+OK
+```
 
 #### Web Interface
 

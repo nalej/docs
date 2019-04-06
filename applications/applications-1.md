@@ -270,26 +270,14 @@ Once the application is running, it's generating logs and storing them in the sy
 ./public-api-cli log search --instanceID=xxxx > appLogs.json
 ```
 
-This will return a (most likely) very long JSON file, with the following format:
+This will return a (most likely) very long response, with the following format:
 
 ```json
-{
-  "organization_id": <org_id>,
-  "app_instance_id": <app_inst_id>,
-  "entries": [
-    {
-      "timestamp": {
-        "seconds": 1551796628,
-        "nanos": 902000000
-      },
-      "msg": "<logged_info> "
-    },
-    ...
-  ]
-}
+TIMESTAMP   		MSG
+<msg_timestamp>		<logged_info>
 ```
 
-Where each **entry** has a **timestamp** and a **msg**, which is completely dependant on the application that generates the log. Typically, the logged info contains the **log_level**, which can be useful to differentiate an informative log from an error one. Please check the log message format of the application you're consulting before diving in this file.
+Where each **entry** has a **timestamp** and a **msg** with the logged info related to the instance, which is completely dependant on the application that generates the log. Typically, the logged info contains the **log_level**, which can be useful to differentiate an informative log from an error one. Please check the log message format of the application you're consulting before diving in this file.
 
 ## Application removal
 

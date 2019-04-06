@@ -50,6 +50,8 @@ The response to this command looks like this:
 }
 ```
 
+> TODO change to new CLI response style.
+
 ## Is the cluster running?
 
 We can check if the installation was successful and the cluster is up and running through the Web Interface and through the CLI.
