@@ -2,8 +2,6 @@
 
 The application you're deploying will be deployed in a **cluster**. A cluster is a logical group of **nodes**, which are physical devices. When an application is deployed, the cluster will decide if there is a need to deploy it in one or several nodes, and will manage it accordingly.
 
-
-
 ------
 
 ### *Label-related warning*
@@ -77,6 +75,8 @@ If, however, in the list of labels we click on one or more labels (selecting the
 As stated above, please handle these features with care.
 
 ### Public API CLI
+
+*The CLI responses are shown in text format, which can be obtained adding `--output="text"` to the user options. If you need the responses in JSON format, you can get them by adding `--output="json"` at the end of your requests, or as a user option.*
 
 We can also obtain information about our clusters and their nodes through the CLI. For example, a list of clusters can be obtained by executing:
 

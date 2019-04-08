@@ -4,7 +4,7 @@ This section will have all the documents related to app deployment, management a
 
 Now that we know how the clusters work, it's time to start deploying applications in the system. Let's see how to do this.
 
-*The CLI responses are shown in this document with the text format, which can be obtain adding --output="text" to the user options. If you need the responses in JSON format, you can get them by adding --output="json" at the end of your requests, or as a user option.*
+*The CLI responses are shown in text format, which can be obtained adding `--output="text"` to the user options. If you need the responses in JSON format, you can get them by adding `--output="json"` at the end of your requests, or as a user option.*
 
 ## Application management through web interface
 

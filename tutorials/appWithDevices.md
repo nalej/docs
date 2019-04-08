@@ -2,7 +2,7 @@
 
 So you have an application that needs some extra devices (let's say, for example, an app that measures the temperature of a building, and has sensors in every floor of the building). 
 
-*The CLI responses are shown in this document with the text format, which can be obtain adding --output="text" to the user options. If you need the responses in JSON format, you can get them by adding --output="json" at the end of your requests, or as a user option.*
+*The CLI responses are shown in text format, which can be obtained adding `--output="text"` to the user options. If you need the responses in JSON format, you can get them by adding `--output="json"` at the end of your requests, or as a user option.*
 
 ## Creating a new device group in the system
 

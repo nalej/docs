@@ -190,7 +190,7 @@ And how would we deploy that instance? With this other command:
 	--name=name-app
 ```
 
-Here, as you may have noticed, is also the moment where we name the app with a human-readable name. When this command exits, it returns a JSON with an application **instance** ID, which is what we will use to work with the deployed instance.
+Here, as you may have noticed, is also the moment where we name the app with a human-readable name. When this command exits, it returns an application **instance** ID, which is what we will use to work with the deployed instance.
 
 ### Web Interface
 
@@ -229,6 +229,8 @@ Here we need to write the name of the instance and choose the application we wan
 Now an instance of the application should be up and running in Nalej. You can check its status through the API CLI and through the Web Interface.
 
 ### Public API CLI
+
+*The CLI responses are shown in text format, which can be obtained adding `--output="text"` to the user options. If you need the responses in JSON format, you can get them by adding `--output="json"` at the end of your requests, or as a user option.*
 
 One of the things we could do to know if the instance is running is getting its information, which we can do with:
 
