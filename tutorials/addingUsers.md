@@ -45,7 +45,7 @@ Once you log in the system, the command you need is `users`.  To create a new us
 This command will return something like:
 
 ```json
-NAME   		  ROLE        		 EMAIL
+NAME   		 ROLE      		 EMAIL
 <user_name>   <user_role_name>   <user_email>
 ```
 
