@@ -6,7 +6,7 @@ So, you just got Nalej and are itching to start working with it, but don't know 
 
 For this tutorial we are assuming that there is at least one deployed cluster, and that you are already registered in the system. Also, to use Nalej through the command-line interface you need to install the `public-api-cli` package that was sent to you by an administrator. This is what will allow us to interact with the system.
 
-*The CLI responses are shown in this document with the default format. If you need the responses in JSON format, you can get them by adding --text="json" at the end of your requests, or as a user option.*
+*The CLI responses are shown in this document with the text format, which can be obtain adding --output="text" to the user options. If you need the responses in JSON format, you can get them by adding --output="json" at the end of your requests, or as a user option.*
 
 #### Setting your user options
 

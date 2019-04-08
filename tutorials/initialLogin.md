@@ -28,6 +28,16 @@ To check if these commands have executed correctly and the options are in fact s
 ./public-api-cli options list
 ```
 
+Right now, the responses to the CLI commands will be JSON-formatted documents. If you want to see them in a format that's easier to read, you should add this other option:
+
+```bash
+./public-api-cli options set 
+	--key=output 
+	--value=text
+```
+
+This will return the responses in a more human-readable format. If, however, you happen to need the response of a specific command in a JSON document, just adding --output="JSON" will override this for that command.
+
 ### Login
 
 After this, we can log in normally:
@@ -37,8 +47,6 @@ After this, we can log in normally:
     --email=user@nalej.com 
     --password=password
 ```
-
-
 
 ## Web Platform login
 

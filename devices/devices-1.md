@@ -2,6 +2,8 @@
 
 This section will talk about devices in Nalej. The system understands the concept of **device** as an abstract entity that the user can manage as part of the applications installed in the cluster.
 
+*The CLI responses are shown in this document with the text format, which can be obtain adding --output="text" to the user options. If you need the responses in JSON format, you can get them by adding --output="json" at the end of your requests, or as a user option.*
+
 ## Getting device-related information
 
 ### Web Interface
