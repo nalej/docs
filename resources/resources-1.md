@@ -93,10 +93,10 @@ NAME                   ID          		NODES
 <cluster_name_2>	   <cluster_id_2> 	<total_num_nodes>
 <cluster_name_3>	   <cluster_id_3> 	<total_num_nodes>
 
-LABELS                          			STATUS
-<label11>:<value11>,<label12>:<value12>   	RUNNING
-<label13>:<value13>,<label14>:<value14>   	RUNNING
-<label15>:<value15>,<label15>:<value15>  	RUNNING
+LABELS										STATUS
+<label11>:<value11>,<label12>:<value12>		RUNNING
+<label13>:<value13>,<label14>:<value14>		RUNNING
+<label15>:<value15>,<label15>:<value15>		RUNNING
 
 ```
 
@@ -123,9 +123,9 @@ ID        	 		IP       		   	STATE
 <node_id_3>  		<ip_address>  		ASSIGNED
 
 LABELS										STATUS
-<label3>:<value3>,<label4>:<value4>,...     RUNNING
-<label5>:<value5>,<label6>:<value6>,...     RUNNING
-<label7>:<value7>,<label8>:<value8>,...     RUNNING
+<label3>:<value3>,<label4>:<value4>,...		RUNNING
+<label5>:<value5>,<label6>:<value6>,...		RUNNING
+<label7>:<value7>,<label8>:<value8>,...		RUNNING
 
 ```
 

@@ -6,8 +6,6 @@ So, you just got Nalej and are itching to start working with it, but don't know 
 
 For this tutorial we are assuming that there is at least one deployed cluster, and that you are already registered in the system. Also, to use Nalej through the command-line interface you need to install the `public-api-cli` package that was sent to you by an administrator. This is what will allow us to interact with the system.
 
-*The CLI responses are shown in this document with the text format, which can be obtain adding --output="text" to the user options. If you need the responses in JSON format, you can get them by adding --output="json" at the end of your requests, or as a user option.*
-
 #### Setting your user options
 
 Is this the very first time you log in the platform? There are some variables that are needed for each interaction, so establishing them before starting means we won't have to write them down in each request. These variables, or options, are the **certificate** you received, and the addresses of the **Nalej login server** and the **Nalej API server**. Gather all this data, go to the `public-api-cli/bin` folder in your computer and execute the following instructions:
@@ -25,6 +23,16 @@ To check if these commands have executed correctly and the options are in fact s
 ```bash
 ./public-api-cli options list
 ```
+
+Right now, the responses to the CLI commands will be JSON-formatted documents. If you want to see them in a format that's easier to read, you should add this other option:
+
+```bash
+./public-api-cli options set 
+	--key=output 
+	--value=text
+```
+
+This will return the responses in a more human-readable format. If, however, you happen to need the response of a specific command in a JSON document, just adding --output="JSON" will override this for that command.
 
 ### Login
 
