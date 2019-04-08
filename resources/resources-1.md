@@ -117,7 +117,7 @@ Once we know the cluster ID, we can list the nodes belonging to it.
 This is the response to the command above:
 
 ```bash
-ID        	 		IP       		   	STATE      
+ID					IP					STATE      
 <node_id_1>  		<ip_address>		ASSIGNED
 <node_id_2>  		<ip_address>		ASSIGNED
 <node_id_3>  		<ip_address>		ASSIGNED
