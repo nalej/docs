@@ -24,6 +24,7 @@ Once we have this file, we can execute the installation command, which is:
 	--kubeConfigPath=/path/to/kubeconfig_file.yaml 
 	--useStaticIPAddresses 
 	--ipAddressIngress=<static_ip_address>
+	--output=json
 ```
 
 Which uses these parameters:
@@ -39,6 +40,8 @@ These are the mandatory parameters. There are two more optional ones:
 
  This static IP address, if it exists, must be provided by the Nalej management department. If it's not given, the Kubernetes cluster will ask for an IP while executing this command, and then tell the management cluster about the obtained IP.
 
+Lastly, we use **--output=json** to receive the response in JSON format.
+
 The response to this command looks like this:
 
 ```json
@@ -49,8 +52,6 @@ The response to this command looks like this:
   "state": 1
 }
 ```
-
-> TODO change to new CLI response style.
 
 ## Is the cluster running?
 
