@@ -86,8 +86,7 @@ We can also obtain information about our clusters and their nodes through the CL
 
 This command will return, as usual, a table with some of the information the system has about the clusters in it:
 
-```bash
-
+```json
 NAME                   ID          		NODES   
 <cluster_name_1>	   <cluster_id_1> 	<total_num_nodes>
 <cluster_name_2>	   <cluster_id_2> 	<total_num_nodes>
@@ -116,7 +115,7 @@ Once we know the cluster ID, we can list the nodes belonging to it.
 
 This is the response to the command above:
 
-```bash
+```json
 ID					IP					STATE      
 <node_id_1>  		<ip_address>		ASSIGNED
 <node_id_2>  		<ip_address>		ASSIGNED
