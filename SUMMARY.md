@@ -15,6 +15,7 @@
 
 * [Application deployment, management and removal](applications/applications-1.md)
 * [Structure of an application descriptor](applications/app_descriptors.md)
+* [The Application Diagram, explained](applications/appdiagram.md)
 
 ## Devices
 
