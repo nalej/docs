@@ -1,4 +1,4 @@
-# Application Deployment with Nalej
+# Application Deployment
 
 So, you just got Nalej and are itching to start working with it, but don't know where to start. No worries! This document will walk you through the process of deploying your very first application with Nalej.
 
@@ -28,8 +28,8 @@ Right now, the responses to the CLI commands will be JSON-formatted documents. I
 
 ```bash
 ./public-api-cli options set 
-	--key=output 
-	--value=text
+    --key=output 
+    --value=text
 ```
 
 This will return the responses in a more human-readable format. If, however, you happen to need the response of a specific command in a JSON document, just adding --output="JSON" will override this for that command.
@@ -47,7 +47,7 @@ Now you can log in with only your email and password:
 This command will exit successfully if you receive a response with your session info, like this one:
 
 ```javascript
-EMAIL     ROLE   	    ORG_ID      EXPIRES
+EMAIL     ROLE           ORG_ID      EXPIRES
 <email>   <role_name>   <org_id>    <session_expiration_date>
 ```
 
@@ -188,10 +188,10 @@ It returns a table like this:
 DESCRIPTOR                  ID          LABELS
 SARA - simple application   <desc_id>   <label:value>
 
-NAME                  	IMAGE            LABELS
-[Group] application		===
-simple-mysql			<serv1_img>      <l1:v1>,<l2:v2>
-simple-wordpress		<serv2_img>      <l3:v3>,<l4:v4>
+NAME                      IMAGE            LABELS
+[Group] application        ===
+simple-mysql            <serv1_img>      <l1:v1>,<l2:v2>
+simple-wordpress        <serv2_img>      <l3:v3>,<l4:v4>
 ```
 
 with an application **descriptor ID** inside, which we will need for deploying an instance of this application.
@@ -214,30 +214,30 @@ And how would we deploy that instance? With this other command:
 
 ```bash
 ./public-api-cli app inst deploy 
-	<desc_id>
-	"<inst_name>"
+    <desc_id>
+    "<inst_name>"
 ```
 
 Here, as you may have noticed, is also the moment where we name the app with a human-readable name. When this command exits, it returns a JSON with an application **instance** ID, which is what we will use to work with the deployed instance.
 
 The response to this command will look like this:
 
-```json
+```javascript
 REQUEST        ID          STATUS
 <request_id>   <inst_id>   QUEUED
 ```
 
-Which contains the **request_id** for the request we just did, the **instance_id** of the instance we are trying to deploy, and the current **status** of the instance, which in the moment after executing the command is **QUEUED** for deployment.
+Which contains the **request\_id** for the request we just did, the **instance\_id** of the instance we are trying to deploy, and the current **status** of the instance, which in the moment after executing the command is **QUEUED** for deployment.
 
 #### Web Interface
 
-Now that the application is registered (and thus appears in the list at the **Registered** tab), we can deploy an instance of it! There are two ways to access the deploying dialog, so let's see both.
+Now that the application is registered \(and thus appears in the list at the **Registered** tab\), we can deploy an instance of it! There are two ways to access the deploying dialog, so let's see both.
 
-![Deploy button from the "Registered" list](../.gitbook/assets/app_ppal_registered_deploy.png)
+![Deploy button from the &quot;Registered&quot; list](../.gitbook/assets/app_ppal_registered_deploy.png)
 
-One of the ways to do that is by clicking the blue *play* button in the **Actions** column of the **Registered** tab.
+One of the ways to do that is by clicking the blue _play_ button in the **Actions** column of the **Registered** tab.
 
-![Deploying an instance from the "Instances" list](../.gitbook/assets/app_ppal_deploy_instance.png)
+![Deploying an instance from the &quot;Instances&quot; list](../.gitbook/assets/app_ppal_deploy_instance.png)
 
 The other way is to go from the **Registered** tab to the **Instances** tab. To deploy our application we only need to click on the **Deploy instance** button on the right part of the screen.
 
@@ -245,7 +245,7 @@ With both actions we arrive to the same dialog, which looks like this:
 
 ![Deploying instances dialog](../.gitbook/assets/app_deploy_instance_dialog.png)
 
-Here we need to write the name of the instance and choose the application we want an instance of (if we clicked on the "deploy" button in the **Registered** list, the instance is already established, and we only have to write the name of the instance). Then, the instance will appear in the list under the **Instances** tab.
+Here we need to write the name of the instance and choose the application we want an instance of \(if we clicked on the "deploy" button in the **Registered** list, the instance is already established, and we only have to write the name of the instance\). Then, the instance will appear in the list under the **Instances** tab.
 
 ### Working with the deployed instance: getting related info
 
@@ -260,10 +260,10 @@ Now we can start working with the deployed instance, doing things like, for exam
 This command responds with some information related to the instance we are checking, which looks like this:
 
 ```javascript
-NAME						REPLICAS		  STATUS            
-[Group] application		<num_replicas>    SERVICE_RUNNING   
-<service_1>				<num_replicas>    SERVICE_RUNNING
-<service_2>				<num_replicas>    SERVICE_RUNNING   
+NAME                        REPLICAS          STATUS            
+[Group] application        <num_replicas>    SERVICE_RUNNING   
+<service_1>                <num_replicas>    SERVICE_RUNNING
+<service_2>                <num_replicas>    SERVICE_RUNNING   
 
 ENDPOINTS
 "xxxx.xxxxx.appcluster.<yourcluster>.com"
@@ -278,7 +278,7 @@ STATUS
 SERVICE_RUNNING
 ```
 
-Where it tells you the status of the current instance. Since it is "SERVICE_RUNNING", we can start working with it immediately!
+Where it tells you the status of the current instance. Since it is "SERVICE\_RUNNING", we can start working with it immediately!
 
 #### Web Interface
 
@@ -288,19 +288,19 @@ We can see the status of an instance directly in the **Instances** tab, in the c
 
 This view has several sections:
 
-- First, we have the **summary** (upper-left part of the screen). This part will tell us the status of the instance, its application of origin, its ID, the service groups it has, and the service instances it has deployed. We have an **Undeploy application** button to undeploy the instance directly from here (we will talk about this later in this document).
-- Then we have the **services** section. First we can see a diagram that shows us the relationship between the services in the instance, where we can zoom in in case it's necessary (the color of each service depends on its status). On the upper left part of this section we have the two perspectives we can toggle between. The other perspective is a text view with all the info about the service instances related to this application instance (there is a tab with all the services, and then there is a tab for each service group).
-  - For each service we can see the number of **replicas** that are deployed, the general **status** of the service, the **endpoints** it has, and more info.
-  - When we click on the **Info** button we open a dialog where we can see even more information, like the environment variables, the labels assigned to the service or the cluster it's deployed in. 
+* First, we have the **summary** \(upper-left part of the screen\). This part will tell us the status of the instance, its application of origin, its ID, the service groups it has, and the service instances it has deployed. We have an **Undeploy application** button to undeploy the instance directly from here \(we will talk about this later in this document\).
+* Then we have the **services** section. First we can see a diagram that shows us the relationship between the services in the instance, where we can zoom in in case it's necessary \(the color of each service depends on its status\). On the upper left part of this section we have the two perspectives we can toggle between. The other perspective is a text view with all the info about the service instances related to this application instance \(there is a tab with all the services, and then there is a tab for each service group\).
+  * For each service we can see the number of **replicas** that are deployed, the general **status** of the service, the **endpoints** it has, and more info.
+  * When we click on the **Info** button we open a dialog where we can see even more information, like the environment variables, the labels assigned to the service or the cluster it's deployed in. 
 
 ![Service Info dialog.](../.gitbook/assets/app_instance_service_info.png)
 
-- Under the summary we have the **Tags** section, where we can see the tags associated to this app instance.
-- Beside it, there's the **Rules** section, where the rules for the different service groups in the application are displayed. We can click on any of them and the full disclosure of the rule will appear.
+* Under the summary we have the **Tags** section, where we can see the tags associated to this app instance.
+* Beside it, there's the **Rules** section, where the rules for the different service groups in the application are displayed. We can click on any of them and the full disclosure of the rule will appear.
 
 ![Information for a specific rule.](../.gitbook/assets/app_instance_rules.png)
 
-- And finally, in the lower right corner of the screen, we can see the **Configuration** section, where we can find the environment variables and other settings.
+* And finally, in the lower right corner of the screen, we can see the **Configuration** section, where we can find the environment variables and other settings.
 
 ### Navigating to the endpoint
 
@@ -323,14 +323,14 @@ Once the application is running, it's generating logs and storing them in the sy
 ./public-api-cli log search --instanceID=xxxx > appLogs.json
 ```
 
-This will return a (most likely) very long response, with the following format:
+This will return a \(most likely\) very long response, with the following format:
 
-```json
-TIMESTAMP   		MSG
-<msg_timestamp>		<logged_info>
+```javascript
+TIMESTAMP           MSG
+<msg_timestamp>        <logged_info>
 ```
 
-Where each **entry** has a **timestamp** and a **msg** with the logged info related to the instance, which is completely dependant on the application that generates the log. Typically, the logged info contains the **log_level**, which can be useful to differentiate an informative log from an error one. Please check the log message format of the application you're consulting before diving in this file.
+Where each **entry** has a **timestamp** and a **msg** with the logged info related to the instance, which is completely dependant on the application that generates the log. Typically, the logged info contains the **log\_level**, which can be useful to differentiate an informative log from an error one. Please check the log message format of the application you're consulting before diving in this file.
 
 ### Undeploying the instance
 
@@ -346,7 +346,7 @@ That may be all the cleanup needed if this application is something we will use 
 
 This, if executed successfully, will return an acknowledgment:
 
-```json
+```javascript
 RESULT
 OK
 ```
@@ -373,7 +373,7 @@ But what if we just don't want the application to be available again? In that ca
 
 This, if executed successfully, will return an acknowledgment:
 
-```json
+```javascript
 RESULT
 OK
 ```
@@ -383,8 +383,6 @@ OK
 To delete the application from the system, thus avoiding the generation of instances from it in the future, we just need to go to the **Registered** tab in the Application list, and look for the application. Then, we need to click the red bin under the **Actions** column.
 
 ![Deleting an application from the system.](../.gitbook/assets/app_ppal_registered_delete.png)
-
-
 
 ## Troubleshooting
 
