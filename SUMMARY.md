@@ -1,6 +1,6 @@
 # Table of contents
 
-- [Welcome to Nalej](README.md)
+- [Welcome to Nalej v0.2.0](README.md)
 
 ## Organization
 
