@@ -1,13 +1,6 @@
 # The Application Diagram, explained
 
-Este tutorial va a explicar el diagrama de la pantalla de application instance en la web. Entre otras cosas, va a explicar este diagrama cuando la instancia:
 
-- tenga varias réplicas de servicios/grupos
-- tenga reglas de autorización complejas (sólo unos servicios puedan utilizar otros).
-- tenga distintas variables de entorno
-- ... otras cosas
-
-------------
 
 ![Application instance main screen](../.gitbook/assets/appinstance_diagram_main.png)
 
