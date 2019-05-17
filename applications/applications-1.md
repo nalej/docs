@@ -133,7 +133,7 @@ So, first you need to create an application descriptor. The documentation for do
 }
 ```
 
-This is the descriptor of a WordPress server with an associated MySQL database. Your should look similar, depending on the services you want to deploy.
+This is the descriptor of a WordPress server with an associated MySQL database. Yours should look similar, depending on the services you want to deploy.
 
 ### Adding the application to the system
 

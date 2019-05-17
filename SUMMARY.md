@@ -28,4 +28,5 @@
 * [Docker Compose application](tutorials/dockerappinnalej.md)
 * [Adding users in the system](tutorials/addingusers.md)
 * [Application with devices](tutorials/appwithdevices.md)
+* [How to turn a Raspberry Pi into a device in your Nalej app](tutorials/endtoendtutorial.md)
 
