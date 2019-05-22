@@ -4,7 +4,7 @@ I know you have been fascinated with Nalej's possibilities from the get-go, and 
 
 ## The Scenario
 
-We want to deploy an instance of Kibana with ElasticSearch, and we want a device to collect the data that Kibana is going to manage. That device would be a brand new Raspberry Pi, so we will install Nalej SDK in it, and activate and configure the SDK so that it connects with Nalej automatically. 
+We are going to build a fancy thermometer. For this, we will use a brand new Raspberry Pi as a temperature sensor, and we will have a web interface to see what it measures. We will deploy an instance of Kibana with ElasticSearch, and the device will collect the data that Kibana is going to manage. That device would be a brand new Raspberry Pi, so we will install Nalej SDK in it, and activate and configure the SDK so that it connects with Nalej automatically. 
 
 Then we will create the application descriptor that will allow our application to deploy. This descriptor will have some parameters we will be able to configure, like the name of the device group our device belongs to. Once this is done, we will be able to include the app in the system and deploy it. 
 
@@ -15,7 +15,120 @@ Then we will create the application descriptor that will allow our application t
 > para el device necesitamos:
 >
 > - instalar el sdk
-> - 
+> - ...
+
+You receive your brand new Raspberry Pi, and have a microSD and want to start configuring it as a Nalej device as soon as possible. Great! So, what do you need?
+
+First, you need an operating system. The only requirement for it to run the SDK is that it has a Python interpreter. For Raspberry Pi, there are many options available and ready to download, but we recommend **Raspbian**, which you can download [from the official Raspberry Pi site](https://www.raspberrypi.org/downloads/) and easily install it in your microSD. 
+
+### Getting ready for the SDK
+
+Let's suppose you install Raspbian and the installation went uneventfully. In order to be able to use the Nalej Python SDK, you need **Python 3.7** and **PIP 3** (version 18.1 or higher). You also need the following libraries:
+
+- requests
+- pathlib
+- paho-mqtt
+
+### Installation
+
+Now, to install the SDK you first need to download the source code from the GitHub repository ([here](<https://github.com/nalej/nalej-iot-device-sdk-python>)). After doing that, once in the SDK folder, there are two ways of installing the SDK, which are:
+
+```
+python3 setup.py install
+```
+
+Or:
+
+```
+pip3 install -e .
+```
+
+### Device registration and platform log-in
+
+We have already installed the SDK, and now it's time to register our Raspberry Pi and get it in the system. For this, we will need to write a very short Python program with some configuration information and commands.
+
+To register the device, we need the following information:
+
+- the Nalej **platform domain**.
+- the **organization_id**
+- the **device_group_name** (this parameter can be already defined or, if it's the first device of its group, we can choose a name now and include it later in the descriptor when we deploy the application).
+- the **device_group_api_key**
+- the **device_id**
+
+> estos dos últimos parámetros hacen falta realmente? o se ponen automáticamente por el sistema?
+
+The device will be a client of the platform. In the SDK this is modeled as a NalejClient object. This object needs the configuration information stored somewhere so it can register the device, and this "somewhere" is a NalejConfig object.
+
+We can create a NalejClient object that can be instantiated and register our device following one of these two ways: we can create a NalejConfig object, or we can create a JSON file with the information and then obtain it from there. Let's see the two options:
+
+#### Creating a NalejConfig object
+
+To do this, our Python file would look like this:
+
+```python
+from nalej.configuration.config_manager import NalejConfig
+from nalej.core.client import NalejClient
+
+# we include the configuraton information that we have
+# gathered previously (mainly by asking the Nalej admin).
+nalejPlatformDomain='demo.nalej.tech'
+organizationId='xxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx'
+deviceGroupName='test_group'
+deviceGroupId='xxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx'
+deviceGroupApiKey='xxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx'
+deviceId='deviceTemp001'
+
+# we then create the NalejConfig object with all this
+# information
+config = NalejConfig(nalejPlatformDomain, organizationId, deviceGroupName, deviceGroupId, deviceGroupApiKey, deviceId)
+
+# finally, we instantiate the NalejClient object with the
+# configuration as a parameter
+client = NalejClient(config)
+```
+
+#### Using a local configuration file
+
+The SDK contemplates the possibility that, instead of each parameter, the Nalej administrator gives you a configuration file. The file will look like this:
+
+```
+{
+"nalejPlatformDomain":"demo.nalej.tech",
+"organizationId":"xxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+"deviceGroupName":"test_group",
+"deviceGroupId":"xxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+"deviceGroupApiKey":"xxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+"deviceId":"deviceTemp001"
+}
+```
+
+In this case, the method to create the object will be a bit different, and you will need to include the configuration file path. If this method doesn't have a path, it will look for a file called *.nalej_config* in the *home* folder of the current user.
+
+So, assuming the file is called *.nalej_config* and it's located in the *home* folder of the current user, your Python file will look like this:
+
+```python
+from nalej.core.client import NalejClient
+
+# config in /Users/username/.nalej_config
+client = NalejClient.fromConfigFile()
+
+# config somewhere else
+# client = NalejClient.fromConfigFile(/path/to/config/file)
+```
+
+#### Registering the device
+
+After getting a NalejClient object, to register the device and log in the platform, we need to add the following to our Python program:
+
+```python
+client.connect()
+```
+
+
+
+
+
+
 
 ## The Application
 
@@ -56,11 +169,10 @@ We will start thinking about the services we need for our application.
 
 - Having devices implies some kind of communication between the device and the server. For that we will use **MQTT**, with a global instance (the broker) in the server and a local instance (a client) in each device.
 
-- Lastly, we need something that can deliver the MQTT messages to Elastic easily. This will be solved by a **Beat**. 
+- Lastly, we need something that can deliver the MQTT messages to Elastic easily. This will be solved by a **Beat**, a MQTTBeat specifically.
 
-  
 
-So, as we said, we would need two service groups, the `core` (which will have Kibana, ElasticSearch, the Beat and the core instance of MQTT) and the `gateway` (which will have the local instance of MQTT). The `groups` part of the descriptor, then, would look like this:
+So we will need only one service group, the `core`, which will have Kibana, ElasticSearch, the Beat and an instance of MQTT. The `groups` part of the descriptor, then, would look like this:
 
 ```json
  "groups": [
@@ -142,7 +254,7 @@ So, as we said, we would need two service groups, the `core` (which will have Ki
           ]  
         },            
         {
-          "name": "coremqtt",
+          "name": "mqtt",
           "description": "VerneMQ MQTT message broker",
           "image": <image_path>,
           "credentials": {
@@ -172,39 +284,6 @@ So, as we said, we would need two service groups, the `core` (which will have Ki
         "deployment_selectors": {
           "cloud": "azure"
         }
-      }
-    },
-    {
-      "name": "gateway",
-      "services": [
-        {
-          "name": "mqtt",
-          "description": "VerneMQ MQTT message broker",
-          "image": <image_path>,
-          "credentials": {
-            "username": <username>,
-            "password": <password>,
-            "email": <email>,
-            "docker_repository": <repository>
-          },
-          "specs": {
-            "replicas": 1
-          },
-          "exposed_ports": [
-            {
-              "name": "mqtt-port",
-              "internal_port": xxxx,
-              "exposed_port": xxxx
-            }
-          ],
-          "environment_variables": {
-            "NALEJ_TRUSTED_USER": <trusted_user>,
-            "NALEJ_TRUSTED_PASSWORD": <trusted_pword>
-          }
-        }
-      ],
-      "specs": {
-        "multi_cluster_replica": true
       }
     }
   ],
@@ -253,9 +332,9 @@ How can you describe such a complex net of relationships? It would look like thi
       ]
     },
     {
-      "name": "Allow mqttbeats to access core mqtt",
+      "name": "Allow mqttbeats to access mqtt",
       "target_service_group_name": "core",
-      "target_service_name": "coremqtt",
+      "target_service_name": "mqtt",
       "target_port": 1883,
       "access": 1,
       "auth_service_group_name": "core",
@@ -265,7 +344,7 @@ How can you describe such a complex net of relationships? It would look like thi
     },
     {
       "name": "allow access to mqtt from device groups",
-      "target_service_group_name": "gateway",
+      "target_service_group_name": "core",
       "target_service_name": "mqtt",
       "target_port": 1883,
       "access": 3,
