@@ -4,7 +4,7 @@ I know you have been fascinated with Nalej's possibilities from the get-go, and 
 
 ## The Scenario
 
-We are going to build a fancy thermometer. For this, we will use a brand new Raspberry Pi as a temperature sensor, and we will have a web interface to see what it measures. We will deploy an instance of Kibana with ElasticSearch, and the device will collect the data that Kibana is going to manage. 
+We are going to build a fancy thermometer. For this, we will use a brand new Raspberry Pi with a temperature sensor (the DHT22 sensor, specifically), and we will have a web interface to see what it measures. We will deploy an instance of Kibana with ElasticSearch, and the device will collect the data that Kibana is going to manage. 
 
 That device would be our Raspberry Pi, so we will install Nalej SDK in it, and activate and configure the SDK so that it connects with Nalej automatically. 
 
@@ -12,9 +12,7 @@ Then we will create the application descriptor that will allow our application t
 
 ## The Device
 
-> <https://github.com/nalej/nalej-iot-device-sdk-python/blob/master/README.md>
-
-You receive your brand new Raspberry Pi, and have a microSD and want to start configuring it as a Nalej device as soon as possible. Great! So, what do you need?
+You receive your brand new Raspberry Pi with your DHT-22 sensor (which you have physically connected to it [like so](https://www.instructables.com/id/Raspberry-Pi-Tutorial-How-to-Use-the-DHT-22/)), and have a microSD, and now you want to start configuring it as a Nalej device as soon as possible. Great! So, what do you need?
 
 ### Creating a device group
 
@@ -33,6 +31,18 @@ Let's suppose you install Raspbian and the installation went uneventfully. In or
 - requests
 - pathlib
 - paho-mqtt
+
+You also need to download and install the DHT library in your device, with the following commands:
+
+```bash
+git clone https://github.com/adafruit/Adafruit_Python_DHT.git
+cd Adafruit_Python_DHT
+sudo apt-get update
+sudo apt-get install build-essential python-dev
+sudo python setup.py install
+```
+
+After that you have to reboot your Pi system to get the Adafruit driver, and then you can start installing Nalej SDK.
 
 ### Installation
 
@@ -95,14 +105,14 @@ client = NalejClient(config)
 
 The SDK contemplates the possibility that, instead of each parameter, the Nalej administrator gives you a configuration file. The file will look like this:
 
-```
+```json
 {
-"nalejPlatformDomain":"demo.nalej.tech",
-"organizationId":"xxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
-"deviceGroupName":"test_group",
-"deviceGroupId":"xxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
-"deviceGroupApiKey":"xxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
-"deviceId":"deviceTemp001"
+    "nalejPlatformDomain": "demo.nalej.tech",
+    "organizationId": "xxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+    "deviceGroupName": "test_group",
+    "deviceGroupId": "xxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+    "deviceGroupApiKey": "xxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+    "deviceId": "deviceTemp001"
 }
 ```
 
@@ -626,29 +636,27 @@ In case you got lost somewhere, here you have the files you need for this exampl
 
 ### Python file
 
-This file *simulates* the acquisition of temperature data by generating random temperature values, it doesn't actually get the temperature from a specific sensor.  Please check how to do it with the hardware you have and change that part accordingly.
+This file gets the humidity and temperature values from the DHT22 sensor (you have an easy installation tutorial for this sensor [here](https://www.instructables.com/id/Raspberry-Pi-Tutorial-How-to-Use-the-DHT-22/)).
 
 ```python
-import logging 
-import random
+import Adafruit_DHT # library to access the sensors
+import logging
 import time
 
 from nalej.configuration.config_manager import NalejConfig
 from nalej.core.client import NalejClient
 from nalej.messaging.mqtt.mqtt_model import NalejMqttData
 
-# Getting random temperature value
-def get_random_temp():
-   logging.debug('Getting random temperature')
-   temp = float("{0:.2f}".format(random.uniform(1, 100)))
-   logging.debug('Random temperature value : {}'.format(temp))
-   return temp
+# Getting humidity and temperature values from the sensor.
+def get_dht22_temp():
+    humidity, temperature = Adafruit_DHT.read_retry(Adafruit_DHT.DHT22, 4)
+    return "{0:.2f}".format(temperature)
 
-# Formatting the temperature value with the format we want
+# Formatting the values with the format we want
 # to read in the application.
-def get_random_temp_payload():
-   payload = '{"value":' + str(get_random_temp()) + '}'
-   return payload
+def get_dht22_temp_payload():
+    payload = '{"value":' + str(get_dht22_temp()) + '}'
+    return payload
 
 # For logging purpuses
 logging.basicConfig(level=logging.DEBUG)
@@ -671,8 +679,8 @@ while not connected:
 # Creating the object to be sent to the platform and 
 # publishing the data every 5 seconds in another thread.
 topic = 'sensor/' + client.config.deviceId + '/temperature'
-labels = {'app':'example-app'}
-dataObject = NalejMqttData(topic, get_random_temp_payload)
+labels = {'app':'thermometer-app'}
+dataObject = NalejMqttData(topic, get_dht22_temp_payload)
 client.publish(labels, dataObject)
 
 # Waiting loop for this thread... until 
