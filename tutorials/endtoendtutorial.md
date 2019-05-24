@@ -693,14 +693,13 @@ except Exception as error:
 
 If you want to use this config file as it is used in the Python program above, remember to substitute the information here with your specific configuration info, and to save this file as *.nalej_config* in the *home* folder of the current user.
 
-```
+```json
 {
-"nalejPlatformDomain":"demo.nalej.tech",
-"organizationId":"xxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
-"deviceGroupName":"test_group",
-"deviceGroupId":"xxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
-"deviceGroupApiKey":"xxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
-"deviceId":"deviceTemp001"
+    "nalejPlatformDomain":"demo.nalej.tech",
+    "organizationId":"xxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+    "deviceGroupName":"test_group",
+    "deviceGroupId":"xxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+    "deviceGroupApiKey":"xxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+    "deviceId":"deviceTemp001"
 }
 ```
-
