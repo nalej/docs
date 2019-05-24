@@ -695,11 +695,11 @@ If you want to use this config file as it is used in the Python program above, r
 
 ```json
 {
-    "nalejPlatformDomain":"demo.nalej.tech",
-    "organizationId":"xxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
-    "deviceGroupName":"test_group",
-    "deviceGroupId":"xxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
-    "deviceGroupApiKey":"xxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
-    "deviceId":"deviceTemp001"
+    "nalejPlatformDomain": "demo.nalej.tech",
+    "organizationId": "xxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+    "deviceGroupName": "test_group",
+    "deviceGroupId": "xxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+    "deviceGroupApiKey": "xxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+    "deviceId": "deviceTemp001"
 }
 ```
