@@ -711,3 +711,4 @@ If you want to use this config file as it is used in the Python program above, r
     "deviceId": "deviceTemp001"
 }
 ```
+
