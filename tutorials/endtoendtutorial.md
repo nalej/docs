@@ -42,11 +42,7 @@ sudo apt-get install build-essential python-dev
 sudo python setup.py install
 ```
 
-After that you have to reboot your Pi system to get the Adafruit driver, and then you can start installing Nalej SDK.
-
-### Installation
-
-
+After that you have to reboot your Pi system to get the Adafruit driver, and then you can start installing Nalej SDK. For that, you just need to follow [this simple step-by-step tutorial](installingSDKindevice.md), and your device will be all set. 
 
 ## The Application
 
