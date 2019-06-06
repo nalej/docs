@@ -8,9 +8,9 @@ For this tutorial's purposes, we're going to assume that you already have a devi
 
 In order to be able to use the Nalej Python SDK, your device needs **Python 3.7** and **PIP 3** (version 18.1 or higher). It also needs the following libraries:
 
-- requests
-- pathlib
-- paho-mqtt
+- requests (which allows you to send HTTP/1.1 requests in the easiest way possible).
+- pathlib (which takes care of formatting path strings in the most appropriate format).
+- paho-mqtt (which implements versions 3.1 and 3.1.1 of the MQTT protocol).
 
 ## Installing the SDK
 
