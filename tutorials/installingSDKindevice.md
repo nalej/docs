@@ -28,7 +28,7 @@ pip3 install -e .
 
 ## Device registration and platform log-in
 
-We have already installed the SDK, and now it's time to register our Raspberry Pi and get it in the system. For this, we will need to write a very short Python program with some configuration information and commands.
+We have already installed the SDK, and now it's time to register our device and get it in the system. For this, we will need to write a very short Python program with some configuration information and commands.
 
 To register the device, we need the following information:
 

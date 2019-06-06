@@ -152,7 +152,7 @@ So we will need only one service group, the `core`, which will have Kibana, Elas
           },
           "configs": [
             {
-              "content": "content",
+              "content": <content_in_base64>,
               "mount_path": "/conf/mqttbeat.yml"
             }
           ],
@@ -476,23 +476,20 @@ In case you got lost somewhere, here you have the files you need for this exampl
         },
         {
           "name": "mqttbeats",
-          "image": <falta esto porque no sé dónde está>,
+          "image": <docker_image_path>,
           "specs": {
             "replicas": 1
           },
           "configs": [
             {
-              "content": <ni idea tampoco>,
-              "mount_path": "/conf/mqttbeats.yml"
+              "content": <content_in_base64>,
+              "mount_path": "/config/mqttbeats.yml"
             }
           ],
           "labels": {
             "app": "mqttbeats"
-          },
-          "run_arguments": [
-            "--path.config=/conf/"
-          ]
-        }
+          }
+        },
         {
           "name": "mqtt",
           "description": "VerneMQ MQTT message broker",
@@ -596,6 +593,8 @@ except Exception as error:
 ### Config file
 
 If you want to use this config file as it is used in the Python program above, remember to substitute the information here with your specific configuration info, and to save this file as *.nalej_config* in the *home* folder of the current user.
+
+Also, remember that you will need several parameters that will change depending on your organization and application, like the **organizationID**, the **deviceGroupID** and the **deviceGroupApiKey**.
 
 ```json
 {
