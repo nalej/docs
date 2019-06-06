@@ -98,7 +98,7 @@ client = NalejClient.fromConfigFile()
 # client = NalejClient.fromConfigFile(/path/to/config/file)
 ```
 
-### Registering the device
+### Registering process
 
 After getting a NalejClient object, to register the device and log in the platform, we need to add the following to our Python program:
 
