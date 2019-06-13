@@ -6,20 +6,24 @@
 
 * [Organization and user management](organization/organization-1.md)
 
+## Infrastructure
+
+- [The inventory: what it is and how it can help you](infrastructure/inventory.md)
+
 ## Resources
 
 * [Cluster monitoring](resources/resources-1.md)
 * [Application cluster installation](resources/appcluster_installation.md)
+
+## Devices
+
+- [Adding, managing and deleting devices](devices/devices-1.md)
 
 ## Applications
 
 * [Application deployment, management and removal](applications/applications-1.md)
 * [Structure of an application descriptor](applications/app_descriptors.md)
 * [The Application Diagram, explained](applications/appdiagram.md)
-
-## Devices
-
-* [Adding, managing and deleting devices](devices/devices-1.md)
 
 ## Tutorials
 
