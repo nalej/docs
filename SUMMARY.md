@@ -8,7 +8,7 @@
 
 ## Infrastructure
 
-- [The inventory: what it is and how it can help you](infrastructure/inventory.md)
+- \[EDITING] [The inventory: what it is and how it can help you](infrastructure/inventory.md)
 
 ## Resources
 
