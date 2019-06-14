@@ -6,9 +6,9 @@
 
 * [Organization and user management](organization/organization-1.md)
 
-## Infrastructure
+## Infrastructure 
 
-- \[EDITING] [The inventory: what it is and how it can help you](infrastructure/inventory.md)
+- [IN PROCESS - The inventory: what it is and how it can help you](infrastructure/inventory.md)
 
 ## Resources
 
