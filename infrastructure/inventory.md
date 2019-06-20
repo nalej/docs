@@ -14,7 +14,7 @@ The main objective of this section is the monitorization of the hardware that's 
 
 ## What is an Edge Controller, and why do I need one?
 
-An Edge Controller (EC) is a light Virtual Machine installed in your organization. Its mission is to serve as an entry point for the Nalej Management Cluster, so it can receive data from the hardware installed there.
+An Edge Controller (EC) is a component installed in your organization. Its mission is to serve as an entry point for the Nalej Management Cluster, so it can receive data from the hardware installed there.
 
 To do that (to receive info from the hardware on the client's side), we need a service in that hardware that sends it. That service is called an **Agent**.
 
@@ -24,7 +24,7 @@ As you can see in the diagram, the connection between the Nalej Management Clust
 
 ### How can I install an Edge Controller in my organization?
 
-First, you need to ask for an Edge Controller to the Nalej Management. This EC is, as we stated before, a light Virtual Machine (VM), which will be easy to install and initiate.
+First, you need to ask for an Edge Controller to the Nalej Management. This EC is a light Virtual Machine (VM), which will be easy to install and initiate.
 
 In the setting up process, before starting, the EC will ask for a token to the Nalej Management Cluster. With this token, the EC will execute the `join` operation that registers it in the system, and so the Management Cluster will register the EC and start working with it.
 
@@ -32,7 +32,7 @@ In the setting up process, before starting, the EC will ask for a token to the N
 
 As we stated before, an **Agent** is a service installed in a piece of hardware in the client's side. This agent is registered in an EC, and when it's live it sends a message saying so. The EC, then, replies with a set of operations this agent has to execute. When the agent finishes those operations, it sends the results to the EC, which then forwards them to the Nalej Management Cluster.
 
-> diagram?
+![Communication diagram Agent-EC-NMC](../.gitbook/assets/infrastructure_inventory_Agent_communication.png)
 
 ### What is the actual role of an Agent in the system?
 
