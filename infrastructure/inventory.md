@@ -24,9 +24,68 @@ As you can see in the diagram, the connection between the Nalej Management Clust
 
 ### How can I install an Edge Controller in my organization?
 
-First, you need to ask for an Edge Controller to the Nalej Management. This EC is a light Virtual Machine (VM), which will be easy to install and initiate.
+First, you need to ask for an Edge Controller to the Nalej Management. This EC is a light Virtual Machine (VM), which will be installed in the client cloud. Right now the only supported system is Azure, although Nalej is working to adapt its technology to other systems.
 
-In the setting up process, before starting, the EC will ask for a token to the Nalej Management Cluster. With this token, the EC will execute the `join` operation that registers it in the system, and so the Management Cluster will register the EC and start working with it.
+To deploy the EC in the cloud, you need to generate a `cloud-init.yaml` file. This file would look like this: 
+
+```yaml
+write_files:
+  - content: |
+      # edge-controller configuration file
+      
+      joinTokenPath: /etc/edge-controller/joinToken.json
+      useBBoltProviders: true
+      bboltpath: /var/lib/edge-controller/database.db
+      name: EdgeController001
+      #labels: "name:test"
+      #geolocation: "Madrid, Madrid, Spain"
+    path: /etc/edge-controller/config.yaml
+  - encoding: b64
+    content: <joinToken.json BASE64 ENCODED CONTENTS>
+    path: /etc/edge-controller/joinToken.json
+
+runcmd:
+  - [ systemctl, restart, edge-controller.service ]
+```
+
+What do you need to know about this file? Well...
+
+- All the parameters with `path` in their name (`joinTokenPath`, `bboltpath`, and the two `path` parameters) must remain as they appear in this example.
+
+- To customize your EC, the parameters you can change are:
+
+  - `name`, the name you give it.
+  - `labels`, in case you want it to have some specific labels.
+  - `geolocation`, its location, in case you have several in different places and want to have that extra information registered here.
+
+- The `content` parameter deserves a longer explanation. When you want your EC to join the Nalej Management Controller (NMC), you should request a token. After receiving it, you should convert it to base64 and include in this parameter. 
+
+  To convert this file to base64 you can use this command:
+
+  ```bash
+  cat joinToken.json | base64 | tr -d ‘\n’
+  ```
+
+  The result of this command would be what needs to be included in the `cloud-init.yaml` file, in the `content` parameter.
+
+When deploying the VM in the cloud, at some point this `cloud-init.yaml` file will be requested, so you only have to upload it. The EC will be configured according to this file, and it will join the NMC with the token included in it.
+
+This configuration file is structured in a way that, whenever you want to install another EC in your organization, the only thing you need is a new `cloud-init.yaml`, with different name, labels and geolocation, and a new `joinToken.json`, since the VM is the same for both of them. 
+
+In the setting up process, before starting, the EC will execute the `join` operation that registers it in the system with the token we obtained and included in the configuration file, and so the Management Cluster will register the EC and start working with it.
+
+### Additional requirements
+
+When deploying this kind of VM in the cloud we have to make sure that the cloud will allow the communication with it. This means that the ports used by the VM must be enabled in the cloud, with the security rules needed at a **security group level** so that the communication with the NMC and the Agents is possible.
+
+The default ports are **5577** and **5588**. If you want to change them for whatever reason, you need to edit the `cloud-init.yaml` file, adding the following parameters under the `geolocation` data:
+
+```yaml
+port: XXXX
+agentport: XXXX
+```
+
+
 
 ## What is an Agent, then?
 
