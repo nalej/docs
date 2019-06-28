@@ -30,10 +30,9 @@ To add a device group through the CLI, the command needed is:
 
 ```bash
 ./public-api-cli devicegroup add
-    --name <devgroup_name>
-    --disabled
-    --enabled
-    --disabledDefaultConnectivity
+    <devgroup_name>
+    --disabled or --enabled
+    --disabledDefaultConnectivity or 
     --enabledDefaultConnectivity
 ```
 

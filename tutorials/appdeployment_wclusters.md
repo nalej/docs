@@ -11,11 +11,17 @@ For this tutorial we are assuming that there is at least one deployed cluster, a
 Is this the very first time you log in the platform? There are some variables that are needed for each interaction, so establishing them before starting means we won't have to write them down in each request. These variables, or options, are the **certificate** you received, and the addresses of the **Nalej login server** and the **Nalej API server**. Gather all this data, go to the `public-api-cli/bin` folder in your computer and execute the following instructions:
 
 ```bash
-./public-api-cli options set --key=cacert --value=/Users/youruser/.../certificate.crt
+./public-api-cli options set 
+	--key=cacert 
+	--value=/Users/youruser/.../certificate.crt
 
-./public-api-cli options set --key=loginAddress --value=login.server.nalej.com
+./public-api-cli options set 
+	--key=loginAddress 
+	--value=login.server.nalej.com
 
-./public-api-cli options set --key=nalejAddress --value=api.server.nalej.com
+./public-api-cli options set 
+	--key=nalejAddress 
+	--value=api.server.nalej.com
 ```
 
 To check if these commands have executed correctly and the options are in fact set, you can use the command:
@@ -167,7 +173,8 @@ An **application descriptor** is a file with all the essential info to deploy a 
 This example is the output of the following command:
 
 ```bash
-./public-api-cli app desc help > appDescExample.json
+./public-api-cli app desc 
+	help > appDescExample.json
 ```
 
 It creates a basic application descriptor for you \(called `appDescExample.json`in this case\), with a Wordpress instance and a mySQL database associated to it. To learn more about them, please visit [this link](../applications/app_descriptors.md), where you can find an extensive tutorial on how to make your own.
@@ -215,7 +222,7 @@ And how would we deploy that instance? With this other command:
 ```bash
 ./public-api-cli app inst deploy 
     <desc_id>
-    "<inst_name>"
+    <inst_name>
 ```
 
 Here, as you may have noticed, is also the moment where we name the app with a human-readable name. When this command exits, it returns a JSON with an application **instance** ID, which is what we will use to work with the deployed instance.

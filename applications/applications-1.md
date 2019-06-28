@@ -178,7 +178,9 @@ What we can see now is a special dialog where we can upload our application desc
 Now the application is ready to be deployed! We can do this with:
 
 ```bash
-./public-api-cli app inst deploy --descriptorID=xxxxxxx --name=name-app
+./public-api-cli app inst deploy 
+	<descriptor_id>
+	<name-app>
 ```
 
 Here, as you may have noticed, is also the moment where we name the app with a human-readable name. When this command exits, it returns a JSON with an application **instance ID**, which is what we will use to work with the deployed instance.
@@ -208,7 +210,8 @@ Here we need to write the name of the instance and choose the application we wan
 We can interact with the application in several ways, now that it's deployed. One of the actions we can take is getting its related info, which can be done with:
 
 ```bash
-./public-api-cli app inst get --instanceID=XXXXXXXXXX
+./public-api-cli app inst get 
+	<instance_id>
 ```
 
 This will return a table with some information related to the instance we are checking:
@@ -268,7 +271,8 @@ This view has several sections:
 Once the application is running, it's generating logs and storing them in the system. To access these logs, we can use:
 
 ```bash
-./public-api-cli log search --instanceID=xxxx > appLogs.json
+./public-api-cli log search 
+	--instanceID=xxxx > appLogs.json
 ```
 
 This will return a \(most likely\) very long response, with the following format:
@@ -289,7 +293,8 @@ Where each **entry** has a **timestamp** and a **msg** with the logged info rela
 OK, so we finished working with this instance, and don't want it to be in the system anymore. In this case, we need to undeploy it. For this, we will need its instance ID.
 
 ```bash
-./public-api-cli app inst undeploy --instanceID=xxxx
+./public-api-cli app inst undeploy 
+	<instance_id>
 ```
 
 That may be all the cleanup needed if this application is something we will use again in the system, since we can deploy it again tomorrow with the same application descriptor.
@@ -318,7 +323,8 @@ Also, the system won't let you delete an application while it has deployed insta
 What if we just don't want the application to be available again? In that case, we need to delete the application from the system, undoing the `add` we executed before. This needs the descriptor ID we got as a response when we added the application to the system.
 
 ```bash
-./public-api-cli app desc delete  --descriptorID=xxxxx
+./public-api-cli app desc delete  	
+	<descriptor_ID>
 ```
 
 This, if executed successfully, will return an acknowledgment:

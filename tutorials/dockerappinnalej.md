@@ -6,7 +6,7 @@ You have Nalej as your system, but there are some apps that you have in Docker C
 
 The first thing that needs to be tackled is the app descriptor, which is what you need to include the app in the system.
 
-[Remember how to create your own app descriptor?](../applications/app_descriptors.md) I'm sure you do. I'm also sure you still have nightmares from trying to get the correct structure for your application. The thing is, just by modifying and adding a couple of sections your descriptor will be good to go.
+[Do you remember how to create your own app descriptor?](../applications/app_descriptors.md) I'm sure you do. I'm also sure you still have nightmares from trying to get the correct structure for your application. The thing is, just by modifying and adding a couple of sections your descriptor will be good to go.
 
 So, your app descriptor for a normal app would be something like this:
 
@@ -174,8 +174,7 @@ Now you have to deploy it in the system.
 After creating the application descriptor, the next step is adding it to the system, which can be done with the following command:
 
 ```bash
-./public-api-cli app desc add 
-    --descriptorPath=/pathtodescriptor
+./public-api-cli app desc add /pathtodescriptor
 ```
 
 It returns an application descriptor ID, which we will need for deploying an instance of this application.
@@ -186,8 +185,8 @@ And how would we deploy that instance? With this other command:
 
 ```bash
 ./public-api-cli app inst deploy 
-    --descriptorID=xxxxxxx 
-    --name=name-app
+    <descriptor_ID> 
+    <name-app>
 ```
 
 Here, as you may have noticed, is also the moment where we name the app with a human-readable name. When this command exits, it returns an application **instance** ID, which is what we will use to work with the deployed instance.
@@ -236,7 +235,7 @@ One of the things we could do to know if the instance is running is getting its 
 
 ```bash
 ./public-api-cli app inst get 
-    --instanceID=XXXXXXXXXX
+   	<instance_ID>
 ```
 
 This command returns a JSON with all the information related to the instance we are checking, which looks like this:

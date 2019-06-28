@@ -84,7 +84,7 @@ where the **email** is the parameter we will use to locate the user in future in
     --email=<email-name>@<email-domain>
 ```
 
-The response to this command would be the same JSON we received when creating the user, with their current information. If we don't add the `--email` parameter, the info returned would be our own.
+The response to this command would be the same we received when creating the user, with their current information. If we don't add the `--email` parameter, the info returned would be our own.
 
 ## Editing users
 
@@ -171,7 +171,7 @@ Once in this screen, hit the "Delete user" button. A message will appear on the 
 To delete a user, execute the following command:
 
 ```bash
-./public-api-cli users del 
+./public-api-cli users delete 
     --email=<email-name>@<email-domain>
 ```
 

@@ -2,7 +2,7 @@
 
 This section will talk about devices in Nalej. The system understands the concept of **device** as an abstract entity that the user can manage as part of the applications installed in the cluster.
 
-_The CLI responses are shown in this document with the text format, which can be obtain adding --output="text" to the user options. If you need the responses in JSON format, you can get them by adding --output="json" at the end of your requests, or as a user option._
+_The CLI responses are shown in this document with the text format, which can be obtain adding_ `--output="text"` _to the user options. If you need the responses in JSON format, you can get them by adding_ `--output="json"` _at the end of your requests, or as a user option._
 
 ## Getting device-related information
 
@@ -209,7 +209,7 @@ And the system will confirm the deletion with a notification in the upper right 
 To remove a device group from the system, we need:
 
 ```bash
- ./public-api-cli devicegroup remove 
+ ./public-api-cli devicegroup delete 
      --deviceGroupId=<devgroup_id>
 ```
 
