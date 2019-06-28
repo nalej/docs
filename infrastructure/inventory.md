@@ -76,16 +76,14 @@ In the setting up process, before starting, the EC will execute the `join` opera
 
 ### Additional requirements
 
-When deploying this kind of VM in the cloud we have to make sure that the cloud will allow the communication with it. This means that the ports used by the VM must be enabled in the cloud, with the security rules needed at a **security group level** so that the communication with the NMC and the Agents is possible.
+When deploying this kind of VM in the cloud we have to make sure that the cloud will allow the communication with it. This means that the ports used by the VM must be also enabled in the cloud, with the security rules needed at a **security group level** so that the communication with the NMC and the Agents is possible.
 
-The default ports are **5577** and **5588**. If you want to change them for whatever reason, you need to edit the `cloud-init.yaml` file, adding the following parameters under the `geolocation` data:
+The VM will be using the default ports, which are **5577** and **5588**, so the cloud must allow the communication with them. If you want to change them for whatever reason, you need to edit the `cloud-init.yaml` file, adding the following parameters under the `geolocation` data:
 
 ```yaml
 port: XXXX
 agentport: XXXX
 ```
-
-
 
 ## What is an Agent, then?
 
