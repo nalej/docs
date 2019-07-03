@@ -4,6 +4,8 @@ The Infrastructure section gathers all the information of what your company has 
 
 ## What is the Inventory?
 
+### Web Interface
+
 The Inventory is the main view of the Infrastructure section. It consists of a list of the resources your organization has in the system. This list has:
 
 - The **devices**, as in components of the IoT.
@@ -11,6 +13,45 @@ The Inventory is the main view of the Infrastructure section. It consists of a l
 - The **Edge Controllers** installed in your organization. We'll talk more about this component later in this document.
 
 The main objective of this section is the monitorization of the hardware that's already registered in the platform, so we can have, in one place, the status and availability of every piece of hardware connected to it.
+
+We can also see a summary of the resources in the organization, which tells you the resources available in the organization (number of CPUs, storage in GB, and RAM availability in GB).
+
+### Public API CLI
+
+To access the Inventory list through the CLI, you just need to execute:
+
+```bash
+./public-api-cli inventory list
+```
+
+This will produce a table with the following data:
+
+```bash
+TYPE     ID         LOCATION         LABELS           STATUS
+DEVICE   <dev_id>   Madrid, Spain    sprint14:demo    OFFLINE
+...
+EC       <ec_id>    Demoland                          OFFLINE
+...
+ASSET    <a_id>     Getxo, ES        l1:v1,l2:v2...   OFFLINE
+...
+```
+
+This table is essentially the same table we can see through the Web Interface, with the **devices**, the **Edge Controllers** and the **assets** in the current organization.
+
+You can also visualize a summary of the organization in terms of storage and computing capacity with:
+
+```bash
+./public-api-cli inventory summary
+```
+
+This returns a table like this one:
+
+```bash
+CPUs   STORAGE (GB)   RAM (GB)
+25     1346           66
+```
+
+which tells you the resources available in the organization (number of CPUs, storage in GB, and RAM availability in GB).
 
 ## What is an Edge Controller, and why do I need one?
 
