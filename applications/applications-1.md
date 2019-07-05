@@ -195,9 +195,11 @@ One of the ways to do that is by clicking the blue _play_ button in the **Action
 
 ![Deploying an instance from the &quot;Instances&quot; list](../.gitbook/assets/app_ppal_deploy_instance.png)
 
-The other way is to go from the **Registered** tab to the **Instances** tab. To deploy our application we only need to click on the **Deploy instance** button on the right part of the screen.
+Another way is to go from the **Registered** tab to the **Instances** tab. To deploy our application we only need to click on the **Deploy instance** button on the right part of the screen.
 
-With both actions we arrive to the same dialog, which looks like this:
+Lastly, if we click on the name of the registered app, we go to the app's main view, and there we can click on the **Deploy instance** in the upper left part of the screen.
+
+With all these actions we arrive to the same dialog, which looks like this:
 
 ![Deploying instances dialog](../.gitbook/assets/app_deploy_instance_dialog.png)
 
