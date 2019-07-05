@@ -202,8 +202,6 @@ Now, we want to delete an entire device group. From that group view, we can clic
 
 And the system will confirm the deletion with a notification in the upper right part of the screen.
 
-![Confirmation of the deletion of a device group](../.gitbook/assets/dev_delete_devgroup_confirm.png)
-
 ### Public API CLI
 
 To remove a device group from the system, we need:
