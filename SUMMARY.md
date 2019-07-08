@@ -8,7 +8,8 @@
 
 ## Infrastructure 
 
-- [IN PROCESS - The inventory: what it is and how it can help you](infrastructure/inventory.md)
+- [The inventory: what it is and how it can help you](infrastructure/inventory.md)
+- [Edge Controllers and Agents](infrastructure/ECandagents.md)
 
 ## Resources
 
