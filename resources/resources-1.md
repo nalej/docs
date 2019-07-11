@@ -58,18 +58,6 @@ In the lower part of the screen we can see another list, this time of nodes. The
 * The **labels** it has.
 * Its current **status** \(again, it can be _running_, _processing_ or _error_\).
 
-Regarding **labels**, although adding and/or deleting them is not encouraged, there is an easy way of doing it through the web interface. At the end of the label list there is a `+` button to **add** new labels.
-
-![Adding a label](../.gitbook/assets/res_add_label.png)
-
-After clicking on that button, we can see a form where we can enter the name and value of the label, and we can save or discard this new information.
-
-If, however, in the list of labels we click on one or more labels \(selecting them\), this `+` button changes its function to **delete**, and its image to one of a bin, so we can delete the selected labels.
-
-![Deleting one or several labels](../.gitbook/assets/res_delete_label.png)
-
-As stated above, please handle these features with care.
-
 ### Public API CLI
 
 _The CLI responses are shown in text format, which can be obtained adding_ `--output="text"` _to the user options. If you need the responses in JSON format, you can get them by adding_ `--output="json"` _at the end of your requests, or as a user option._
@@ -96,16 +84,16 @@ LABELS                                        STATUS
 
 This information consists of:
 
-* **NAME**, the name given to the cluster.
-* **ID**, the cluster identifier.
-* **NODES**, the number of nodes in the cluster.
-* **LABELS**, the labels of the cluster.
-* **STATUS**, the status of the cluster. It depends on the status of each node, and it can have the values _running_, _processing_ or _error_.
+- **NAME**, the name given to the cluster.
+- **ID**, the cluster identifier.
+- **NODES**, the number of nodes in the cluster.
+- **LABELS**, the labels of the cluster.
+- **STATUS**, the status of the cluster. It depends on the status of each node, and it can have the values _running_, _processing_ or _error_.
 
 Once we know the cluster ID, we can list the nodes belonging to it.
 
 ```javascript
-./public-api-cli nodes list --clusterID=<cluster_id>
+./public-api-cli nodes list [clusterID]
 ```
 
 This is the response to the command above:
@@ -124,12 +112,97 @@ LABELS                                          STATUS
 
 The new variables are:
 
-* **ID**, the node identifier.
-* **IP**, the IP address of the node.
-* **STATE**, the current state of the node regarding its use. The values can be:
-  * _UNREGISTERED_: the details of the node are in the platform, but we haven't perfomed any action with them yet.
-  * _UNASSIGNED_: the node has been prepared, but has not yet been asigned to a cluster.
-  * _ASSIGNED_: the node has been installed and is part of a cluster.
-* **LABELS**: the labels of the node.
-* **STATUS**, the status of this node, which can be _running_, _processing_, or _error_. If one or more nodes have values other than "_running_", the cluster will show the most serious problem in its _status\_name_ variable.
+- **ID**, the node identifier.
+- **IP**, the IP address of the node.
+- **STATE**, the current state of the node regarding its use. The values can be:
+  - _UNREGISTERED_: the details of the node are in the platform, but we haven't perfomed any action with them yet.
+  - _UNASSIGNED_: the node has been prepared, but has not yet been asigned to a cluster.
+  - _ASSIGNED_: the node has been installed and is part of a cluster.
+- **LABELS**: the labels of the node.
+- **STATUS**, the status of this node, which can be _running_, _processing_, or _error_. If one or more nodes have values other than "_running_", the cluster will show the most serious problem in its _status\_name_ variable.
 
+We can also monitor a specific cluster through the CLI with the command:
+
+```bash
+./public-api-cli cluster monitor 
+	[clusterID]
+	--rangeMinutes 10
+```
+
+This command offers us a quick summary of the cluster status in the last 10 minutes (the `—rangeMinutes` flag is optional), in this form:
+
+```bash
+CPU               MEM                             STORAGE
+5617/6000 (93%)   15808368640/21851627520 (72%)   278702481408/322992291840 (86%)
+```
+
+Now we know the computing capacity and RAM that's being used, and the used storage in this cluster.
+
+## Managing labels
+
+Regarding the **labels** of the clusters and nodes, although adding and/or deleting them is not encouraged, we can do it easily, and the procedure for clusters and nodes is very similar. 
+
+### Web Interface
+
+At the end of the label list there is a `+` button to **add** new labels.
+
+![Adding a label](../.gitbook/assets/res_add_label.png)
+
+After clicking on that button, we can see a form where we can enter the name and value of the label, and we can save or discard this new information.
+
+If, however, in the list of labels we click on one or more labels \(selecting them\), this `+` button changes its function to **delete**, and its image to one of a bin, so we can delete the selected labels.
+
+![Deleting one or several labels](../.gitbook/assets/res_delete_label.png)
+
+As stated above, please handle these features with care.
+
+### Public API CLI
+
+To add a label to a cluster, the appropriate command is:
+
+```bash
+./public-api-cli cluster label add 
+	[clusterID] 
+	--labels "k1:v1"
+```
+
+As you can see, the **clusterID** is included as a parameter (you can find this ID executing the `cluster list` command), and the labels to add are preceded by the flag `—label`, between `""` and with the format `key:value;key2:value2`.
+
+When executed, this command responds like this:
+
+```
+NAME     ID           NODES   LABELS              STATUS
+[name]  [clusterID]   3       k1:v1,cloud:azure   RUNNING
+```
+
+Here we can see all the information of a cluster, which is its name, its ID, the nodes it has, the labels attached to it (which will include the recently added), and its status.
+
+To delete a label, the procedure is very similar, as well as the command to use:
+
+```bash
+./public-api-cli cluster label delete 
+	[clusterID] 
+	--labels "k1:v1"
+```
+
+The response to it will be the same as before, but the labels won't show the ones that have been deleted.
+
+The process to add and remove labels from nodes is exactly the same, but changing the `[clusterID]` parameter for the corresponding `[nodeID]`. The results would be the information of the specific node with the `labels` field modified accordingly.
+
+
+
+
+
+> FALTA DOCUMENTAR
+>
+> - cluster LABEL
+> - cluster MONITOR
+>
+>  cluster (clusters)
+> │    ├─── info [clusterID] --clusterID 
+> │    ├─── label (labels, l)
+> │    │    ├─── add [clusterID] [labels]
+> │    │    └─── delete [clusterID] [labels] (remove, del)
+> │    ├─── list
+> │    ├─── monitor [clusterID] --clusterID --rangeMinutes 
+>
