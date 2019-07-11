@@ -15,6 +15,7 @@
 
 * [Cluster monitoring](resources/resources-1.md)
 * [Application cluster installation](resources/appcluster_installation.md)
+* [Cluster management: how to isolate, empty and reserve clusters for certain apps](resources/cluster_management.md)
 
 ## Devices
 
