@@ -68,4 +68,6 @@ Juanma is developing the cluster management part, so for questions about that, h
 
 And last, but not least, Iván and Blanca are the front-end developers, so they know the web interface inside and out. Anything about it, they are the ones to ask.
 
-Don't be afraid to ask. The team is warm and welcoming, and they will be happy to help. And welcome aboard!
+Don't be afraid to ask. The team is warm and welcoming, and they will be happy to help. 
+
+Welcome aboard!
