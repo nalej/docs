@@ -1,6 +1,6 @@
 # Sara's maternity leave
 
-Hi! I'm Sara, and right now I'm probably sleeping too little and taking care of an unbelievably small human being. If you're reading this, you have been assigned with Nalej's documentation! Congratulations!
+Hi! I'm Sara, and right now I'm probably sleeping too little and taking care of an unbelievably small human being. If you're reading this, you have been assigned the management of Nalej's documentation! Congratulations!
 
 Your main mission is to translate the technical specifications the team develops at frightening speed into human-readable documents so the future users of the platform know how to navigate their way through it.
 
@@ -69,4 +69,3 @@ Juanma is developing the cluster management part, so for questions about that, h
 And last, but not least, Iván and Blanca are the front-end developers, so they know the web interface inside and out. Anything about it, they are the ones to ask.
 
 Don't be afraid to ask. The team is warm and welcoming, and they will be happy to help. And welcome aboard!
-
