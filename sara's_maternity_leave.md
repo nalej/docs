@@ -1,14 +1,18 @@
 # Sara's maternity leave
 
-Hi! I'm Sara, and right now I'm probably sleeping too little and taking care of an unbelievably small human being. If you're reading this, you have been assigned the management of Nalej's documentation! Congratulations!
+Hi! I'm Sara, and if you're reading this I'm probably sleeping too little and taking care of an unbelievably small human being. And you have been assigned the management of Nalej's documentation! Congratulations!
 
-Your main mission is to translate the technical specifications the team develops at frightening speed into human-readable documents so the future users of the platform know how to navigate their way through it.
+Your main mission is to translate the technical specifications of the features that the team develops at frightening speed into human-readable documents, so the future users of the platform know how to navigate their way through it.
 
 ## About the documentation
 
-Ok, the first thing you need to know is that the documentation is displayed in GitBook, which is synchronized with the GitHub documentation repository. The documents are in Markdown, and I personally use Typora to edit them, since I find it quite comfortable.
+Ok, the first thing you need to know is that the documentation is displayed in GitBook, which is synchronized with the GitHub documentation repository. The documents are in Markdown (`.md`), and you can see the Nalej documentation interface in GitBook [here](https://app.gitbook.com/@nalej/s/docs/).
 
-You can see the GitBook documentation interface [here](https://app.gitbook.com/@nalej/s/docs/).
+So, what do you need?
+
+- the `public-api-cli`, to test what you're documenting.
+- access to one of the latest web interfaces, for the same reason (this changes like three times a week, so just ask out in the open where can you connect to test whatever, and someone, probably Gaizka, will answer and send you the credentials to connect).
+- a Markdown editor (I personally use Typora to edit them, since I find it quite comfortable).
 
 You should check with Alvaro or Dani whether you have access to GitBook and the GitHub repo, since you will be uploading the changes there. When access is granted, download the repo in your computer and you can start editing!
 

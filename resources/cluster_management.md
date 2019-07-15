@@ -38,6 +38,8 @@ This command moves the deployed services in the cluster to other clusters (if it
 
 Again, we need the **clusterID** to execute the command, and once we do, it will move the services to other clusters if possible. The users will be completely unaware of this process, since they won't stop executing.
 
+For this to work it's **mandatory** that the **cluster is in the `cordon` state**. If it is not, the command will return with an error reminding you that you have to cordon the cluster first. This restriction helps us avoid situations like the draining of a cluster where there's a deployment in process, for example. So yeah, first `cordon` the cluster, and then `drain` it.
+
 So, why wouldn't the services be able to deploy in other clusters? Well, apart from technical reasons like a connection failure, there are several reasons why this could happen.
 
 - There are no more clusters available.
@@ -71,8 +73,8 @@ Once the cluster is safe (and/or the problems are fixed), we could `uncordon` th
 
 The first thing we must do is to assure that the cluster is labeled with the **cluster selector** that we're going to register in the application descriptor.
 
-Once that is done, the next step is to `drain` the cluster of the services that are already running there. We want it to be exclusive for our new services that we're about to deploy.
+Once that is done, the next step is to `cordon` the cluster and `drain` it of the services that are already running there. We want it to be exclusive for our new services that we're about to deploy.
 
-Then we deploy the services as usual.
+Then we `uncordon` the cluster and deploy the services as usual.
 
-And the last thing we should do is `cordon` the cluster, so our services keep on running but no more services can be deployed there.
+And the last thing we should do is `cordon` the cluster again, so our services keep on running there but no more new ones can be deployed.
