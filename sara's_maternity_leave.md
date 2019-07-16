@@ -64,9 +64,9 @@ Chances are, you already know this. In case you don't, here is a helpful guide o
 
 Dani and Álvaro are the default people to ask. They will answer you quickly, and if they can't they will redirect you to someone who can. The only problem is that they are often unavailable.
 
-Rodrigo is in charge of IT. If you have problems with Git, or anything technical that you're afraid to ask (think of questions that may get you look like an idiot), first Google it, and then ask him, he will gladly help. He's also the expert of the Edge Controllers and the Agents so, for questions about that, go directly to him.
+Rodrigo is in charge of DevOps & QA. If you have problems with anything technical that you're afraid to ask (think of questions that may get you look like an idiot), first Google it, and then ask him, he will gladly help. He's also the expert of the Edge Controllers and the Agents so, for questions about that, go directly to him.
 
-Carmen and Gaizka are the experts on the public API CLI. I would suggest asking Dani first, so he can redirect you to the person who can answer better.
+Carmen and Gaizka are the backend developers, with Dani as their lead. I would suggest asking Dani first, so he can redirect you to the person who can answer better.
 
 Juanma is developing the cluster management part, so for questions about that, he will be the best choice.
 
