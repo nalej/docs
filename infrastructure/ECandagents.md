@@ -92,7 +92,7 @@ The only thing needed for this will be the ID of the EC we want to unlink.
 
 When in the Infrastructure view, we can use the **Quick Filters** available and click on the ECS filter. This will show a list of all the ECs in the organization. 
 
-> Screenshot, with the ECS Quick Filter on
+![Main list of ECs](../.gitbook/assets/infrastructure_ec_ppal.png)
 
 Once here, we can easily find the EC we want to manage, and:
 
@@ -103,13 +103,13 @@ We can also access the **Actions** menu (the three dots icon in the far right co
 
 **More info**
 
-> screenshot
+![All the info about the EC](../.gitbook/assets/infrastructure_ec_moreinfo.png)
 
 Here we can see, apart from the information we already had, the list of assets attached to a specific EC.
 
 **Install agent**
 
-> screenshot
+![Info needed to install an agent](../.gitbook/assets/infrastructure_ec_installagent.png)
 
 This allows us to install an agent directly from the EC. For this, we need:
 
@@ -119,7 +119,7 @@ This allows us to install an agent directly from the EC. For this, we need:
 
 **Create agent token**
 
-> screenshot
+![Agent join token](../.gitbook/assets/infrastructure_agent_createjointoken.png)
 
 This view shows the certificate (and when it expires) and the token needed for an agent to join this EC.
 
@@ -188,7 +188,7 @@ Also, in the far right column we can click on the three dots icon to access the 
 
 **More info**
 
-> screenshot
+![Agent info view](../.gitbook/assets/infrastructure_agent_moreinfo.png)
 
 Here we can find an extensive list of data that may be relevant to define this specific asset, for example:
 
@@ -202,10 +202,11 @@ Here we can find an extensive list of data that may be relevant to define this s
 
 **Last operation log**
 
-> screenshot
+![Last operation info](../.gitbook/assets/infrastructure_agent_lastopinfo.png)
 
 Here we can see the information obtained from the last operation the asset executed, with when it was, what was the status, and the extra info that went attached to it.
 
 **Uninstall agent**
 
 As with the ECs, this option prompts a browser dialog for us to confirm the action, and when we do, the agent gets uninstalled and the asset disappears from the list.
+
