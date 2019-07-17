@@ -30,11 +30,69 @@ One of the services the Agent will have to execute is the monitorization of the 
 
 ECs
 
-├─── edgecontroller (ec)
-│    ├─── create-join-token --outputPath 
-│    ├─── install-agent [edgeControllerID] [targetHost] [username] --agentType --password --publicKeyPath 
-│    ├─── location-update [edgeControllerID] --geolocation 
-│    └─── unlink [edgeControllerID]
+> ├─── edgecontroller (ec)
+> │    ├─── update-location [edgeControllerID] --geolocation 
+> │    └─── unlink [edgeControllerID]
+
+The CLI command to manage the Edge Controllers is `ec` (or `edgecontroller`). Let's see what we can do with it.
+
+#### `create-join-token`
+
+First, we can create a join token, so when we install an EC we can join it to the Nalej Management Cluster. This is done with:
+
+```bash
+./public-api-cli ec create-join-token
+  --outputPath=/Users/user/folder/
+```
+
+With this, a token file is created and stored in the path that has been defined by the user. If that flag is not used, the token file will be stored in the current path.
+
+#### `install-agent`
+
+We can also install an agent in this EC. For this, we need:
+
+```bash
+./public-api-cli ec install-agent 
+	[edgeControllerID] 
+	[targetHost] 
+	[username] 
+	--agentType="type of hardware"
+	--password=<password>
+	--publicKeyPath=<publicKeyPath>
+```
+
+- the ID of the EC we want to join.
+- the IP address of the asset where we want to install the agent.
+- the type of hardware where the agent will be installed.
+
+The agent will be installed through SSH, and for this we will need:
+
+- the username, and one of these options:
+  - a password
+  - the path to the RSA key (in the `—publicKeyPath` flag)
+
+#### `update-location`
+
+You can also update the location of a given EC:
+
+```bash
+./public-api-cli ec update-location 
+	[edgecontrollerID] 
+	--geolocation="new geolocation"
+```
+
+The only thing we need here, apart from the ID of the EC we want to update, is its new location.
+
+#### `unlink`
+
+Lastly, you can unlink a specific EC from the NMC.
+
+```bash
+./public-api-cli ec unlink
+	[edgecontrollerID] 
+```
+
+The only thing needed for this will be the ID of the EC we want to unlink.
 
 ### Through Web Interface
 
@@ -83,12 +141,52 @@ The agents are managed a bit different than the ECs, since what we see is the as
 
 Agents
 
-├─── agent (ag)
-│    ├─── create-join-token [edgeControllerId]
-│    ├─── monitoring [edgeControllerId] [assetID] --activate 
-│    └─── uninstall [assetID] --force 
+> ├─── agent (ag)
+> │    ├─── create-join-token [edgeControllerId]
+> │    ├─── monitoring [edgeControllerId] [assetID] --activate 
+> │    └─── uninstall [assetID] --force 
 
+We can manage the agents through the CLI with the command `ag` or (you guessed it) `agent`. And what can we do with it?
 
+#### `create-join-token`
+
+We can create a token for this agent to join a specific EC.
+
+```bash
+./public-api-cli agent create-join-token
+	[edgecontrollerID]
+	--outputPath=/Users/user/folder/
+```
+
+With this, a token file is created and stored in the path that has been defined by the user. If that flag is not used, the token file will be stored in the current path.
+
+#### `monitoring`
+
+We can activate the monitor feature for the asset the agent is installed in.
+
+```bash
+./public-api-cli agent monitoring 
+	[edgecontrollerID]
+	[assetID]
+	--activate=false
+```
+
+For this we will need:
+
+- the ID of the EC associated to the agent.
+- the ID of the asset we want to monitor.
+- a flag indicating whether we want to activate or deactivate the asset monitoring (the default value is `true`).
+
+#### `uninstall`
+
+We can, also, uninstall an agent from the asset it is in.
+
+```bash
+./public-api-cli agent uninstall 
+	[assetID]
+```
+
+For this, we will only need the ID of the asset where the agent is installed.
 
 ### Through Web Interface
 
