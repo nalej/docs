@@ -28,12 +28,6 @@ One of the services the Agent will have to execute is the monitorization of the 
 
 ### Through CLI
 
-ECs
-
-> ├─── edgecontroller (ec)
-> │    ├─── update-location [edgeControllerID] --geolocation 
-> │    └─── unlink [edgeControllerID]
-
 The CLI command to manage the Edge Controllers is `ec` (or `edgecontroller`). Let's see what we can do with it.
 
 #### `create-join-token`
@@ -138,13 +132,6 @@ This option triggers a confirmation dialog, and when we confirm, it unlinks this
 The agents are managed a bit different than the ECs, since what we see is the asset where they are installed and not the agent itself. Nonetheless, let's see what we can do with them.
 
 ### Through CLI
-
-Agents
-
-> ├─── agent (ag)
-> │    ├─── create-join-token [edgeControllerId]
-> │    ├─── monitoring [edgeControllerId] [assetID] --activate 
-> │    └─── uninstall [assetID] --force 
 
 We can manage the agents through the CLI with the command `ag` or (you guessed it) `agent`. And what can we do with it?
 
