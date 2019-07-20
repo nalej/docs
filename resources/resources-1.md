@@ -64,13 +64,13 @@ _The CLI responses are shown in text format, which can be obtained adding_ `--ou
 
 We can also obtain information about our clusters and their nodes through the CLI. For example, a list of clusters can be obtained by executing:
 
-```javascript
+```bash
 ./public-api-cli cluster list
 ```
 
 This command will return, as usual, a table with some of the information the system has about the clusters in it:
 
-```javascript
+```bash
 NAME                   ID                  NODES   
 <cluster_name_1>       <cluster_id_1>     <total_num_nodes>
 <cluster_name_2>       <cluster_id_2>     <total_num_nodes>
@@ -90,10 +90,18 @@ This information consists of:
 - **LABELS**, the labels of the cluster.
 - **STATUS**, the status of the cluster. It depends on the status of each node, and it can have the values _running_, _processing_ or _error_.
 
+We can also choose a cluster and ask for its information with:
+
+```bash
+./public-api-cli cluster info
+	[clusterID]
+```
+
 Once we know the cluster ID, we can list the nodes belonging to it.
 
 ```javascript
-./public-api-cli nodes list [clusterID]
+./public-api-cli nodes list 
+	[clusterID]
 ```
 
 This is the response to the command above:
@@ -188,21 +196,3 @@ To delete a label, the procedure is very similar, as well as the command to use:
 The response to it will be the same as before, but the labels won't show the ones that have been deleted.
 
 The process to add and remove labels from nodes is exactly the same, but changing the `[clusterID]` parameter for the corresponding `[nodeID]`. The results would be the information of the specific node with the `labels` field modified accordingly.
-
-
-
-
-
-> FALTA DOCUMENTAR
->
-> - cluster LABEL
-> - cluster MONITOR
->
->  cluster (clusters)
-> │    ├─── info [clusterID] --clusterID 
-> │    ├─── label (labels, l)
-> │    │    ├─── add [clusterID] [labels]
-> │    │    └─── delete [clusterID] [labels] (remove, del)
-> │    ├─── list
-> │    ├─── monitor [clusterID] --clusterID --rangeMinutes 
->

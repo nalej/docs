@@ -153,7 +153,7 @@ SARA - simple application   <desc_id>   <label:value>
 
 NAME                  IMAGE            LABELS
 [Group] application   ===
-simple-mysql            <serv1_img>      <l1:v1>,<l2:v2>
+simple-mysql          <serv1_img>      <l1:v1>,<l2:v2>
 simple-wordpress      <serv2_img>      <l3:v3>,<l4:v4>
 ```
 
@@ -222,7 +222,7 @@ This will return a table with some information related to the instance we are ch
 NAME                  REPLICAS           STATUS            
 [Group] application   <num_replicas>    SERVICE_RUNNING   
 <service_1>           <num_replicas>    SERVICE_RUNNING
-<service_2>              <num_replicas>    SERVICE_RUNNING   
+<service_2>           <num_replicas>    SERVICE_RUNNING   
 
 ENDPOINTS
 "xxxx.xxxxx.appcluster.<yourcluster>.com"
@@ -281,7 +281,7 @@ This will return a \(most likely\) very long response, with the following format
 
 ```javascript
 TIMESTAMP           MSG
-<msg_timestamp>        <logged_info>
+<msg_timestamp>     <logged_info>
 ```
 
 Where each **entry** has a **timestamp** and a **msg** with the logged info related to the instance, which is completely dependant on the application that generates the log. Typically, the logged info contains the **log\_level**, which can be useful to differentiate an informative log from an error one. Please check the log message format of the application you're consulting before diving in this file.
@@ -296,7 +296,7 @@ OK, so we finished working with this instance, and don't want it to be in the sy
 
 ```bash
 ./public-api-cli app inst undeploy 
-	<instance_id>
+	[instance_id]
 ```
 
 That may be all the cleanup needed if this application is something we will use again in the system, since we can deploy it again tomorrow with the same application descriptor.
@@ -326,7 +326,7 @@ What if we just don't want the application to be available again? In that case, 
 
 ```bash
 ./public-api-cli app desc delete  	
-	<descriptor_ID>
+	[descriptor_ID]
 ```
 
 This, if executed successfully, will return an acknowledgment:

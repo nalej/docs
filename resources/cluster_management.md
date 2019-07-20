@@ -13,7 +13,8 @@ There are three CLI commands that will help you with the management, and you can
 This command will isolate a specific cluster, and no new applications will be able to deploy in it while in this state. It's used like this:
 
 ```bash
-./public-api-cli cluster cordon [clusterID]
+./public-api-cli cluster cordon 
+	[clusterID]
 ```
 
 So, the only thing we need is the **cluster ID** of the cluster we want to isolate. The platform will return a `RESULT OK` if the instruction executed successfully, or if the cluster was already cordoned.
@@ -23,7 +24,8 @@ So, the only thing we need is the **cluster ID** of the cluster we want to isola
 This command is to be used in a cordoned cluster, and as you may have guessed, it allows the applications to deploy in the cluster again.
 
 ```bash
-./public-api-cli cluster uncordon [clusterID]
+./public-api-cli cluster uncordon 
+	[clusterID]
 ```
 
 As before, the **clusterID** is the only information we need to uncordon a cluster, and the platform will return a `RESULT OK` if the instruction executed successfully, or if the cluster wasn't cordoned in the first place.
@@ -33,7 +35,8 @@ As before, the **clusterID** is the only information we need to uncordon a clust
 This command moves the deployed services in the cluster to other clusters (if it's possible), leaving it empty.
 
 ```bash
-./public-api-cli cluster drain [clusterID]
+./public-api-cli cluster drain 
+	[clusterID]
 ```
 
 Again, we need the **clusterID** to execute the command, and once we do, it will move the services to other clusters if possible. The users will be completely unaware of this process, since they won't stop executing.
