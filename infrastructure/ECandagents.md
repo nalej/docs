@@ -36,7 +36,7 @@ First, we can create a join token, so when we install an EC we can join it to th
 
 ```bash
 ./public-api-cli ec create-join-token
-  --outputPath=/Users/user/folder/
+  --outputPath /Users/user/folder/
 ```
 
 With this, a token file is created and stored in the path that has been defined by the user. If that flag is not used, the token file will be stored in the current path.
@@ -50,9 +50,10 @@ We can also install an agent in this EC. For this, we need:
 	[edgeControllerID] 
 	[targetHost] 
 	[username] 
-	--agentType="type of hardware"
-	--password=<password>
-	--publicKeyPath=<publicKeyPath>
+	--agentType "type of hardware"
+	--password <password>
+	--publicKeyPath <publicKeyPath>
+	--sudoer
 ```
 
 - the ID of the EC we want to join.
@@ -64,6 +65,7 @@ The agent will be installed through SSH, and for this we will need:
 - the username, and one of these options:
   - a password
   - the path to the RSA key (in the `—publicKeyPath` flag)
+- We also have a flag that indicates if the user is a `sudoer` (an administrator) or not. 
 
 #### `update-location`
 
@@ -72,7 +74,7 @@ You can also update the location of a given EC:
 ```bash
 ./public-api-cli ec update-location 
 	[edgecontrollerID] 
-	--geolocation="new geolocation"
+	--geolocation "new geolocation"
 ```
 
 The only thing we need here, apart from the ID of the EC we want to update, is its new location.
@@ -142,7 +144,7 @@ We can create a token for this agent to join a specific EC.
 ```bash
 ./public-api-cli agent create-join-token
 	[edgecontrollerID]
-	--outputPath=/Users/user/folder/
+	--outputPath /Users/user/folder/
 ```
 
 With this, a token file is created and stored in the path that has been defined by the user. If that flag is not used, the token file will be stored in the current path.
@@ -162,7 +164,7 @@ For this we will need:
 
 - the ID of the EC associated to the agent.
 - the ID of the asset we want to monitor.
-- a flag indicating whether we want to activate or deactivate the asset monitoring (the default value is `true`).
+- a flag indicating whether we want to activate or deactivate the asset monitoring (the default value is `true`) (don't forget the `=` sign!).
 
 #### `uninstall`
 
@@ -171,9 +173,10 @@ We can, also, uninstall an agent from the asset it is in.
 ```bash
 ./public-api-cli agent uninstall 
 	[assetID]
+	--force
 ```
 
-For this, we will only need the ID of the asset where the agent is installed.
+For this, we will only need the ID of the asset where the agent is installed. As you can see, we can force the uninstallation in case something goes wrong and we really really want to uninstall that agent.
 
 ### Through Web Interface
 
@@ -209,4 +212,3 @@ Here we can see the information obtained from the last operation the asset execu
 **Uninstall agent**
 
 As with the ECs, this option prompts a browser dialog for us to confirm the action, and when we do, the agent gets uninstalled and the asset disappears from the list.
-
