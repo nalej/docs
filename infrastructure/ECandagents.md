@@ -53,7 +53,7 @@ We can also install an agent in this EC. For this, we need:
 	--agentType "type of hardware"
 	--password <password>
 	--publicKeyPath <publicKeyPath>
-	--sudoer
+	--sudoer=true
 ```
 
 - the ID of the EC we want to join.
@@ -65,7 +65,7 @@ The agent will be installed through SSH, and for this we will need:
 - the username, and one of these options:
   - a password
   - the path to the RSA key (in the `—publicKeyPath` flag)
-- We also have a flag that indicates if the user is a `sudoer` (an administrator) or not. 
+- We also have a flag that indicates if the user has root permissions (is a `sudoer`) or not (the default value is `false`).
 
 #### `update-location`
 
@@ -85,10 +85,11 @@ Lastly, you can unlink a specific EC from the NMC.
 
 ```bash
 ./public-api-cli ec unlink
-	[edgecontrollerID] 
+	[edgecontrollerID]
+	--force=true
 ```
 
-The only thing needed for this will be the ID of the EC we want to unlink.
+The only thing needed for this will be the ID of the EC we want to unlink. We can also indicate that we really, really want the EC to unlink with the `—force` flag (which is set to `false` by default).
 
 ### Through Web Interface
 
@@ -164,7 +165,7 @@ For this we will need:
 
 - the ID of the EC associated to the agent.
 - the ID of the asset we want to monitor.
-- a flag indicating whether we want to activate or deactivate the asset monitoring (the default value is `true`) (don't forget the `=` sign!).
+- a flag indicating whether we want to activate or deactivate the asset monitoring (the default value is `true`) (don't forget the `=` sign when dealing with boolean flags!).
 
 #### `uninstall`
 
@@ -173,10 +174,10 @@ We can, also, uninstall an agent from the asset it is in.
 ```bash
 ./public-api-cli agent uninstall 
 	[assetID]
-	--force
+	--force=true
 ```
 
-For this, we will only need the ID of the asset where the agent is installed. As you can see, we can force the uninstallation in case something goes wrong and we really really want to uninstall that agent.
+For this, we will only need the ID of the asset where the agent is installed. As you can see, we can force the uninstallation in case something goes wrong and we really really want to uninstall that agent (the default value for this flag is `false`).
 
 ### Through Web Interface
 
@@ -212,3 +213,4 @@ Here we can see the information obtained from the last operation the asset execu
 **Uninstall agent**
 
 As with the ECs, this option prompts a browser dialog for us to confirm the action, and when we do, the agent gets uninstalled and the asset disappears from the list.
+
