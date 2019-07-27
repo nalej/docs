@@ -1,6 +1,6 @@
 # Edge Controllers and Agents
 
-The Edge Controllers and the Agents are both Nalej components that are installed in your side of the organization so the Nalej platform can have access to the assets there. Let's start with some basic definitions.
+The Edge Controllers and the Agents are both Nalej components that are installed in your side of the organization so the Nalej platform can have access to the assets there. Let's start with some basic definitions. 
 
 ## What is an Edge Controller, and why do I need one?
 
@@ -58,7 +58,7 @@ We can also install an agent in this EC. For this, we need:
 
 - the ID of the EC we want to join.
 - the IP address of the asset where we want to install the agent.
-- the type of hardware where the agent will be installed.
+- the type of agent we want to install, to choose between the following: LINUX_AMD64, LINUX_ARM32, LINUX_ARM64 or WINDOWS_AMD64.
 
 The agent will be installed through SSH, and for this we will need:
 

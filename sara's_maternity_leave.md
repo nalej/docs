@@ -54,7 +54,7 @@ If you copy a section of a document with an image in it and paste it afterwards,
 
 To create a new release you have to create a new branch in GitHub. Call this branch the name of the *current* release, not the new one, because the new one will be the master branch.
 
-After that, GitBook should update by itself, with a new branch called "master". To change the branch name you need special permissions, so the best you can do is ask Alvaro or Dani to rename it there.
+After that, GitBook should update by itself, with a new branch called "master". To change the branch name you just need to go into **edit mode** (clicking on the pencil icon in the lower right corner) and change the name of the branch there. The releases 0.2.0 and 0.3.0 are already created, and the 0.4.0 is the one we're currently working with.
 
 Once this is done, you should be able to upload the new changes to the master branch, and expect them to appear under the new version of the documentation.
 
