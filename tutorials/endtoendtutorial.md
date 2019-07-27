@@ -4,33 +4,33 @@ I know you have been fascinated with Nalej's possibilities from the get-go, and 
 
 ## The Scenario
 
-We are going to build a fancy thermometer. For this, we will use a brand new Raspberry Pi with a temperature sensor (the DHT22 sensor, specifically), and we will have a web interface to see what it measures. We will deploy an instance of Kibana with ElasticSearch, and the device will collect the data that Kibana is going to manage. 
+We are going to build a fancy thermometer. For this, we will use a brand new Raspberry Pi with a temperature sensor \(the DHT22 sensor, specifically\), and we will have a web interface to see what it measures. We will deploy an instance of Kibana with ElasticSearch, and the device will collect the data that Kibana is going to manage.
 
-That device would be our Raspberry Pi, so we will install Nalej SDK in it, and activate and configure the SDK so that it connects with Nalej automatically. 
+That device would be our Raspberry Pi, so we will install Nalej SDK in it, and activate and configure the SDK so that it connects with Nalej automatically.
 
 Then we will create the application descriptor that will allow our application to deploy. This descriptor will have some parameters we will be able to configure, like the name of the device group our device belongs to. Once this is done, we will be able to include the app in the system and deploy it.
 
 ## The Device
 
-You receive your brand new Raspberry Pi with your DHT-22 sensor (which you have physically connected to it [like so](https://www.instructables.com/id/Raspberry-Pi-Tutorial-How-to-Use-the-DHT-22/)), and have a microSD, and now you want to start configuring it as a Nalej device as soon as possible. Great! So, what do you need?
+You receive your brand new Raspberry Pi with your DHT-22 sensor \(which you have physically connected to it [like so](https://www.instructables.com/id/Raspberry-Pi-Tutorial-How-to-Use-the-DHT-22/)\), and have a microSD, and now you want to start configuring it as a Nalej device as soon as possible. Great! So, what do you need?
 
 ### Creating a device group
 
-First, you need to get everything ready for your device, and that means that you need to create a new device group for your device to belong to. 
+First, you need to get everything ready for your device, and that means that you need to create a new device group for your device to belong to.
 
-You can follow [this tutorial](../devices/devices-1#adding-a-device-group) to add a new device group in the system, or you can also use an already existent device group if you wish. Then, the information you need for registering your device in the system can be obtained following [this other tutorial](../devices/devices-1#getting-device-related-information). 
+You can follow [this tutorial](https://github.com/nalej/docs/tree/7a10836899650f078c3adef52a0ed2e67d5f957e/devices/devices-1/README.md#adding-a-device-group) to add a new device group in the system, or you can also use an already existent device group if you wish. Then, the information you need for registering your device in the system can be obtained following [this other tutorial](https://github.com/nalej/docs/tree/7a10836899650f078c3adef52a0ed2e67d5f957e/devices/devices-1/README.md#getting-device-related-information).
 
 > DISCLAIMER: by now, the information needed to register a device is only available through the Public API CLI. So, although the tutorials show how to add or manage device groups through the Web Interface too, we recommend doing it through the Public API CLI, so the gathering of information is more straightforward.
 
 ### Getting ready for the SDK
 
-Now your device needs an operating system. The only requirement for it to run the SDK is that it has a Python interpreter. For Raspberry Pi, there are many options available and ready to download, but we recommend **Raspbian**, which you can download [from the official Raspberry Pi site](https://www.raspberrypi.org/downloads/) and easily install in your microSD. 
+Now your device needs an operating system. The only requirement for it to run the SDK is that it has a Python interpreter. For Raspberry Pi, there are many options available and ready to download, but we recommend **Raspbian**, which you can download [from the official Raspberry Pi site](https://www.raspberrypi.org/downloads/) and easily install in your microSD.
 
-Let's suppose you install Raspbian and the installation went uneventfully. In order to be able to use the Nalej Python SDK, you need **Python 3.7** and **PIP 3** (version 18.1 or higher). You also need the following libraries:
+Let's suppose you install Raspbian and the installation went uneventfully. In order to be able to use the Nalej Python SDK, you need **Python 3.7** and **PIP 3** \(version 18.1 or higher\). You also need the following libraries:
 
-- requests
-- pathlib
-- paho-mqtt
+* requests
+* pathlib
+* paho-mqtt
 
 For this particular example, the DHT library is also needed, and you can download and install it with the following commands:
 
@@ -42,7 +42,7 @@ sudo apt-get install build-essential python-dev
 sudo python setup.py install
 ```
 
-After that you have to reboot your Pi system to get the Adafruit driver, and then you can start installing Nalej SDK. For that, you just need to follow [this simple step-by-step tutorial](installingSDKindevice.md), and your device will be all set. 
+After that you have to reboot your Pi system to get the Adafruit driver, and then you can start installing Nalej SDK. For that, you just need to follow [this simple step-by-step tutorial](installingsdkindevice.md), and your device will be all set.
 
 ## The Application
 
@@ -77,14 +77,14 @@ The general structure of a descriptor is, as you know, as follows:
 
 We will start thinking about the services we need for our application.
 
-- As we said, we need **Kibana** to display the data sent by the device.
-- We also said we would use Kibana with **ElasticSearch**, so we also need that.
-- Having devices implies some kind of communication between the device and the server. For that, we will use **MQTT**, with a global instance (the broker) in the server and a local instance (a client) in each device.
-- Lastly, we need something that can deliver the MQTT messages to Elastic easily. This will be solved by a **Beat**, an MQTTBeat specifically.
+* As we said, we need **Kibana** to display the data sent by the device.
+* We also said we would use Kibana with **ElasticSearch**, so we also need that.
+* Having devices implies some kind of communication between the device and the server. For that, we will use **MQTT**, with a global instance \(the broker\) in the server and a local instance \(a client\) in each device.
+* Lastly, we need something that can deliver the MQTT messages to Elastic easily. This will be solved by a **Beat**, an MQTTBeat specifically.
 
 So we will need only one service group, the `core`, which will have Kibana, ElasticSearch, the Beat and an instance of MQTT. The `groups` part of the descriptor, then, would look like this:
 
-```json
+```javascript
  "groups": [
     {
       "name": "core",
@@ -201,16 +201,16 @@ So we will need only one service group, the `core`, which will have Kibana, Elas
 
 We can see the two service groups we need to declare and the services in each one. There are some configuration variables we will talk about in another tutorial, but by now it's enough to know that you will have to ask for them to your Nalej administrator.
 
-All these services need some rules to communicate. 
+All these services need some rules to communicate.
 
-- Kibana must be accessible publicly, so we can display the recollected data, but the others should not be. 
-- Kibana must have access to Elastic, to get the information, and Beats should have access to Elastic too, to leave information. 
-- MQTT should allow access to Beats to its core instance (so Beats can collect the messages from the message queue and pass them on to ElasticSearch). 
-- Lastly, the devices should have access to the gateway instance of MQTT, to be able to send messages.
+* Kibana must be accessible publicly, so we can display the recollected data, but the others should not be. 
+* Kibana must have access to Elastic, to get the information, and Beats should have access to Elastic too, to leave information. 
+* MQTT should allow access to Beats to its core instance \(so Beats can collect the messages from the message queue and pass them on to ElasticSearch\). 
+* Lastly, the devices should have access to the gateway instance of MQTT, to be able to send messages.
 
 How can you describe such a complex net of relationships? It would look like this:
 
-```json
+```javascript
  "rules": [
     {
       "name": "Allow public access to kibana",
@@ -269,7 +269,7 @@ The last thing we need to do is specify the list of parameters that we will conf
 
 As you can see, the device group name written in the last rule is `raspberry`. This will be the default name for the device group, but we need to be able to specify another one if we want to. So, let's include the parameter section:
 
-```json
+```javascript
 "parameters": [
     {
         "name":"deviceGroupName",
@@ -284,11 +284,11 @@ As you can see, the device group name written in the last rule is `raspberry`. T
 
 Here we have a typical declaration for a parameter. In this case, the parameter called `deviceGroupName` has:
 
-- a simple `description`.
-- a `path`: this tells us where to find the variable in the descriptor. The variable must exist beforehand so we can substitute its value with a new one. In this case, this variable is in the fifth rule (starting from 0), and has the name `DEVICE_GROUP_NAME`.
-- a `type`, to be chosen between boolean (0), integer (1), double (2), enum (3), string (4) or password (5). In this case, it's a `string`.
-- a `category`, which is an indication of this parameter being needed for a basic configuration (0) or an advanced one (1).
-- a flag telling us if the parameter is `required` or optional. In this case, it's optional.
+* a simple `description`.
+* a `path`: this tells us where to find the variable in the descriptor. The variable must exist beforehand so we can substitute its value with a new one. In this case, this variable is in the fifth rule \(starting from 0\), and has the name `DEVICE_GROUP_NAME`.
+* a `type`, to be chosen between boolean \(0\), integer \(1\), double \(2\), enum \(3\), string \(4\) or password \(5\). In this case, it's a `string`.
+* a `category`, which is an indication of this parameter being needed for a basic configuration \(0\) or an advanced one \(1\).
+* a flag telling us if the parameter is `required` or optional. In this case, it's optional.
 
 And that's it! You have finished your application descriptor and can now deploy an instance of your application in Nalej. How to do that, you ask? There is a step-by-step tutorial [here](appdeployment_wclusters.md), and you can find more information [here](../applications/applications-1.md) if you have further questions.
 
@@ -298,7 +298,7 @@ Now, you have a registered device AND an application to use it with. How do we c
 
 Our application descriptor starts with something like this:
 
-```json
+```javascript
 {
    "name": "Thermometer application",
    "labels": {
@@ -306,7 +306,7 @@ Our application descriptor starts with something like this:
    },
    "rules": [
    {
-   	...
+       ...
     ...
 ```
 
@@ -314,8 +314,8 @@ The `app` parameter inside the `labels` part of the descriptor is what we need t
 
 Then, the next step is creating a data object that knows how to interact with that application. We are using the MQTT protocol, which is the only protocol the platform supports by now, so we need a NalejMqttData object in our Python file. For that object we need two parameters:
 
-- the **topic** of the MQTT messages.
-- the **function** (as a parameter) that will return the data to be sent to the application.
+* the **topic** of the MQTT messages.
+* the **function** \(as a parameter\) that will return the data to be sent to the application.
 
 Finally, we need to send the telemetry data to the application using the **publish** method, which creates a new thread that sends telemetry data every 5 seconds, and will continue to do so until the **disconnect** method is executed.
 
@@ -338,7 +338,7 @@ client.publish(labels, dataObject)
 
 ## Disconnecting device
 
-The publish method will be sending data in a new thread until the program disconnects. The **disconnect** method stops the communication with all the connected applications and the platform (the log out must be processed from the platform side), and it looks like this:
+The publish method will be sending data in a new thread until the program disconnects. The **disconnect** method stops the communication with all the connected applications and the platform \(the log out must be processed from the platform side\), and it looks like this:
 
 ```python
 from nalej.core.client import NalejClient
@@ -358,7 +358,7 @@ In case you got lost somewhere, here you have the files you need for this exampl
 
 ### Application descriptor
 
-```json
+```javascript
 {
   "name": "Sample thermometer application with 5 elements",
   "labels": {
@@ -529,7 +529,7 @@ In case you got lost somewhere, here you have the files you need for this exampl
 
 ### Python file
 
-This file gets the humidity and temperature values from the DHT22 sensor (you have an easy installation tutorial for this sensor [here](https://www.instructables.com/id/Raspberry-Pi-Tutorial-How-to-Use-the-DHT-22/)).
+This file gets the humidity and temperature values from the DHT22 sensor \(you have an easy installation tutorial for this sensor [here](https://www.instructables.com/id/Raspberry-Pi-Tutorial-How-to-Use-the-DHT-22/)\).
 
 ```python
 import Adafruit_DHT # library to access the sensors
@@ -546,7 +546,7 @@ def get_dht22_temp():
     return "{0:.2f}".format(temperature)
 
 # Formatting the values with the format we want
-# to read in the application.
+# to read in the application.
 def get_dht22_temp_payload():
     payload = '{"value":' + str(get_dht22_temp()) + '}'
     return payload
@@ -568,7 +568,7 @@ while not connected:
    except:
        logging.error('Login failed. Trying again in 2 seconds.')
        time.sleep(2)
-    
+
 # Creating the object to be sent to the platform and 
 # publishing the data every 5 seconds in another thread.
 topic = 'sensor/' + client.config.deviceId + '/temperature'
@@ -592,11 +592,11 @@ except Exception as error:
 
 ### Config file
 
-If you want to use this config file as it is used in the Python program above, remember to substitute the information here with your specific configuration info, and to save this file as *.nalej_config* in the *home* folder of the current user.
+If you want to use this config file as it is used in the Python program above, remember to substitute the information here with your specific configuration info, and to save this file as _.nalej\_config_ in the _home_ folder of the current user.
 
 Also, remember that you will need several parameters that will change depending on your organization and application, like the **organizationID**, the **deviceGroupID** and the **deviceGroupApiKey**.
 
-```json
+```javascript
 {
     "nalejPlatformDomain": "demo.nalej.tech",
     "organizationId": "xxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",

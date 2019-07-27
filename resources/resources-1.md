@@ -84,24 +84,24 @@ LABELS                                        STATUS
 
 This information consists of:
 
-- **NAME**, the name given to the cluster.
-- **ID**, the cluster identifier.
-- **NODES**, the number of nodes in the cluster.
-- **LABELS**, the labels of the cluster.
-- **STATUS**, the status of the cluster. It depends on the status of each node, and it can have the values _running_, _processing_ or _error_.
+* **NAME**, the name given to the cluster.
+* **ID**, the cluster identifier.
+* **NODES**, the number of nodes in the cluster.
+* **LABELS**, the labels of the cluster.
+* **STATUS**, the status of the cluster. It depends on the status of each node, and it can have the values _running_, _processing_ or _error_.
 
 We can also choose a cluster and ask for its information with:
 
 ```bash
 ./public-api-cli cluster info
-	[clusterID]
+    [clusterID]
 ```
 
 Once we know the cluster ID, we can list the nodes belonging to it.
 
 ```javascript
 ./public-api-cli nodes list 
-	[clusterID]
+    [clusterID]
 ```
 
 This is the response to the command above:
@@ -120,24 +120,24 @@ LABELS                                          STATUS
 
 The new variables are:
 
-- **ID**, the node identifier.
-- **IP**, the IP address of the node.
-- **STATE**, the current state of the node regarding its use. The values can be:
-  - _UNREGISTERED_: the details of the node are in the platform, but we haven't perfomed any action with them yet.
-  - _UNASSIGNED_: the node has been prepared, but has not yet been asigned to a cluster.
-  - _ASSIGNED_: the node has been installed and is part of a cluster.
-- **LABELS**: the labels of the node.
-- **STATUS**, the status of this node, which can be _running_, _processing_, or _error_. If one or more nodes have values other than "_running_", the cluster will show the most serious problem in its _status\_name_ variable.
+* **ID**, the node identifier.
+* **IP**, the IP address of the node.
+* **STATE**, the current state of the node regarding its use. The values can be:
+  * _UNREGISTERED_: the details of the node are in the platform, but we haven't perfomed any action with them yet.
+  * _UNASSIGNED_: the node has been prepared, but has not yet been asigned to a cluster.
+  * _ASSIGNED_: the node has been installed and is part of a cluster.
+* **LABELS**: the labels of the node.
+* **STATUS**, the status of this node, which can be _running_, _processing_, or _error_. If one or more nodes have values other than "_running_", the cluster will show the most serious problem in its _status\_name_ variable.
 
 We can also monitor a specific cluster through the CLI with the command:
 
 ```bash
 ./public-api-cli cluster monitor 
-	[clusterID]
-	--rangeMinutes 10
+    [clusterID]
+    --rangeMinutes 10
 ```
 
-This command offers us a quick summary of the cluster status in the last 10 minutes (the `—rangeMinutes` flag is optional), in this form:
+This command offers us a quick summary of the cluster status in the last 10 minutes \(the `—rangeMinutes` flag is optional\), in this form:
 
 ```bash
 CPU               MEM                             STORAGE
@@ -148,7 +148,7 @@ Now we know the computing capacity and RAM that's being used, and the used stora
 
 ## Managing labels
 
-Regarding the **labels** of the clusters and nodes, although adding and/or deleting them is not encouraged, we can do it easily, and the procedure for clusters and nodes is very similar. 
+Regarding the **labels** of the clusters and nodes, although adding and/or deleting them is not encouraged, we can do it easily, and the procedure for clusters and nodes is very similar.
 
 ### Web Interface
 
@@ -170,29 +170,30 @@ To add a label to a cluster, the appropriate command is:
 
 ```bash
 ./public-api-cli cluster label add 
-	[clusterID] 
-	--labels "k1:v1"
+    [clusterID] 
+    --labels "k1:v1"
 ```
 
-As you can see, the **clusterID** is included as a parameter (you can find this ID executing the `cluster list` command), and the labels to add are preceded by the flag `—label`, between `""` and with the format `key:value;key2:value2`.
+As you can see, the **clusterID** is included as a parameter \(you can find this ID executing the `cluster list` command\), and the labels to add are preceded by the flag `—label`, between `""` and with the format `key:value;key2:value2`.
 
 When executed, this command responds like this:
 
-```
+```text
 NAME     ID           NODES   LABELS              STATUS
 [name]  [clusterID]   3       k1:v1,cloud:azure   RUNNING
 ```
 
-Here we can see all the information of a cluster, which is its name, its ID, the nodes it has, the labels attached to it (which will include the recently added), and its status.
+Here we can see all the information of a cluster, which is its name, its ID, the nodes it has, the labels attached to it \(which will include the recently added\), and its status.
 
 To delete a label, the procedure is very similar, as well as the command to use:
 
 ```bash
 ./public-api-cli cluster label delete 
-	[clusterID] 
-	--labels "k1:v1"
+    [clusterID] 
+    --labels "k1:v1"
 ```
 
 The response to it will be the same as before, but the labels won't show the ones that have been deleted.
 
 The process to add and remove labels from nodes is exactly the same, but changing the `[clusterID]` parameter for the corresponding `[nodeID]`. The results would be the information of the specific node with the `labels` field modified accordingly.
+

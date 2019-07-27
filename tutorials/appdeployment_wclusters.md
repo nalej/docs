@@ -12,16 +12,16 @@ Is this the very first time you log in the platform? There are some variables th
 
 ```bash
 ./public-api-cli options set 
-	--key=cacert 
-	--value=/Users/youruser/.../certificate.crt
+    --key=cacert 
+    --value=/Users/youruser/.../certificate.crt
 
 ./public-api-cli options set 
-	--key=loginAddress 
-	--value=login.server.nalej.com
+    --key=loginAddress 
+    --value=login.server.nalej.com
 
 ./public-api-cli options set 
-	--key=nalejAddress 
-	--value=api.server.nalej.com
+    --key=nalejAddress 
+    --value=api.server.nalej.com
 ```
 
 To check if these commands have executed correctly and the options are in fact set, you can use the command:
@@ -174,7 +174,7 @@ This example is the output of the following command:
 
 ```bash
 ./public-api-cli app desc 
-	help > appDescExample.json
+    help > appDescExample.json
 ```
 
 It creates a basic application descriptor for you \(called `appDescExample.json`in this case\), with a Wordpress instance and a mySQL database associated to it. To learn more about them, please visit [this link](../applications/app_descriptors.md), where you can find an extensive tutorial on how to make your own.

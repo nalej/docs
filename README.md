@@ -1,6 +1,6 @@
 # Welcome to Nalej
 
-Welcome to the documentation for the Nalej system. This documentation is structured in three major areas of knowledge, which are the main sections of the system. They are:
+Welcome to the documentation for the 0.4.0 release of the Nalej system. This documentation is structured in three major areas of knowledge, which are the main sections of the system. They are:
 
 ## Organization
 
