@@ -1,25 +1,25 @@
-# Initial login
+# Initial login in the system
 
-Before getting started with the different parts of the platform, we're going to tackle the very first step of the way: the first time we log in the platform. There are two ways we can log in: through the command line interface (CLI) and through the web management interface.
+Before getting started with the different parts of the platform, we're going to tackle the very first step of the way: the first time we log in the platform. There are two ways we can log in: through the command line interface \(CLI\) and through the web management interface.
 
 ## CLI Login
 
 ### Setting your user options
 
-The very first time you log in the system there are some variables that need to be established. They are needed for each interaction, so setting them up before starting lets us omit them in each request. These variables are the **certificate** you received, and the addresses of the **Nalej login server** and the **Nalej API server**. Gather all data (from the information the Nalej administration provided when signing up for the service), go to the `public-api-cli/bin` folder in your computer and execute the following instructions:
+The very first time you log in the system there are some variables that need to be established. They are needed for each interaction, so setting them up before starting lets us omit them in each request. These variables are the **certificate** you received, and the addresses of the **Nalej login server** and the **Nalej API server**. Gather all data \(from the information the Nalej administration provided when signing up for the service\), go to the `public-api-cli/bin` folder in your computer and execute the following instructions:
 
 ```bash
 ./public-api-cli options set 
-	--key=cacert 
-	--value=/Users/youruser/.../certificate.crt
+    --key=cacert 
+    --value=/Users/youruser/.../certificate.crt
 
 ./public-api-cli options set 
-	--key=loginAddress 
-	--value=login.server.nalej.com
+    --key=loginAddress 
+    --value=login.server.nalej.com
 
 ./public-api-cli options set 
-	--key=nalejAddress 
-	--value=api.server.nalej.com
+    --key=nalejAddress 
+    --value=api.server.nalej.com
 ```
 
 To check if these commands have executed correctly and the options are in fact set, you can use the command:
@@ -32,8 +32,8 @@ Right now, the responses to the CLI commands will be JSON-formatted documents. I
 
 ```bash
 ./public-api-cli options set 
-	--key=output 
-	--value=text
+    --key=output 
+    --value=text
 ```
 
 This will return the responses in a more human-readable format. If, however, you happen to need the response of a specific command in a JSON document, just adding --output="JSON" will override this for that command.
@@ -67,3 +67,4 @@ You can also go to the **Devices** view, where you can see all the devices in th
 Finally, in the **Applications** view you can interact with the registered and deployed apps.
 
 For more information on any of these views, please go to the corresponding section of this documentation, where the different views are described in detail.
+

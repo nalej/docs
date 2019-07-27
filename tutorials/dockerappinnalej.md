@@ -1,16 +1,16 @@
-# How to deploy a Docker Compose app in Nalej
+# Docker Compose application
 
 You have Nalej as your system, but there are some apps that you have in Docker Compose and don't know how to deploy in Nalej. No worries! It's easier than it seems.
 
 ## The App Descriptor
 
-The first thing that needs to be tackled is the app descriptor, which is what you need to include the app in the system. 
+The first thing that needs to be tackled is the app descriptor, which is what you need to include the app in the system.
 
 [Remember how to create your own app descriptor?](../applications/app_descriptors.md) I'm sure you do. I'm also sure you still have nightmares from trying to get the correct structure for your application. The thing is, just by modifying and adding a couple of sections your descriptor will be good to go.
 
 So, your app descriptor for a normal app would be something like this:
 
-```json
+```javascript
 {
   "name": "Sample application",
   "labels": {
@@ -114,7 +114,7 @@ So, your app descriptor for a normal app would be something like this:
 }
 ```
 
-This is perfect... if this app wasn't in Docker. But it is, and we need to modify the descriptor so it fits our necessities. 
+This is perfect... if this app wasn't in Docker. But it is, and we need to modify the descriptor so it fits our necessities.
 
 ### Declaring the use of a private image
 
@@ -136,15 +136,15 @@ So, we need to declare that we're going to use a private image, which is somewhe
 
 Where:
 
-- **username** and **password** are the credentials to log into the remote repository.
-- **email** is the email of the user. Depending on the type of remote repository, use the email of the user required to log into the system.
-- **docker\_repository** contains the HTTPS url of the remote repository.
+* **username** and **password** are the credentials to log into the remote repository.
+* **email** is the email of the user. Depending on the type of remote repository, use the email of the user required to log into the system.
+* **docker\_repository** contains the HTTPS url of the remote repository.
 
-This is the bare minimum and, depending on the application, the only thing you need to add to your already beautifully done app descriptor. 
+This is the bare minimum and, depending on the application, the only thing you need to add to your already beautifully done app descriptor.
 
 ### Passing arguments to the images
 
-Oh, but it's never that easy, isn't it. Your Docker app needs some arguments, and you are sure that we didn't think of *that* situation, did we. Well, of course we did!
+Oh, but it's never that easy, isn't it. Your Docker app needs some arguments, and you are sure that we didn't think of _that_ situation, did we. Well, of course we did!
 
 To pass arguments to the docker images, use the **run\_arguments** attribute as in the following example:
 
@@ -165,7 +165,7 @@ And that's everything you need for the application descriptor of your Docker app
 
 ## Deploying the application
 
-Now you have to deploy it in the system. 
+Now you have to deploy it in the system.
 
 ### Public API CLI
 
@@ -175,7 +175,7 @@ After creating the application descriptor, the next step is adding it to the sys
 
 ```bash
 ./public-api-cli app desc add 
-	--descriptorPath=/pathtodescriptor
+    --descriptorPath=/pathtodescriptor
 ```
 
 It returns an application descriptor ID, which we will need for deploying an instance of this application.
@@ -186,8 +186,8 @@ And how would we deploy that instance? With this other command:
 
 ```bash
 ./public-api-cli app inst deploy 
-	--descriptorID=xxxxxxx 
-	--name=name-app
+    --descriptorID=xxxxxxx 
+    --name=name-app
 ```
 
 Here, as you may have noticed, is also the moment where we name the app with a human-readable name. When this command exits, it returns an application **instance** ID, which is what we will use to work with the deployed instance.
@@ -208,13 +208,13 @@ What we can see now is a special dialog where we can upload our application desc
 
 #### Deploying the associated instance
 
-Now that the application is registered (and thus appears in the list at the **Registered** tab), we can deploy an instance of it! There are two ways to access the deploying dialog, so let's see both.
+Now that the application is registered \(and thus appears in the list at the **Registered** tab\), we can deploy an instance of it! There are two ways to access the deploying dialog, so let's see both.
 
-![Deploy button from the "Registered" list](../.gitbook/assets/app_ppal_registered_deploy.png)
+![Deploy button from the &quot;Registered&quot; list](../.gitbook/assets/app_ppal_registered_deploy.png)
 
-One of the ways to do that is by clicking the blue *play* button in the **Actions** column of the **Registered** tab.
+One of the ways to do that is by clicking the blue _play_ button in the **Actions** column of the **Registered** tab.
 
-![Deploying an instance from the "Instances" list](../.gitbook/assets/app_ppal_deploy_instance.png)
+![Deploying an instance from the &quot;Instances&quot; list](../.gitbook/assets/app_ppal_deploy_instance.png)
 
 The other way is to go from the **Registered** tab to the **Instances** tab. To deploy our application we only need to click on the **Deploy instance** button on the right part of the screen.
 
@@ -222,7 +222,7 @@ With both actions we arrive to the same dialog, which looks like this:
 
 ![Deploying instances dialog](../.gitbook/assets/app_deploy_instance_dialog.png)
 
-Here we need to write the name of the instance and choose the application we want an instance of (if we clicked on the "deploy" button in the **Registered** list, the instance is already established, and we only have to write the name of the instance). Then, the instance will appear in the list under the **Instances** tab.
+Here we need to write the name of the instance and choose the application we want an instance of \(if we clicked on the "deploy" button in the **Registered** list, the instance is already established, and we only have to write the name of the instance\). Then, the instance will appear in the list under the **Instances** tab.
 
 ## Is the application up in the system?
 
@@ -230,22 +230,22 @@ Now an instance of the application should be up and running in Nalej. You can ch
 
 ### Public API CLI
 
-*The CLI responses are shown in text format, which can be obtained adding `--output="text"` to the user options. If you need the responses in JSON format, you can get them by adding `--output="json"` at the end of your requests, or as a user option.*
+_The CLI responses are shown in text format, which can be obtained adding_ `--output="text"` _to the user options. If you need the responses in JSON format, you can get them by adding_ `--output="json"` _at the end of your requests, or as a user option._
 
 One of the things we could do to know if the instance is running is getting its information, which we can do with:
 
 ```bash
 ./public-api-cli app inst get 
-	--instanceID=XXXXXXXXXX
+    --instanceID=XXXXXXXXXX
 ```
 
 This command returns a JSON with all the information related to the instance we are checking, which looks like this:
 
 ```javascript
-NAME						REPLICAS		  STATUS            
-[Group] application		<num_replicas>    SERVICE_RUNNING   
-<service_1>				<num_replicas>    SERVICE_RUNNING
-<service_2>				<num_replicas>    SERVICE_RUNNING   
+NAME                        REPLICAS          STATUS            
+[Group] application        <num_replicas>    SERVICE_RUNNING   
+<service_1>                <num_replicas>    SERVICE_RUNNING
+<service_2>                <num_replicas>    SERVICE_RUNNING   
 
 ENDPOINTS
 "xxxx.xxxxx.appcluster.<yourcluster>.com"
@@ -260,14 +260,11 @@ STATUS
 SERVICE_RUNNING
 ```
 
-Where it tells you the status of the current instance. Since it is "SERVICE_RUNNING", we can start working with it immediately!
+Where it tells you the status of the current instance. Since it is "SERVICE\_RUNNING", we can start working with it immediately!
 
 ### Web Interface
 
-How can we know if the instance is already up? Well, the info is right there in the Application View. The list of instances may seem daunting, but all we have to do is use the **Search** box to find a string in the name of our app (or in a tag, or anywhere really), and there it is. And once we find it, the **Status** column will tell us the current status of the app. If it's "RUNNING", we're ready to go!
+How can we know if the instance is already up? Well, the info is right there in the Application View. The list of instances may seem daunting, but all we have to do is use the **Search** box to find a string in the name of our app \(or in a tag, or anywhere really\), and there it is. And once we find it, the **Status** column will tell us the current status of the app. If it's "RUNNING", we're ready to go!
 
-![Finding our instance in the "Instances" list](../.gitbook/assets/app_instance_running.png)
+![Finding our instance in the &quot;Instances&quot; list](../.gitbook/assets/app_instance_running.png)
 
-
-
-### 

@@ -13,16 +13,16 @@ The system supports specifying the application structure in the form of an appli
     ],
     "groups": [
         {
-		...
+        ...
             "services": [
                 ...
             ]
-    	}
+        }
     ] 
  }
 ```
 
-An application descriptor contains a **name**,  a set of **labels** that will be used in the future to facilitate queries, and two main sections: **rules** and **service groups**. The *rules* define how the different services are connected among themselves, and each *service group* contains a set of services that need to be deployed in order for the application to work properly.
+An application descriptor contains a **name**, a set of **labels** that will be used in the future to facilitate queries, and two main sections: **rules** and **service groups**. The _rules_ define how the different services are connected among themselves, and each _service group_ contains a set of services that need to be deployed in order for the application to work properly.
 
 ## Rules
 
@@ -35,39 +35,33 @@ The rule entity determines the connectivity of a service with the others. To spe
   "target_service_name": <service_name>,
   "target_port": <port>,       
   "access": 2     
-},    
+},
 ```
 
 Where:
 
 * **name** is the user friendly name of the rule.
-
 * **target\_service\_group\_name** contains the name of the group where the service to be accessed can be found.
-
 * **target\_service\_name** contains the name of the service to be accessed.
-
 * **target\_port** contains the port that is affected by the current rule.
-
-* **access** contains the type of access allowed. 
-
+* **access** contains the type of access allowed.
   * Use **1** to signal that the service is accessible by other app services. The correct way to specify the services would be:
 
-    ```json
+    ```javascript
     "access": 1
     "auth_service_group_name": <serv_group_name>,
-    	"auth_services": [
+        "auth_services": [
             <service_name_1>,
-        	<service_name_2>,
-        	...
+            <service_name_2>,
+            ...
         ]    
     }
     ```
 
   * Use **2** to signal that the service is publicly available.
-
   * Use **3** to signal that the service is available only for some devices.
 
-    ```json
+    ```javascript
     "access": 3
     "device_group_names": [
         <device_group_name_1>,
@@ -78,7 +72,7 @@ Where:
 
 Example:
 
-```json
+```javascript
   "rules": [
     {
       "name": "allow access to wordpress",
@@ -90,15 +84,13 @@ Example:
   ],
 ```
 
-
-
 ## Service groups
 
 A service group is a collection of services that can be replicated together. Usually, a service group specifies highly coupled applications, like Wordpress and MySQL. A service group is defined by a **group name**, a list of **services** and **deployment specifications**.
 
 The structure of a service group is as follows:
 
-```json
+```javascript
   "groups": [
     {
       "name": <group_name>,
@@ -113,18 +105,18 @@ The structure of a service group is as follows:
         }
       }
     },
-	...
+    ...
   ]
 ```
 
 Where:
 
-- **name** is the name we give to the service group. It must be unique in the context of the application.
-- **services** is the collection of services the group contains. There must be at least one service defined in the group.
-- **specs** defines the deployment specifications for the group. The different parameters here are:
-  - **multicluster_replica**, which is a boolean that states whether  the replicas will be deployed in the same cluster (=*false*), or on the contrary they will be deployed into any available cluster (=*true*). By default it is set to *false*.
-  - **num\_replicas**, which is the number of replicas of this group that are going to be deployed. These replicas will appear as different instances in the system. By default it is set to 1.
-  - **deployment_selectors**, which is a collection of labels and values that is checked against the available clusters. Only those clusters with all the labels and values indicated by the deployment_selectors are considered to be candidates.
+* **name** is the name we give to the service group. It must be unique in the context of the application.
+* **services** is the collection of services the group contains. There must be at least one service defined in the group.
+* **specs** defines the deployment specifications for the group. The different parameters here are:
+  * **multicluster\_replica**, which is a boolean that states whether  the replicas will be deployed in the same cluster \(=_false_\), or on the contrary they will be deployed into any available cluster \(=_true_\). By default it is set to _false_.
+  * **num\_replicas**, which is the number of replicas of this group that are going to be deployed. These replicas will appear as different instances in the system. By default it is set to 1.
+  * **deployment\_selectors**, which is a collection of labels and values that is checked against the available clusters. Only those clusters with all the labels and values indicated by the deployment\_selectors are considered to be candidates.
 
 ### Services
 
@@ -170,7 +162,7 @@ Where:
 * **service\_name** is the name of the service.
 * **image** is the name of the docker image.
 * **specs** defines the specifications for the service. In it, 
-  * **replicas** is the number of replicas of this service to be deployed. These replicas will be part of the same instance in the system (unlike the replicas at service group level, which will be seen as different instances).
+  * **replicas** is the number of replicas of this service to be deployed. These replicas will be part of the same instance in the system \(unlike the replicas at service group level, which will be seen as different instances\).
 * **configs** defines the configuration files that the service may need. In it, 
   * **config\_file\_id** is the identifier of each specific configuration file, 
   * **content** is the content the configuration file should have, and
@@ -222,8 +214,6 @@ Example:
     }     
 },
 ```
-
-
 
 ## Using private images
 
@@ -281,10 +271,10 @@ To attach storage to a given service, use the following construct:
  }
 ```
 
-Where **size** is the size of the storage we want to attach (in bytes), and the **type** will define the type of storage to create, being:
+Where **size** is the size of the storage we want to attach \(in bytes\), and the **type** will define the type of storage to create, being:
 
-- **0**: ephemeral storage.
-- **1**: persistent storage.
+* **0**: ephemeral storage.
+* **1**: persistent storage.
 
 ## Example
 
