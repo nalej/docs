@@ -1,6 +1,6 @@
 # Edge Controllers and Agents
 
-The Edge Controllers and the Agents are both Nalej components that are installed in your side of the organization so the Nalej platform can have access to the assets there. Let's start with some basic definitions. 
+The Edge Controllers (EC) and the Agents are both Nalej components that are installed in your side of the organization so the Nalej platform can have access to the assets there. Let's start with some basic definitions. 
 
 ## What is an Edge Controller, and why do I need one?
 
