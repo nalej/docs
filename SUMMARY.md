@@ -6,10 +6,10 @@
 
 * [Organization and user management](organization/organization-1.md)
 
-## Infrastructure 
+## Infrastructure
 
-- [The inventory: what it is and how it can help you](infrastructure/inventory.md)
-- [Edge Controllers and Agents](infrastructure/ECandagents.md)
+* [The inventory: what it is and how it can help you](infrastructure/inventory.md)
+* [Edge Controllers and Agents](infrastructure/ecandagents.md)
 
 ## Resources
 
@@ -19,7 +19,7 @@
 
 ## Devices
 
-- [Adding, managing and deleting devices](devices/devices-1.md)
+* [Adding, managing and deleting devices](devices/devices-1.md)
 
 ## Applications
 
@@ -36,5 +36,5 @@
 * [Adding users in the system](tutorials/addingusers.md)
 * [Application with devices](tutorials/appwithdevices.md)
 * [How to use a Raspberry Pi as a device in your Nalej app](tutorials/endtoendtutorial.md)
-* [Installing Nalej SDK in a device](tutorials/installingSDKindevice.md)
+* [Installing Nalej SDK in a device](tutorials/installingsdkindevice.md)
 

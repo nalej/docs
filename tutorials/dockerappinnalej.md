@@ -235,7 +235,7 @@ One of the things we could do to know if the instance is running is getting its 
 
 ```bash
 ./public-api-cli app inst get 
-   	<instance_ID>
+       <instance_ID>
 ```
 
 This command returns a JSON with all the information related to the instance we are checking, which looks like this:

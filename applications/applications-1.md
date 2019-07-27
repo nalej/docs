@@ -143,7 +143,7 @@ Let's suppose you have the application descriptor already covered, and you want 
 
 ```bash
 ./public-api-cli app desc add 
-	/pathtodescriptor
+    /pathtodescriptor
 ```
 
 It returns a table like this:
@@ -180,8 +180,8 @@ Now the application is ready to be deployed! We can do this with:
 
 ```bash
 ./public-api-cli app inst deploy 
-	[descriptor_id]
-	[name-app]
+    [descriptor_id]
+    [name-app]
 ```
 
 Here, as you may have noticed, is also the moment where we name the app with a human-readable name. When this command exits, it returns a JSON with an application **instance ID**, which is what we will use to work with the deployed instance.
@@ -214,7 +214,7 @@ We can interact with the application in several ways, now that it's deployed. On
 
 ```bash
 ./public-api-cli app inst get 
-	[instance_id]
+    [instance_id]
 ```
 
 This will return a table with some information related to the instance we are checking:
@@ -275,7 +275,7 @@ Once the application is running, it's generating logs and storing them in the sy
 
 ```bash
 ./public-api-cli log search 
-	--instanceID=xxxx > appLogs.json
+    --instanceID=xxxx > appLogs.json
 ```
 
 This will return a \(most likely\) very long response, with the following format:
@@ -297,7 +297,7 @@ OK, so we finished working with this instance, and don't want it to be in the sy
 
 ```bash
 ./public-api-cli app inst undeploy 
-	[instance_id]
+    [instance_id]
 ```
 
 That may be all the cleanup needed if this application is something we will use again in the system, since we can deploy it again tomorrow with the same application descriptor.
@@ -326,8 +326,8 @@ Also, the system won't let you delete an application while it has deployed insta
 What if we just don't want the application to be available again? In that case, we need to delete the application from the system, undoing the `add` we executed before. This needs the descriptor ID we got as a response when we added the application to the system.
 
 ```bash
-./public-api-cli app desc delete  	
-	[descriptor_ID]
+./public-api-cli app desc delete      
+    [descriptor_ID]
 ```
 
 This, if executed successfully, will return an acknowledgment:
