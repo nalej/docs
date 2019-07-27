@@ -1,4 +1,4 @@
-# Welcome to Nalej
+# Welcome to Nalej (v 0.4.0)
 
 Welcome to the documentation for the Nalej system. This documentation is structured in three major areas of knowledge, which are the main sections of the system. They are:
 
