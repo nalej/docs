@@ -48,7 +48,7 @@ Where:
   * Use **1** to signal that the service is accessible by other app services. The correct way to specify the services would be:
 
     ```javascript
-    "access": 1
+    "access": 1,
     "auth_service_group_name": <serv_group_name>,
         "auth_services": [
             <service_name_1>,
@@ -62,12 +62,30 @@ Where:
   * Use **3** to signal that the service is available only for some devices.
 
     ```javascript
-    "access": 3
+    "access": 3,
     "device_group_names": [
         <device_group_name_1>,
         <device_group_name_2>,
         ...
     ]
+    ```
+
+  * Use **4** to indicate a rule that describes an inbound plug for connections between applications.  This will mean that the "target service" will receive connections through this rule. When using this rule, the target port must be exposed on the target service description and the following field must be added to the rule definition:
+
+    * **inbound\_net\_interface**: The name of the inbound net interface that will be linked to this rule
+
+    ```javascript
+    "access": 4,
+    "inbound_net_interface": <inbound_iface_name>
+    ```
+
+  * Use **5** to indicate a rule that describes an outbound plug for connections between applications. This will mean that the "target service" will be able to connect to other applications through this rule using the predefined variable `NALEJ_OUTBOUND_[interface_name]` . When using this rule, the target port must be exposed on the target service description and the following field must be added to the rule definition:
+
+    * **outbound\_net\_interface**: The name of the outbound net interface that will be linked to this rule
+
+    ```javascript
+    "access": 5,
+    "outbound_net_interface": <outbound_iface_name>
     ```
 
 Example:
@@ -83,6 +101,32 @@ Example:
     }
   ],
 ```
+
+## Network interfaces
+
+If you want to have communication between your applications, you will need to declare "plugs" to wire them up. You can see the network interfaces as those plugs. Each inbound or outbound interface will be linked to a Service through a Rule. This will allow the services inside the application to connect to other services that live in different applications. On deployment time or with an already installed appliance, the user will be able to connect one outbound interface to an inbound interface to open a secure TCP/IP channel between the services.
+
+On a descriptor, the user can define interfaces with the following properties:
+
+* **inbound\_net\_interfaces**: An array of inbound interfaces. Each of them are described just by its **name**. Must be unique between inbound/outbound/ interfaces.
+
+  ```javascript
+  "inbound_net_interfaces": [
+      {"name": "WORDPRESS_IN"}
+  ]
+  ```
+
+* **outbound\_net\_interfaces**: An array of outbound interfaces. Each of them are described with the following properties:
+
+  * **name**: The name of the outbound interface. Must be unique between inbound/outbound/ interfaces.
+  * **required**: Boolean flag that indicates if the outbound connection is required by the application. This means that the outbound must be connected on deployment time and the connection cannot be safely removed \(the user can force it through a parameter\). Default value is false.
+
+  ```javascript
+  "outbound_net_interfaces": [
+      {"name": "MYSQL", "required": true},
+      {"name": "EXTERNAL_LOGGER"}
+  ]
+  ```
 
 ## Service groups
 
