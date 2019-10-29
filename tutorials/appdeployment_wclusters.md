@@ -236,6 +236,19 @@ REQUEST        ID          STATUS
 
 Which contains the **request\_id** for the request we just did, the **instance\_id** of the instance we are trying to deploy, and the current **status** of the instance, which in the moment after executing the command is **QUEUED** for deployment.
 
+#### Deploy with connections
+
+If you designed your descriptor with outbound net interfaces, you will be able to connect any instance created with it on deployment time to other applications that were described with inbound net interfaces. Be aware that, if any outbound interface was described as required, to describe the connections to that interfaces on deployment time is mandatory.
+
+Using the flag `--connections` you will be able to describe the connections to other applications. The connection on deployment time is defined using the **outbound net interface name** that you want to connect, the **instance id** of the target application, and the **inbound interface name** of that application to create a point to point connection.  These fields must be concatenated using the comma `,` character.  If you want to define more that one connection, concatenate the definitions using the sharp `#` character as separator.
+
+```bash
+./public-api-cli app inst deploy
+    <desc_id>
+    <inst_name>
+    --connections <outbound_iface_name>,<target_inst_id>,<target_inbound_iface_name>#...
+```
+
 #### Web Interface
 
 Now that the application is registered \(and thus appears in the list at the **Registered** tab\), we can deploy an instance of it! There are two ways to access the deploying dialog, so let's see both.
