@@ -254,6 +254,12 @@ With both actions we arrive to the same dialog, which looks like this:
 
 Here we need to write the name of the instance and choose the application we want an instance of \(if we clicked on the "deploy" button in the **Registered** list, the instance is already established, and we only have to write the name of the instance\). Then, the instance will appear in the list under the **Instances** tab.
 
+If the descriptor have outbound net interfaces marked as required, the Deploy Instance dialog will open a third step to describe the connections.
+
+![Describe connections step on the Deploy Instance dialog](../.gitbook/assets/app_instance_deploy_connections.png)
+
+Here you will be able to select, for every outbound interface, the target application instance and the corresponding inbound interface.
+
 ### Working with the deployed instance: getting related info
 
 #### Public API CLI
