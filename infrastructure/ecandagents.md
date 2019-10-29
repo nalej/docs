@@ -8,7 +8,7 @@ An Edge Controller \(EC\) is a component installed in your organization. Its mis
 
 To do that \(to receive info from the hardware on the client's side\), we need a service in that hardware that sends it. That service is called an **Agent**.
 
-![How the connection between the Nalej Management Cluster and the ECs work](../.gitbook/assets/infrastructure_inventory_EC_Agents.png)
+![How the connection between the Nalej Management Cluster and the ECs work](https://github.com/nalej/docs/tree/eab966679a3a9aa6edc6c8daa67c1dd29eecc2fd/.gitbook/assets/infrastructure_inventory_EC_Agents.png)
 
 As you can see in the diagram, the connection between the Nalej Management Cluster and the Edge Controllers in the customer's side is done through a VPN, thus securing the communications between them. This is the reason why the EC must have more logic than an Agent, and so it must be a \(light\) Virtual Machine.
 
@@ -16,7 +16,7 @@ As you can see in the diagram, the connection between the Nalej Management Clust
 
 As stated before, an **Agent** is a service installed in a piece of hardware in the client's side. This agent is registered in an EC, and when it's live it sends a message saying so. The EC, then, replies with a set of operations this agent has to execute. When the agent finishes those operations, it sends the results to the EC, which then forwards them to the Nalej Management Cluster.
 
-![Communication diagram Agent-EC-NMC](../.gitbook/assets/infrastructure_inventory_Agent_communication.png)
+![Communication diagram Agent-EC-NMC](https://github.com/nalej/docs/tree/eab966679a3a9aa6edc6c8daa67c1dd29eecc2fd/.gitbook/assets/infrastructure_inventory_Agent_communication.png)
 
 ### What is the actual role of an Agent in the system?
 
