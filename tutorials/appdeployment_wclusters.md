@@ -280,24 +280,24 @@ Here you will be able to select, for every outbound interface, the target applic
 Now we can start working with the deployed instance, doing things like, for example, getting all the information related to it in the system.
 
 ```bash
-./public-api-cli app inst get --instanceID=XXXXXXXXXX
+./public-api-cli app inst get <INSTANCE_ID>
 ```
 
 This command responds with some information related to the instance we are checking, which looks like this:
 
-```javascript
-NAME                        REPLICAS          STATUS            
-[Group] application        <num_replicas>    SERVICE_RUNNING   
-<service_1>                <num_replicas>    SERVICE_RUNNING
-<service_2>                <num_replicas>    SERVICE_RUNNING   
+```bash
+NAME               LABELS
+PING_SOURCE        app:ping
 
-ENDPOINTS
-"xxxx.xxxxx.appcluster.<yourcluster>.com"
+SERVICE_NAME         REPLICAS   STATUS            ENDPOINTS
+[Group] ping-group   NA         SERVICE_RUNNING
+ping                 2          SERVICE_RUNNING
 
-simple-"xxxx.xxxxx.appcluster.<yourcluster>.com"
+SOURCE               OUTBOUND   TARGET            INBOUND   REQUIRED   STATUS
+PING_SOURCE          out        PING_SINK         in        FALSE      ESTABLISHED
 ```
 
-Here you can see several interesting things, like the user and password for the admin in this instance of MySQL, but one of the most important parameters is:
+Here you can see several interesting things, like the number of replicas of a group and/or a service or the list of connections linked to the application. But one of the most important parameters is:
 
 ```bash
 STATUS
