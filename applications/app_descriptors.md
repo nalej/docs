@@ -70,7 +70,7 @@ Where:
     ]
     ```
 
-  * Use **4** to indicate a rule that describes an inbound plug for connections between applications.  This will mean that the "target service" will receive connections through this rule. When using this rule, the target port must be exposed on the target service description and the following field must be added to the rule definition:
+  * Use **4** to indicate a rule that describes an inbound plug for connections between applications. This will mean that the "target service" will receive connections through this rule. When using this rule, the target port must be exposed on the target service description and the following field must be added to the rule definition:
 
     * **inbound\_net\_interface**: The name of the inbound net interface that will be linked to this rule
 
