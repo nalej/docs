@@ -1,28 +1,20 @@
 # Application Networking
 
-Nalej platform allows the user to create point to point, secure connections between deployed applications.
-If you want to connect applications, this is your section.
+The Nalej platform allows the user to create point-to-point secure connections between deployed applications. If you want to connect applications, this is your section.
 
 ## How this works
 
 ![Application Network Diagram](../.gitbook/assets/tutorial_appnet_functionality_diagram.png)
 
-To create a private connection between service applications, Nalej platform provides the Application Network solution.
-With this you can establish secure point to point connections between services dinamically.
-Let's introduce the important terms to ramp up:
+To create a private connection between service applications, the Nalej platform provides the Application Network solution. With this, you can establish point-to-point secure connections between services dynamically. Let's introduce the important terms to ramp up:
 
-* Outbound network interface: Think on it as a USB socket on an application. A way to connect your application to other service.
-* Inbound network interface: Think on it as a USB hub connected to an application, so multiple services can connect to it.
-* Connection: Think on it as a USB wire that you use to connect an outbound interface to an inbound interface.
+* Outbound network interface: A way to connect your application to another service. Think about it as a USB socket connected to the application.
+* Inbound network interface: A way to allow your application to accept connections from other applications. Think of it as a USB hub connected to the application.
+* Connection: The link between the outbound and the inbound network interfaces. Think about it as a USB wire that you use to connect an outbound interface to an inbound interface.
 
-Even if the connections are full duplex (the information can go on both directions), the concept of the application network
-is that the requests go from outbound to inbound.
+Even if the connections can go on both directions, the concept of the application network is that the requests go from outbound to inbound.
 
-Imagine that you want to connect multiple wordpress servers to the same database, or multiple java applications to the same
-Redis cluster, or multiple IoT sensors to a datalake.
-You could also create a service mesh using outbounds and inbounds on all your applications. Imagine that you want to create
-a service discovery through all your clusters using Consul or any other tool. You could connect all your services using this
-feature through a secure and reliable network managed by Nalej.
+Imagine that you want to connect multiple Wordpress servers to the same database, multiple Java applications to the same Redis cluster, or multiple IoT sensors to a data lake. You could also create a service mesh using outbounds and inbounds on all your applications. Imagine that you want to create a service discovery through all your clusters using Consul or any other tool. You could connect all your services using this feature through a secure and reliable network managed by Nalej.
 
 ## Know how
 
@@ -30,8 +22,7 @@ feature through a secure and reliable network managed by Nalej.
 
 #### Public API CLI
 
-You can list all the available (connectable) network interfaces through the CLI. Just use the commands `appnet outbound available`
-or `appnet inbound available` to get a list of all the available outbound or inbound interfaces in your organization.
+You can list all the available \(connectable\) network interfaces through the CLI. Just use the commands `appnet outbound available` or `appnet inbound available` to get a list of all the available outbound or inbound interfaces in your organisation.
 
 ```bash
 ./public-api-cli appnet outbound available
@@ -59,7 +50,7 @@ eb945169-448e-4c4b-8f74-2f43c5fdca87   EXAMPLE_SINK    in_iface
 
 #### Public API CLI
 
-To list the connections of an organization, invoke the CLI with the command `appnet list`.
+To list the connections of an organisation, invoke the CLI with the command `appnet list`.
 
 ```bash
 ./public-api-cli appnet list
@@ -77,9 +68,10 @@ f9849ded-23c6-44be-ab32-75b65b47d86f   NP-2216_SOURCE11       out        eb94516
 ```
 
 The possible statuses are:
+
 * WAITING: The connection is waiting for all the components to connect to the private network.
 * ESTABLISHED: All the components are connected and the network is ready to transmit.
-* TERMINATED: When an application is being undeployed for any reason, this status will raise before delete the connection.
+* TERMINATED: When an application is being undeployed for any reason, this status will raise before deleting the connection.
 * ERROR: If something failed when establishing the connection and the failure cannot be reversed or retry to connect.
 
 #### Web interface
@@ -92,26 +84,26 @@ If you click on the **Manage connections** button, it will show the **Manage con
 
 ![Manage connections modal window](../.gitbook/assets/tutorial_appnet_manage_connections_list.png)
 
-The list will show all the connections. If the source interface name shows an asterisk `*`, that mean that the outbound
-interface is marked as **required**.
+The list will show all the connections. If the source interface name shows an asterisk `*`, that means that the outbound interface is marked as **required**.
 
 ### Create a new connection between applications
 
-There are some rules that must be observed when creating a connection:
+Some rules must be observed when creating a connection:
+
 * A connection can only be created between an outbound net interface and an inbound net interface.
 * An application instance can not be connected to itself.
 * One outbound net interface can only be connected to one, and only one, inbound net interface.
 * One inbound net interface can be attached to multiple outbound net interfaces.
-* The target port listed in the rule that describes the interface, will be the port opened for the connection.
+* The target port listed in the rule that describes the interface will be the port opened for the connection.
 
 #### Public API CLI
 
-To create a new connection, you must invoke the CLI with the command `appnet add`. You will need to specify
-the following parameters:
-* **source_instance_id**: The id of the source application instance, the one that describes the outbound interface.
-* **outbound_iface_name**: The name of the outbound network interface that belongs to the source instance.
-* **target_instance_id**: The id of the target application instance, the one that describes the inbound interface.
-* **inbound_iface_name**: The name of the inbound network interface that belongs to the target instance.
+To create a new connection, you must invoke the CLI with the command `appnet add`. You will need to specify the following parameters:
+
+* **source\_instance\_id**: The id of the source application instance, the one that describes the outbound interface.
+* **outbound\_iface\_name**: The name of the outbound network interface that belongs to the source instance.
+* **target\_instance\_id**: The id of the target application instance, the one that describes the inbound interface.
+* **inbound\_iface\_name**: The name of the inbound network interface that belongs to the target instance.
 
 ```bash
 ./public-api-cli appnet add
@@ -121,8 +113,7 @@ the following parameters:
     <inbound_iface_name>
 ```
 
-Be aware that the request is asynchronous. The platform will answer with a `RESULT OK` message if the request was accepted
-and it will do its best to create the connection as soon as possible. Run the command `appnet list` to follow the connection status. 
+Be aware that the request is asynchronous. The platform will answer with a `RESULT OK` message if the request was accepted and it will do its best to create the connection as soon as possible. Run the command `appnet list` to follow the connection status.
 
 #### Web interface
 
@@ -132,8 +123,7 @@ On the **Manage connections** window, click on the **Add new connection** button
 
 ![Add new connection dialog](../.gitbook/assets/tutorial_appnet_add_connection.png)
 
-Here you can define the source instance, the outbound interface name, the target instance, and the inbound interface name.
-Then just clic on the button **Add new connection** to send an asyncronous message to the platform to create the connection.
+Here you can define the source instance, the outbound interface name, the target instance, and the inbound interface name. Then just click on the button **Add new connection** to send an asynchronous message to the platform to create the connection.
 
 When the connection is established, the main graph will show the connection with an arrowed edge between the instances.
 
@@ -142,10 +132,11 @@ When the connection is established, the main graph will show the connection with
 #### Public API CLI
 
 To remove a connection, you must invoke the CLI with the command `appnet remove`. You will need to specify the following parameters:
-* **source_instance_id**: The id of the source application instance, the one that describes the outbound interface.
-* **outbound_iface_name**: The name of the outbound network interface that belongs to the source instance.
-* **target_instance_id**: The id of the target application instance, the one that describes the inbound interface.
-* **inbound_iface_name**: The name of the inbound network interface that belongs to the target instance.
+
+* **source\_instance\_id**: The id of the source application instance, the one that describes the outbound interface.
+* **outbound\_iface\_name**: The name of the outbound network interface that belongs to the source instance.
+* **target\_instance\_id**: The id of the target application instance, the one that describes the inbound interface.
+* **inbound\_iface\_name**: The name of the inbound network interface that belongs to the target instance.
 
 ```bash
 ./public-api-cli appnet remove
@@ -155,16 +146,11 @@ To remove a connection, you must invoke the CLI with the command `appnet remove`
     <inbound_iface_name>
 ```
 
-Be aware that the request is asynchronous. The platform will answer with a `RESULT OK` message if the request was accepted
-and it will do its best to remove the connection as soon as possible. Run the command `appnet list` to follow the connection status.
-If the outbound interface of the connection is marked as **required**, you will need to use the `--force` flag to remove it.
-Be aware that the connection was marked as required for some reason.
+Be aware that the request is asynchronous. The platform will answer with a `RESULT OK` message if the request was accepted and it will do its best to remove the connection as soon as possible. Run the command `appnet list` to follow the connection status. If the outbound interface of the connection is marked as **required**, you will need to use the `--force` flag to remove it. Be aware that the connection was marked as required for some reason.
 
 #### Web interface
 
 ![Manage connections window to remove connection](../.gitbook/assets/tutorial_appnet_manage_connections_list_remove.png)
 
-On the **Manage connections** window, click on the **Disconnect** button to remove that connection. The platform will show
-a confirmation popup to avoid accidental remotions.
-
+On the **Manage connections** window, click on the **Disconnect** button to remove that connection. The platform will show a confirmation popup to avoid accidental remotions.
 
