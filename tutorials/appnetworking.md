@@ -3,6 +3,58 @@
 Nalej platform allows the user to create point to point, secure connections between deployed applications.
 If you want to connect applications, this is your section.
 
+## How this works
+
+![Application Network Diagram](../.gitbook/assets/tutorial_appnet_functionality_diagram.png)
+
+To create a private connection between service applications, Nalej platform provides the Application Network solution.
+With this you can establish secure point to point connections between services dinamically.
+Let's introduce the important terms to ramp up:
+
+* Outbound network interface: Think on it as a USB socket on an application. A way to connect your application to other service.
+* Inbound network interface: Think on it as a USB hub connected to an application, so multiple services can connect to it.
+* Connection: Think on it as a USB wire that you use to connect an outbound interface to an inbound interface.
+
+Even if the connections are full duplex (the information can go on both directions), the concept of the application network
+is that the requests go from outbound to inbound.
+
+Imagine that you want to connect multiple wordpress servers to the same database, or multiple java applications to the same
+Redis cluster, or multiple IoT sensors to a datalake.
+You could also create a service mesh using outbounds and inbounds on all your applications. Imagine that you want to create
+a service discovery through all your clusters using Consul or any other tool. You could connect all your services using this
+feature through a secure and reliable network managed by Nalej.
+
+## Know how
+
+### Show network interfaces
+
+#### Public API CLI
+
+You can list all the available (connectable) network interfaces through the CLI. Just use the commands `appnet outbound available`
+or `appnet inbound available` to get a list of all the available outbound or inbound interfaces in your organization.
+
+```bash
+./public-api-cli appnet outbound available
+```
+
+Will show something like this:
+
+```bash
+INSTANCE_ID                            INSTANCE_NAME    OUTBOUND_NAME
+eb945169-448e-4c4b-8f74-2f43c5fdca87   EXAMPLE_SOURCE   out_iface
+```
+
+```bash
+./public-api-cli appnet inbound available
+```
+
+Will show something like this:
+
+```bash
+INSTANCE_ID                            INSTANCE_NAME   INBOUND_NAME
+eb945169-448e-4c4b-8f74-2f43c5fdca87   EXAMPLE_SINK    in_iface
+```
+
 ### Show connections
 
 #### Public API CLI
