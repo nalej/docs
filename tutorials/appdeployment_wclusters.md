@@ -238,9 +238,9 @@ Which contains the **request\_id** for the request we just did, the **instance\_
 
 #### Deploy with connections
 
-If you designed your descriptor with outbound net interfaces, you will be able to connect any instance created with it on deployment time to other applications that were described with inbound net interfaces. Be aware that, if any outbound interface was described as required, to describe the connections to that interfaces on deployment time is mandatory.
+If you designed your descriptor with outbound network interfaces, you will be able to connect any instance created with it on deployment time to other applications that were described with inbound network interfaces. Be aware that, if any outbound interface was described as required, to describe the connections to that interfaces on deployment time is mandatory.
 
-Using the flag `--connections` you will be able to describe the connections to other applications. The connection on deployment time is defined using the **outbound net interface name** that you want to connect, the **instance id** of the target application, and the **inbound interface name** of that application to create a point to point connection.  These fields must be concatenated using the comma `,` character.  If you want to define more that one connection, concatenate the definitions using the sharp `#` character as separator.
+Using the flag `--connections` you will be able to describe the connections to other applications. The connection on deployment time is defined using the **outbound network interface name** that you want to connect, the **instance id** of the target application, and the **inbound network interface name** of that application to create a point to point connection. These fields must be concatenated using the comma `,` character. If you want to define more that one connection, concatenate the definitions using the sharp `#` character as separator.
 
 ```bash
 ./public-api-cli app inst deploy
@@ -248,6 +248,8 @@ Using the flag `--connections` you will be able to describe the connections to o
     <inst_name>
     --connections <outbound_iface_name>,<target_inst_id>,<target_inbound_iface_name>#...
 ```
+
+To know more about connections and networking, check the Application Networking tutorial [here](appnetworking.md).
 
 #### Web Interface
 
@@ -267,6 +269,12 @@ With both actions we arrive to the same dialog, which looks like this:
 
 Here we need to write the name of the instance and choose the application we want an instance of \(if we clicked on the "deploy" button in the **Registered** list, the instance is already established, and we only have to write the name of the instance\). Then, the instance will appear in the list under the **Instances** tab.
 
+If the descriptor have outbound network interfaces marked as required, the Deploy Instance dialog will open a third step to describe the connections.
+
+![Describe connections step on the Deploy Instance dialog](../.gitbook/assets/app_instance_deploy_connections.png)
+
+Here you will be able to select, for every outbound network interface, the target application instance and the corresponding inbound network interface.
+
 ### Working with the deployed instance: getting related info
 
 #### Public API CLI
@@ -274,24 +282,24 @@ Here we need to write the name of the instance and choose the application we wan
 Now we can start working with the deployed instance, doing things like, for example, getting all the information related to it in the system.
 
 ```bash
-./public-api-cli app inst get --instanceID=XXXXXXXXXX
+./public-api-cli app inst get <INSTANCE_ID>
 ```
 
 This command responds with some information related to the instance we are checking, which looks like this:
 
-```javascript
-NAME                        REPLICAS          STATUS            
-[Group] application        <num_replicas>    SERVICE_RUNNING   
-<service_1>                <num_replicas>    SERVICE_RUNNING
-<service_2>                <num_replicas>    SERVICE_RUNNING   
+```bash
+NAME               LABELS
+PING_SOURCE        app:ping
 
-ENDPOINTS
-"xxxx.xxxxx.appcluster.<yourcluster>.com"
+SERVICE_NAME         REPLICAS   STATUS            ENDPOINTS
+[Group] ping-group   NA         SERVICE_RUNNING
+ping                 2          SERVICE_RUNNING
 
-simple-"xxxx.xxxxx.appcluster.<yourcluster>.com"
+SOURCE               OUTBOUND   TARGET            INBOUND   REQUIRED   STATUS
+PING_SOURCE          out        PING_SINK         in        FALSE      ESTABLISHED
 ```
 
-Here you can see several interesting things, like the user and password for the admin in this instance of MySQL, but one of the most important parameters is:
+Here you can see several interesting things, like the number of replicas of a group and/or a service or the list of connections linked to the application. But one of the most important parameters is:
 
 ```bash
 STATUS
@@ -370,6 +378,9 @@ This, if executed successfully, will return an acknowledgment:
 RESULT
 OK
 ```
+
+If the application has connections linked to it, the system will return a failure telling you so.
+To undeploy it anyway use the flag `--force` or remove the connections first (using `--force` will remove the connections also).
 
 #### Web Interface
 
