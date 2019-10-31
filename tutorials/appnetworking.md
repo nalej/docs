@@ -22,7 +22,7 @@ Imagine that you want to connect multiple Wordpress servers to the same database
 
 #### Public API CLI
 
-You can list all the available \(connectable\) network interfaces through the CLI. Just use the commands `appnet outbound available` or `appnet inbound available` to get a list of all the available outbound or inbound interfaces in your organisation.
+You can list all the available \(connectable\) network interfaces through the CLI. Just use the commands `appnet outbound available` or `appnet inbound available` to get a list of all the available outbound or inbound network interfaces in your organisation.
 
 ```bash
 ./public-api-cli appnet outbound available
@@ -90,10 +90,10 @@ The list will show all the connections. If the source interface name shows an as
 
 Some rules must be observed when creating a connection:
 
-* A connection can only be created between an outbound net interface and an inbound net interface.
+* A connection can only be created between an outbound network interface and an inbound network interface.
 * An application instance can not be connected to itself.
-* One outbound net interface can only be connected to one, and only one, inbound net interface.
-* One inbound net interface can be attached to multiple outbound net interfaces.
+* One outbound network interface can only be connected to one, and only one, inbound network interface.
+* One inbound network interface can be attached to multiple outbound network interfaces.
 * The target port listed in the rule that describes the interface will be the port opened for the connection.
 
 #### Public API CLI
@@ -123,7 +123,7 @@ On the **Manage connections** window, click on the **Add new connection** button
 
 ![Add new connection dialog](../.gitbook/assets/tutorial_appnet_add_connection.png)
 
-Here you can define the source instance, the outbound interface name, the target instance, and the inbound interface name. Then just click on the button **Add new connection** to send an asynchronous message to the platform to create the connection.
+Here you can define the source instance, the outbound network interface name, the target instance, and the inbound network interface name. Then just click on the button **Add new connection** to send an asynchronous message to the platform to create the connection.
 
 When the connection is established, the main graph will show the connection with an arrowed edge between the instances.
 
@@ -146,7 +146,10 @@ To remove a connection, you must invoke the CLI with the command `appnet remove`
     <inbound_iface_name>
 ```
 
-Be aware that the request is asynchronous. The platform will answer with a `RESULT OK` message if the request was accepted and it will do its best to remove the connection as soon as possible. Run the command `appnet list` to follow the connection status. If the outbound interface of the connection is marked as **required**, you will need to use the `--force` flag to remove it. Be aware that the connection was marked as required for some reason.
+Be aware that the request is asynchronous. The platform will answer with a `RESULT OK` message if the request was accepted
+and it will do its best to remove the connection as soon as possible. Run the command `appnet list` to follow the connection status.
+If the outbound network interface of the connection is marked as **required**, you will need to use the `--force` flag to remove it.
+Be aware that the connection was marked as required for some reason.
 
 #### Web interface
 
