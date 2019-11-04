@@ -16,7 +16,9 @@ This screen has the following areas:
 
 * A **summary**, where the number of deployed instances and registered applications are shown.
 * An **app list**, where we can see all the info regarding the registered apps and the deployed instances in the system.
-* The **graph**, where we can see all the info regarding the clusters,  the registered apps and the deployed instances in the system.
+* The **graph**, where we can see all the info regarding the clusters,  the registered apps and the deployed instances in the system and its connections.
+  * The instances can have different states as deploying, running, queued or error, those are represented with different colors.
+  * The connections between apps are represented with directed arrows \(source to target\).
 
 We will talk about this deployed app list later in the document, and explain its use thoroughly.
 
@@ -220,7 +222,7 @@ If the app has parameters, while the user has chosen the app that is wanted to b
 
 ![Advanced params](../.gitbook/assets/deployparam3.png)
 
-If there is any required connection, the third step highlights and the user has to full fill the information.
+If there is any required connection, the third step highlights and the user has to full fill the connections.
 
 ![App connections options for deploy](../.gitbook/assets/deployappconn.png)
 
@@ -286,7 +288,9 @@ This view has several sections:
 * Then we have buttons card that have two options:
   * We can use **Add new connections**  button to open the dialog.
   * We have an **Undeploy application** button to undeploy the instance directly from here \(we will talk about this later in this document\).
-* Then we have the **services** section. First we can see a diagram that shows us the relationship between the services in the instance, where we can zoom in in case it's necessary \(the color of each service depends on its status\). On the upper left part of this section we have the two perspectives we can toggle between. The other perspective is a text view with all the info about the service instances related to this application instance \(there is a tab with all the services, and then there is a tab for each service group\).
+* Then we have the **services** section. First we can see a diagram that shows us the relationship between the services in the instance, where we can zoom in in case it's necessary \(the color of each service depends on its status\).  
+* The inbounds/outbounds connections are painted with two colors that are connected \(blue\) or disconnected \(dark grey\).
+* On the upper left part of this section we have the two perspectives we can toggle between. The other perspective is a text view with all the info about the service instances related to this application instance \(there is a tab with all the services, and then there is a tab for each service group\).
 * Each accordion has a service group info button.
 
 ![Service group info](../.gitbook/assets/serviceinstacegroup.png)
