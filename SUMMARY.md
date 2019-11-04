@@ -10,7 +10,6 @@
 
 * [The inventory: what it is and how it can help you](infrastructure/inventory.md)
 * [Edge Controllers and Agents](infrastructure/ecandagents.md)
-* [Untitled](infrastructure/untitled.md)
 
 ## Resources
 

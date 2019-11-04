@@ -23,7 +23,7 @@ In the left part of the screen we can see:
 ![](../.gitbook/assets/resources2.png)
 
 * **Summary card**: the number of clusters and instances.
-* **List card**:  a list of available clusters.
+* **List card**: a list of available clusters.
 
   Each row of the list refers to a different cluster, with some information about it:
 

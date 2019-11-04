@@ -1,25 +1,5 @@
 # Application Deployment
 
-![Uploading a descriptor to register an application.](../.gitbook/assets/apps%20%287%29.png)
-
-![Descriptor uploading dialog](../.gitbook/assets/registerapp.png)
-
-![Deploy button from the &quot;Registered&quot; list](../.gitbook/assets/deployregisterd.png)
-
-![Deploying an instance from main applications view](../.gitbook/assets/apps%20%281%29.png)
-
-To deploy our application we only need to click on the **Deploy** button on the right part of the screen.
-
-![Deploying instances dialog](../.gitbook/assets/deploy%20%281%29.png)
-
-![Service Info dialog](../.gitbook/assets/appinstancesserviceinfo%20%281%29.png)
-
-![Information for a specific rule](../.gitbook/assets/appinstanceruleinfo%20%281%29.png)
-
-![Undeploying an instance](../.gitbook/assets/appinfolistoptions.png)
-
-![Deleting an application from the system.](../.gitbook/assets/registerparam%20%282%29.png)
-
 So, you just got Nalej and are itching to start working with it, but don't know where to start. No worries! This document will walk you through the process of deploying your very first application with Nalej.
 
 ### Environment setup
@@ -227,11 +207,11 @@ with an application **descriptor ID** inside, which we will need for deploying a
 
 So, the descriptor is ready and you are already in the Application view of the web interface. Where to go from here? Great question!
 
-![Uploading a descriptor to register an application.](../.gitbook/assets/app_ppal_registered.png)
+![Uploading a descriptor to register an application.](../.gitbook/assets/app.png)
 
 In the Application view, we can see the already deployed applications in the lower part of the screen, in the Applications list. There, we need to click on the **Registered** tab, and then we can see the **Register application** button. Please click on it.
 
-![Descriptor uploading dialog](../.gitbook/assets/app_register_app_dialog.png)
+![Descriptor uploading dialog](../.gitbook/assets/registerapp.png)
 
 What we can see now is a special dialog where we can upload our application descriptor, so the application gets registered in the system. We can click on it to search the file in our file system, or we can just drag it and drop it in the designed area. After that, just clicking on the **Register** button will register the application in the system.
 
@@ -275,17 +255,17 @@ To know more about connections and networking, check the Application Networking 
 
 Now that the application is registered \(and thus appears in the list at the **Registered** tab\), we can deploy an instance of it! There are two ways to access the deploying dialog, so let's see both.
 
-![Deploy button from the &quot;Registered&quot; list](../.gitbook/assets/app_ppal_registered_deploy.png)
+![Deploy button from the &quot;Registered&quot; list](../.gitbook/assets/deployregisterd%20%283%29.png)
 
 One of the ways to do that is by clicking the blue _play_ button in the **Actions** column of the **Registered** tab.
 
-![Deploying an instance from the &quot;Instances&quot; list](../.gitbook/assets/app_ppal_deploy_instance.png)
+![Deploying an instance from the applications view](../.gitbook/assets/apps%20%285%29.png)
 
-The other way is to go from the **Registered** tab to the **Instances** tab. To deploy our application we only need to click on the **Deploy instance** button on the right part of the screen.
+To deploy our application we only need to click on the **Deploy** button on the right part of the screen.
 
 With both actions we arrive to the same dialog, which looks like this:
 
-![Deploying instances dialog](../.gitbook/assets/app_deploy_instance_dialog.png)
+![Deploying instances dialog](../.gitbook/assets/deploy%20%282%29.png)
 
 Here we need to write the name of the instance and choose the application we want an instance of \(if we clicked on the "deploy" button in the **Registered** list, the instance is already established, and we only have to write the name of the instance\). Then, the instance will appear in the list under the **Instances** tab.
 
@@ -332,7 +312,9 @@ Where it tells you the status of the current instance. Since it is "SERVICE\_RUN
 
 We can see the status of an instance directly in the **Instances** tab, in the colored button in the **Status** column of the list. We can also click on the instance to see all the information related to that specific instance. This takes us to a new view:
 
-![Instance View.](../.gitbook/assets/app_instance_view.png)
+![Instance view with graph](../.gitbook/assets/instance23%20%282%29.png)
+
+![Instance view with services](../.gitbook/assets/instance24%20%281%29.png)
 
 This view has several sections:
 
@@ -341,12 +323,12 @@ This view has several sections:
   * For each service we can see the number of **replicas** that are deployed, the general **status** of the service, the **endpoints** it has, and more info.
   * When we click on the **Info** button we open a dialog where we can see even more information, like the environment variables, the labels assigned to the service or the cluster it's deployed in. 
 
-![Service Info dialog.](../.gitbook/assets/app_instance_service_info.png)
+![Service Info dialog](../.gitbook/assets/appinstancesserviceinfo%20%281%29.png)
 
 * Under the summary we have the **Tags** section, where we can see the tags associated to this app instance.
 * Beside it, there's the **Rules** section, where the rules for the different service groups in the application are displayed. We can click on any of them and the full disclosure of the rule will appear.
 
-![Information for a specific rule.](../.gitbook/assets/app_instance_rules.png)
+![Information for a specific rule](../.gitbook/assets/appinstanceruleinfo%20%281%29.png)
 
 * And finally, in the lower right corner of the screen, we can see the **Configuration** section, where we can find the environment variables and other settings.
 
@@ -405,7 +387,7 @@ If the application has connections linked to it, the system will return a failur
 
 To undeploy an instance we just have to hit the red X in the **Actions** column in the far right of the Application instances list. This will delete the instance from this list, which will mean that it's no longer in the system.
 
-![Undeploying an instance](../.gitbook/assets/app_ppal_undeploy.png)
+![Undeploying an instance](../.gitbook/assets/appinfolistoptions-1.png)
 
 ### Deleting the app
 
@@ -432,7 +414,7 @@ OK
 
 To delete the application from the system, thus avoiding the generation of instances from it in the future, we just need to go to the **Registered** tab in the Application list, and look for the application. Then, we need to click the red bin under the **Actions** column.
 
-![Deleting an application from the system.](../.gitbook/assets/app_ppal_registered_delete.png)
+![Deleting an application from the system.](../.gitbook/assets/reg1.png)
 
 ## Troubleshooting
 

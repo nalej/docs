@@ -1,20 +1,8 @@
 # Edge Controllers and Agents
 
-![](../.gitbook/assets/ecs.png)
-
-![](../.gitbook/assets/installagent.png)
-
-![Agent join token](../.gitbook/assets/agenttoken.png)
-
-![Unlink EC](../.gitbook/assets/unlinkec.png)
-
-![Agent info](../.gitbook/assets/agentinfo.png)
-
-![Last operation log](../.gitbook/assets/lasop.png)
-
-![Uninstall agent](../.gitbook/assets/uninstallagent.png)
-
 The Edge Controllers and the Agents are both Nalej components that are installed in your side of the organization so the Nalej platform can have access to the assets there. Let's start with some basic definitions.
+
+![Infrastructure view](../.gitbook/assets/inventory.png)
 
 ## What is an Edge Controller, and why do I need one?
 
@@ -109,7 +97,7 @@ The only thing needed for this will be the ID of the EC we want to unlink. We ca
 
 When in the Infrastructure view, we can use the **Quick Filters** available and click on the ECS filter. This will show a list of all the ECs in the organization.
 
-![Main list of ECs](../.gitbook/assets/infrastructure_ec_ppal.png)
+![Main list of ECs](../.gitbook/assets/ecslist.png)
 
 Once here, we can easily find the EC we want to manage, and:
 
@@ -120,13 +108,13 @@ We can also access the **Actions** menu \(the three dots icon in the far right c
 
 **More info**
 
-![All the info about the EC](../.gitbook/assets/infrastructure_ec_moreinfo.png)
+![All the info about the EC](../.gitbook/assets/ecinfo.png)
 
 Here we can see, apart from the information we already had, the list of assets attached to a specific EC.
 
 **Install agent**
 
-![Info needed to install an agent](../.gitbook/assets/infrastructure_ec_installagent.png)
+![Info needed to install an agent](../.gitbook/assets/installagent.png)
 
 This allows us to install an agent directly from the EC. For this, we need:
 
@@ -136,11 +124,15 @@ This allows us to install an agent directly from the EC. For this, we need:
 
 **Create agent token**
 
-![Agent join token](../.gitbook/assets/infrastructure_agent_createjointoken.png)
+![Agent joint token](../.gitbook/assets/agenttoken%20%281%29.png)
+
+
 
 This view shows the certificate \(and when it expires\) and the token needed for an agent to join this EC.
 
 **Unlink EC**
+
+![Unlink EC](../.gitbook/assets/unlinkec.png)
 
 This option triggers a confirmation dialog, and when we confirm, it unlinks this EC from the Nalej Management Cluster.
 
@@ -206,7 +198,7 @@ Also, in the far right column we can click on the three dots icon to access the 
 
 **More info**
 
-![Agent info view](../.gitbook/assets/infrastructure_agent_moreinfo.png)
+![Agent info view](../.gitbook/assets/assetinfo.png)
 
 Here we can find an extensive list of data that may be relevant to define this specific asset, for example:
 
@@ -220,11 +212,13 @@ Here we can find an extensive list of data that may be relevant to define this s
 
 **Last operation log**
 
-![Last operation info](../.gitbook/assets/infrastructure_agent_lastopinfo.png)
+![Last operations log](../.gitbook/assets/lasop%20%281%29.png)
 
 Here we can see the information obtained from the last operation the asset executed, with when it was, what was the status, and the extra info that went attached to it.
 
 **Uninstall agent**
+
+![Uninstall agent](../.gitbook/assets/uninstallagent.png)
 
 As with the ECs, this option prompts a browser dialog for us to confirm the action, and when we do, the agent gets uninstalled and the asset disappears from the list.
 

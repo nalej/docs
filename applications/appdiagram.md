@@ -1,6 +1,10 @@
 # The Application Diagram, explained
 
-![Application instance main screen](../.gitbook/assets/app_instance_view.png)
+
+
+![Application instance main view with graph](../.gitbook/assets/instance23.png)
+
+![Application instance main view with services table](../.gitbook/assets/instance24.png)
 
 The Application Diagram, in the Application Instance screen, can be daunting. Fear not, dear user, for we are here to shed some light on your doubts about it and make you an expert. Let's begin.
 

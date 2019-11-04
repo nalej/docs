@@ -1,6 +1,6 @@
 # Welcome to Nalej
 
-Welcome to the documentation for the 0.4.0 release of the Nalej system. This documentation is structured in three major areas of knowledge, which are the main sections of the system. They are:
+Welcome to the documentation for the 0.4.0 release of the Nalej system. This documentation is structured in five major areas of knowledge, which are the main sections of the system. They are:
 
 ## Organization
 
@@ -8,7 +8,7 @@ Here you will find all there is to know about to user management, as well as rol
 
 ## Infrastructure
 
-The newest addition to the system is the Infrastructure management, with the Inventory as its main feature. Dive into this section to know how you can use it to improve management in Nalej.
+Infrastructure management, with the Inventory as its main feature. Dive into this section to know how you can use it to improve management in Nalej.
 
 ## Resources
 

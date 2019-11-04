@@ -131,3 +131,7 @@ You can use a token procedure, similar to what we used before to register the EC
 >
 > There will also be a feature where the asset can register manually to the EC, withouth having an Agent actively monitoring the asset. This will be useful for network hardware, for example, and will align with Nalej's intention of having this view as a complete inventory of the organization's assets.
 
+## Managin labels
+
+Regarding the **labels** of the ECs, Assets and devices, although adding and/or deleting them is not encouraged, we can do it easily, and the procedure for clusters and nodes is very similar.
+
