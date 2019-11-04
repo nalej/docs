@@ -197,11 +197,11 @@ Here, as you may have noticed, is also the moment where we name the app with a h
 
 So, the descriptor is ready and you are already in the Application view of the web interface. Where to go from here? Great question!
 
-![Uploading a descriptor to register an application.](../.gitbook/assets/app.png)
+![Uploading a descriptor to register an application.](../.gitbook/assets/app%20%281%29.png)
 
 In the Application view, we can see the already deployed applications in the lower part of the screen, in the Applications list. There, we need to click on the **Registered** tab, and then we can see the **Register application** button. Please click on it.
 
-![Register app](../.gitbook/assets/registerapp%20%282%29.png)
+![Register app](../.gitbook/assets/registerapp%20%283%29.png)
 
 What we can see now is a special dialog where we can upload our application descriptor, so the application gets registered in the system. We can click on it to search the file in our file system, or we can just drag it and drop it in the designed area. After that, just clicking on the **Register** button will register the application in the system.
 
@@ -219,7 +219,7 @@ The other way is to go from the **Registered** tab to the **Instances** tab. To 
 
 With both actions we arrive to the same dialog, which looks like this:
 
-![Deploy dialog](../.gitbook/assets/deploy%20%282%29.png)
+![Deploy dialog](../.gitbook/assets/deploy%20%283%29.png)
 
 Here we need to write the name of the instance and choose the application we want an instance of \(if we clicked on the "deploy" button in the **Registered** list, the instance is already established, and we only have to write the name of the instance\). Then, the instance will appear in the list under the **Instances** tab.
 

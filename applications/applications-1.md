@@ -10,7 +10,7 @@ _The CLI responses are shown in text format, which can be obtained adding_ `--ou
 
 If we click on the "Application" option at the left column of the screen, a screen similar to this one will appear:
 
-![Application View from the Web Interface](../.gitbook/assets/apps%20%285%29.png)
+![Application View from the Web Interface](../.gitbook/assets/apps%20%286%29.png)
 
 This screen has the following areas:
 
@@ -168,7 +168,7 @@ So, the descriptor is ready and you are already in the Application view of the w
 
 In the Application view, we can see the already deployed applications in the lower part of the screen, in the Applications list. There, we need to click on the **Registered** tab, and then we can see the **Register application** button. Please click on it.
 
-![Upload descriptor](../.gitbook/assets/registerapp%20%281%29.png)
+![Upload descriptor](../.gitbook/assets/registerapp%20%282%29.png)
 
 What we can see now is a special dialog where we can upload our application descriptor, so the application gets registered in the system. We can click on it to search the file in our file system, or we can just drag it and drop it in the designed area. After that, just clicking on the **Register** button will register the application in the system.
 
@@ -190,7 +190,7 @@ Here, as you may have noticed, is also the moment where we name the app with a h
 
 Now that the application is registered \(and thus appears in the list at the **Registered** tab\), we can deploy an instance of it! There are three ways to access the deploying dialog, so let's see the three.
 
-![Deploy for the main view](../.gitbook/assets/apps%20%286%29.png)
+![Deploy for the main view](../.gitbook/assets/apps%20%287%29.png)
 
 One of the ways to do that is by clicking the grey button in the **Actions** column of the **Registered** list.
 
@@ -198,7 +198,7 @@ One of the ways to do that is by clicking the grey button in the **Actions** col
 
 Another way is to go from the **Registered** list to a concrete registered app. To deploy our application we only need to click on the **Deploy**  button on the bottom part of the screen.
 
-![Deploy from registered view](../.gitbook/assets/reg1.png)
+![Deploy from registered view](../.gitbook/assets/reg1%20%282%29.png)
 
 With all these actions we arrive to the same dialog, which looks like this:
 

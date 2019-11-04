@@ -1,8 +1,8 @@
 # Application Deployment
 
-![Uploading a descriptor to register an application.](../.gitbook/assets/apps%20%287%29.png)
+![Uploading a descriptor to register an application.](../.gitbook/assets/apps%20%288%29.png)
 
-![Descriptor uploading dialog](../.gitbook/assets/registerapp.png)
+![Descriptor uploading dialog](../.gitbook/assets/registerapp%20%281%29.png)
 
 ![Deploy button from the &quot;Registered&quot; list](../.gitbook/assets/deployregisterd.png)
 
@@ -12,9 +12,9 @@ To deploy our application we only need to click on the **Deploy** button on the 
 
 ![Deploying instances dialog](../.gitbook/assets/deploy%20%281%29.png)
 
-![Service Info dialog](../.gitbook/assets/appinstancesserviceinfo%20%281%29.png)
+![Service Info dialog](../.gitbook/assets/appinstancesserviceinfo%20%282%29.png)
 
-![Information for a specific rule](../.gitbook/assets/appinstanceruleinfo%20%281%29.png)
+![Information for a specific rule](../.gitbook/assets/appinstanceruleinfo%20%282%29.png)
 
 ![Undeploying an instance](../.gitbook/assets/appinfolistoptions.png)
 

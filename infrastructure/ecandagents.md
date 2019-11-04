@@ -2,17 +2,17 @@
 
 ![](../.gitbook/assets/ecs.png)
 
-![](../.gitbook/assets/installagent.png)
+![](../.gitbook/assets/installagent%20%281%29.png)
 
 ![Agent join token](../.gitbook/assets/agenttoken.png)
 
-![Unlink EC](../.gitbook/assets/unlinkec.png)
+![Unlink EC](../.gitbook/assets/unlinkec%20%281%29.png)
 
 ![Agent info](../.gitbook/assets/agentinfo.png)
 
 ![Last operation log](../.gitbook/assets/lasop.png)
 
-![Uninstall agent](../.gitbook/assets/uninstallagent.png)
+![Uninstall agent](../.gitbook/assets/uninstallagent%20%281%29.png)
 
 The Edge Controllers and the Agents are both Nalej components that are installed in your side of the organization so the Nalej platform can have access to the assets there. Let's start with some basic definitions.
 
