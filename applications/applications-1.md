@@ -198,7 +198,7 @@ One of the ways to do that is by clicking the grey button in the **Actions** col
 
 Another way is to go from the **Registered** list to a concrete registered app. To deploy our application we only need to click on the **Deploy**  button on the bottom part of the screen.
 
-![Deploy from registered view](../.gitbook/assets/reg1%20%282%29.png)
+![Deploy from registered view](../.gitbook/assets/reg1%20%283%29.png)
 
 With all these actions we arrive to the same dialog, which looks like this:
 
