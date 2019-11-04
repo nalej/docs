@@ -60,6 +60,8 @@ Once you enter, you can see the platform structure at a glance, and start intera
 
 The first screen is the **Organization** section, which contains a view of all members of the organization and its subscription plan. There is a section column in the left part of the screen.
 
+From here you can go to the **Infrastructure** view and interact with the inventory.
+
 From here you can go to the **Resources** view and interact with the clusters in the system, and the nodes they manage.
 
 You can also go to the **Devices** view, where you can see all the devices in the system and the device groups that contain them.

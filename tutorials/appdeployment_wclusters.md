@@ -263,6 +263,8 @@ One of the ways to do that is by clicking the blue _play_ button in the **Action
 
 To deploy our application we only need to click on the **Deploy** button on the right part of the screen.
 
+![Deploy form registered view](../.gitbook/assets/reg1%20%281%29.png)
+
 With both actions we arrive to the same dialog, which looks like this:
 
 ![Deploying instances dialog](../.gitbook/assets/deploy%20%282%29.png)

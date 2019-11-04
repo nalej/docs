@@ -202,7 +202,7 @@ One of the ways to do that is by clicking the grey button in the **Actions** col
 
 Another way is to go from the **Registered** list to a concrete registered app. To deploy our application we only need to click on the **Deploy** button on the bottom part of the screen.
 
-![Deploy from registered view](../.gitbook/assets/reg1%20%282%29.png)
+![Deploy from registered view](../.gitbook/assets/reg1%20%283%29.png)
 
 With all these actions we arrive to the same dialog, which looks like this:
 
@@ -231,6 +231,22 @@ If there is any required connection, the third step highlights and the user has 
 The deploy button will end being disabled when the info is fully added and the deployment is ready.
 
 ![Deploy message confirmation](../.gitbook/assets/deploymessage.png)
+
+### Quick filters
+
+The user can filter the different nodes by registered, clusters and instances, also the user can mix the filter function with the search function.
+
+![Registered quick filter](../.gitbook/assets/appqick2.png)
+
+![Registered and instances quick filter](../.gitbook/assets/appquick.png)
+
+![Just instances quick filter](../.gitbook/assets/appquick3.png)
+
+![Search with no filter](../.gitbook/assets/appsearchnofilter.png)
+
+There is an advanced filter options in the search box that opens the dialog.
+
+![Advanced filter options](../.gitbook/assets/advancedfilter.png)
 
 ## Application management
 
@@ -378,5 +394,5 @@ OK
 
 To delete the application from the system, thus avoiding the generation of instances from it in the future, we just need to go to the **Registered** tab in the Application list, and look for the application. Then, we need to click the red bin under the **Actions** column.
 
-![Deleting an application from the system](../.gitbook/assets/reg1%20%281%29.png)
+![Deleting an application from the system](../.gitbook/assets/reg1%20%282%29.png)
 

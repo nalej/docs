@@ -14,8 +14,8 @@ The Application Diagram, in the Application Instance screen, can be daunting. Fe
 
 Let's begin with the service instances. Each instance has a different color depending on its status:
 
-* Dark blue means it's _RUNNING_.
-* Turquoise means it's _IN TRANSITION_ \(which can mean it's queued, or scheduled, or deploying...\).
+* Teal means it's _RUNNING_.
+* Yellow means it's _IN TRANSITION_ \(which can mean it's queued, or scheduled, or deploying...\).
 * Red means it has an _ERROR_.
 
 In some cases you can find service instances that can be repeated. Remember the replicas we can specify in the [application descriptor](app_descriptors.md)? This is how those replicas are represented visually.
@@ -30,11 +30,11 @@ You can \(in fact, we encourage you to\) use the rest of the information in the 
 
 ## Rules
 
-![Rules of the Sentiment application instance](../.gitbook/assets/captura-de-pantalla-2019-11-04-a-las-12.35.09.png)
+![Rules of the application instance](../.gitbook/assets/captura-de-pantalla-2019-11-04-a-las-12.35.09.png)
 
 Do you see the little arrows pointing from one service to another? They represent the rules that apply to the services, and the relationships created between them because of that.
 
-![Beginner-mode diagram](../.gitbook/assets/captura-de-pantalla-2019-11-04-a-las-12.36.45.png)
+![Beginner node diagram](../.gitbook/assets/captura-de-pantalla-2019-11-04-a-las-18.21.30.png)
 
-In the case of the Sentiment app, we can see that in the "sentiment" group, the "elastic" service is the target of some rules, each regarding different ports. There are four rules in total, which allow the services access to "elastic" in different ports. In the diagram, as you can see, we only see that these two services \("kibana" and "nifi"\) are allowed to access "elastic".
+In the case of the app, we can see that in the  group, the "deepdetectserver" service is the target from the connection of "deepdetecttui". Those are grouped in the "core" services group.
 
