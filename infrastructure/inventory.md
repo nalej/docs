@@ -131,7 +131,21 @@ You can use a token procedure, similar to what we used before to register the EC
 >
 > There will also be a feature where the asset can register manually to the EC, withouth having an Agent actively monitoring the asset. This will be useful for network hardware, for example, and will align with Nalej's intention of having this view as a complete inventory of the organization's assets.
 
-## Managin labels
+## Managing labels
 
 Regarding the **labels** of the ECs, Assets and devices, although adding and/or deleting them is not encouraged, we can do it easily, and the procedure for clusters and nodes is very similar.
+
+### Web Interface
+
+At the end of the label list there is a `+` button to **add** new labels.
+
+![Add labels dialog](../.gitbook/assets/infraaddlabel.png)
+
+After clicking on that button, we can see a form where we can enter the name and value of the label, and we can save or discard this new information.
+
+If, however, in the list of labels we click on one or more labels \(selecting them\), this `+` button changes its function to **delete**, and its image to one of a bin, so we can delete the selected labels.
+
+![Select label for deleting them](../.gitbook/assets/infralabels.png)
+
+As stated above, please handle these features with care.
 
