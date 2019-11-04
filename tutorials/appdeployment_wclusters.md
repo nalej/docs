@@ -1,5 +1,25 @@
 # Application Deployment
 
+![Uploading a descriptor to register an application.](../.gitbook/assets/apps%20%287%29.png)
+
+![Descriptor uploading dialog](../.gitbook/assets/registerapp.png)
+
+![Deploy button from the &quot;Registered&quot; list](../.gitbook/assets/deployregisterd.png)
+
+![Deploying an instance from main applications view](../.gitbook/assets/apps%20%281%29.png)
+
+To deploy our application we only need to click on the **Deploy** button on the right part of the screen.
+
+![Deploying instances dialog](../.gitbook/assets/deploy%20%281%29.png)
+
+![Service Info dialog](../.gitbook/assets/appinstancesserviceinfo%20%281%29.png)
+
+![Information for a specific rule](../.gitbook/assets/appinstanceruleinfo%20%281%29.png)
+
+![Undeploying an instance](../.gitbook/assets/appinfolistoptions.png)
+
+![Deleting an application from the system.](../.gitbook/assets/registerparam%20%282%29.png)
+
 So, you just got Nalej and are itching to start working with it, but don't know where to start. No worries! This document will walk you through the process of deploying your very first application with Nalej.
 
 ### Environment setup
@@ -379,8 +399,7 @@ RESULT
 OK
 ```
 
-If the application has connections linked to it, the system will return a failure telling you so.
-To undeploy it anyway use the flag `--force` or remove the connections first (using `--force` will remove the connections also).
+If the application has connections linked to it, the system will return a failure telling you so. To undeploy it anyway use the flag `--force` or remove the connections first \(using `--force` will remove the connections also\).
 
 #### Web Interface
 

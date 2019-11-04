@@ -16,39 +16,38 @@ _So, the general rule for labels is: DO NOT touch them unless you really know wh
 
 In the web management interface, click on Resources on the left column, so the Resources view is displayed.
 
-![Resources view](../.gitbook/assets/res_ppal.png)
+![](../.gitbook/assets/resources.png)
 
-In the upper part of the screen we can see:
+In the left part of the screen we can see:
 
-![Resources, upper section of the view](../.gitbook/assets/res_ppal_upper.png)
+![](../.gitbook/assets/resources2.png)
 
-* **Summary card**: the number of clusters and nodes in the system.
-* **Clusters card**: a carousel of charts with information about each cluster and the nodes in it \(like how many nodes are running in the cluster\).
-* **Node status timeline**: a timeline of the status of all the nodes.
+* **Summary card**: the number of clusters and instances.
+* **List card**:  a list of available clusters.
 
-The lower section displays a **cluster list**.
+  Each row of the list refers to a different cluster, with some information about it:
 
-![Cluster list](../.gitbook/assets/res_ppal_lower.png)
-
-Each row of the list refers to a different cluster, with some information about it:
-
-* its **name**.
-* its **identifier**.
-* the number of **nodes** it has inside.
-* a list of **labels**.
-* the **type** of cluster \(the system only accepts _kubernetes_ by now\).
-* the **status** of the cluster \(it can be _running_, _processing_ or _error_\).
-* \[NOT ACTIVE\] **multitenant**, a flag to say if the cluster belongs to more than one organization.
+  * its **name**.
+  * the number of **instances** in each cluster.
+  * a list of **labels.**
 
 In the same list, on the far right, each cluster has an **Edit** button. When clicked, a dialog appears where we can change the name and the labels associated to the cluster.
 
-![&quot;Edit cluster&quot; view](../.gitbook/assets/res_edit_cluster.png)
+![](../.gitbook/assets/editcluster.png)
+
+The right section displays a **cluster-instances graph**.
+
+![Resources graph](../.gitbook/assets/resources1.png)
+
+We can search for a certain instance or cluster and the search is highlighted
+
+![](../.gitbook/assets/resourcesgraph.png)
 
 When we click on the name of the cluster, the view changes, and the information displayed refers to that specific cluster and its nodes.
 
-![Cluster view](../.gitbook/assets/res_cluster_view.png)
+![](../.gitbook/assets/clusteronline.png)
 
-In the upper part of the screen we can see the **status** of the cluster \(which is "RUNNING" only if all the nodes in it are running, and if not it shows the most serious problem in the clusters\), and a **summary** of the cluster information we saw in the previous list.
+In the upper part of the screen we can see the **status** of the cluster \(which is "ONLINE" only if all the nodes in it are running, and if not it shows the most serious problem in the clusters\), and a **summary** of the cluster information we saw in the previous list.
 
 In the lower part of the screen we can see another list, this time of nodes. The information displayed is as follows:
 
@@ -56,7 +55,7 @@ In the lower part of the screen we can see another list, this time of nodes. The
 * The **IP** associated to it.
 * The current **state** of the node.
 * The **labels** it has.
-* Its current **status** \(again, it can be _running_, _processing_ or _error_\).
+* Its current **status**.
 
 ### Public API CLI
 
@@ -154,13 +153,13 @@ Regarding the **labels** of the clusters and nodes, although adding and/or delet
 
 At the end of the label list there is a `+` button to **add** new labels.
 
-![Adding a label](../.gitbook/assets/res_add_label.png)
+![](../.gitbook/assets/addlabel.png)
 
 After clicking on that button, we can see a form where we can enter the name and value of the label, and we can save or discard this new information.
 
 If, however, in the list of labels we click on one or more labels \(selecting them\), this `+` button changes its function to **delete**, and its image to one of a bin, so we can delete the selected labels.
 
-![Deleting one or several labels](../.gitbook/assets/res_delete_label.png)
+![](../.gitbook/assets/clusterlabell2.png)
 
 As stated above, please handle these features with care.
 

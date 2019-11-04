@@ -14,7 +14,7 @@ The Inventory is the main view of the Infrastructure section. It consists of a l
 
 The main objective of this section is the monitorization of the hardware that's already registered in the platform, so we can have, in one place, the status and availability of every piece of hardware connected to it.
 
-![Infrastructure main view](../.gitbook/assets/infrastructure_ppal.png)
+![](../.gitbook/assets/infra.png)
 
 We can also see, on the left, a summary of the resources in the organization, which tells you the resources available in the organization \(number of CPUs, storage in GB, and RAM availability in GB\).
 

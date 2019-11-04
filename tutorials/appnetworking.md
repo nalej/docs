@@ -146,10 +146,7 @@ To remove a connection, you must invoke the CLI with the command `appnet remove`
     <inbound_iface_name>
 ```
 
-Be aware that the request is asynchronous. The platform will answer with a `RESULT OK` message if the request was accepted
-and it will do its best to remove the connection as soon as possible. Run the command `appnet list` to follow the connection status.
-If the outbound network interface of the connection is marked as **required**, you will need to use the `--force` flag to remove it.
-Be aware that the connection was marked as required for some reason.
+Be aware that the request is asynchronous. The platform will answer with a `RESULT OK` message if the request was accepted and it will do its best to remove the connection as soon as possible. Run the command `appnet list` to follow the connection status. If the outbound network interface of the connection is marked as **required**, you will need to use the `--force` flag to remove it. Be aware that the connection was marked as required for some reason.
 
 #### Web interface
 

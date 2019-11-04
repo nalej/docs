@@ -12,7 +12,7 @@ _The CLI responses are shown in text format, which can be obtained adding_ `--ou
 
 The Organization view is the first view presented to you after logging in. Just in case you have been navigating around, you only have to click the "Organization" menu option on the left column to go back to it.
 
-![Organization view](../.gitbook/assets/org_ppal.png)
+![Organization ](../.gitbook/assets/organization.png)
 
 Here, the information we can see depends on the role we have been assigned, and so, if the person logging in is categorized as Owner of the organization, the info shown is this:
 
@@ -45,7 +45,7 @@ You need to be an Owner of the organization to be able to create, manage or dele
 
 In the Organization view, under the "Member list" there is an **"Add user"** button. If we click on that, a form appears.
 
-![&quot;Add user&quot; feature view](../.gitbook/assets/org_add_user.png)
+![](../.gitbook/assets/adduser.png)
 
 By now, the form to sign a user up requires a name, an email, a password and a role. You can save the information, creating a user, or discard it. You can also discard the information by clicking the cross in the upper right corner.
 
@@ -94,7 +94,7 @@ There are several operations you can do with the members who belong to your orga
 
 In the Member list, you can click on the Edit button of the user you want to edit. The following page appears:
 
-![&quot;Edit user&quot; feature view](../.gitbook/assets/org_edit_user.png)
+![](../.gitbook/assets/edituser.png)
 
 As you can see, the editable fields here are the user's name and role. We can also change the password if we know the current one.
 
@@ -102,13 +102,13 @@ Once we hit "Save", a notification message appears in the upper right corner of 
 
 We can also reset their password, which means we send a default one to the email given when the user was created. To do this, click on the Info button of the user.
 
-![&quot;User info&quot; feature view](../.gitbook/assets/org_change_password_prev.png)
+![](../.gitbook/assets/userinfo.png)
 
 This shows the member card, and on it you can see the "Change password" button. To reset the password, click it.
 
 A new form appears, where we can write the old password and the new one, and confirm the new one.
 
-![&quot;Change password&quot; feature view](../.gitbook/assets/org_change_password.png)
+![](../.gitbook/assets/pass.png)
 
 ### Public API CLI
 
@@ -162,7 +162,7 @@ OK
 
 To delete a user, click on the Info button of that user.
 
-![&quot;Edit user&quot; feature view](../.gitbook/assets/org_delete_user.png)
+![](../.gitbook/assets/deleteuser.png)
 
 Once in this screen, hit the "Delete user" button. A message will appear on the upper right part of the screen confirming the action.
 

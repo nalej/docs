@@ -10,33 +10,30 @@ _The CLI responses are shown in this document with the text format, which can be
 
 As with the rest of the sections, we can find the Device view in the left-hand column.
 
-![Devices view](../.gitbook/assets/dev_ppal.png)
+![Devices view](../.gitbook/assets/devices.png)
 
 The upper part of the screen displays the following:
 
 * a **summary**, where we can see the total number of devices in the system, and the number of groups that contain them.
 * a **status timeline**, where we can see the percentage of online devices in a given time.
 
-The lower part of the screen is a list of devices divided by groups. The default group is `ALL`, and it shows all the devices in the system. But the rest of the groups appear there, easily clickable, and so when we click on one of them...
+The lower part of the screen is a list of devices divided by groups. Each group is the main accordion and we can click on the options button to see more information.
 
-![Device group view](../.gitbook/assets/dev_devgroup_view.png)
-
-The view slightly changes. Now, the summary displays the information of only this group, like:
-
-* its **availability**, with values like `ENABLED`or `DISABLED`.
-* its **API\_Key**.
-* the **number of devices** in it.
-* the **device connectivity**.
-
-The status timeline is still there, but now it only refers to the devices in this group.
+![Devices group options](../.gitbook/assets/devicesoptions.png)
 
 The list of devices also displays the devices in this group, with the following information for each one:
 
-* its **ID**.
-* the **date** it was added to the system.
+* its **Name**.
+* the **attached date** it was added to the system.
 * its current **status**.
 * any associated **labels** it may have.
 * an `ENABLED` flag, which allows us to quickly disable a given device.
+
+![Devices group info](../.gitbook/assets/devinfo.png)
+
+We can check the state of a device group in the devices group info modal window.
+
+![](../.gitbook/assets/searchdev.png)
 
 We can also search by any `string` included in any part of the device information \(for example, we can search `online` to see which devices are online at any given moment, or a specific date of inclusion in the system\).
 
@@ -111,17 +108,21 @@ ID            DATE              STATUS    LABELS   ENABLED
 
 We can add a new device group easily, clicking on the option **"Add group"** in the main view \(or in a group view\).
 
-![The &quot;Add Group&quot; option in the main Devices view](../.gitbook/assets/dev_add_devgroup_prev.png)
+![The &quot;Add Group&quot; option in the main Devices view](../.gitbook/assets/devices%20%283%29.png)
 
 This opens a dialog like the one below:
 
-![Device group add dialog](../.gitbook/assets/dev_add_devgroup.png)
+![Add group dialog](../.gitbook/assets/addgroup%20%281%29.png)
 
 To create a device group, we need:
 
 * A **group name**.
 * The **group device availability**.
 * If the **devices** are **enabled by default**.
+
+Once the group is created, a new accordion tab will be displayed on the devices list.
+
+![](../.gitbook/assets/devcreated.png)
 
 ### Public API CLI
 
@@ -157,14 +158,14 @@ This includes all the information related to the device group, which is, its **i
 
 In the device group view, we can easily access its configuration by clicking on the link highlighted below.
 
-![Device group configuration option](../.gitbook/assets/dev_devgroup_config_prev.png)
+![Device group configuration option](../.gitbook/assets/devicesoptions%20%282%29.png)
 
 The only options that can be changed in a group are:
 
 * The **group device availability**.
 * If the **devices** are **enabled by default**.
 
-![Device group configuration dialog](../.gitbook/assets/dev_devgroup_config.png)
+![Device group configuration dialog](../.gitbook/assets/devconfig%20%281%29.png)
 
 ### Public API CLI
 
@@ -198,7 +199,7 @@ ID      NAME              API_KEY        ENABLED   DEV_ENABLED
 
 Now, we want to delete an entire device group. From that group view, we can click on "Delete group"...
 
-![Deleting a device group](../.gitbook/assets/dev_delete_devgroup_prev.png)
+![Delete devices group](../.gitbook/assets/devdeletegrou.png)
 
 And the system will confirm the deletion with a notification in the upper right part of the screen.
 

@@ -61,7 +61,7 @@ We can check if the installation was successful and the cluster is up and runnin
 
 We just have to navigate to the Resources view.
 
-![Resources list view.](../.gitbook/assets/res_ppal.png)
+![](../.gitbook/assets/resourcesredcolor.png)
 
 clusters in the system, and our brand new cluster should appear on the list.
 
