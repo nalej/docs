@@ -3,13 +3,13 @@
 The system supports specifying the application structure in the form of an application descriptor. An application descriptor is an entity that contains all the information required to launch a complex application composed of different services. The overall structure of an application descriptor is as follows:
 
 ```javascript
-{   
-    "name": "Sample application",   
+{
+    "name": "Sample application",
     "labels": {
-        ...   
+        ...
     },
     "rules": [
-        ...   
+        ...
     ],
     "groups": [
         {
@@ -18,7 +18,7 @@ The system supports specifying the application structure in the form of an appli
                 ...
             ]
         }
-    ] 
+    ]
  }
 ```
 
@@ -29,12 +29,12 @@ An application descriptor contains a **name**, a set of **labels** that will be 
 The rule entity determines the connectivity of a service with the others. To specify a service:
 
 ```javascript
-{     
-  "name": "this is what this rule does",       
-  "target_service_group_name": <service_group_name>,       
+{
+  "name": "this is what this rule does",
+  "target_service_group_name": <service_group_name>,
   "target_service_name": <service_name>,
-  "target_port": <port>,       
-  "access": 2     
+  "target_port": <port>,
+  "access": 2
 },
 ```
 
@@ -54,7 +54,7 @@ Where:
             <service_name_1>,
             <service_name_2>,
             ...
-        ]    
+        ]
     }
     ```
 
@@ -141,7 +141,7 @@ The structure of a service group is as follows:
     {
       "name": <group_name>,
       "services": [
-        ...       
+        ...
       ],
       "specs": {
         "multi_cluster_replica": <true|false>,
@@ -160,7 +160,7 @@ Where:
 * **name** is the name we give to the service group. It must be unique in the context of the application.
 * **services** is the collection of services the group contains. There must be at least one service defined in the group.
 * **specs** defines the deployment specifications for the group. The different parameters here are:
-  * **multicluster\_replica**, which is a boolean that states whether  the replicas will be deployed in the same cluster \(=_false_\), or on the contrary they will be deployed into any available cluster \(=_true_\). By default it is set to _false_.
+  * **multicluster\_replica**, which is a boolean that states whether the replicas will be deployed in the same cluster \(=_false_\), or on the contrary they will be deployed into any available cluster \(=_true_\). By default it is set to _false_.
   * **num\_replicas**, which is the number of replicas of this group that are going to be deployed. These replicas will appear as different instances in the system. By default it is set to 1.
   * **deployment\_selectors**, which is a collection of labels and values that is checked against the available clusters. Only those clusters with all the labels and values indicated by the deployment\_selectors are considered to be candidates.
 
@@ -169,11 +169,11 @@ Where:
 A service defines a component of the application. The elements that describe a service are:
 
 ```javascript
-{              
-    "name": <service_name>,           
-    "image": <docker image>,       
-    "specs": {         
-        "replicas": <num_replicas>       
+{
+    "name": <service_name>,
+    "image": <docker image>,
+    "specs": {
+        "replicas": <num_replicas>
     },
     "configs": [
         {
@@ -182,24 +182,24 @@ A service defines a component of the application. The elements that describe a s
           "mount_path": <config_file_path>
         }
       ],
-    "storage": [         
-        {           
-            "mount_path": <path_to_be_mounted>         
-        }       
+    "storage": [
+        {
+            "mount_path": <path_to_be_mounted>
+        }
     ],
-    "exposed_ports": [         
-        {           
-            "name": <port_name>,           
-            "internal_port": <port_number>,           
-            "exposed_port": <port_number>         
-        }       
-    ],       
-    "environment_variables": {         
-        "<env_name>": <env_value>       
-    },       
-    "labels": {         
-        "app": <app_name>       
-    }     
+    "exposed_ports": [
+        {
+            "name": <port_name>,
+            "internal_port": <port_number>,
+            "exposed_port": <port_number>
+        }
+    ],
+    "environment_variables": {
+        "<env_name>": <env_value>
+    },
+    "labels": {
+        "app": <app_name>
+    }
  },
 ```
 
@@ -207,10 +207,10 @@ Where:
 
 * **service\_name** is the name of the service.
 * **image** is the name of the docker image.
-* **specs** defines the specifications for the service. In it, 
+* **specs** defines the specifications for the service. In it,
   * **replicas** is the number of replicas of this service to be deployed. These replicas will be part of the same instance in the system \(unlike the replicas at service group level, which will be seen as different instances\).
-* **configs** defines the configuration files that the service may need. In it, 
-  * **config\_file\_id** is the identifier of each specific configuration file, 
+* **configs** defines the configuration files that the service may need. In it,
+  * **config\_file\_id** is the identifier of each specific configuration file,
   * **content** is the content the configuration file should have, and
   * **mount\_file** is the path where the file should be in the cluster, so the system can create it and fill it with what is in the **content** parameter.
 * **storage** defines the storage required by the image. It is an optional field.
@@ -221,12 +221,12 @@ Where:
 Example:
 
 ```javascript
-{         
-    "name": "simple-mysql",             
-    "image": "mysql:5.6",       
-    "specs": {         
-        "replicas": 1       
-    },       
+{
+    "name": "simple-mysql",
+    "image": "mysql:5.6",
+    "specs": {
+        "replicas": 1
+    },
     "configs": [
         {
             "config_file_name": "saludo",
@@ -238,26 +238,26 @@ Example:
             "content": "QWRpb3MK",
             "mount_path": "/config/despedida.conf"
         }
-    ],    
-    "storage": [         
-        {           
-            "mount_path": "/tmp"         
-        }       
-    ],       
-    "exposed_ports": [         
-        {           
-            "name": "mysqlport",           
-            "internal_port": 3316,           
-            "exposed_port": 3316         
-        }       
-    ],       
-    "environment_variables": {         
-        "MYSQL_ROOT_PASSWORD": <mysql_pword>      
-    },       
-    "labels": {         
-        "app": "simple-mysql",         
-        "component": "simple-app"       
-    }     
+    ],
+    "storage": [
+        {
+            "mount_path": "/tmp"
+        }
+    ],
+    "exposed_ports": [
+        {
+            "name": "mysqlport",
+            "internal_port": 3316,
+            "exposed_port": 3316
+        }
+    ],
+    "environment_variables": {
+        "MYSQL_ROOT_PASSWORD": <mysql_pword>
+    },
+    "labels": {
+        "app": "simple-mysql",
+        "component": "simple-app"
+    }
 },
 ```
 
@@ -266,16 +266,16 @@ Example:
 In order to access private images, the user should provide the credentials for downloading them. To use them, add the following options to the service descriptor:
 
 ```javascript
-{            
-    "name": "performance-server",            
-    "image": "myrepo/myorg/performance-server:v0.2.0",      
-    "credentials": {         
-        "username": <username>,         
-        "password": <password>,         
-        "email": <email@email.com>,         
-        "docker_repository": "https://myrepo.url"       
-    },        
- ...     
+{
+    "name": "performance-server",
+    "image": "myrepo/myorg/performance-server:v0.2.0",
+    "credentials": {
+        "username": <username>,
+        "password": <password>,
+        "email": <email@email.com>,
+        "docker_repository": "https://myrepo.url"
+    },
+ ...
  },
 ```
 
@@ -290,11 +290,11 @@ Where:
 To pass arguments to the docker images, use the **run\_arguments** attribute as in the following example:
 
 ```javascript
-{       
-    "name": "Sample image accepting run arguments",       
-    "image": "run-test:v0.1.0",       
-    "run_arguments" : ["arg1", "arg2", ..., "argN"] 
-        ...     
+{
+    "name": "Sample image accepting run arguments",
+    "image": "run-test:v0.1.0",
+    "run_arguments" : ["arg1", "arg2", ..., "argN"]
+        ...
  },
 ```
 
@@ -303,17 +303,17 @@ To pass arguments to the docker images, use the **run\_arguments** attribute as 
 To attach storage to a given service, use the following construct:
 
 ```javascript
-{           
-    "name": "Sample service",       
-    "image": "run-test:v0.1.0",       
-    "storage": [         
-        {           
-            "size": 104857600,           
-            "mount_path": "/tmp",           
-            "type": 1         
-        }       
+{
+    "name": "Sample service",
+    "image": "run-test:v0.1.0",
+    "storage": [
+        {
+            "size": 104857600,
+            "mount_path": "/tmp",
+            "type": 1
+        }
     ],
- ... 
+ ...
  }
 ```
 

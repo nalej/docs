@@ -23,13 +23,13 @@ In the left part of the screen we can see:
 ![](../.gitbook/assets/resources2.png)
 
 * **Summary card**: the number of clusters and instances.
-* **List card**:  a list of available clusters.
+* **List card**: a list of available clusters.
 
   Each row of the list refers to a different cluster, with some information about it:
 
-  * its **name**.
-  * the number of **instances** in each cluster.
-  * a list of **labels.**
+  * **Name**.
+  * The number of **instances** in each cluster.
+  * A list of **labels.**
 
 In the same list, on the far right, each cluster has an **Edit** button. When clicked, a dialog appears where we can change the name and the labels associated to the cluster.
 
