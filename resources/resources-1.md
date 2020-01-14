@@ -14,11 +14,11 @@ _So, the general rule for labels is: DO NOT touch them unless you really know wh
 
 ### Web Management Interface
 
-In the web management interface, click on Resources on the left column, so the Resources view is displayed.
+On the web management interface, click on Resources on the left column, so the Resources view is displayed.
 
 ![](../.gitbook/assets/resources.png)
 
-In the left part of the screen we can see:
+On the left part of the screen we can see:
 
 ![](../.gitbook/assets/resources2.png)
 

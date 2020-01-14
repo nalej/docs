@@ -16,7 +16,7 @@ The main objective of this section is the monitorization of the hardware that's 
 
 ![](../.gitbook/assets/infra.png)
 
-We can also see, on the left, a summary of the resources in the organization, which tells you the resources available in the organization \(number of CPUs, storage in GB, and RAM availability in GB\).
+On the left column, we can also see a summary of the resources in the organization, which tells you the resources available in the organization \(number of CPUs, storage in GB, and RAM availability in GB\).
 
 ### Public API CLI
 
@@ -57,11 +57,11 @@ which tells you the resources available in the organization \(number of CPUs, st
 
 ## What is an Edge Controller, and why do I need one?
 
-An Edge Controller \(EC\) is a component installed in your organization. Its mission is to serve as an entry point for the Nalej Management Cluster, so it can receive data from the hardware installed there. More information about Edge Controllers can be found in [this document](https://github.com/nalej/docs/tree/1d3cb20d7b4c95a84830c5ff938d6791d9357889/infrastructure/ECandagents.md), where there's a more thorough explanation.
+An Edge Controller \(EC\) is a component installed in your organization. Its mission is to serve as an entry point for the Nalej Management Cluster, so it can receive data from the hardware installed there. More information about Edge Controllers can be found in [this document](/ECandagents.md), where there's a more thorough explanation.
 
 ### How can I install an Edge Controller in my organization?
 
-First, you need to ask for an Edge Controller to the Nalej Management. This EC is a light Virtual Machine \(VM\), which will be installed in the client cloud. Right now the only supported system is Azure, although Nalej is working to adapt its technology to other systems.
+First, you need to ask for an Edge Controller to the Nalej Management. This EC is a light Virtual Machine \(VM\), which will be installed in the client cloud. Right now the only supported system is Azure, although Nalej is working to adapt its technology to other systems. Since it's a VM, it can also be installed in a physical server in the client side.
 
 To deploy the EC in the cloud, you need to generate a `cloud-init.yaml` file. This file would look like this:
 
@@ -123,7 +123,7 @@ agentport: XXXX
 
 As we stated before, an **Agent** is a service installed in a piece of hardware in the client's side, and it lets the platform know about the client's hardware. To know more about agents, please take a look at [this document](https://github.com/nalej/docs/tree/1d3cb20d7b4c95a84830c5ff938d6791d9357889/infrastructure/ECandagents.md), where there's a more thorough explanation.
 
-### I have a server in my organization, How can I install an Agent in it?
+### I have a server in my organization, how can I install an Agent in it?
 
 You can use a token procedure, similar to what we used before to register the EC in the Nalej Management Cluster. In this case, the Agent will ask the EC for a token and, upon receiving it, will use said token to join the EC.
 

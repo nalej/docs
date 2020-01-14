@@ -2,7 +2,7 @@
 
 Here you will find all there is to know about user management, role management and organization information.
 
-The Organization area contains all the information related to the organization and the management of its members. In this area you will be able to create, manage and delete users, as well as create and assign them different roles in the platform.
+The Organization area contains all the information related to the organization and the management of its members. In this area you will be able to create, manage and delete users, as well as assign them different roles in the platform and create new roles if necessary.
 
 _The CLI responses are shown in text format, which can be obtained adding_ `--output="text"` _to the user options. If you need the responses in JSON format, you can get them by adding_ `--output="json"` _at the end of your requests, or as a user option._
 
@@ -18,7 +18,7 @@ Here, the information we can see depends on the role we have been assigned, and 
 
 * **Organization info card**. Here you can see the most relevant information related to the company: name, type of subscription, and number of members.
 * **Subscription**. The subscription plan the company is currently on.
-* **Member list**. Here you can find all the members in your organization, with their name, role and email, and several actions you can do:
+* **Member list**. Here you can find all the members in your organization, with their name, role and email, and some actions you can do:
   * _Info_: this button shows the member card, and gives us the option of resetting the password and deleting the user.
   * _Edit_: here we can edit the member name, change the password, and edit the role this person has.
 
@@ -47,7 +47,7 @@ In the Organization view, under the "Member list" there is an **"Add user"** but
 
 ![Add user dialog](../.gitbook/assets/adduser.png)
 
-By now, the form to sign a user up requires a name, an email, a password and a role. You can save the information, creating a user, or discard it. You can also discard the information by clicking the cross in the upper right corner.
+By now, the form to sign a user up requires a name, an email, a password and a role. You can save the information (thus creating a user) or discard it. You can also discard the information by clicking the cross in the upper right corner.
 
 ### Public API CLI
 
@@ -112,7 +112,7 @@ A new form appears, where we can write the old password and the new one, and con
 
 ### Public API CLI
 
-As you don't have an accessible list of users in plain view, the first thing you may want to do is to get one, so you know which users are actually in your organization. To do so, we will use the `users`command again:
+As you don't have an accessible list of users in plain view, the first thing you may want to do is to get one, so you know which users are actually in your organization. To do so, we will use the `users` command again:
 
 ```bash
 ./public-api-cli users list
