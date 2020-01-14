@@ -14,36 +14,33 @@ _So, the general rule for labels is: DO NOT touch them unless you really know wh
 
 ### Web Management Interface
 
-On the web management interface, click on Resources on the left column, so the Resources view is displayed.
+On the web management interface, you can display the Resources view by clicking on Resources on the far left column.
 
 ![](../.gitbook/assets/resources.png)
 
-On the left part of the screen we can see:
-
-![](../.gitbook/assets/resources2.png)
-
-* **Summary card**: the number of clusters and instances.
-* **List card**: a list of available clusters.
-
-  Each row of the list refers to a different cluster, with some information about it:
-
-  * **Name**.
-  * The number of **instances** in each cluster.
-  * A list of **labels.**
-
-In the same list, on the far right, each cluster has an **Edit** button. When clicked, a dialog appears where we can change the name and the labels associated to the cluster.
-
-![](../.gitbook/assets/editcluster.png)
-
-The right section displays a **cluster-instances graph**.
-
-![Resources graph](../.gitbook/assets/resources1.png)
-
-We can search for a certain instance or cluster and the search is highlighted
+The right section displays a **cluster-instances graph**. We can search for a certain instance or cluster and the part of the graph that matches the search is highlighted.
 
 ![](../.gitbook/assets/resourcesgraph.png)
 
-When we click on the name of the cluster, the view changes, and the information displayed refers to that specific cluster and its nodes.
+On the left part of the screen we can see:
+
+* A **Summary card** that shows the number of clusters and instances.
+
+* A **List card** that shows a list of available clusters.
+
+  <img src="../.gitbook/assets/resources_list.png" style="zoom:70%;" />
+
+  Each row of the list refers to a different cluster, with some information about it:
+  
+  * **Name**.
+  * The number of **instances** in each cluster.
+  * A list of **labels** associated to each cluster, which we can manage (more on this below in the "[Managing labels](#managing-labels)" section).
+
+In the same list, on the far right, each cluster has an **Edit** button. When clicked, a dialog appears where we can change the name of the cluster.
+
+![](../.gitbook/assets/editcluster.png)
+
+When we click on the name of a cluster in the list, the view changes, and the information displayed refers to that specific cluster and its nodes.
 
 ![](../.gitbook/assets/clusteronline.png)
 
@@ -70,15 +67,15 @@ We can also obtain information about our clusters and their nodes through the CL
 This command will return, as usual, a table with some of the information the system has about the clusters in it:
 
 ```bash
-NAME                   ID                  NODES   
+NAME                   ID                 NODES   
 <cluster_name_1>       <cluster_id_1>     <total_num_nodes>
 <cluster_name_2>       <cluster_id_2>     <total_num_nodes>
 <cluster_name_3>       <cluster_id_3>     <total_num_nodes>
 
 LABELS                                        STATUS
-<label11>:<value11>,<label12>:<value12>        RUNNING
-<label13>:<value13>,<label14>:<value14>        RUNNING
-<label15>:<value15>,<label15>:<value15>        RUNNING
+<label11>:<value11>,<label12>:<value12>       RUNNING
+<label13>:<value13>,<label14>:<value14>       RUNNING
+<label15>:<value15>,<label15>:<value15>       RUNNING
 ```
 
 This information consists of:
