@@ -1,8 +1,8 @@
 # Organization and user management
 
-Here you will find all there is to know about to user management, as well as role management and organization information.
+Here you will find all there is to know about user management, role management and organization information.
 
-The Organization area contains all the information related to the organization, as well as the management of its members. In this area you will be able to create, manage and delete users, as well as create and assign them different roles in the platform.
+The Organization area contains all the information related to the organization and the management of its members. In this area you will be able to create, manage and delete users, as well as create and assign them different roles in the platform.
 
 _The CLI responses are shown in text format, which can be obtained adding_ `--output="text"` _to the user options. If you need the responses in JSON format, you can get them by adding_ `--output="json"` _at the end of your requests, or as a user option._
 
