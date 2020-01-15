@@ -87,5 +87,5 @@ LABELS                                         STATUS
 <label15>:<value15>,<label15>:<value15>        RUNNING
 ```
 
-which is already analyzed in [this page of the documentation](resources-1.md), and it should show the information of the newly installed cluster.
+This response is already analyzed in the [Cluster monitoring](resources-1.md) section of the documentation, and it should show the information of the newly installed cluster.
 
