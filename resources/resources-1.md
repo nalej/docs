@@ -12,9 +12,9 @@ _So, the general rule for labels is: DO NOT touch them unless you really know wh
 
 ## Cluster monitoring
 
-### Web Management Interface
+### Web Interface
 
-On the web management interface, you can display the Resources view by clicking on Resources on the far left column.
+On the web interface, you can display the Resources view by clicking on Resources on the far left column.
 
 ![](../.gitbook/assets/resources.png)
 

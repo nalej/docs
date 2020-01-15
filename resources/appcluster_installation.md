@@ -63,7 +63,7 @@ We just have to navigate to the Resources view.
 
 ![](../.gitbook/assets/resourcesredcolor.png)
 
-clusters in the system, and our brand new cluster should appear on the list.
+Here, we can see the available application clusters in the system, and our brand new cluster should appear on the list and in the graph. For more information on how to manage this new cluster, please check the [Cluster monitoring](resources-1.md) section of the documentation.
 
 ### Public API CLI
 
@@ -76,16 +76,16 @@ To check the availability through the CLI we just have to list the clusters in t
 This will print a response similar to this one:
 
 ```bash
-NAME                   ID                  NODES   
+NAME                   ID                 NODES   
 <cluster_name_1>       <cluster_id_1>     <total_num_nodes>
 <cluster_name_2>       <cluster_id_2>     <total_num_nodes>
 <cluster_name_3>       <cluster_id_3>     <total_num_nodes>
 
-LABELS                                        STATUS
+LABELS                                         STATUS
 <label11>:<value11>,<label12>:<value12>        RUNNING
 <label13>:<value13>,<label14>:<value14>        RUNNING
 <label15>:<value15>,<label15>:<value15>        RUNNING
 ```
 
-which is already analyzed in [this page of the documentation](https://github.com/nalej/docs/tree/49a718688dcaf3fe23ef055ef37104c47c9c8328/resources/resources.md), and it should show the information of the newly installed cluster.
+which is already analyzed in [this page of the documentation](resources-1.md), and it should show the information of the newly installed cluster.
 
