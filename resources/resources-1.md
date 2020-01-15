@@ -103,12 +103,12 @@ Once we know the cluster ID, we can list the nodes belonging to it.
 This is the response to the command above:
 
 ```javascript
-ID                    IP                    STATE      
+ID                    IP                 STATE      
 <node_id_1>          <ip_address>        ASSIGNED
 <node_id_2>          <ip_address>        ASSIGNED
 <node_id_3>          <ip_address>        ASSIGNED
 
-LABELS                                          STATUS
+LABELS                                         STATUS
 <label3>:<value3>,<label4>:<value4>,...        RUNNING
 <label5>:<value5>,<label6>:<value6>,...        RUNNING
 <label7>:<value7>,<label8>:<value8>,...        RUNNING
