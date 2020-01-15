@@ -18,7 +18,7 @@ On the web management interface, you can display the Resources view by clicking 
 
 ![](../.gitbook/assets/resources.png)
 
-The right section displays a **cluster-instances graph**. We can search for a certain instance or cluster and the part of the graph that matches the search is highlighted.
+The right section displays a **clusters-instances graph**. We can search for a certain instance or cluster in the **Search box** (on the upper right part of the section) and the part of the graph that matches the search is highlighted.
 
 ![](../.gitbook/assets/resourcesgraph.png)
 
