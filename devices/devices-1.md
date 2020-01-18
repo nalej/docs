@@ -1,6 +1,8 @@
+
+
 # Adding, managing and deleting devices
 
-This section will talk about devices in Nalej. The system understands the concept of **device** as an abstract entity that the user can manage as part of the applications installed in the cluster.
+What is a device for Nalej? The system understands the concept of **device** as an abstract entity that the user can manage as part of the applications installed in the cluster.
 
 _The CLI responses are shown in this document with the text format, which can be obtain adding_ `--output="text"` _to the user options. If you need the responses in JSON format, you can get them by adding_ `--output="json"` _at the end of your requests, or as a user option._
 
@@ -17,37 +19,36 @@ The upper part of the screen displays the following:
 * a **summary**, where we can see the total number of devices in the system, and the number of groups that contain them.
 * a **status timeline**, where we can see the percentage of online devices in a given time.
 
-The lower part of the screen is a list of devices divided by groups. Each group is the main accordion and we can click on the options button to see more information.
+The lower part of the screen is a list of devices divided by groups, with the following information for each device:
 
-![Devices group options](../.gitbook/assets/devicesoptions.png)
-
-The list of devices also displays the devices in this group, with the following information for each one:
-
-* its **Name**.
+* its **name**.
 * the **attached date** it was added to the system.
 * its current **status**.
 * any associated **labels** it may have.
-* an `ENABLED` flag, which allows us to quickly disable a given device.
+
+Each group, in the grey background row, has its own **Options** button. Clicking on it we can see more information related to the group, we can access its configuration settings (which will be explained in the [Configuration of a device group](#configuration-of-a-device-group) section of this document), or we can delete it.
+
+![Devices group options](../.gitbook/assets/devicesoptions.png)
+
+When we choose the **More info** option, a dialog appears, where we can find the device group API key, its default connectivity and if it's enabled or not.
 
 ![Devices group info](../.gitbook/assets/devinfo.png)
 
-We can check the state of a device group in the devices group info modal window.
+We can also search by any text string included in any part of the device information \(for example, we can search the term "`online`" to see which devices are online at any given moment, or a specific date of inclusion in the system\).
 
-![](../.gitbook/assets/searchdev.png)
-
-We can also search by any `string` included in any part of the device information \(for example, we can search `online` to see which devices are online at any given moment, or a specific date of inclusion in the system\).
+![Using the Search option with the string "471"](../.gitbook/assets/searchdev.png)
 
 ### Public API CLI
 
 The commands we can use to manage device groups and devices are `devicegroup` and `device`, respectively.
 
-So, to chech the device groups in the system, the command is:
+So, to obtain a list of the device groups in the system, the command needed is:
 
 ```bash
 ./public-api-cli devicegroup list
 ```
 
-And it returns a JSON document with the following structure:
+It returns a list with the following structure:
 
 ```javascript
 ID      NAME              API_KEY        ENABLED   DEV_ENABLED
@@ -70,7 +71,7 @@ Once we have obtained the list of device groups with their IDs, we can list the 
 ./public-api-cli devices list --deviceGroupId=<devgroup_id>
 ```
 
-The response to this command is a JSON document similar to this one:
+The response to this command is a list similar to this one:
 
 ```javascript
 ID            DATE              STATUS    LABELS   ENABLED
@@ -95,7 +96,7 @@ We can update the information of a device with:
 
 The only thing we can change for a given device is whether the device is **enabled** or **disabled**.
 
-The result to this command is the device information in a JSON, like so:
+The result to this command is the device information in a list, like so:
 
 ```javascript
 ID            DATE              STATUS    LABELS   ENABLED
@@ -120,7 +121,7 @@ To create a device group, we need:
 * The **group device availability**.
 * If the **devices** are **enabled by default**.
 
-Once the group is created, a new accordion tab will be displayed on the devices list.
+Once the group is created, it will be displayed on the devices list.
 
 ![](../.gitbook/assets/devcreated.png)
 
@@ -156,7 +157,7 @@ This includes all the information related to the device group, which is, its **i
 
 ### Web Interface
 
-In the device group view, we can easily access its configuration by clicking on the link highlighted below.
+In the main view, we can easily access the configuration of a specific device group by clicking on the **Configuration** button in the Options menu.
 
 ![Device group configuration option](../.gitbook/assets/devicesoptions%20%282%29.png)
 
@@ -197,7 +198,7 @@ ID      NAME              API_KEY        ENABLED   DEV_ENABLED
 
 ### Web Interface
 
-Now, we want to delete an entire device group. From that group view, we can click on "Delete group"...
+Let's say we want to delete an entire device group. From that group view, we can click on the Options menu, and then choose the **Delete group** option.
 
 ![Delete devices group](../.gitbook/assets/devdeletegrou.png)
 
