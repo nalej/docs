@@ -1,3 +1,5 @@
+
+
 # Application Deployment
 
 So, you just got Nalej and are itching to start working with it, but don't know where to start. No worries! This document will walk you through the process of deploying your very first application with Nalej.
@@ -8,7 +10,7 @@ For this tutorial we are assuming that there is at least one deployed cluster, a
 
 #### Setting your user options
 
-Is this the very first time you log in the platform? There are some variables that are needed for each interaction, so establishing them before starting means we won't have to write them down in each request. These variables, or options, are the **certificate** you received, and the addresses of the **Nalej login server** and the **Nalej API server**. Gather all this data, go to the `public-api-cli/bin` folder in your computer and execute the following instructions:
+Is this the very first time you log in the platform? There are some variables that are needed for each interaction, so establishing them before starting means we won't have to write them down in each request. These variables, or options, are the **certificate** you received, and the addresses of the **Nalej login server** and the **Nalej API server**. Gather all this data, go to the folder in your computer where you saved the `public-api-cli` executable, and execute the following instructions
 
 ```bash
 ./public-api-cli options set 
@@ -177,7 +179,7 @@ This example is the output of the following command:
     help > appDescExample.json
 ```
 
-It creates a basic application descriptor for you \(called `appDescExample.json`in this case\), with a Wordpress instance and a mySQL database associated to it. To learn more about them, please visit [this link](../applications/app_descriptors.md), where you can find an extensive tutorial on how to make your own.
+It creates a basic application descriptor for you \(called `appDescExample.json`in this case\), with a Wordpress instance and a mySQL database associated to it. To learn more about them, please read [this document](../applications/app_descriptors.md), where you can find an extensive tutorial on how to make your own.
 
 ### Adding the application descriptor to the system
 
@@ -193,10 +195,10 @@ It returns a table like this:
 
 ```javascript
 DESCRIPTOR                  ID          LABELS
-SARA - simple application   <desc_id>   <label:value>
+Sample application          <desc_id>   <label:value>
 
-NAME                      IMAGE            LABELS
-[Group] application        ===
+NAME                    IMAGE            LABELS
+[Group] application     ===
 simple-mysql            <serv1_img>      <l1:v1>,<l2:v2>
 simple-wordpress        <serv2_img>      <l3:v3>,<l4:v4>
 ```
@@ -253,25 +255,27 @@ To know more about connections and networking, check the Application Networking 
 
 #### Web Interface
 
-Now that the application is registered \(and thus appears in the list at the **Registered** tab\), we can deploy an instance of it! There are two ways to access the deploying dialog, so let's see both.
+Now that the application is registered \(and thus appears in the list at the **Registered** tab\), we can deploy an instance of it! There are three ways to access the deploying dialog, so let's see all of them.
 
-![Deploy button from the &quot;Registered&quot; list](../.gitbook/assets/deployregisterd%20%283%29.png)
+1) The first option is to click on the **Deploy** button in the upper right part of the screen.
 
-One of the ways to do that is by clicking the blue _play_ button in the **Actions** column of the **Registered** tab.
+![Deploy for the main view](/Users/svillanueva/nalej-docs/docs/.gitbook/assets/apps (7).png)
 
-![Deploying an instance from the applications view](../.gitbook/assets/apps%20%285%29.png)
+2) We can also find our app in the **Registered** list, hit the **Actions** icon in the same row, and once there click the grey **Deploy** option in the menu. 
 
-To deploy our application we only need to click on the **Deploy** button on the right part of the screen.
+![Deploy from registered list options in actions button](/Users/svillanueva/nalej-docs/docs/.gitbook/assets/deployregisterd (1).png)
 
-![Deploy form registered view](../.gitbook/assets/reg1%20%281%29.png)
+3) Lastly, we can find our app in the **Registered** list and click on its name. To deploy our application we only need to click on the **Deploy** button on the bottom part of the screen.
 
-With both actions we arrive to the same dialog, which looks like this:
+![Deploy from registered view](/Users/svillanueva/nalej-docs/docs/.gitbook/assets/reg1 (3).png)
 
-![Deploying instances dialog](../.gitbook/assets/deploy%20%282%29.png)
+With all these actions we arrive to the same dialog, which looks like this:
 
-Here we need to write the name of the instance and choose the application we want an instance of \(if we clicked on the "deploy" button in the **Registered** list, the instance is already established, and we only have to write the name of the instance\). Then, the instance will appear in the list under the **Instances** tab.
+![](/Users/svillanueva/nalej-docs/docs/.gitbook/assets/deploy.png)
 
-If the descriptor have outbound network interfaces marked as required, the Deploy Instance dialog will open a third step to describe the connections.
+Here we need to choose the application we want an instance of (from the drop down menu), and write the name of the new instance. If we clicked on the **Deploy** button in the **Registered** list or in the **Actions** menu, now the instance will already be established.
+
+If the descriptor has outbound network interfaces marked as required, the **Deploy Instance** dialog will open a third step to describe the connections.
 
 ![Describe connections step on the Deploy Instance dialog](../.gitbook/assets/app_instance_deploy_connections.png)
 
@@ -320,23 +324,26 @@ We can see the status of an instance directly in the **Instances** tab, in the c
 
 This view has several sections:
 
-* First, we have the **summary** \(upper-left part of the screen\). This part will tell us the status of the instance, its application of origin, its ID, the service groups it has, and the service instances it has deployed. We have an **Undeploy application** button to undeploy the instance directly from here \(we will talk about this later in this document\).
-* Then we have the **services** section. First we can see a diagram that shows us the relationship between the services in the instance, where we can zoom in in case it's necessary \(the color of each service depends on its status\). On the upper left part of this section we have the two perspectives we can toggle between. The other perspective is a text view with all the info about the service instances related to this application instance \(there is a tab with all the services, and then there is a tab for each service group\).
-  * For each service we can see the number of **replicas** that are deployed, the general **status** of the service, the **endpoints** it has, and more info.
-  * When we click on the **Info** button we open a dialog where we can see even more information, like the environment variables, the labels assigned to the service or the cluster it's deployed in. 
+* First, we have the **summary** \(upper-left part of the screen\). This part will tell us the status of the instance and its application of origin, and it also has an **Info** button we can click to find more about the instance. In the summary we can find three tabs: 
+  *  the **Parameters** tab, where the basic and advanced parameters of the instance will appear.
+  * the **Networks** tab, with the inbounds and outbounds connections.
+  * the **Setup** tab, showing the environment variables and other settings.
+* Under the summary we have the **Labels** section, where we can see the labels associated to this app instance.
+* We also have an **Add new connection** button, and an **Undeploy** button to undeploy the instance directly from here.
+* Then we have the **services** section. First we can see a graph that shows us the relationship between the services in the instance, where we can zoom in in case it's necessary \(to help us with the identification, the color of each service depends on its status\). On the upper left part of this section we have the two perspectives we can toggle between. The other perspective is a text view with all the info about the service instances related to this application instance.
+  * The services are visually classified according to their **service group**.
+  * For each service we can see the number of **replicas** that are deployed, the general **status** of the service, the **endpoints** it has, and an **Info** button.
+  * When we click on the **Info** button we open a dialog where we can see even more information, like the environment variables, the labels assigned to the service, or the cluster it's deployed in. 
 
 ![Service Info dialog](../.gitbook/assets/appinstancesserviceinfo%20%281%29.png)
 
-* Under the summary we have the **Tags** section, where we can see the tags associated to this app instance.
-* Beside it, there's the **Rules** section, where the rules for the different service groups in the application are displayed. We can click on any of them and the full disclosure of the rule will appear.
-
 ![Information for a specific rule](../.gitbook/assets/appinstanceruleinfo%20%281%29.png)
 
-* And finally, in the lower right corner of the screen, we can see the **Configuration** section, where we can find the environment variables and other settings.
+* Under the **service groups** we have the **Access rules** section, where the rules for the different service groups in the application are displayed. We can click on the **Info** button of any of them and the full disclosure of the rule will appear.
 
 ### Navigating to the endpoint
 
-The JSON obtained with `app inst get` has another piece of information that can be very useful for us, which is the **endpoints** where the instance is deployed. This information looks like this:
+The response obtained with the command `app inst get` has another piece of information that can be very useful for us, which is the **endpoints** where the instance is deployed. This information looks like this:
 
 ```javascript
 ENDPOINTS
@@ -387,9 +394,11 @@ If the application has connections linked to it, the system will return a failur
 
 #### Web Interface
 
-To undeploy an instance we just have to hit the red X in the **Actions** column in the far right of the Application instances list. This will delete the instance from this list, which will mean that it's no longer in the system.
+To undeploy an instance we have to locate it in the **Instances** list, open its **Actions** menu, and click on the **Undeploy** button. This will delete the instance from this list, which will mean that it's no longer in the system.
 
-![Undeploying an instance](../.gitbook/assets/appinfolistoptions-1.png)
+![Undeploying an instance](/Users/svillanueva/nalej-docs/docs/.gitbook/assets/appinfolistoptions (1).png)
+
+We can also undeploy an instance from its information view. There's an **Undeploy** button in the lower right part of the view, right under the "Add new connection" button. Clicking on it will undeploy the instance too.
 
 ### Deleting the app
 
@@ -414,7 +423,11 @@ OK
 
 #### Web Interface
 
-To delete the application from the system, thus avoiding the generation of instances from it in the future, we just need to go to the **Registered** tab in the Application list, and look for the application. Then, we need to click the red bin under the **Actions** column.
+To delete the application from the system, we just need to go to the **Registered** tab in the Application list, and look for the application. Then, in the **Actions** menu, we click on the **Delete** option.
+
+<!-- imagen: borrado desde la lista de apps registradas --> 
+
+We can also delete it from its information view. Once in it, we need to click the **Delete** button on the lower right part of the view, beside the "Deploy" button.
 
 ![Deleting an application from the system.](../.gitbook/assets/reg1.png)
 

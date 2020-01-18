@@ -6,7 +6,7 @@ Before getting started with the different parts of the platform, we're going to 
 
 ### Setting your user options
 
-The very first time you log in the system there are some variables that need to be established. They are needed for each interaction, so setting them up before starting lets us omit them in each request. These variables are the **certificate** you received, and the addresses of the **Nalej login server** and the **Nalej API server**. Gather all data \(from the information the Nalej administration provided when signing up for the service\), go to the `public-api-cli/bin` folder in your computer and execute the following instructions:
+The very first time you log in the system there are some variables that need to be established. They are needed for each interaction, so setting them up before starting lets us omit them in each request. These variables are the **certificate** you received, and the addresses of the **Nalej login server** and the **Nalej API server**. Gather all data \(from the information the Nalej administration provided when signing up for the service\), go to the folder in your computer where you saved the `public-api-cli` executable, and execute the following instructions:
 
 ```bash
 ./public-api-cli options set 
@@ -28,7 +28,7 @@ To check if these commands have executed correctly and the options are in fact s
 ./public-api-cli options list
 ```
 
-Right now, the responses to the CLI commands will be JSON-formatted documents. If you want to see them in a format that's easier to read, you should add this other option:
+By default, the responses to the CLI commands will be JSON-formatted documents. If you want to see them in a format that's easier to read, you should add this other option:
 
 ```bash
 ./public-api-cli options set 
@@ -36,7 +36,7 @@ Right now, the responses to the CLI commands will be JSON-formatted documents. I
     --value=text
 ```
 
-This will return the responses in a more human-readable format. If, however, you happen to need the response of a specific command in a JSON document, just adding --output="JSON" will override this for that command.
+This will return the responses in a more human-readable format. If, however, you happen to need the response of a specific command in a JSON document, just adding --output="JSON" will override this option for that command.
 
 ### Login
 
@@ -58,15 +58,13 @@ Once you enter, you can see the platform structure at a glance, and start intera
 
 ### Web interface views
 
-The first screen is the **Organization** section, which contains a view of all members of the organization and its subscription plan. There is a section column in the left part of the screen.
+The different views of the system are accessible through the column in the far left part of the screen (with a dark background). The views you can navigate to are:
 
-From here you can go to the **Infrastructure** view and interact with the inventory.
-
-From here you can go to the **Resources** view and interact with the clusters in the system, and the nodes they manage.
-
-You can also go to the **Devices** view, where you can see all the devices in the system and the device groups that contain them.
-
-Finally, in the **Applications** view you can interact with the registered and deployed apps.
+- **[Organization](../organization/organization-1)**, which contains a view of all members of the organization and its subscription plan.
+- **[Infrastructure](infrastructure/inventory)**, where you can interact with the Inventory.
+- **[Resources](resources/resources-1)**, where you can manage the clusters in the system, and the nodes associated to them.
+- **[Devices](devices/devices-1)**,  where you can see all the devices in the system and the device groups that contain them, and
+- **[Applications](applications/applications-1)**, where you can interact with the registered and deployed apps.
 
 For more information on any of these views, please go to the corresponding section of this documentation, where the different views are described in detail.
 
