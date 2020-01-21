@@ -198,15 +198,15 @@ Now that our application is registered \(and so appears in the list at the **Reg
 
 1) The first option is to click on the **Deploy** button in the upper right part of the screen.
 
-![Deploy for the main view](../.gitbook/assets/apps%20%287%29.png)
+![Deploy for the main view](../.gitbook/assets/apps_deploybutton.png)
 
 2) We can also find our app in the **Registered** list, hit the **Actions** icon in the same row, and once there click the grey **Deploy** option in the menu. 
 
-![Deploy from registered list options in actions button](../.gitbook/assets/deployregisterd%20%281%29.png)
+![Deploy from registered list options in actions button](../.gitbook/assets/deployregistered.png)
 
 3) Lastly, we can find our app in the **Registered** list and click on its name. To deploy our application we only need to click on the **Deploy** button on the bottom part of the screen.
 
-![Deploy from registered view](../.gitbook/assets/reg1%20%283%29.png)
+![Deploy from registered view](../.gitbook/assets/deployregistered_fromappview.png)
 
 With all these actions we arrive to the same dialog, which looks like this:
 
@@ -301,11 +301,7 @@ We can see the status of an instance directly in the **Instances** tab, in the c
 
 This view has several sections:
 
-First, we have the **summary** \(upper-left part of the screen\). This part will tell us the name of the instance, its status and its application of origin. Here we also have its parameters, its connections and the environment variables it needs to set up.
-
-<!--, its ID, the service groups it has, and the service instances it has deployed.-->
-
-<!-- esta información ya no aparece --> 
+First, we have the **summary** \(upper-left part of the screen\). This part will tell us the name of the instance, its status and its application of origin. Here we also have its parameters, its connections and the environment variables it needs to set up. If we click on the **More info** button, we can find its ID, the service groups it has, and the service instances it has deployed.
 
 Under the summary we have the **Labels** section, where we can see the labels associated to this app instance.
 
@@ -375,7 +371,7 @@ OK
 
 To undeploy an instance we have to locate it in the **Instances** list, open its **Actions** menu, and click on the **Undeploy** button. This will delete the instance from this list, which will mean that it's no longer in the system.
 
-![Undeploying an instance](../.gitbook/assets/appinfolistoptions%20%281%29.png)
+![Undeploying an instance](../.gitbook/assets/appinfolistoptions-1.png)
 
 We can also undeploy an instance from its information view. There's an **Undeploy** button in the lower right part of the view, right under the "Add new connection" button. Clicking on it will undeploy the instance too.
 
@@ -409,6 +405,6 @@ To delete the application from the system, we just need to go to the **Registere
 
 We can also delete it from its information view. Once in it, we need to click the **Delete** button on the lower right part of the view, beside the "Deploy" button.
 
-![Deleting an application from the system](../.gitbook/assets/reg1%20%282%29.png)
+![Deleting an application from the system](../.gitbook/assets/deleteregistered_fromappview.png)
 
 Any of those procedures will definitely delete the application from the system, thus avoiding the generation of instances from it in the future.

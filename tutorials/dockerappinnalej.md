@@ -203,7 +203,7 @@ In the Application view, we can see the **Register** button in the **Application
 
 What we can see now is a dialog where we can upload our application descriptor, so the application gets registered in the system. We can click on it to search the file in our file system, or we can just drag it and drop it in the designed area. After that, just clicking on the **Register** button will register the application in the system.
 
-![Register app](../.gitbook/assets/registerapp%20%283%29.png)
+![Register app](../.gitbook/assets/registerapp.png)
 
 
 
@@ -213,19 +213,19 @@ Now that our application is registered \(and so appears in the list at the **Reg
 
 1) The first option is to click on the **Deploy** button in the upper right part of the screen.
 
-![Deploy for the main view](/Users/svillanueva/nalej-docs/docs/.gitbook/assets/apps (7).png)
+![Deploy for the main view](/Users/svillanueva/nalej-docs/docs/.gitbook/assets/apps_deploybutton.png)
 
 2) We can also find our app in the **Registered** list, hit the **Actions** icon in the same row, and once there click the grey **Deploy** option in the menu. 
 
-![Deploy from registered list options in actions button](/Users/svillanueva/nalej-docs/docs/.gitbook/assets/deployregisterd (1).png)
+![Deploy from registered list options in actions button](/Users/svillanueva/nalej-docs/docs/.gitbook/assets/deployregistered.png)
 
 3) Lastly, we can find our app in the **Registered** list and click on its name. To deploy our application we only need to click on the **Deploy** button on the bottom part of the screen.
 
-![Deploy from registered view](/Users/svillanueva/nalej-docs/docs/.gitbook/assets/reg1 (3).png)
+![Deploy from registered view](/Users/svillanueva/nalej-docs/docs/.gitbook/assets/deployregistered_fromappview.png)
 
 With all these actions we arrive to the same dialog, which looks like this:
 
-![Deploy dialog](../.gitbook/assets/deploy%20%283%29.png)
+![](/Users/svillanueva/nalej-docs/docs/.gitbook/assets/deploy.png)
 
 Here we need to write the name of the instance and choose the application we want an instance of \(if we clicked on the "deploy" button in the **Registered** list, the instance is already established, and we only have to write the name of the instance\). Then, the instance will appear in the list under the **Instances** tab.
 

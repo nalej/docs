@@ -259,15 +259,15 @@ Now that the application is registered \(and thus appears in the list at the **R
 
 1) The first option is to click on the **Deploy** button in the upper right part of the screen.
 
-![Deploy for the main view](/Users/svillanueva/nalej-docs/docs/.gitbook/assets/apps (7).png)
+![Deploy for the main view](/Users/svillanueva/nalej-docs/docs/.gitbook/assets/apps_deploybutton.png)
 
 2) We can also find our app in the **Registered** list, hit the **Actions** icon in the same row, and once there click the grey **Deploy** option in the menu. 
 
-![Deploy from registered list options in actions button](/Users/svillanueva/nalej-docs/docs/.gitbook/assets/deployregisterd (1).png)
+![Deploy from registered list options in actions button](/Users/svillanueva/nalej-docs/docs/.gitbook/assets/deployregistered.png)
 
 3) Lastly, we can find our app in the **Registered** list and click on its name. To deploy our application we only need to click on the **Deploy** button on the bottom part of the screen.
 
-![Deploy from registered view](/Users/svillanueva/nalej-docs/docs/.gitbook/assets/reg1 (3).png)
+![Deploy from registered view](/Users/svillanueva/nalej-docs/docs/.gitbook/assets/deployregistered_fromappview.png)
 
 With all these actions we arrive to the same dialog, which looks like this:
 
@@ -318,9 +318,9 @@ Where it tells you the status of the current instance. Since it is "SERVICE\_RUN
 
 We can see the status of an instance directly in the **Instances** tab, in the colored button in the **Status** column of the list. We can also click on the instance to see all the information related to that specific instance. This takes us to a new view:
 
-![Instance view with graph](../.gitbook/assets/instance23%20%282%29.png)
+![Instance view with graph](../.gitbook/assets/instance23.png)
 
-![Instance view with services](../.gitbook/assets/instance24%20%281%29.png)
+![Instance view with services](../.gitbook/assets/instance24.png)
 
 This view has several sections:
 
@@ -335,9 +335,9 @@ This view has several sections:
   * For each service we can see the number of **replicas** that are deployed, the general **status** of the service, the **endpoints** it has, and an **Info** button.
   * When we click on the **Info** button we open a dialog where we can see even more information, like the environment variables, the labels assigned to the service, or the cluster it's deployed in. 
 
-![Service Info dialog](../.gitbook/assets/appinstancesserviceinfo%20%281%29.png)
+![Service Info dialog](../.gitbook/assets/appinstancesserviceinfo.png)
 
-![Information for a specific rule](../.gitbook/assets/appinstanceruleinfo%20%281%29.png)
+![Information for a specific rule](../.gitbook/assets/appinstanceruleinfo.png)
 
 * Under the **service groups** we have the **Access rules** section, where the rules for the different service groups in the application are displayed. We can click on the **Info** button of any of them and the full disclosure of the rule will appear.
 
@@ -396,7 +396,7 @@ If the application has connections linked to it, the system will return a failur
 
 To undeploy an instance we have to locate it in the **Instances** list, open its **Actions** menu, and click on the **Undeploy** button. This will delete the instance from this list, which will mean that it's no longer in the system.
 
-![Undeploying an instance](/Users/svillanueva/nalej-docs/docs/.gitbook/assets/appinfolistoptions (1).png)
+![Undeploying an instance](/Users/svillanueva/nalej-docs/docs/.gitbook/assets/appinfolistoptions-1.png)
 
 We can also undeploy an instance from its information view. There's an **Undeploy** button in the lower right part of the view, right under the "Add new connection" button. Clicking on it will undeploy the instance too.
 
@@ -429,7 +429,7 @@ To delete the application from the system, we just need to go to the **Registere
 
 We can also delete it from its information view. Once in it, we need to click the **Delete** button on the lower right part of the view, beside the "Deploy" button.
 
-![Deleting an application from the system.](../.gitbook/assets/reg1.png)
+![Deleting an application from the system.](../.gitbook/assets/deleteregistered_fromappview.png)
 
 ## Troubleshooting
 
