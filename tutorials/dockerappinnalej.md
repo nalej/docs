@@ -201,7 +201,7 @@ In the Application view, we can see the **Register** button in the **Application
 
 ![Uploading a descriptor to register an application.](../.gitbook/assets/app_register.png)
 
-What we can see now is a special dialog where we can upload our application descriptor, so the application gets registered in the system. We can click on it to search the file in our file system, or we can just drag it and drop it in the designed area. After that, just clicking on the **Register** button will register the application in the system.
+What we can see now is a dialog where we can upload our application descriptor, so the application gets registered in the system. We can click on it to search the file in our file system, or we can just drag it and drop it in the designed area. After that, just clicking on the **Register** button will register the application in the system.
 
 ![Register app](../.gitbook/assets/registerapp%20%283%29.png)
 
@@ -209,17 +209,21 @@ What we can see now is a special dialog where we can upload our application desc
 
 #### Deploying the associated instance
 
-Now that the application is registered \(and thus appears in the list at the **Registered** tab\), we can deploy an instance of it! There are two ways to access the deploying dialog, so let's see both.
+Now that our application is registered \(and so appears in the list at the **Registered** tab\), we can deploy an instance of it! There are three ways to access the deploying dialog, so let's see all of them.
 
-![Deploy button from the &quot;Registered&quot; list](../.gitbook/assets/deployregisterd%20%282%29.png)
+1) The first option is to click on the **Deploy** button in the upper right part of the screen.
 
-One of the ways to do that is by clicking the blue _play_ button in the **Actions** column of the **Registered** tab.
+![Deploy for the main view](/Users/svillanueva/nalej-docs/docs/.gitbook/assets/apps (7).png)
 
-![Deploy from main view](../.gitbook/assets/apps.png)
+2) We can also find our app in the **Registered** list, hit the **Actions** icon in the same row, and once there click the grey **Deploy** option in the menu. 
 
-The other way is to go from the **Registered** tab to the **Instances** tab. To deploy our application we only need to click on the **Deploy instance** button on the right part of the screen.
+![Deploy from registered list options in actions button](/Users/svillanueva/nalej-docs/docs/.gitbook/assets/deployregisterd (1).png)
 
-With both actions we arrive to the same dialog, which looks like this:
+3) Lastly, we can find our app in the **Registered** list and click on its name. To deploy our application we only need to click on the **Deploy** button on the bottom part of the screen.
+
+![Deploy from registered view](/Users/svillanueva/nalej-docs/docs/.gitbook/assets/reg1 (3).png)
+
+With all these actions we arrive to the same dialog, which looks like this:
 
 ![Deploy dialog](../.gitbook/assets/deploy%20%283%29.png)
 
@@ -265,7 +269,7 @@ Where it tells you the status of the current instance. Since it is "SERVICE\_RUN
 
 ### Web Interface
 
-How can we know if the instance is already up? Well, the info is right there in the Application View. The list of instances may seem daunting, but all we have to do is use the **Search** box to find a string in the name of our app \(or in a tag, or anywhere really\), and there it is. And once we find it, the **Status** column will tell us the current status of the app. If it's "RUNNING", we're ready to go!
+How can we know if the instance is already up? Well, the info is right there in the Application view. The list of instances may seem daunting, but all we have to do is use the **Search** box to find a string in the name of our app \(or in a tag, or anywhere really\), and there it is. And once we find it, the **Status** column will tell us the current status of the app. If it's "RUNNING", we're ready to go!
 
 ![Finding our instance in the &quot;Instances&quot; list](../.gitbook/assets/pings.png)
 

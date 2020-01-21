@@ -166,13 +166,15 @@ with an application **descriptor ID** inside, which we will need for deploying a
 
 So, the descriptor is ready and you are already in the Application view of the web interface. Where to go from here? Great question!
 
-![Upload a descriptor](../.gitbook/assets/apps%20%282%29.png)
+In the Application view, we can see the already deployed applications in the lower part of the screen, in the Applications list. There, we need to click on the **Registered** tab, and then we can see the **Register application** button. Please click on it.
 
-In the Application view, we can see the already deployed applications in the lower part of the screen, in the Applications list. There, we need to click on the **Registered** tab, and then we can see the **Register application** button. Please click on it. 
+![Upload a descriptor](../.gitbook/assets/app_register.png)
+
+ What we can see now is a dialog where we can upload our application descriptor, so the application gets registered in the system. We can click on it to search the file in our file system, or we can just drag it and drop it in the designed area. 
 
 ![Upload descriptor](../.gitbook/assets/registerapp%20%282%29.png)
 
-What we can see now is a special dialog where we can upload our application descriptor, so the application gets registered in the system. We can click on it to search the file in our file system, or we can just drag it and drop it in the designed area. After that, just clicking on the **Register** button will register the application in the system.
+After that, just clicking on the **Register** button will register the application in the system.
 
 ![Uploaded descriptor with success](../.gitbook/assets/uploaddescriptor.png)
 

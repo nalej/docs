@@ -10,7 +10,7 @@ The first thing you need to do is create the device group where our devices are 
 
 ### Web Interface
 
-You can add a new device group easily, clicking on the option **"Add group"** in the main view \(or in a group view\).
+You can add a new device group easily, clicking on the option **"Add group"** in the main view.
 
 ![The &quot;Add Group&quot; option in the main Devices view](../.gitbook/assets/devices%20%282%29.png)
 
