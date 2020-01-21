@@ -271,7 +271,7 @@ Now that the application is registered \(and thus appears in the list at the **R
 
 With all these actions we arrive to the same dialog, which looks like this:
 
-![](/Users/svillanueva/nalej-docs/docs/.gitbook/assets/deploy.png)
+![Deploy dialog](/Users/svillanueva/nalej-docs/docs/.gitbook/assets/deploy.png)
 
 Here we need to choose the application we want an instance of (from the drop down menu), and write the name of the new instance. If we clicked on the **Deploy** button in the **Registered** list or in the **Actions** menu, now the instance will already be established.
 

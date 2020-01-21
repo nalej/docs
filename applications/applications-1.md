@@ -10,7 +10,7 @@ _The CLI responses are shown in text format, which can be obtained adding_ `--ou
 
 If we click on the "Application" option at the left column of the screen, a screen similar to this one will appear:
 
-![Application View from the Web Interface](../.gitbook/assets/apps%20%286%29.png)
+![Application View from the Web Interface](../.gitbook/assets/app.png)
 
 This screen has the following areas:
 
@@ -172,7 +172,7 @@ In the Application view, we can see the already deployed applications in the low
 
  What we can see now is a dialog where we can upload our application descriptor, so the application gets registered in the system. We can click on it to search the file in our file system, or we can just drag it and drop it in the designed area. 
 
-![Upload descriptor](../.gitbook/assets/registerapp%20%282%29.png)
+![Upload descriptor](../.gitbook/assets/registerapp.png)
 
 After that, just clicking on the **Register** button will register the application in the system.
 
