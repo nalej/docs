@@ -259,19 +259,19 @@ Now that the application is registered \(and thus appears in the list at the **R
 
 1) The first option is to click on the **Deploy** button in the upper right part of the screen.
 
-![Deploy for the main view](/Users/svillanueva/nalej-docs/docs/.gitbook/assets/apps_deploybutton.png)
+![Deploy for the main view](../.gitbook/assets/apps_deploybutton.png)
 
 2) We can also find our app in the **Registered** list, hit the **Actions** icon in the same row, and once there click the grey **Deploy** option in the menu. 
 
-![Deploy from registered list options in actions button](/Users/svillanueva/nalej-docs/docs/.gitbook/assets/deployregistered.png)
+![Deploy from registered list options in actions button](../.gitbook/assets/deployregistered.png)
 
 3) Lastly, we can find our app in the **Registered** list and click on its name. To deploy our application we only need to click on the **Deploy** button on the bottom part of the screen.
 
-![Deploy from registered view](/Users/svillanueva/nalej-docs/docs/.gitbook/assets/deployregistered_fromappview.png)
+![Deploy from registered view](../.gitbook/assets/deployregistered_fromappview.png)
 
 With all these actions we arrive to the same dialog, which looks like this:
 
-![Deploy dialog](/Users/svillanueva/nalej-docs/docs/.gitbook/assets/deploy.png)
+![Deploy dialog](../.gitbook/assets/deploy.png)
 
 Here we need to choose the application we want an instance of (from the drop down menu), and write the name of the new instance. If we clicked on the **Deploy** button in the **Registered** list or in the **Actions** menu, now the instance will already be established.
 
@@ -396,7 +396,7 @@ If the application has connections linked to it, the system will return a failur
 
 To undeploy an instance we have to locate it in the **Instances** list, open its **Actions** menu, and click on the **Undeploy** button. This will delete the instance from this list, which will mean that it's no longer in the system.
 
-![Undeploying an instance](/Users/svillanueva/nalej-docs/docs/.gitbook/assets/appinfolistoptions-1.png)
+![Undeploying an instance](../.gitbook/assets/appinfolistoptions-1.png)
 
 We can also undeploy an instance from its information view. There's an **Undeploy** button in the lower right part of the view, right under the "Add new connection" button. Clicking on it will undeploy the instance too.
 
