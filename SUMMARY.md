@@ -25,7 +25,7 @@
 
 * [Application deployment, management and removal](applications/applications-1.md)
 * [Structure of an application descriptor](applications/app_descriptors.md)
-* [The Application Diagram, explained](applications/appdiagram.md)
+* [The Application Graph, explained](applications/appdiagram.md)
 * [The Unified Logging](applications/unified_logging.md)
 
 ## Tutorials

@@ -1,6 +1,6 @@
-# The Application Diagram, explained
+# The Application Graph, explained
 
-The Application Diagram, in the Application Instance screen, can be daunting. Fear not, dear user, for we are here to shed some light on your doubts about it and make you an expert. Let's begin.
+The Application Graph, in the Application Instance screen, can be daunting. Fear not, dear user, for we are here to shed some light on your doubts about it and make you an expert. Let's begin.
 
 ![I mean, who can blame you. This is scary.](../.gitbook/assets/captura-de-pantalla-2019-11-04-a-las-12.29.58.png)
 
@@ -18,17 +18,15 @@ As we know, we can ask for replicas of a single service or of an entire service 
 
 ![Text description of the application instance](../.gitbook/assets/instance24.png)
 
-You can \(in fact, we encourage you to\) use the rest of the information in the screen to decipher what we are seeing. Over the diagram, on the upper right corner of its section in the screen, there are two icons, so we can toggle between the diagram view and the text view. The text view describes every service that can be seen in the diagram with extra information \(like how many replicas it has, its endpoints, its status, and more info like tags, credentials or the ID of the cluster it is deployed in\).
+You can \(in fact, we encourage you to\) use the rest of the information in the screen to decipher what we are seeing. Over the graph, on the upper right corner of its section in the screen, there are two icons, so we can toggle between the graph view and the text view. The text view describes every service that can be seen in the graph with extra information \(like how many replicas it has, its endpoints, its status, and more info like tags, credentials or the ID of the cluster it is deployed in\).
 
 ![Text description of the application instance](../.gitbook/assets/regservinf.png)
 
-## Rules
+## Connections
 
-![Rules of the application instance](../.gitbook/assets/captura-de-pantalla-2019-11-04-a-las-12.35.09.png)
+Do you see the little arrows pointing from one service to another? They represent the connections between the services, and the relationships created because of that.
 
-Do you see the little arrows pointing from one service to another? They represent the rules that apply to the services, and the relationships created between them because of that.
-
-![Beginner node diagram](../.gitbook/assets/captura-de-pantalla-2019-11-04-a-las-18.21.30.png)
+![Rules of the application instance](../.gitbook/assets/captura-de-pantalla-2019-11-04-a-las-18.21.30.png)
 
 In the case of the app, we can see that in the  group, the "deepdetectserver" service is the target from the connection of "deepdetecttui". Those are grouped in the "core" services group.
 
