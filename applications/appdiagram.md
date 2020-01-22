@@ -26,7 +26,7 @@ You can \(in fact, we encourage you to\) use the rest of the information in the 
 
 Do you see the little arrows pointing from one service to another? They represent the connections between the services, and the relationships created because of that.
 
-![Rules of the application instance](../.gitbook/assets/captura-de-pantalla-2019-11-04-a-las-18.21.30.png)
+![Connections in the application instance](../.gitbook/assets/captura-de-pantalla-2019-11-04-a-las-18.21.30.png)
 
 In the case of the app, we can see that in the  group, the "deepdetectserver" service is the target from the connection of "deepdetecttui". Those are grouped in the "core" services group.
 

@@ -192,6 +192,43 @@ Now the application is ready to be deployed! We can do this with:
 
 Here, as you may have noticed, is also the moment where we name the app with a human-readable name. When this command exits, it returns a JSON with an application **instance ID**, which is what we will use to work with the deployed instance.
 
+The response to this command will look like this:
+
+```javascript
+REQUEST        ID          STATUS
+<request_id>   <inst_id>   QUEUED
+```
+
+Which contains the **request\_id** for the request we just did, the **instance\_id** of the instance we are trying to deploy, and the current **status** of the instance, which in the moment after executing the command is **QUEUED** for deployment.
+
+If there is a required parameter that you haven't provided, the response will look like this:
+
+```bash
+{
+"level":"fatal",
+"err":"[FailedPrecondition] Required outbound not filled",
+"time":"2020-01-22T12:35:50+01:00",
+"message":"cannot deploy application"
+}
+```
+
+In this example, the instance required an outbound connection that wasn't filled, so the command returned with a fatal error.
+
+##### Deploy with connections
+
+If you designed your descriptor with outbound network interfaces, you will be able to connect any instance created with it on deployment time to other applications that were described with inbound network interfaces. Be aware that, if any outbound interface was described as required, to describe the connections to those interfaces on deployment time is mandatory.
+
+Using the flag `--connections` you will be able to describe the connections to other applications. The connection is defined using the **outbound network interface name** that you want to connect, the **instance id** of the target application, and the **inbound network interface name** of that application to create a point to point connection. These fields must be concatenated using the comma `,` character. If you want to define more that one connection, concatenate the definitions using the sharp `#` character as separator.
+
+```bash
+./public-api-cli app inst deploy
+    <desc_id>
+    <inst_name>
+    --connections <outbound_iface_name>,<target_inst_id>,<target_inbound_iface_name>#...
+```
+
+To know more about connections and networking, check the Application Networking tutorial [here](appnetworking.md).
+
 #### Web Interface
 
 Now that our application is registered \(and so appears in the list at the **Registered** tab\), we can deploy an instance of it! There are three ways to access the deploying dialog, so let's see all of them.
