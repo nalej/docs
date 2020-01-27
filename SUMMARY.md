@@ -28,6 +28,14 @@
 * [The Application Graph, explained](applications/appdiagram.md)
 * [The Unified Logging](applications/unified_logging.md)
 
+## On-Premise platform installation
+
+- [Prerequisites](onpremise/prerequisites.md)
+- Kubernetes in Nalej
+- Persistent storage
+- Installation steps
+- More about MetalLB
+
 ## Tutorials
 
 * [Initial login in the system](tutorials/initiallogin.md)
