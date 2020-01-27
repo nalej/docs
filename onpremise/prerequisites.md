@@ -2,27 +2,27 @@
 
 ## Engineer's laptop
 
-- Confirm that `kubectl` is correctly configured in your Mac (run in your terminal `kubectl` version). If it is not, follow the installation guide for macOS in the following link: https://kubernetes.io/docs/tasks/tools/install-kubectl/
-- Confirm that `go` and `dep` are installed in your Mac.
+Your laptop must have the following tools already installed:
 
-| Validate installation commands | Installation commands | Env Variables                                            |
-| ------------------------------ | --------------------- | -------------------------------------------------------- |
-| go version                     | brew install go       | export GOPATH=$HOME/go<br/>export PATH=$PATH:$GOPATH/bin |
-| dep version                    | brew install dep      |                                                          |
+| tool      | check if installed with... | install with...                                              | Env Variables                                                |
+| --------- | -------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| `kubectl` | `kubectl version`          | [Installation guide for macOS](https://kubernetes.io/docs/tasks/tools/install-kubectl/). |                                                              |
+| `go`      | `go version`               | `brew install go`                                            | `export GOPATH=$HOME/go`<br/>`export PATH=$PATH:$GOPATH/bin` |
+| `dep`     | `dep version`              | `brew install dep`                                           |                                                              |
 
-- The user should provide `kubeconfig.yml` file for management and application clusters
+You should provide the `kubeconfig.yml` file for management and application clusters.
 
-- To download all the assets and Nalej CLIs, the user should execute the following command:
+To download all the assets and Nalej CLIs, the user should execute the following command:
 
-  ```bash
-  az storage blob download-batch 
-  --source https://nalejartifacts.blob.core.windows.net/edge 
-  --destination /tmp/nalej-edge/
-  ```
+```bash
+az storage blob download-batch 
+--source https://nalejartifacts.blob.core.windows.net/edge 
+--destination /tmp/nalej-edge/
+```
 
-  Where `/tmp/nalej-edge/` is the folder where everything will be stored, and as such can be modified.
+Where `/tmp/nalej-edge/` is the folder where everything will be stored, and as such can be modified.
 
-- In order to run the script for updating Persistent Volume (that is, Kubernetes' persistent storage), the Python YAML library would be required.
+In order to run the script for updating Persistent Volume (that is, Kubernetes' persistent storage), the **Python YAML library** will also be required.
 
 ### List of required components for a Nalej Platform installation
 
@@ -75,33 +75,33 @@
 
 ### Requirements sheet
 
-| parameter                 | value                                                     |
-| ------------------------- | --------------------------------------------------------- |
-| INSTALLER_PATH            | `$HOME/go/src/github.com/nalej`                           |
-| MNGT_KUBECONFIG_PATH      |                                                           |
-| MNGT_INGRESS_IP_ADDRESS   |                                                           |
-| MNGT_DNS_IP_ADDRESS       |                                                           |
-| MNGT_VPNSERVER_IP_ADDRESS |                                                           |
-| DNS_ZONE                  | nalej.io<BR>nalej.tech<BR>nalej.net                       |
-| USER_DOMAIN               | <CLUSTERNAME>.<DNS_ZONE><BR>e.g: mngtcluster01.nalej.tech |
-| TARGET_PLATFORM           | MINIKUBE<BR>AZURE<BR>BAREMETAL                            |
-| ENVIRONMENT               | PRODUCTION<BR>STAGING<BR>DEVELOPMENT                      |
+| parameter                 | value                                                      |
+| ------------------------- | ---------------------------------------------------------- |
+| INSTALLER_PATH            | `$HOME/go/src/github.com/nalej`                            |
+| MNGT_KUBECONFIG_PATH      |                                                            |
+| MNGT_INGRESS_IP_ADDRESS   |                                                            |
+| MNGT_DNS_IP_ADDRESS       |                                                            |
+| MNGT_VPNSERVER_IP_ADDRESS |                                                            |
+| DNS_ZONE                  | nalej.io<BR>nalej.tech<BR>nalej.net                        |
+| USER_DOMAIN               | <CLUSTER_NAME>.<DNS_ZONE><BR>e.g: mngtcluster01.nalej.tech |
+| TARGET_PLATFORM           | MINIKUBE<BR>AZURE<BR>BAREMETAL                             |
+| ENVIRONMENT               | PRODUCTION<BR>STAGING<BR>DEVELOPMENT                       |
 
-| parameter                  | value                           |
-| -------------------------- | ------------------------------- |
-| SIGNUP_PATH                | `$HOME/go/src/github.com/nalej` |
-| ORGANIZATION_NAME          |                                 |
-| OWNER_EMAIL                |                                 |
-| OWNER_NAME                 |                                 |
-| OWNER_PASSWORD             |                                 |
-| NALEJ_ADMIN_EMAIL          |                                 |
-| NALEJ_ADMIN_NAME           |                                 |
-| NALEJ_ADMING_PASSWORD      |                                 |
-| CA_PATH                    |                                 |
-| PUBLIC_API_PATH            | `$HOME/go/src/github.com/nalej` |
-| APP_KUBECONFIG_PATH        |                                 |
-| APP_INGRESS_APP_IP_ADDRESS |                                 |
-| APP_CLUSTER_NUMBER         | From 0 to n                     |
+| parameter              | value                           |
+| ---------------------- | ------------------------------- |
+| SIGNUP_PATH            | `$HOME/go/src/github.com/nalej` |
+| ORGANIZATION_NAME      |                                 |
+| OWNER_EMAIL            |                                 |
+| OWNER_NAME             |                                 |
+| OWNER_PASSWORD         |                                 |
+| NALEJ_ADMIN_EMAIL      |                                 |
+| NALEJ_ADMIN_NAME       |                                 |
+| NALEJ_ADMING_PASSWORD  |                                 |
+| CA_PATH                |                                 |
+| PUBLIC_API_PATH        | `$HOME/go/src/github.com/nalej` |
+| APP_KUBECONFIG_PATH    |                                 |
+| APP_INGRESS_IP_ADDRESS |                                 |
+| APP_CLUSTER_NUMBER     | From 0 to n                     |
 
 ## User's infrastructure
 
@@ -123,9 +123,9 @@ The user should provide **at least 5 IP addresses** (4 for management use, 1 for
 
 | service               | ip address | dns records                                                  |
 | --------------------- | ---------- | ------------------------------------------------------------ |
-| Mngt Ingress IP add   |            | A: <CLUSTERNAME>.<DNS_ZONE><BR>A: *.<CLUSTERNAME>.<DNS_ZONE> |
-| Mngt DNS IP add       |            | A: dns.<CLUSTERNAME>.<DNS_ZONE>                              |
-| Mngt CoreDNS IP add   |            | A: app-dns.<CLUSTERNAME>.<DNS_ZONE><br>NS: ep.<CLUSTERNAME>.<DNS_ZONE><br>app-dns.<CLUSTERNAME>.<DNS_ZONE> |
-| Mngt VPNserver IP add |            | A: vpn-server.<CLUSTERNAME>.<DNS_ZONE>                       |
-| App Ingress IP add    |            | A: app<APP_CLUSTER_NUMBER>.<CLUSTERNAME>.<DNS_ZONE><BR>A: *.app<APP_CLUSTER_NUMBER>.<CLUSTERNAME>.<DNS_ZONE> |
+| Mngt Ingress IP add   |            | A: <CLUSTER_NAME>.<DNS_ZONE><BR>A: *.<CLUSTER_NAME>.<DNS_ZONE> |
+| Mngt DNS IP add       |            | A: dns.<CLUSTER_NAME>.<DNS_ZONE>                             |
+| Mngt CoreDNS IP add   |            | A: app-dns.<CLUSTER_NAME>.<DNS_ZONE><br>NS: ep.<CLUSTER_NAME>.<DNS_ZONE><br>app-dns.<CLUSTER_NAME>.<DNS_ZONE> |
+| Mngt VPNserver IP add |            | A: vpn-server.<CLUSTER_NAME>.<DNS_ZONE>                      |
+| App Ingress IP add    |            | A: app<APP_CLUSTER_NUMBER>.<CLUSTER_NAME>.<DNS_ZONE><BR>A: *.app<APP_CLUSTER_NUMBER>.<CLUSTER_NAME>.<DNS_ZONE> |
 
