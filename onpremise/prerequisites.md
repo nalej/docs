@@ -4,7 +4,7 @@
 
 Your laptop must have the following tools already installed:
 
-| tool      | check if installed with... | install with...                                              | Env Variables                                                |
+| Tool      | Check if installed with... | Install with...                                              | Env Variables                                                |
 | --------- | -------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | `kubectl` | `kubectl version`          | [Installation guide for macOS](https://kubernetes.io/docs/tasks/tools/install-kubectl/). |                                                              |
 | `go`      | `go version`               | `brew install go`                                            | `export GOPATH=$HOME/go`<br/>`export PATH=$PATH:$GOPATH/bin` |
@@ -12,7 +12,7 @@ Your laptop must have the following tools already installed:
 
 You should provide the `kubeconfig.yml` file for management and application clusters.
 
-To download all the assets and Nalej CLIs, the user should execute the following command:
+To download all the assets and Nalej CLIs, you need to execute the following command:
 
 ```bash
 az storage blob download-batch 
@@ -75,17 +75,17 @@ In order to run the script for updating Persistent Volume (that is, Kubernetes' 
 
 ### Requirements sheet
 
-| parameter                 | value                                                      |
-| ------------------------- | ---------------------------------------------------------- |
-| INSTALLER_PATH            | `$HOME/go/src/github.com/nalej`                            |
-| MNGT_KUBECONFIG_PATH      |                                                            |
-| MNGT_INGRESS_IP_ADDRESS   |                                                            |
-| MNGT_DNS_IP_ADDRESS       |                                                            |
-| MNGT_VPNSERVER_IP_ADDRESS |                                                            |
-| DNS_ZONE                  | nalej.io<BR>nalej.tech<BR>nalej.net                        |
-| USER_DOMAIN               | <CLUSTER_NAME>.<DNS_ZONE><BR>e.g: mngtcluster01.nalej.tech |
-| TARGET_PLATFORM           | MINIKUBE<BR>AZURE<BR>BAREMETAL                             |
-| ENVIRONMENT               | PRODUCTION<BR>STAGING<BR>DEVELOPMENT                       |
+| Parameter                 | Value                                                  |
+| ------------------------- | ------------------------------------------------------ |
+| INSTALLER_PATH            | `$HOME/go/src/github.com/nalej`                        |
+| MNGT_KUBECONFIG_PATH      |                                                        |
+| MNGT_INGRESS_IP_ADDRESS   |                                                        |
+| MNGT_DNS_IP_ADDRESS       |                                                        |
+| MNGT_VPNSERVER_IP_ADDRESS |                                                        |
+| DNS_ZONE                  | nalej.io<BR>nalej.tech<BR>nalej.net                    |
+| USER_DOMAIN               | CLUSTER_NAME.DNS_ZONE<BR>e.g: mngtcluster01.nalej.tech |
+| TARGET_PLATFORM           | MINIKUBE<BR>AZURE<BR>BAREMETAL                         |
+| ENVIRONMENT               | PRODUCTION<BR>STAGING<BR>DEVELOPMENT                   |
 
 | parameter              | value                           |
 | ---------------------- | ------------------------------- |
@@ -123,9 +123,9 @@ The user should provide **at least 5 IP addresses** (4 for management use, 1 for
 
 | service               | ip address | dns records                                                  |
 | --------------------- | ---------- | ------------------------------------------------------------ |
-| Mngt Ingress IP add   |            | A: <CLUSTER_NAME>.<DNS_ZONE><BR>A: *.<CLUSTER_NAME>.<DNS_ZONE> |
-| Mngt DNS IP add       |            | A: dns.<CLUSTER_NAME>.<DNS_ZONE>                             |
-| Mngt CoreDNS IP add   |            | A: app-dns.<CLUSTER_NAME>.<DNS_ZONE><br>NS: ep.<CLUSTER_NAME>.<DNS_ZONE><br>app-dns.<CLUSTER_NAME>.<DNS_ZONE> |
-| Mngt VPNserver IP add |            | A: vpn-server.<CLUSTER_NAME>.<DNS_ZONE>                      |
-| App Ingress IP add    |            | A: app<APP_CLUSTER_NUMBER>.<CLUSTER_NAME>.<DNS_ZONE><BR>A: *.app<APP_CLUSTER_NUMBER>.<CLUSTER_NAME>.<DNS_ZONE> |
+| Mngt Ingress IP add   |            | A: CLUSTER_NAME.DNS_ZONE<BR>A: *.CLUSTER_NAME.DNS_ZONE       |
+| Mngt DNS IP add       |            | A: dns.CLUSTER_NAME.DNS_ZONE                                 |
+| Mngt CoreDNS IP add   |            | A: app-dns.CLUSTER_NAME.DNS_ZONE<br>NS: ep.CLUSTER_NAME.DNS_ZONE<br>app-dns.CLUSTER_NAME.DNS_ZONE |
+| Mngt VPNserver IP add |            | A: vpn-server.CLUSTER_NAME.DNS_ZONE                          |
+| App Ingress IP add    |            | A: appAPP_CLUSTER_NUMBER.CLUSTER_NAME.DNS_ZONE<BR>A: *.appAPP_CLUSTER_NUMBER.CLUSTER_NAME.DNS_ZONE |
 
