@@ -54,22 +54,23 @@ MetalLB aims to redress this imbalance by offering a Network LB implementation t
 MetalLB requires the following to function:
 
 - A [Kubernetes](https://kubernetes.io/) cluster, running Kubernetes 1.13.0 or later, that does not already have network load-balancing functionality.
-- A [cluster network configuration](https://metallb.universe.tf/installation/network-addons/) that can coexist with MetalLB.[^1]
+- A [cluster network configuration](https://metallb.universe.tf/installation/network-addons/) that can coexist with MetalLB. (*)
 - Some IPv4 addresses for MetalLB to hand out.
-- Depending on the operating mode, you may need one or more routers capable of speaking [BGP](https://en.wikipedia.org/wiki/Border_Gateway_Protocol). (Not applicable for Nalej platform, just Layer 2 support)
+- Depending on the operating mode, you may need one or more routers capable of speaking [BGP](https://en.wikipedia.org/wiki/Border_Gateway_Protocol). (Not applicable for Nalej platform, just Layer 2 support).
 
-[^1]: Generally speaking, MetalLB doesn’t care which network addon you choose to run in your cluster, as long as it provides the standard behaviors that Kubernetes expects from network addons.
-[^]: The following is a list of network addons that have been tested with MetalLB, for your reference. The list is presented in alphabetical order, we express no preference for one addon over another. Addons that are not on this list probably work, we just haven’t tested them.
+(*) Generally speaking, MetalLB doesn’t care which network addon you choose to run in your cluster, as long as it provides the standard behaviors that Kubernetes expects from network addons. 
 
-| Network AddOn | Compatible                                                |
-| ------------- | --------------------------------------------------------- |
-| Calico        | Mostly (issues with BGP)                                  |
-| Canal         | Yes                                                       |
-| Cilium        | Yes                                                       |
-| Flannel       | Yes                                                       |
-| Kube-router   | Mostly (not working with external BGP peering mode)       |
-| Romana        | Yes                                                       |
-| Weave Net     | Mostly (not working with `externalTrafficPolicy: Local`). |
+The following is a list of network addons that have been tested with MetalLB, for your reference. The list is presented in alphabetical order, we express no preference for one addon over another. Addons that are not on this list probably work, we just haven’t tested them.
+
+| Network AddOn | Compatible                                               |
+| ------------- | -------------------------------------------------------- |
+| Calico        | Mostly (issues with BGP)                                 |
+| Canal         | Yes                                                      |
+| Cilium        | Yes                                                      |
+| Flannel       | Yes                                                      |
+| Kube-router   | Mostly (not working with external BGP peering mode)      |
+| Romana        | Yes                                                      |
+| Weave Net     | Mostly (not working with `externalTrafficPolicy: Local`) |
 
 ### Installation	
 
