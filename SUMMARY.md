@@ -31,7 +31,7 @@
 ## On-Premise platform installation
 
 - [Prerequisites](onpremise/prerequisites.md)
-- Kubernetes in Nalej
+- [Kubernetes in Nalej](onpremise/kubernetes.md)
 - Persistent storage
 - Installation steps
 - More about MetalLB
