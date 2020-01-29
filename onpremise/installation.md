@@ -1,4 +1,23 @@
-# Installation steps
+# Installation guide
+
+This document is structured to be executed in order. The steps to follow are:
+
+To install a Management Cluster:
+
+1. Install the Certificate Manager.
+2. Create Certificate Issuers.
+3. Execute the platform installer.
+4. Create certificates for ingress.
+5. Create the organization in the platform.
+6. Validate the platform installation.
+
+To install an Application Cluster:
+
+1. Install the Certificate Manager.
+2. Create Certificate Issuers.
+3. Install the application cluster.
+4. Create certificates for ingress.
+5. Validate platform installation.
 
 ## Management cluster
 
@@ -36,10 +55,10 @@ The supported ClusterIssuer types are:
 
 All the configuration possibilities are documented in the [cert-manager site](https://docs.cert-manager.io/en/latest/tasks/issuers/index.html). Take into account that this link refers to Issuers; to set a ClusterIssuer instead, the only difference in configuration would be to change `kind:` to `ClusterIssuer`.
 
-For reference, below you can find the setup for Nalej when using Azure as DNS provider with Let’s Encrypt CA. You can find the `cert-manager` official documentation regarding this situation [here](https://docs.cert-manager.io/en/latest/tasks/issuers/setup-acme/dns01/azuredns.html).
+For reference, below you can find the setup for Nalej, with Azure as DNS provider with Let’s Encrypt CA, and using an ACME type of ClusterIssuer. You can find the `cert-manager` official documentation regarding this situation [here](https://docs.cert-manager.io/en/latest/tasks/issuers/setup-acme/dns01/azuredns.html).
 However, if this creates more doubts rather than clarify them, please check with the DevOps team the best approach for certificate management.
 
-First we create the Secret.
+First we create the Secret. Here we will store the Service Principal password previously created, with access to Azure DNS, and encoded in base64.
 
 **`#SP_Secret.yaml`**
 
@@ -47,23 +66,19 @@ First we create the Secret.
 apiVersion: v1
 kind: Secret
 metadata:
-	name: k8-service-principal  
+	name: k8s-service-principal  
 	namespace: cert-manager
 data:  
 	client-secret: <Base64ServicePrincipalPassword>
 ```
 
-`client-secret` will be the service principal password previously created, with access to Azure DNS, and encoded in base64.
-
-After that, we create the signing keypair with the Secret.
-
 ```shell
 kubectl --kubeconfig <MNGTKUBECONFIG.yaml> create -f SP_Secret.yaml
 ```
 
-Then it's the turn of the ClusterIssuer.
+Then it's the turn of the ClusterIssuer. First, we define the parameters for it, like the DNS providers we are using and how to connect with them.
 
-**#clusterIssuer.yaml`**
+**`#clusterIssuer.yaml`**
 
 ```yaml
 apiVersion: certmanager.k8s.io/v1alpha1
@@ -73,7 +88,7 @@ metadata:
 spec:
 	acme:
   	server: <letsencrypt_server_URL>   
-  	email: email@nalej.com
+  	email: <contact_email>
     privateKeySecretRef:     
     	name: letsecrypt   
     dns01:     
@@ -82,7 +97,7 @@ spec:
     			azuredns:         
     				clientID: <SERVICEPRINCIPAL_ID>         
     				clientSecretRef:          
-    					name: k8-service-principal          
+    					name: k8s-service-principal          
     					key: client-secret         
     				subscriptionID: <SUBSCRIPTIONID>         
     				tenantID: <TENANTID>         
@@ -90,18 +105,241 @@ spec:
     				hostedZoneName: <AZHOSTEDZONE>     
 ```
 
-We create the ClusterIssuer from that YAML file.
-
 ```shell
 kubectl --kubeconfig <MNGTKUBECONFIG.yaml> create -f clusterIssuer.yaml
 ```
 
-If the ClusterIssuer has been created correctly, this command should respond with `ACMEAccountRegistered`.
+If the ClusterIssuer has been created correctly, this command should respond with `ACMEAccountRegistered`. 
 
 Lastly, we can check if the ClusterIssuer has been created correctly with the command:
 
 ```shell
-kubectl --kubeconfig <MNGTKUBECONFIG.yaml> get clusterissuer letsencrypt -ojsonpath='{.status.conditions[0].reason}'
+kubectl --kubeconfig <MNGTKUBECONFIG.yaml> get clusterissuer letsencrypt -o jsonpath='{.status.conditions[0].reason}'
+```
+
+### Install the platform
+
+Next, we install the Nalej Platform itself. We need to consider the following parameters before executing the `install management` command, so please be sure that you have all the information before proceeding. 
+
+| Parameter            | Value                                                 |
+| -------------------- | ----------------------------------------------------- |
+| INSTALLER_PATH       | $HOME/go/src/github.com/nalej                         |
+| KUBECONFIG_PATH      |                                                       |
+| INGRESS_IP_ADDRESS   |                                                       |
+| DNS_IP_ADDRESS       |                                                       |
+| COREDNS_IP_ADDRESS   |                                                       |
+| VPNSERVER_IP_ADDRESS |                                                       |
+| DNS_ZONE             | nalej.io<br>nalej.tech<br>nalej.net                   |
+| USER_DOMAIN          | CLUSTER_NAME.DNS_ZONE<BR>e.g: mngtcluster01nalej.tech |
+| TARGET_PLATFORM      | MINIKUBE<BR>AZURE<BR>BAREMETAL                        |
+| ENVIRONMENT          | PRODUCTION<BR>STAGING<BR>DEVELOPMENT                  |
+
+Now, fill in the command parameters with the specific data you recollected.
+
+```SHELL
+<INSTALLER_PATH>/bin/installer-cli install management
+	--binaryPath ~/development/ 
+	--componentsPath ../<INSTALLER_PATH>/assets 
+	--managementClusterPublicHost=<USER_DOMAIN> 
+	--dnsClusterPublicHost=dns.<USER_DOMAIN> 
+	--targetPlatform=<TARGET_PLATFORM> 
+	--useStaticIPAddresses 
+	--ipAddressIngress=<INGRESS_IP_ADDRESS> 
+	--ipAddressDNS=<DNS_IP_ADDRESS> 
+	--ipAddressCoreDNS=<COREDNS_IP_ADDRESS> 
+	--ipAddressVPNServer=<VPNSERVER_IP_ADDRESS> 
+	--kubeConfigPath=<MNGTKUBECONFIG_PATH> 
+	--targetEnvironment=<ENVIRONMENT>
+```
+
+After that, we need to create a Secret in the Kubernetes cluster with the certificate provided by the user in advance. This will be of internal use, letting the platform communicate with Let's Encript to obtain the certificates needed for the system to work.
+
+**`CA_Secret.yaml`**
+
+```yaml
+apiVersion: v1
+kind: Secret
+metadata:
+   name: ca-certificate
+   namespace: nalej
+data:
+   ca.crt: <EncodedBase64_CA_PATH>
+type: Opaque
+```
+
+```shell
+kubectl --kubeconfig <MNGTKUBECONFIG.yaml> create -f - CA_Secret.yaml
+```
+
+As before, the data in the Secret is encoded in base64.
+
+### Create Certificates for Ingress
+
+The creation of the certificate for ingress needs to be aligned with the configuration followed in the creation of certificate issuers. Depending on the ClusterIssuer configuration, the content in the `Certificate.yaml` will change. 
+
+Again, for Nalej with Azure as DNS provider with Let’s Encrypt CA and using an ACME type of ClusterIssuer, the file would look like this: 
+
+**`Certificate.yaml`**
+
+```yaml
+apiVersion: certmanager.k8s.io/v1alpha1
+kind: Certificate
+metadata:
+   name: tls-client-certificate
+   namespace: nalej
+spec:
+   secretName: tls-client-certificate
+   issuerRef: 
+      name: letsencrypt
+      kind: ClusterIssuer
+   dnsNames:
+      - '*.<USER_DOMAIN>'
+   acme:
+      config:
+         - dns01:
+              provider: azuredns
+           domains:
+              - '*.<USER_DOMAIN>'
+
+```
+
+```shell
+kubectl --kubeconfig <MNGTKUBECONFIG.yaml> create -f - Certificate.yaml
+```
+
+### Create organization in the platform
+
+To create the organization you need the following parameters:
+
+| Parameter            | Value                         |
+| -------------------- | ----------------------------- |
+| SIGNUP_PATH          | $HOME/go/src/github.com/nalej |
+| ORGANIZATION_NAME    |                               |
+| OWNER_EMAIL          |                               |
+| OWNER_NAME           |                               |
+| OWNER_PASSWORD       |                               |
+| NALEJ_ADMIN_EMAIL    |                               |
+| NALEJ_ADMIN_NAME     |                               |
+| NALEJ_ADMIN_PASSWORD |                               |
+| CA_PATH              |                               |
+
+```shell
+<SIGNUP_PATH>/bin/signup-cli signup 
+	--signupAddress=signup.$1:443 
+	--orgName=<ORGANIZATION_NAME> 
+	--ownerEmail=<OWNER_EMAIL> 
+	--ownerName=<OWNER_NAME> 
+	--ownerPassword=<OWNER_PASSWORD> 
+	--nalejAdminEmail=<NALEJ_ADMIN_EMAIL> 
+	--nalejAdminName=<NALEJ_ADMIN_NAME> 
+	--nalejAdminPassword=<NALEJ_ADMIN_PASSWORD> 
+	--caPath=<CA_PATH>
+```
+
+At this point of the installation, the Management Cluster should be ready and login would be available both through API or browser.
+
+### Validate the platform installation
+
+In order to validate that the management platform has been installed correctly, run the following commands. The result for all of them should be `true`.
+
+```shell
+kubectl --kubeconfig <MNGTKUBECONFIG.yaml> -nnalej get deployments -o json | jq 'reduce .items[].spec.replicas as $replicas (0; . + $replicas) == reduce .items[].status.readyReplicas as $ready (0; . + $ready)'
+```
+
+```shell
+kubectl --kubeconfig <MNGTKUBECONFIG.yaml> -nnalej get statefulset -o json | jq 'reduce .items[].spec.replicas as $replicas (0; . + $replicas) == reduce .items[].status.readyReplicas as $ready (0; . + $ready)'
+```
+
+```shell
+kubectl --kubeconfig <MNGTKUBECONFIG.yaml> -nnalej get jobs -o json | jq '(.items | length) <= reduce .items[].status.succeeded as $completed (0; . + $completed)'
+```
+
+## Application Clusters
+
+This process should be repeated for as many application clusters as the user wants to have available.
+
+### Install certificate manager
+
+The process is the same as in the Management Cluster. The only change needed is to use the Application Cluster Kubeconfig file instead of the Management Cluster Kubeconfig file when creating the namespace and applying the manifest. 
+
+### Create Certificate Issuers
+
+The process is the same as in the Management Cluster. The only change needed is to use the Application Cluster Kubeconfig file instead of the Management Cluster Kubeconfig file when creating the secret and the ClusterIssuer. 
+
+### Install Application Cluster
+
+The required parameters for this command are:
+
+| Parameter              | Value                                                        |
+| ---------------------- | ------------------------------------------------------------ |
+| PUBLIC_API_PATH        | $HOME/go/src/github.com/nalej                                |
+| APP_KUBECONFIG_PATH    |                                                              |
+| INGRESS_APP_IP_ADDRESS |                                                              |
+| APP_CLUSTER_NUMBER     | From 0 to n                                                  |
+| DNS_ZONE               | nalej.io<br/>nalej.tech<br/>nalej.net                        |
+| USER_DOMAIN            | USER_DOMAIN  CLUSTER_NAME.DNS_ZONE<BR>e.g: appcluster01.nalej.tech |
+| TARGET_PLATFORM        | MINIKUBE<BR>AZURE<BR>BAREMETAL                               |
+| CA_PATH                |                                                              |
+
+The command we have to execute this time is:
+
+```shell
+<PUBLIC_API_PATH>/bin/public-api-cli  
+	--nalejAddress=api.<USER_DOMAIN> 
+	--port=443 
+	cluster install 
+	--targetPlatform=<TARGET_PLATFORM> 
+	--ingressHostname=app<APP_CLUSTER_NUMBER>.<USER_DOMAIN> 
+	--cacert=<CA_PATH> 
+	--kubeConfigPath=<APP_KUBECONFIG_PATH> 
+	--useStaticIPAddresses 
+	--ipAddressIngress=<INGRESS_APP_IP_ADDRESS>
+```
+
+Also, in the case of the Application Cluster, the secret doesn't need to be created.
+
+### Create certificates for ingress
+
+ The YAML will be similar to the Management Cluster one, but changing the `dnsNames` and `domains` parameters with the ingress domain for the Application Cluster.
+
+**`Certificate.yaml`**
+
+```yaml
+apiVersion: certmanager.k8s.io/v1alpha1
+kind: Certificate
+metadata:
+   name: tls-client-certificate
+   namespace: nalej
+spec:
+   secretName: tls-client-certificate
+   issuerRef: 
+      name: letsencrypt
+      kind: ClusterIssuer
+   dnsNames:
+      - '*.app<APP_CLUSTER_NUMBER>.<USER_DOMAIN>'
+   acme:
+      config:
+         - dns01:
+              provider: azuredns
+           domains:
+              - '*.app<APP_CLUSTER_NUMBER>.<USER_DOMAIN>'
+
+```
+
+### Validate the platform installation
+
+In order to validate that the application cluster has been installed correctly, run the following commands. The result for all of them should be true:
+
+```shell
+kubectl --kubeconfig <APPKUBECONFIG.yaml> -nnalej get deployments -o json | jq 'reduce .items[].spec.replicas as $replicas (0; . + $replicas) == reduce .items[].status.readyReplicas as $ready (0; . + $ready)'
+```
+
+```shell
+kubectl --kubeconfig <APPKUBECONFIG.yaml> -nnalej get statefulset -o json | jq 'reduce .items[].spec.replicas as $replicas (0; . + $replicas) == reduce .items[].status.readyReplicas as $ready (0; . + $ready)'
+```
+
+```shell
+kubectl --kubeconfig <APPKUBECONFIG.yaml> -nnalej get jobs -o json | jq '(.items | length) >= reduce .items[].status.succeeded as $completed (0; . + $completed)'
 ```
 
 
