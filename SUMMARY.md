@@ -32,8 +32,8 @@
 
 - [Prerequisites](onpremise/prerequisites.md)
 - [Kubernetes in Nalej](onpremise/kubernetes.md)
-- Persistent storage
-- Installation steps
+- [Persistent storage](onpremise/storage.md)
+- [Installation steps](onpremise/installation.md)
 - More about MetalLB
 
 ## Tutorials
