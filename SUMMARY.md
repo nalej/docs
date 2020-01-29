@@ -34,7 +34,7 @@
 - [Kubernetes in Nalej](onpremise/kubernetes.md)
 - [Persistent storage](onpremise/storage.md)
 - [Installation steps](onpremise/installation.md)
-- More about MetalLB
+- [More about MetalLB](onpremise/metallb.md)
 
 ## Tutorials
 

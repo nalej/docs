@@ -4,20 +4,20 @@ This document is structured to be executed in order. The steps to follow are:
 
 To install a Management Cluster:
 
-1. Install the Certificate Manager.
-2. Create Certificate Issuers.
-3. Execute the platform installer.
-4. Create certificates for ingress.
-5. Create the organization in the platform.
-6. Validate the platform installation.
+1. [Install the Certificate Manager.](#install-certificate-manager)
+2. [Create Certificate Issuers.](#create-certificate-issuers)
+3. [Execute the platform installer.](#install-the-platform)
+4. [Create certificates for ingress.](#create-certificate-for-ingress)
+5. [Create the organization in the platform.](#create-organization-in-the-platform)
+6. [Validate the platform installation.](#validate-the-platform-installation)
 
 To install an Application Cluster:
 
-1. Install the Certificate Manager.
-2. Create Certificate Issuers.
-3. Install the application cluster.
-4. Create certificates for ingress.
-5. Validate platform installation.
+1. [Install the Certificate Manager.](#install-certificate-manager-1)
+2. [Create Certificate Issuers.](#create-certificate-issuers-1)
+3. [Install the application cluster.](#install-application-cluster)
+4. [Create certificates for ingress.](#create-certificates-for-ingress-1)
+5. [Validate the platform installation.](#validate-platform-installation-1)
 
 ## Management cluster
 
@@ -175,7 +175,7 @@ As before, the data in the Secret is encoded in base64.
 
 ### Create Certificates for Ingress
 
-The creation of the certificate for ingress needs to be aligned with the configuration followed in the creation of certificate issuers. Depending on the ClusterIssuer configuration, the content in the `Certificate.yaml` will change. 
+The creation of the certificate for ingress needs to be aligned with the configuration followed in the [creation of certificate issuers](#create-certificate-issuers). Depending on the ClusterIssuer configuration, the content in the `Certificate.yaml` will change. 
 
 Again, for Nalej with Azure as DNS provider with Let’s Encrypt CA and using an ACME type of ClusterIssuer, the file would look like this: 
 
@@ -243,15 +243,18 @@ At this point of the installation, the Management Cluster should be ready and lo
 In order to validate that the management platform has been installed correctly, run the following commands. The result for all of them should be `true`.
 
 ```shell
-kubectl --kubeconfig <MNGTKUBECONFIG.yaml> -nnalej get deployments -o json | jq 'reduce .items[].spec.replicas as $replicas (0; . + $replicas) == reduce .items[].status.readyReplicas as $ready (0; . + $ready)'
+kubectl --kubeconfig <MNGTKUBECONFIG.yaml> -nnalej get deployments 
+	-o json | jq 'reduce .items[].spec.replicas as $replicas (0; . + $replicas) == reduce .items[].status.readyReplicas as $ready (0; . + $ready)'
 ```
 
 ```shell
-kubectl --kubeconfig <MNGTKUBECONFIG.yaml> -nnalej get statefulset -o json | jq 'reduce .items[].spec.replicas as $replicas (0; . + $replicas) == reduce .items[].status.readyReplicas as $ready (0; . + $ready)'
+kubectl --kubeconfig <MNGTKUBECONFIG.yaml> -nnalej get statefulset 
+	-o json | jq 'reduce .items[].spec.replicas as $replicas (0; . + $replicas) == reduce .items[].status.readyReplicas as $ready (0; . + $ready)'
 ```
 
 ```shell
-kubectl --kubeconfig <MNGTKUBECONFIG.yaml> -nnalej get jobs -o json | jq '(.items | length) <= reduce .items[].status.succeeded as $completed (0; . + $completed)'
+kubectl --kubeconfig <MNGTKUBECONFIG.yaml> -nnalej get jobs 
+	-o json | jq '(.items | length) <= reduce .items[].status.succeeded as $completed (0; . + $completed)'
 ```
 
 ## Application Clusters
@@ -331,15 +334,18 @@ spec:
 In order to validate that the application cluster has been installed correctly, run the following commands. The result for all of them should be true:
 
 ```shell
-kubectl --kubeconfig <APPKUBECONFIG.yaml> -nnalej get deployments -o json | jq 'reduce .items[].spec.replicas as $replicas (0; . + $replicas) == reduce .items[].status.readyReplicas as $ready (0; . + $ready)'
+kubectl --kubeconfig <APPKUBECONFIG.yaml> -nnalej get deployments 
+	-o json | jq 'reduce .items[].spec.replicas as $replicas (0; . + $replicas) == reduce .items[].status.readyReplicas as $ready (0; . + $ready)'
 ```
 
 ```shell
-kubectl --kubeconfig <APPKUBECONFIG.yaml> -nnalej get statefulset -o json | jq 'reduce .items[].spec.replicas as $replicas (0; . + $replicas) == reduce .items[].status.readyReplicas as $ready (0; . + $ready)'
+kubectl --kubeconfig <APPKUBECONFIG.yaml> -nnalej get statefulset 
+	-o json | jq 'reduce .items[].spec.replicas as $replicas (0; . + $replicas) == reduce .items[].status.readyReplicas as $ready (0; . + $ready)'
 ```
 
 ```shell
-kubectl --kubeconfig <APPKUBECONFIG.yaml> -nnalej get jobs -o json | jq '(.items | length) >= reduce .items[].status.succeeded as $completed (0; . + $completed)'
+kubectl --kubeconfig <APPKUBECONFIG.yaml> -nnalej get jobs 
+	-o json | jq '(.items | length) >= reduce .items[].status.succeeded as $completed (0; . + $completed)'
 ```
 
 
