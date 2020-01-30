@@ -49,8 +49,7 @@ metadata:
   namespace: metallb-system
   name: config
 data:
-  config: 
-  				|
+  config: |
     # The peers section tells MetalLB what BGP routers to connect to. There
     # is one entry for each router you want to peer with.
     peers:

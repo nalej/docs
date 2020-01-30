@@ -10,11 +10,9 @@ Some Kubernetes clusters need to be installed as a prerequisite for the Nalej pl
 
 Please note that connectivity is required between all clusters. 
 
-The official installation guide with `kubeadm` can be found [here](https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/install-kubeadm/).
+The official installation guide with `kubeadm` can be found [here](https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/install-kubeadm/). To confirm that user’s Kubernetes cluster specifications fit Nalej platform requirements, you can obtain the information you need using the following commands:
 
-To confirm that user’s Kubernetes cluster specifications fit Nalej platform requirements, you can obtain the information you need using the following commands:
-
-- To check if there are at least 3 nodes with STATUS=ready:
+- To check if there are at least 3 nodes with `STATUS=ready`:
 
   ```shell
   kubectl get nodes 
@@ -51,12 +49,12 @@ MetalLB aims to redress this imbalance by offering a Network LB implementation t
 
 ### Requirements
 
-MetalLB requires the following to function:
+MetalLB requires the following to work:
 
 - A [Kubernetes](https://kubernetes.io/) cluster, running Kubernetes 1.13.0 or later, that does not already have network load-balancing functionality.
 - A [cluster network configuration](https://metallb.universe.tf/installation/network-addons/) that can coexist with MetalLB. (*)
 - Some IPv4 addresses for MetalLB to hand out.
-- Depending on the operating mode, you may need one or more routers capable of speaking [BGP](https://en.wikipedia.org/wiki/Border_Gateway_Protocol). (Not applicable for Nalej platform, just Layer 2 support).
+- Depending on the operating mode, you may need one or more routers capable of speaking [BGP](https://en.wikipedia.org/wiki/Border_Gateway_Protocol). To know more about this characteristic, please read the [documentation about MetalLB](./metallb.md) that we've confectioned.
 
 (*) Generally speaking, MetalLB doesn’t care which network addon you choose to run in your cluster, as long as it provides the standard behaviors that Kubernetes expects from network addons. 
 
@@ -96,7 +94,7 @@ You can check if MetalLB is running with the following command:
 kubectl get pods -n metallb-system
 ```
 
-The installation manifest doesn't include a configuration file. MetalLB's components will still start, but will remain idle until you define and deploy a `configmap` into the same namespace.
+The installation manifest doesn't include a configuration file. MetalLB's components will still start, but will remain idle until you define and deploy a `configmap` into the same namespace. In the section related to MetalLB in our documentation, we provide an [example](https://docs.nalej.com/on-premise-platform-installation/metallb#metallb-config-map).
 
 #### Layer 2 configuration
 
@@ -133,6 +131,7 @@ After creating the following ConfigMap, MetalLB takes ownership of one of the IP
 
 ```shell
 kubectl describe configmaps -n metallb-system
+
 kubectl edit configmap config -n metallb-system
 ```
 
