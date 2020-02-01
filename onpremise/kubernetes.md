@@ -4,13 +4,13 @@
 
 Some Kubernetes clusters need to be installed as a prerequisite for the Nalej platform. At least:
 
--  **2 clusters** must be available (1 for management, 1 for application) 
+-  **2 clusters** must be available (1 for management, 1 for application), 
 - with **version 1.11 or higher**, and 
 - each cluster needs at least **one master and 3 worker nodes**. 
 
 Please note that connectivity is required between all clusters. 
 
-The official installation guide with `kubeadm` can be found [here](https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/install-kubeadm/). To confirm that user’s Kubernetes cluster specifications fit Nalej platform requirements, you can obtain the information you need using the following commands:
+The official installation guide with `kubeadm` can be found [here](https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/install-kubeadm/). To confirm that your cluster specifications fit Nalej platform requirements, the following commands can be useful:
 
 - To check if there are at least 3 nodes with `STATUS=ready`:
 
@@ -24,7 +24,7 @@ The official installation guide with `kubeadm` can be found [here](https://kube
   kubeckt describe node <node_name>
   ```
 
-  This last command will give us the capacity info:
+  The response to this last command will give us the capacity info:
 
   ```shell
   cpu: 2
@@ -72,11 +72,9 @@ The following is a list of network addons that have been tested with MetalLB, fo
 
 ### Installation	
 
-#### Installation by manifest
+*Consider that the latest release of MetalLB by the time of writing this document is **v0.8.3**. Modify if required before installing. If you're thinking of upgrading to a higher version, please consult this decision with the DevOps team beforehand.* 
 
-*Consider that the latest release by the time of writing this document is **v0.8.3**. Modify if required before installing MetalLB (if you're thinking of upgrading to a higher version, please consult this decision with the DevOps team beforehand).* 
-
-MetalLB must be installed before installing Nalej, and it will be required both in Management and Application clusters. To install MetalLB, apply the manifest in the management cluster:
+MetalLB must be set up before installing Nalej, and it will be required both in management and application clusters. To install MetalLB, apply the manifest in the management cluster:
 
 ```shell
 kubectl apply --kubeconfig <KUBECONFIG.yaml> -f https://raw.githubusercontent.com/google/metallb/v0.8.3/manifests/metallb.yaml
@@ -102,7 +100,7 @@ Layer 2 mode is the simplest to configure: in many cases, you don’t need any p
 
 Layer 2 mode does not require the IPs to be bound to the network interfaces of your worker nodes. It works by responding to ARP requests on your local network directly, to give the machine’s MAC address to clients.
 
-For example, the following configuration gives MetalLB control over IPs from 192.168.1.240 to 192.168.1.250, and configures Layer 2 mode:
+For example, the following configuration gives MetalLB control over IPs from `192.168.1.240` to `192.168.1.250`, and configures Layer 2 mode:
 
 **`#layer2-config.yaml`**
 
@@ -121,17 +119,16 @@ data:
 			- 192.168.1.240-192.168.1.250
 ```
 
-Modify the addresses range to match the Public IP addresses of the Nodes in your Kubernetes cluster and create a `layer2-config.yaml` file with the user’s configuration. Once you are comfortable, apply it using the following command:
+Modify the addresses range to match the Public IP addresses of the nodes in your Kubernetes cluster, and create a `layer2-config.yaml` file with the user’s configuration. Once you are satisfied, apply it:
 
 ```shell
 kubectl apply -f layer2-config.yaml
 ```
 
-After creating the following ConfigMap, MetalLB takes ownership of one of the IP addresses in the pool and updates the `loadBalancer` IP field of the service accordingly.You can check and change this config later if needed using the following commands:
+After this, MetalLB takes ownership of one of the IP addresses in the pool and updates the `loadBalancer` IP field of the service accordingly. You can check and change this configuration later with:
 
 ```shell
 kubectl describe configmaps -n metallb-system
 
 kubectl edit configmap config -n metallb-system
 ```
-

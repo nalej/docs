@@ -30,7 +30,7 @@
 
 ## On-Premise platform installation
 
-- [Prerequisites](onpremise/prerequisites.md)
+- [Getting started](onpremise/prerequisites.md)
 - [Kubernetes in Nalej](onpremise/kubernetes.md)
 - [Persistent storage](onpremise/storage.md)
 - [Installation steps](onpremise/installation.md)

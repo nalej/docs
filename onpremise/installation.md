@@ -2,7 +2,7 @@
 
 This document is structured to be executed in order. The steps to follow are:
 
-To install a Management Cluster:
+To install a management cluster:
 
 1. [Install the Certificate Manager.](#install-certificate-manager)
 2. [Create Certificate Issuers.](#create-certificate-issuers)
@@ -11,7 +11,7 @@ To install a Management Cluster:
 5. [Create the organization in the platform.](#create-organization-in-the-platform)
 6. [Validate the platform installation.](#validate-the-platform-installation)
 
-To install an Application Cluster:
+To install an application cluster:
 
 1. [Install the Certificate Manager.](#install-certificate-manager-1)
 2. [Create Certificate Issuers.](#create-certificate-issuers-1)
@@ -23,7 +23,7 @@ To install an Application Cluster:
 
 ### Install Certificate Manager
 
-If the system is running Kubernetes v1.15 of below,  the flag `--validate=false` needs to be added or you will receive a validation error relating to the `x-kubernetes-preserve-unknown-fields` field in our `CustomResourceDefinition` resources. This is a benign error and occurs due to the way `kubectl` performs resource validation.
+If the system is running Kubernetes v1.15 of below,  the flag `--validate=false` needs to be added or you will receive a validation error relating to the `x-kubernetes-preserve-unknown-fields` field in our `CustomResourceDefinition` resources. This is a benign error and happens due to the way `kubectl` performs resource validation.
 
 Before applying the manifest, check which is the latest version for cert-manager [here](https://github.com/jetstack/cert-manager/releases), and install it.
 
@@ -236,7 +236,7 @@ To create the organization you need the following parameters:
 	--caPath=<CA_PATH>
 ```
 
-At this point of the installation, the Management Cluster should be ready and login would be available both through API or browser.
+At this point of the installation, the management cluster should be ready and login would be available both through API or browser.
 
 ### Validate the platform installation
 
@@ -263,11 +263,11 @@ This process should be repeated for as many application clusters as the user wan
 
 ### Install certificate manager
 
-The process is the same as in the Management Cluster. The only change needed is to use the Application Cluster Kubeconfig file instead of the Management Cluster Kubeconfig file when creating the namespace and applying the manifest. 
+The process is the same as in the management cluster. The only change needed is to use the application cluster `kubeconfig.yaml` file when creating the namespace and applying the manifest. 
 
 ### Create Certificate Issuers
 
-The process is the same as in the Management Cluster. The only change needed is to use the Application Cluster Kubeconfig file instead of the Management Cluster Kubeconfig file when creating the secret and the ClusterIssuer. 
+The process is the same as in the management cluster. The only change needed is to use the application cluster `kubeconfig.yaml` file when creating the secret and the ClusterIssuer. 
 
 ### Install Application Cluster
 
@@ -303,7 +303,7 @@ Also, in the case of the Application Cluster, the secret doesn't need to be crea
 
 ### Create certificates for ingress
 
- The YAML will be similar to the Management Cluster one, but changing the `dnsNames` and `domains` parameters with the ingress domain for the Application Cluster.
+ The YAML will be similar to the one for the management cluster, and the only change needed would be the `dnsNames` and `domains` parameters with the ingress domain for the application cluster.
 
 **`Certificate.yaml`**
 

@@ -1,4 +1,6 @@
-# Prerequisites
+# Getting started
+
+There are several things you have to consider if you decide to install Nalej platform in a server of your own, instead of in the cloud. In the following tutorials, we are going to walk you through the on-premise platform installation process
 
 ## Engineer's laptop
 
@@ -10,7 +12,9 @@ Your laptop must have the following tools already installed:
 | `go`      | `go version`               | `brew install go`                                            | `export GOPATH=$HOME/go`<br/>`export PATH=$PATH:$GOPATH/bin` |
 | `dep`     | `dep version`              | `brew install dep`                                           |                                                              |
 
-You should provide the `kubeconfig.yml` file for management and application clusters.
+The `kubeconfig.yml` file will be needed for management and application clusters, so please locate it and be ready to provide it when the moment comes.
+
+Also, in order to run the script for updating Persistent Volume (that is, Kubernetes' persistent storage), the **Python YAML library** will also be required.
 
 To download all the assets and Nalej CLIs, you need to execute the following command:
 
@@ -20,11 +24,11 @@ az storage blob download-batch
 --destination /tmp/nalej-edge/
 ```
 
-Where `/tmp/nalej-edge/` is the folder where everything will be stored, and as such can be modified.
-
-In order to run the script for updating Persistent Volume (that is, Kubernetes' persistent storage), the **Python YAML library** will also be required.
+Here, `/tmp/nalej-edge/` is the folder where everything will be stored, and as such can be modified.
 
 ### List of required components for a Nalej Platform installation
+
+The following is the list of tools that will be downloaded (but not installed yet) after executing that last command. 
 
 - nalej-bus
   - pulsar
@@ -73,7 +77,9 @@ In order to run the script for updating Persistent Volume (that is, Kubernetes' 
   - scylla
 - zt-nalej
 
-### Requirements sheet
+### Configuration parameters
+
+The platform needs some parameters already established before proceeding with the installation. Some of them must contain a specific value, and others will be filled during the installation, but all of them need to be created beforehand. 
 
 | Parameter                 | Value                                                  |
 | ------------------------- | ------------------------------------------------------ |
@@ -103,11 +109,13 @@ In order to run the script for updating Persistent Volume (that is, Kubernetes' 
 | APP_INGRESS_IP_ADDRESS |                                 |
 | APP_CLUSTER_NUMBER     | From 0 to n                     |
 
-## User's infrastructure
+## Infrastructure
+
+Now we need to talk about what is needed to install Nalej in terms of equipment and software.
 
 ### Hardware
 
-The baseline scenario will require 6 different servers (bare metal or VM instances) with the following specifications:
+The baseline scenario will require **6 different servers** (bare metal or VM instances) with the following specifications:
 
 - **CPU**: 2 CPU Cores (Intel® Xeon® E5-2673 v4 2.3 GHz or similar).
 - **RAM**: 8 GB.
@@ -119,7 +127,7 @@ The baseline scenario will require 6 different servers (bare metal or VM instanc
 
 The on-premise installation of the Nalej Platform has been tested in **Ubuntu 18.04.3 LTS**. The **Kubernetes version** required is **1.11** or higher.
 
-The user should provide **at least 5 IP addresses** (4 for management use, 1 for application use), although **we recommend 9** (6 for management use, 3 for application use). DNS records need to be set before starting the installation.
+The user should provide **at least 5 IP addresses** (4 for management and 1 for application), although **we recommend 9** (6 for management and 3 for application). DNS records need to be set before starting the installation.
 
 | service               | ip address | dns records                                                  |
 | --------------------- | ---------- | ------------------------------------------------------------ |
