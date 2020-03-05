@@ -61,7 +61,7 @@ We can check if the installation was successful and the cluster is up and runnin
 
 We just have to navigate to the Resources view.
 
-![](../.gitbook/assets/resourcesredcolor.png)
+![Main view of the resources section.](../img/res_cins_main.png)
 
 Here, we can see the available application clusters in the system, and our brand new cluster should appear on the list and in the graph. For more information on how to manage this new cluster, please check the [Cluster monitoring](resources-1.md) section of the documentation.
 

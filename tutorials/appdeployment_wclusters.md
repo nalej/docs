@@ -61,7 +61,7 @@ EMAIL     ROLE           ORG_ID      EXPIRES
 
 Congratulations! You're in the system. Now, the first thing you should do is create your own application descriptor. Then, you have to add it to the system, and after that the app will be deployed in what we call an instance. Let's go through this process.
 
-![This is the process to follow when deploying an instance of an application.](../.gitbook/assets/app_deployment.png)
+![This is the process to follow when deploying an instance of an application.](../img/tut_deploy_diagram.png)
 
 ### Creating an application descriptor
 
@@ -209,11 +209,11 @@ with an application **descriptor ID** inside, which we will need for deploying a
 
 So, the descriptor is ready and you are already in the Application view of the web interface. Where to go from here? Great question!
 
-![Uploading a descriptor to register an application.](../.gitbook/assets/app.png)
+![Uploading a descriptor to register an application.](../img/tut_deploy_app_main.png)
 
 In the Application view, we can see the already deployed applications in the lower part of the screen, in the Applications list. There, we need to click on the **Registered** tab, and then we can see the **Register application** button. Please click on it.
 
-![Descriptor uploading dialog](../.gitbook/assets/registerapp.png)
+![Descriptor uploading dialog](../img/tut_deploy_uploaddescriptor.png)
 
 What we can see now is a special dialog where we can upload our application descriptor, so the application gets registered in the system. We can click on it to search the file in our file system, or we can just drag it and drop it in the designed area. After that, just clicking on the **Register** button will register the application in the system.
 
@@ -259,25 +259,25 @@ Now that the application is registered \(and thus appears in the list at the **R
 
 1) The first option is to click on the **Deploy** button in the upper right part of the screen.
 
-![Deploy for the main view](../.gitbook/assets/apps_deploybutton.png)
+![Deploy for the main view](../img/tut_deploy_deploybutton.png)
 
 2) We can also find our app in the **Registered** list, hit the **Actions** icon in the same row, and once there click the grey **Deploy** option in the menu. 
 
-![Deploy from registered list options in actions button](../.gitbook/assets/deployregistered.png)
+![Deploy from registered list options in actions button](../img/tut_deploy_fromregisteredlist.png)
 
 3) Lastly, we can find our app in the **Registered** list and click on its name. To deploy our application we only need to click on the **Deploy** button on the bottom part of the screen.
 
-![Deploy from registered view](../.gitbook/assets/deployregistered_fromappview.png)
+![Deploy from registered view](../img/tut_deploy_fromappview.png)
 
 With all these actions we arrive to the same dialog, which looks like this:
 
-![Deploy dialog](../.gitbook/assets/deploy.png)
+![Deploy dialog](../img/tut_deploy_deploydialog.png)
 
 Here we need to choose the application we want an instance of (from the drop down menu), and write the name of the new instance. If we clicked on the **Deploy** button in the **Registered** list or in the **Actions** menu, now the instance will already be established.
 
 If the descriptor has outbound network interfaces marked as required, the **Deploy Instance** dialog will open a third step to describe the connections.
 
-![Describe connections step on the Deploy Instance dialog](../.gitbook/assets/app_instance_deploy_connections.png)
+![Describing connections in the instance deployment.](../img/tut_deploy_connectionsdialog.png)
 
 Here you will be able to select, for every outbound network interface, the target application instance and the corresponding inbound network interface.
 
@@ -318,9 +318,9 @@ Where it tells you the status of the current instance. Since it is "SERVICE\_RUN
 
 We can see the status of an instance directly in the **Instances** tab, in the colored button in the **Status** column of the list. We can also click on the instance to see all the information related to that specific instance. This takes us to a new view:
 
-![Instance view with graph](../.gitbook/assets/instance23.png)
+![Instance view with graph](../img/tut_deploy_instance_graph.png)
 
-![Instance view with services](../.gitbook/assets/instance24.png)
+![Instance view with services](../img/tut_deploy_instance_textview.png)
 
 This view has several sections:
 
@@ -335,9 +335,9 @@ This view has several sections:
   * For each service we can see the number of **replicas** that are deployed, the general **status** of the service, the **endpoints** it has, and an **Info** button.
   * When we click on the **Info** button we open a dialog where we can see even more information, like the environment variables, the labels assigned to the service, or the cluster it's deployed in. 
 
-![Service Info dialog](../.gitbook/assets/appinstancesserviceinfo.png)
+![Service Info dialog](../img/tut_deploy_instance_serviceinfo.png)
 
-![Information for a specific rule](../.gitbook/assets/appinstanceruleinfo.png)
+![Information for a specific rule](../img/tut_deploy_instance_serviceinfo_rules.png)
 
 * Under the **service groups** we have the **Access rules** section, where the rules for the different service groups in the application are displayed. We can click on the **Info** button of any of them and the full disclosure of the rule will appear.
 
@@ -396,7 +396,7 @@ If the application has connections linked to it, the system will return a failur
 
 To undeploy an instance we have to locate it in the **Instances** list, open its **Actions** menu, and click on the **Undeploy** button. This will delete the instance from this list, which will mean that it's no longer in the system.
 
-![Undeploying an instance](../.gitbook/assets/appinfolistoptions-1.png)
+![Undeploying an instance](../img/tut_deploy_undeploy_frominstancelist.png)
 
 We can also undeploy an instance from its information view. There's an **Undeploy** button in the lower right part of the view, right under the "Add new connection" button. Clicking on it will undeploy the instance too.
 
@@ -429,7 +429,7 @@ To delete the application from the system, we just need to go to the **Registere
 
 We can also delete it from its information view. Once in it, we need to click the **Delete** button on the lower right part of the view, beside the "Deploy" button.
 
-![Deleting an application from the system.](../.gitbook/assets/deleteregistered_fromappview.png)
+![Deleting an application from the system.](../img/tut_deploy_delete_fromappview.png)
 
 ## Troubleshooting
 

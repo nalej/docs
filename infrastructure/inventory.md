@@ -14,7 +14,7 @@ The Inventory is the main view of the Infrastructure section. It consists of a l
 
 The main objective of this section is the monitorization of the hardware that's already registered in the platform, so we can have, in one place, the status and availability of every piece of hardware connected to it.
 
-![](../.gitbook/assets/infra.png)
+![The inventory](../img/infra_inv_main.png)
 
 On the left column, we can also see a summary of the resources in the organization, which tells you the resources available in the organization \(number of CPUs, storage in GB, and RAM availability in GB\).
 
@@ -139,13 +139,13 @@ Regarding the **labels** of the ECs, Assets and devices, although adding and/or 
 
 At the end of the label list there is a `+` button to **add** new labels.
 
-![Add labels dialog](../.gitbook/assets/infraaddlabel.png)
+![Add labels dialog](../img/infra_inv_addlabel.png)
 
 After clicking on that button, we can see a form where we can enter the name and value of the label, and we can save or discard this new information.
 
 If, however, in the list of labels we click on one or more labels \(selecting them\), this `+` button changes its function to **delete**, and its image to one of a bin, so we can delete the selected labels.
 
-![Select label for deleting them](../.gitbook/assets/infralabels.png)
+![Select label for deleting them](../img/infra_inv_labels.png)
 
 As stated above, please handle these features with care.
 

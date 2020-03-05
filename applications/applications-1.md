@@ -10,7 +10,7 @@ _The CLI responses are shown in text format, which can be obtained adding_ `--ou
 
 If we click on the "Application" option at the left column of the screen, a screen similar to this one will appear:
 
-![Application View from the Web Interface](../.gitbook/assets/app.png)
+![Application View from the Web Interface](../img/app_mgmt_main.png)
 
 This screen has the following areas:
 
@@ -26,7 +26,7 @@ We will talk about this deployed app list later in the document, and explain its
 
 The process of deploying an application is as follows:
 
-![This is the process to follow when deploying an instance of an application.](../.gitbook/assets/app_deployment.png)
+![This is the process to follow when deploying an instance of an application.](../img/app_mgmt_deployment_diagram.png)
 
 So, first you need to create an application descriptor. The documentation for doing so is [over here](app_descriptors.md), but by now let's just say that it should be a JSON file with more or less this aspect:
 
@@ -168,15 +168,15 @@ So, the descriptor is ready and you are already in the Application view of the w
 
 In the Application view, we can see the already deployed applications in the lower part of the screen, in the Applications list. There, we need to click on the **Registered** tab, and then we can see the **Register application** button. Please click on it.
 
-![Upload a descriptor](../.gitbook/assets/app_register.png)
+![Upload a descriptor](../img/app_mgmt_uploaddescriptor_button.png)
 
  What we can see now is a dialog where we can upload our application descriptor, so the application gets registered in the system. We can click on it to search the file in our file system, or we can just drag it and drop it in the designed area. 
 
-![Upload descriptor](../.gitbook/assets/registerapp.png)
+![Upload descriptor](../img/app_mgmt_uploaddescriptor_dialog.png)
 
 After that, just clicking on the **Register** button will register the application in the system.
 
-![Uploaded descriptor with success](../.gitbook/assets/uploaddescriptor.png)
+![Uploaded descriptor with success](../img/app_mgmt_uploaddescriptor_success.png)
 
 ### Deploying the application
 
@@ -227,7 +227,7 @@ Using the flag `--connections` you will be able to describe the connections to o
     --connections <outbound_iface_name>,<target_inst_id>,<target_inbound_iface_name>#...
 ```
 
-To know more about connections and networking, check the Application Networking tutorial [here](appnetworking.md).
+To know more about connections and networking, check the Application Networking tutorial [here](../tutorials/appnetworking.md).
 
 #### Web Interface
 
@@ -235,57 +235,57 @@ Now that our application is registered \(and so appears in the list at the **Reg
 
 1) The first option is to click on the **Deploy** button in the upper right part of the screen.
 
-![Deploy for the main view](../.gitbook/assets/apps_deploybutton.png)
+![Deploy from the main view](../img/app_mgmt_deploy_button.png)
 
 2) We can also find our app in the **Registered** list, hit the **Actions** icon in the same row, and once there click the grey **Deploy** option in the menu. 
 
-![Deploy from registered list options in actions button](../.gitbook/assets/deployregistered.png)
+![Deploy from registered list options in actions button](../img/app_mgmt_deploy_fromregisteredlist.png)
 
 3) Lastly, we can find our app in the **Registered** list and click on its name. To deploy our application we only need to click on the **Deploy** button on the bottom part of the screen.
 
-![Deploy from registered view](../.gitbook/assets/deployregistered_fromappview.png)
+![Deploy from registered view](../img/app_mgmt_deploy_fromappview.png)
 
 With all these actions we arrive to the same dialog, which looks like this:
 
-![](../.gitbook/assets/deploy.png)
+![Deploy application dialog.](../img/app_mgmt_deploy_dialog.png)
 
 Here we need to choose the application we want an instance of (from the drop down menu), and write the name of the new instance. If we clicked on the **Deploy** button in the **Registered** list or in the **Actions** menu, now the instance will already be established.
 
 - If the app does not require parameters or connections, after we complete this menu and hit **Next**, the buttons will change and a **Deploy** button will appear. Clicking on it will make the instance deploy and appear in the **Instance** list.
 
-![Basic params](../.gitbook/assets/deploybasic.png)
+![Basic params](../img/app_mgmt_deploy_basicinfo.png)
 
 - If the app has parameters, once we hit **Next**, the next step in line (parameters) will be highlighted, and we will need to fill the basic and/or advance information required for this app. With an application that does not require additional connections, hitting **Next** will change the buttons again, and the **Deploy** button will appear.
 
-![Basic params](../.gitbook/assets/deployparam2.png)
+![Basic parameters](../img/app_mgmt_deploy_paramsdefault.png)
 
-![Advanced params](../.gitbook/assets/deployparam3.png)
+![Advanced params](../img/app_mgmt_deploy_paramsadvanced.png)
 
 - Lastly, if there is any required connection, we will have to fill the required information for them in the third step.
 
-![App connections options for deploy](../.gitbook/assets/deployappconn.png)
+![App connections options for deploy](../img/app_mgmt_deploy_connections.png)
 
-![Deploy and advanced app](../.gitbook/assets/deployappconn4.png)
+![](../img/app_mgmt_deploy_connections_filled.png)
 
 The **Deploy** button will be enabled when the information is completely added, allowing the user to finally deploy the instance.
 
-![Deploy message confirmation](../.gitbook/assets/deploymessage.png)
+![Deploy message confirmation](../img/app_mgmt_deploy_successmessage.png)
 
 ### Quick filters
 
 We can filter the different nodes by **registered** apps, deployed **instances** and **clusters**, and we can also combine the filter function with the search function. 
 
-![Registered quick filter](../.gitbook/assets/appqick2.png)
+![Registered quick filter](../img/app_mgmt_quickfilter_registered.png)
 
-![Registered and instances quick filter](../.gitbook/assets/appquick.png)
+![Registered and instances quick filter](../img/app_mgmt_quickfilter_registered_instances.png)
 
-![Just instances quick filter](../.gitbook/assets/appquick3.png)
+![Just instances quick filter](../img/app_mgmt_quickfilter_instances.png)
 
-![Search with no filter](../.gitbook/assets/appsearchnofilter.png)
+![Search with no filter](../img/app_mgmt_search_nofilter.png)
 
 There is an advanced filter options in the search box that opens a dialog, where we can choose to see only the **nodes** or only the **related nodes** to the current search.
 
-![Advanced filter options](../.gitbook/assets/advancedfilter.png)
+![Advanced filter options](../img/app_mgmt_search_advancedfilter.png)
 
 ## Application management
 
@@ -332,9 +332,9 @@ will tell us where the instance is deployed, so we can navigate to it and start 
 
 We can see the status of an instance directly in the **Instances** tab, in the colored button in the **Status** column of the list. We can also click on an instance to see all the information related to it, or click in the options buttons "more info". This takes us to a new view:
 
-![Instance view with graph](../.gitbook/assets/pingsource223.png)
+![Instance view with graph](../img/app_mgmt_instance_graph.png)
 
-![Instance view with services](../.gitbook/assets/pigsource12.png)
+![Instance view with services](../img/app_mgmt_instance_services.png)
 
 This view has several sections:
 
@@ -354,15 +354,15 @@ On the upper right part of this section we have the two perspectives we can togg
 
 - Each service group has an **Info** button. For each service group we can see the information that's associated to it: number of **replicas** that are deployed, the general **status** of the service group, the **endpoints** it has... 
 
-![Service group info](../.gitbook/assets/serviceinstacegroup.png)
+![Service group info](../img/app_mgmt_instance_servicegroup.png)
 
 * Each individual service inside a service group also has an **Info** button. Here we have the information related to this specific service, like the environment variables, the labels assigned to the service or the cluster it's deployed in. 
 
-![Service info dialog](../.gitbook/assets/appinstancesserviceinfo.png)
+![Service info dialog](../img/app_mgmt_instance_serviceinfo.png)
 
 * Under the services section, there's the **Rules** section, where the rules for the different service groups in the application are displayed. We can click on any of them and the full disclosure of the rule will appear.
 
-![Information for a specific rule](../.gitbook/assets/appinstanceruleinfo.png)
+![Information for a specific rule](../img/app_mgmt_instance_serviceinfo_rules.png)
 
 ## Getting logs from the instance
 
@@ -408,7 +408,7 @@ OK
 
 To undeploy an instance we have to locate it in the **Instances** list, open its **Actions** menu, and click on the **Undeploy** button. This will delete the instance from this list, which will mean that it's no longer in the system.
 
-![Undeploying an instance](../.gitbook/assets/appinfolistoptions-1.png)
+![Undeploying an instance](../img/app_mgmt_undeploy_frominstancelist.png)
 
 We can also undeploy an instance from its information view. There's an **Undeploy** button in the lower right part of the view, right under the "Add new connection" button. Clicking on it will undeploy the instance too.
 
@@ -442,6 +442,6 @@ To delete the application from the system, we just need to go to the **Registere
 
 We can also delete it from its information view. Once in it, we need to click the **Delete** button on the lower right part of the view, beside the "Deploy" button.
 
-![Deleting an application from the system](../.gitbook/assets/deleteregistered_fromappview.png)
+![Deleting an application from the system](../img/app_mgmt_delete_fromappview.png)
 
 Any of those procedures will definitely delete the application from the system, thus avoiding the generation of instances from it in the future.

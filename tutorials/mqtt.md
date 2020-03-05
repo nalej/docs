@@ -30,7 +30,7 @@ The device sends the temperature to the MQTT server, and there is a little Elast
 
 ### So, where and how should we install it?
 
-As we can see above, we need to install it at least in two places, which are the server and the device, so they can message each other. The server, in our case, will be installed in the Nalej platform (as well as the rest of the services needed to process and display the information), and the device, as explained [here](installingSDKindevice.md), must support Python and have the SDK installed.
+As we can see above, we need to install it at least in two places, which are the server and the device, so they can message each other. The server, in our case, will be installed in the Nalej platform (as well as the rest of the services needed to process and display the information), and the device, as explained [here](installingsdkindevice.md), must support Python and have the SDK installed.
 
 - The server will be a Docker image of the VerneMQ broker, configured with the credentials that will be provided by the manager of the image.
 - The device will have the `paho-mqtt` library, which implements versions 3.1 and 3.1.1 of the MQTT protocol.

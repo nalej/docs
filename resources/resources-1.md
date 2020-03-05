@@ -16,11 +16,11 @@ _So, the general rule for labels is: DO NOT touch them unless you really know wh
 
 On the web interface, you can display the Resources view by clicking on Resources on the far left column.
 
-![](../.gitbook/assets/resources.png)
+![Main view of the Resources section.](../img/res_cmon_main.png)
 
 The right section displays a **clusters-instances graph**. We can search for a certain instance or cluster in the **Search box** (on the upper right part of the section) and the part of the graph that matches the search is highlighted.
 
-![](../.gitbook/assets/resourcesgraph.png)
+![Clusters-instances graph](../img/res_cmon_graph.png)
 
 On the left part of the screen we can see:
 
@@ -28,7 +28,7 @@ On the left part of the screen we can see:
 
 * A **List card** that shows a list of available clusters.
 
-  <img src="../.gitbook/assets/resources_list.png" style="zoom:70%;" />
+  <img src="../img/res_cmon_list.png" style="zoom:70%;" />
 
   Each row of the list refers to a different cluster, with some information about it:
   
@@ -38,11 +38,11 @@ On the left part of the screen we can see:
 
 In the same list, on the far right, each cluster has an **Edit** button. When clicked, a dialog appears where we can change the name of the cluster.
 
-![](../.gitbook/assets/editcluster.png)
+![Editing the name of the cluster](../img/res_cmon_editcluster.png)
 
 When we click on the name of a cluster in the list, the view changes, and the information displayed refers to that specific cluster and its nodes.
 
-![](../.gitbook/assets/clusteronline.png)
+![](../img/res_cmon_cluster_main.png)
 
 In the upper part of the screen we can see the **status** of the cluster \(which is "ONLINE" only if all the nodes in it are running, and if not it shows the most serious problem in the clusters\), and a **summary** of the cluster information we saw in the previous list.
 
@@ -150,13 +150,13 @@ Regarding the **labels** of the clusters and nodes, although adding and/or delet
 
 At the end of the label list there is a `+` button to **add** new labels.
 
-![](../.gitbook/assets/addlabel.png)
+![](../img/res_cmon_addlabeltocluster.png)
 
 After clicking on that button, we can see a form where we can enter the name and value of the label, and we can save or discard this new information.
 
 If, however, in the list of labels we click on one or more labels \(selecting them\), this `+` button changes its function to **delete**, and its image to one of a bin, so we can delete the selected labels.
 
-![](../.gitbook/assets/clusterlabell2.png)
+![](../img/res_cmon_selectlabelfromcluster.png)
 
 As stated above, please handle these features with care.
 
