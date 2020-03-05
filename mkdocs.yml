@@ -16,7 +16,8 @@ nav:
       - Deployment, management and removal: applications/applications-1.md
       - Application descriptor: applications/app_descriptors.md
       - The Application Graph: applications/appdiagram.md
-      - Unified Logging: applications/unified_logging.md
+    - Logs:
+      - Unified Logging: logs/unified_logging.md
     - On-premise platform installation:
       - Getting started: onpremise/prerequisites.md
       - Kubernetes in Nalej: onpremise/kubernetes.md
@@ -34,4 +35,4 @@ nav:
       - How to use a Raspberry Pi as a device: tutorials/endtoendtutorial.md
 
 
-theme: readthedocs
+theme: mkdocs
