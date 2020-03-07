@@ -34,4 +34,4 @@ nav:
       - Installing Nalej SDK in a device: tutorials/installingsdkindevice.md
       - How to use a Raspberry Pi as a device: tutorials/endtoendtutorial.md
 
-theme: readthedocs
+theme: mkdocs
