@@ -1,12 +1,20 @@
 from setuptools import find_packages, setup
 
+from io import open
+
+here = path.abspath(path.dirname(__file__))
+
+# Get the long description from the README file
+with open(path.join(here, 'docs/README.md'), encoding='utf-8') as f:
+    long_description = f.read()
+
 setup(
     name='nalej-docs',
     version='0.5.0',
     author='Nalej',
     author_email='hello@nalej.com',
     description=('Documentation for the Nalej Platform'),
-    long_description=get_readme(),
+    long_description=long_description,
     long_description_content_type='text/markdown',  # Optional (see note above)
 
     license='BSD',
