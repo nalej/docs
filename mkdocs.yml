@@ -1,7 +1,8 @@
 site_name: Nalej
+
 nav:
-    - Index: index.md
-    - Org:
+    - Welcome to Nalej: index.md
+    - Organization:
       - Organization and user management: 'organization/organization-1.md'
     - Infrastructure:
       - The inventory: infrastructure/inventory.md
@@ -35,4 +36,9 @@ nav:
       - How to use a Raspberry Pi as a device: tutorials/endtoendtutorial.md
 
 
-theme: readthedocs
+theme:
+  name: windmill
+extra_css: 
+  - stylesheets/extra.css
+extra:
+  version: 0.5.0
