@@ -1,0 +1,36 @@
+site_name: Nalej
+
+nav:
+    - Welcome to Nalej: README.md
+    - Organization:
+      - Organization and user management: 'organization/organization-1.md'
+    - Infrastructure:
+      - The inventory: infrastructure/inventory.md
+      - Edge Controllers and Agents: infrastructure/ecandagents.md
+    - Resources:
+      - Cluster monitoring: resources/resources-1.md
+      - Application cluster installation: resources/appcluster_installation.md
+      - Cluster management: resources/cluster_management.md
+    - Devices:
+      - Adding, managing and deleting devices: devices/devices-1.md
+    - Apps:
+      - Deployment, management and removal: applications/applications-1.md
+      - Application descriptor: applications/app_descriptors.md
+      - The Application Graph: applications/appdiagram.md
+      - Unified Logging: applications/unified_logging.md
+    - Tutorials:
+      - Initial login in Nalej: tutorials/initiallogin.md
+      - Adding users in the system: tutorials/addingusers.md
+      - Application deployment: tutorials/appdeployment_wclusters.md
+      - Docker Compose application: tutorials/dockerappinnalej.md
+      - Application with devices: tutorials/appwithdevices.md
+      - Installing Nalej SDK in a device: tutorials/installingsdkindevice.md
+      - How to use a Raspberry Pi as a device: tutorials/endtoendtutorial.md
+
+
+theme:
+  name: windmill
+extra_css: 
+  - stylesheets/extra.css
+extra:
+  version: 0.3.0
