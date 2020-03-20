@@ -12,11 +12,11 @@ The first thing you need to do is create the device group where our devices are 
 
 You can add a new device group easily, clicking on the option **"Add group"** in the main view \(or in a group view\).
 
-![The &quot;Add Group&quot; option in the main Devices view](../.gitbook/assets/dev_add_devgroup_prev.png)
+![The &quot;Add Group&quot; option in the main Devices view](../img/dev_add_devgroup_prev.png)
 
 This opens a dialog like the one below:
 
-![Device group add dialog](../.gitbook/assets/dev_add_devgroup.png)
+![Device group add dialog](../img/dev_add_devgroup.png)
 
 To create a device group, you need:
 

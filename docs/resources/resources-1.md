@@ -16,11 +16,11 @@ _So, the general rule for labels is: DO NOT touch them unless you really know wh
 
 In the web management interface, click on Resources on the left column, so the Resources view is displayed.
 
-![Resources view](../.gitbook/assets/res_ppal.png)
+![Resources view](../img/res_ppal.png)
 
 In the upper part of the screen we can see:
 
-![Resources, upper section of the view](../.gitbook/assets/res_ppal_upper.png)
+![Resources, upper section of the view](../img/res_ppal_upper.png)
 
 * **Summary card**: the number of clusters and nodes in the system.
 * **Clusters card**: a carousel of charts with information about each cluster and the nodes in it \(like how many nodes are running in the cluster\).
@@ -28,7 +28,7 @@ In the upper part of the screen we can see:
 
 The lower section displays a **cluster list**.
 
-![Cluster list](../.gitbook/assets/res_ppal_lower.png)
+![Cluster list](../img/res_ppal_lower.png)
 
 Each row of the list refers to a different cluster, with some information about it:
 
@@ -42,11 +42,11 @@ Each row of the list refers to a different cluster, with some information about 
 
 In the same list, on the far right, each cluster has an **Edit** button. When clicked, a dialog appears where we can change the name and the labels associated to the cluster.
 
-![&quot;Edit cluster&quot; view](../.gitbook/assets/res_edit_cluster.png)
+![&quot;Edit cluster&quot; view](../img/res_edit_cluster.png)
 
 When we click on the name of the cluster, the view changes, and the information displayed refers to that specific cluster and its nodes.
 
-![Cluster view](../.gitbook/assets/res_cluster_view.png)
+![Cluster view](../img/res_cluster_view.png)
 
 In the upper part of the screen we can see the **status** of the cluster \(which is "RUNNING" only if all the nodes in it are running, and if not it shows the most serious problem in the clusters\), and a **summary** of the cluster information we saw in the previous list.
 
@@ -60,13 +60,13 @@ In the lower part of the screen we can see another list, this time of nodes. The
 
 Regarding **labels**, although adding and/or deleting them is not encouraged, there is an easy way of doing it through the web interface. At the end of the label list there is a `+` button to **add** new labels.
 
-![Adding a label](../.gitbook/assets/res_add_label.png)
+![Adding a label](../img/res_add_label.png)
 
 After clicking on that button, we can see a form where we can enter the name and value of the label, and we can save or discard this new information.
 
 If, however, in the list of labels we click on one or more labels \(selecting them\), this `+` button changes its function to **delete**, and its image to one of a bin, so we can delete the selected labels.
 
-![Deleting one or several labels](../.gitbook/assets/res_delete_label.png)
+![Deleting one or several labels](../img/res_delete_label.png)
 
 As stated above, please handle these features with care.
 
