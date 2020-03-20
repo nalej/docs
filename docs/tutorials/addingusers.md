@@ -26,7 +26,7 @@ Now that you know about the roles, let's see how the users are created in the sy
 
 In the Organization view, under the "Member list" there is an **"Add user"** button. If we click on that, a form appears.
 
-![&quot;Add user&quot; feature view](../.gitbook/assets/adduser%20%281%29.png)
+![&quot;Add user&quot; feature view](../img/adduser.png)
 
 By now, the form to sign a user up requires a name, an email, a password and a role. You can save the information \(thus creating a user\) or discard it. You can also discard the information by clicking the cross in the upper right corner.
 

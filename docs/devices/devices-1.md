@@ -12,7 +12,7 @@ _The CLI responses are shown in this document with the text format, which can be
 
 As with the rest of the sections, we can find the Device view in the left-hand column.
 
-![Devices view](../.gitbook/assets/devices.png)
+![Devices view](../img/devices.png)
 
 The upper part of the screen displays the following:
 
@@ -28,15 +28,15 @@ The lower part of the screen is a list of devices divided by groups, with the fo
 
 Each group, in the grey background row, has its own **Options** button. Clicking on it we can see more information related to the group, we can access its configuration settings (which will be explained in the [Configuration of a device group](#configuration-of-a-device-group) section of this document), or we can delete it.
 
-![Devices group options](../.gitbook/assets/devicesoptions.png)
+![Devices group options](../img/devicesoptions.png)
 
 When we choose the **More info** option, a dialog appears, where we can find the device group API key, its default connectivity and if it's enabled or not.
 
-![Devices group info](../.gitbook/assets/devinfo.png)
+![Devices group info](../img/devinfo.png)
 
 We can also search by any text string included in any part of the device information \(for example, we can search the term "`online`" to see which devices are online at any given moment, or a specific date of inclusion in the system\).
 
-![Using the Search option with the string "471"](../.gitbook/assets/searchdev.png)
+![Using the Search option with the string "471"](../img/searchdev.png)
 
 ### Public API CLI
 
@@ -109,11 +109,11 @@ ID            DATE              STATUS    LABELS   ENABLED
 
 We can add a new device group easily, clicking on the option **"Add group"** in the main view \(or in a group view\).
 
-![The &quot;Add Group&quot; option in the main Devices view](../.gitbook/assets/devices%20%283%29.png)
+![The &quot;Add Group&quot; option in the main Devices view](../img/devices%20%281%29.png)
 
 This opens a dialog like the one below:
 
-![Add group dialog](../.gitbook/assets/addgroup%20%281%29.png)
+![Add group dialog](../img/addgroup.png)
 
 To create a device group, we need:
 
@@ -123,7 +123,7 @@ To create a device group, we need:
 
 Once the group is created, it will be displayed on the devices list.
 
-![](../.gitbook/assets/devcreated.png)
+![](../img/devcreated.png)
 
 ### Public API CLI
 
@@ -159,14 +159,14 @@ This includes all the information related to the device group, which is, its **i
 
 In the main view, we can easily access the configuration of a specific device group by clicking on the **Configuration** button in the Options menu.
 
-![Device group configuration option](../.gitbook/assets/devicesoptions%20%282%29.png)
+![Device group configuration option](../img/devicesoptions%20%282%29.png)
 
 The only options that can be changed in a group are:
 
 * The **group device availability**.
 * If the **devices** are **enabled by default**.
 
-![Device group configuration dialog](../.gitbook/assets/devconfig%20%281%29.png)
+![Device group configuration dialog](../img/devconfig.png)
 
 ### Public API CLI
 
@@ -200,7 +200,7 @@ ID      NAME              API_KEY        ENABLED   DEV_ENABLED
 
 Let's say we want to delete an entire device group. From that group view, we can click on the Options menu, and then choose the **Delete group** option.
 
-![Delete devices group](../.gitbook/assets/devdeletegrou.png)
+![Delete devices group](../img/devdeletegrou.png)
 
 And the system will confirm the deletion with a notification in the upper right part of the screen.
 

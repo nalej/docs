@@ -4,7 +4,7 @@ The Nalej platform allows the user to create point-to-point secure connections b
 
 ## How it works
 
-![Application Network Diagram](../.gitbook/assets/tutorial_appnet_functionality_diagram.png)
+![Application Network Diagram](../img/tutorial_appnet_functionality_diagram.png)
 
 To create a private connection between service applications, the Nalej platform provides the Application Network solution. With this, you can establish point-to-point secure connections between services dynamically. Let's introduce the important terms to ramp up:
 
@@ -80,11 +80,11 @@ The possible statuses are:
 
 When you open the Applications view, the deployment graph will show the active connections as arrowed lines between applications.
 
-![Main view of applications showing connections](../.gitbook/assets/tutorial_appnet_main_page.png)
+![Main view of applications showing connections](../img/tutorial_appnet_main_page.png)
 
 If you click on the **Manage connections** button, it will show the **Manage connections** modal window.
 
-![Manage connections modal window](../.gitbook/assets/tutorial_appnet_manage_connections_list.png)
+![Manage connections modal window](../img/tutorial_appnet_manage_connections_list.png)
 
 The list will show all the connections. If the source interface name shows an asterisk `*`, that means that the outbound interface is marked as **required**.
 
@@ -119,11 +119,11 @@ Be aware that the request is asynchronous. The platform will answer with a `RESU
 
 #### Web interface
 
-![Manage connections window to add connection](../.gitbook/assets/tutorial_appnet_manage_connections_list_add.png)
+![Manage connections window to add connection](../img/tutorial_appnet_manage_connections_list_add.png)
 
 On the **Manage connections** window, click on the **Add new connection** button to open the **Add new connection** dialog.
 
-![Add new connection dialog](../.gitbook/assets/tutorial_appnet_add_connection.png)
+![Add new connection dialog](../img/tutorial_appnet_add_connection.png)
 
 Here you can define the source instance, the outbound network interface name, the target instance, and the inbound network interface name. Then just click on the button **Add new connection** to send an asynchronous message to the platform to create the connection.
 
@@ -152,7 +152,7 @@ Be aware that the request is asynchronous. The platform will answer with a `RESU
 
 #### Web interface
 
-![Manage connections window to remove connection](../.gitbook/assets/tutorial_appnet_manage_connections_list_remove.png)
+![Manage connections window to remove connection](../img/tutorial_appnet_manage_connections_list_remove.png)
 
 On the **Manage connections** window, click on the **Disconnect** button to remove that connection. The platform will show a confirmation popup to avoid accidental remotions.
 

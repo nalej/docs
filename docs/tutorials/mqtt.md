@@ -18,19 +18,19 @@ We are using a custom plugin for authentication. Its main functionality is to us
 
 Let's see a little example of an application that uses MQTT to connect a device with an application.
 
-![App instance diagram](../.gitbook/assets/mqtt_example_appinstance_diagram.png)
+![App instance diagram](../img/mqtt_example_appinstance_diagram.png)
 
 This is a simple example that has a thermometer functionality. It has a device that measures the temperature, and it sends the data to our application, which then displays it in a user-friendly manner. This example is thoroughly explained [in another tutorial](endtoendtutorial.md), and in case you want to try it yourself you only need a Raspberry Pi with a temperature sensor and a tinkering mood.
 
 So, the application flow is as follows:
 
-![Application flow](../.gitbook/assets/endtoend_app_flow.png)
+![Application flow](../img/endtoend_app_flow.png)
 
 The device sends the temperature to the MQTT server, and there is a little Elastic service (MQTTBeat) listening on that queue so it receives every message. It then receives the data and sends it to Elastic, which then processes it and sends the result to Kibana to be displayed.
 
 ### So, where and how should we install it?
 
-As we can see above, we need to install it at least in two places, which are the server and the device, so they can message each other. The server, in our case, will be installed in the Nalej platform (as well as the rest of the services needed to process and display the information), and the device, as explained [here](installingSDKindevice.md), must support Python and have the SDK installed.
+As we can see above, we need to install it at least in two places, which are the server and the device, so they can message each other. The server, in our case, will be installed in the Nalej platform (as well as the rest of the services needed to process and display the information), and the device, as explained [here](installingsdkindevice.md), must support Python and have the SDK installed.
 
 - The server will be a Docker image of the VerneMQ broker, configured with the credentials that will be provided by the manager of the image.
 - The device will have the `paho-mqtt` library, which implements versions 3.1 and 3.1.1 of the MQTT protocol.
