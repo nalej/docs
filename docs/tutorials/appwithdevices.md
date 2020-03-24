@@ -12,11 +12,11 @@ The first thing you need to do is create the device group where our devices are 
 
 You can add a new device group easily, clicking on the option **"Add group"** in the main view.
 
-![The &quot;Add Group&quot; option in the main Devices view](../img/tut_appdev_addgroup_button.png)
+![The &quot;Add Group&quot; option in the main Devices view](../img/dev_addgroup_button.png)
 
 This opens a dialog like the one below:
 
-![Device group add dialog](../img/tut_appdev_addgroup_dialog.png)
+![Device group add dialog](../img/dev_addgroup_dialog.png)
 
 To create a device group, you need:
 

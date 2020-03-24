@@ -199,11 +199,11 @@ So, the descriptor is ready and you are already in the Application view of the w
 
 In the Application view, we can see the **Register** button in the **Applications** section, in the upper part of the screen.
 
-![Uploading a descriptor to register an application.](../img/tut_docker_uploaddescriptor_button.png)
+![Uploading a descriptor to register an application.](../img/apps_registerbutton.png)
 
 What we can see now is a dialog where we can upload our application descriptor, so the application gets registered in the system. We can click on it to search the file in our file system, or we can just drag it and drop it in the designed area. After that, just clicking on the **Register** button will register the application in the system.
 
-![Register app](../img/tut_docker_uploaddescriptor_dialog.png)
+![Register app](../img/app_mgmt_uploaddescriptor_dialog.png)
 
 
 
@@ -213,19 +213,19 @@ Now that our application is registered \(and so appears in the list at the **Reg
 
 1) The first option is to click on the **Deploy** button in the upper right part of the screen.
 
-![Deploy for the main view](../img/tut_docker_deploy_button.png)
+![Deploy for the main view](../img/app_mgmt_deploy_button.png)
 
 2) We can also find our app in the **Registered** list, hit the **Actions** icon in the same row, and once there click the grey **Deploy** option in the menu. 
 
-![Deploy from registered list options in actions button](../img/tut_docker_deploy_fromregisteredlist.png)
+![Deploy from registered list options in actions button](../img/app_mgmt_deploy_fromregisteredlist.png)
 
 3) Lastly, we can find our app in the **Registered** list and click on its name. To deploy our application we only need to click on the **Deploy** button on the bottom part of the screen.
 
-![Deploy from registered view](../img/tut_docker_deploy_fromappview.png)
+![Deploy from registered view](../img/app_mgmt_deploy_fromappview.png)
 
 With all these actions we arrive to the same dialog, which looks like this:
 
-![](../img/tut_docker_deploy_dialog.png)
+![](../img/app_mgmt_deploy_dialog.png)
 
 Here we need to write the name of the instance and choose the application we want an instance of \(if we clicked on the "deploy" button in the **Registered** list, the instance is already established, and we only have to write the name of the instance\). Then, the instance will appear in the list under the **Instances** tab.
 

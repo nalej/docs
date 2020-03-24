@@ -18,11 +18,7 @@ On the web interface, you can display the Resources view by clicking on Resource
 
 ![Main view of the Resources section.](../img/res_cmon_main.png)
 
-The right section displays a **clusters-instances graph**. We can search for a certain instance or cluster in the **Search box** (on the upper right part of the section) and the part of the graph that matches the search is highlighted.
-
-![Clusters-instances graph](../img/res_cmon_graph.png)
-
-On the left part of the screen we can see:
+The right section displays a **clusters-instances graph**. On the left part of the screen we can see:
 
 * A **Summary card** that shows the number of clusters and instances.
 
@@ -33,14 +29,20 @@ On the left part of the screen we can see:
   Each row of the list refers to a different cluster, with some information about it:
   
   * **Name**.
-  * The number of **instances** in each cluster.
-  * A list of **labels** associated to each cluster, which we can manage (more on this below in the "[Managing labels](#managing-labels)" section).
+  * Its **status**.
+  * A list of **labels** associated to each cluster, which we can manage (more on this below in the "[Managing labels](#managing-labels)" section). In the image, this cluster has no labels yet.
 
-In the same list, on the far right, each cluster has an **Edit** button. When clicked, a dialog appears where we can change the name of the cluster.
+In the same list, on the far right, each cluster has an **Edit** button. When clicked, a menu appears, with the options **More Info**, **Edit**, **Cordon**, **Uncordon** and **Drain**.
+
+![Contextual menu](../img/res_cmon_contextual_menu.png)
+
+In this document we will only see the first two options. The other three are related to cluster management, and they are explained in [this document](cluster_management.md). 
+
+When the **Edit** option is clicked, a dialog appears where we can change the name of the cluster.
 
 ![Editing the name of the cluster](../img/res_cmon_editcluster.png)
 
-When we click on the name of a cluster in the list, the view changes, and the information displayed refers to that specific cluster and its nodes.
+When we click on the **More info** option, or on the name of a cluster in the list, the view changes, and the information displayed refers to that specific cluster and its nodes.
 
 ![](../img/res_cmon_cluster_main.png)
 
@@ -154,7 +156,7 @@ At the end of the label list there is a `+` button to **add** new labels.
 
 After clicking on that button, we can see a form where we can enter the name and value of the label, and we can save or discard this new information.
 
-If, however, in the list of labels we click on one or more labels \(selecting them\), this `+` button changes its function to **delete**, and its image to one of a bin, so we can delete the selected labels.
+If, however, in the list of labels we click on one or more labels \(thus selecting them\), this `+` button changes its function to **delete**, and its image to one of a bin, so we can delete the selected labels.
 
 ![](../img/res_cmon_selectlabelfromcluster.png)
 

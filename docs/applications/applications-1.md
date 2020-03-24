@@ -6,7 +6,7 @@ Now that we know how the clusters work, it's time to start deploying application
 
 _The CLI responses are shown in text format, which can be obtained adding_ `--output="text"` _to the user options. If you need the responses in JSON format, you can get them by adding_ `--output="json"` _at the end of your requests, or as a user option._
 
-## Application management through web interface
+## The Application View
 
 If we click on the "Application" option at the left column of the screen, a screen similar to this one will appear:
 
