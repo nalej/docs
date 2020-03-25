@@ -7,10 +7,6 @@
 	background-color: #444 !important;
 }
 
-.wm-top-tool-expanded {
-  background-color: #ff00d3;
-}
-
 .wm-toc-li.wm-current, .wm-toc-li.wm-current:hover {
   background-color: #ff00d3;
   color: white;
