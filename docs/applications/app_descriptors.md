@@ -47,46 +47,46 @@ Where:
 * **access** contains the type of access allowed.
   * Use **1** to signal that the service is accessible by other app services. The correct way to specify the services would be:
 
-    ```javascript
-    "access": 1,
-    "auth_service_group_name": <serv_group_name>,
-        "auth_services": [
-            <service_name_1>,
-            <service_name_2>,
-            ...
-        ]
-    }
-    ```
-
-  * Use **2** to signal that the service is publicly available.
-  * Use **3** to signal that the service is available only for some devices.
-
-    ```javascript
-    "access": 3,
-    "device_group_names": [
-        <device_group_name_1>,
-        <device_group_name_2>,
+```javascript
+"access": 1,
+"auth_service_group_name": <serv_group_name>,
+    "auth_services": [
+        <service_name_1>,
+        <service_name_2>,
         ...
     ]
-    ```
+}
+```
 
-  * Use **4** to indicate a rule that describes an inbound socket for connections between applications. This will mean that the "target service" will receive connections through this rule. When using this rule, the target port must be exposed on the target service description and the following field must be added to the rule definition:
+* Use **2** to signal that the service is publicly available.
+* Use **3** to signal that the service is available only for some devices.
 
-    * **inbound\_network\_interface**: The name of the inbound network interface that will be linked to this rule
+```javascript
+"access": 3,
+"device_group_names": [
+    <device_group_name_1>,
+    <device_group_name_2>,
+    ...
+]
+```
 
-    ```javascript
-    "access": 4,
-    "inbound_net_interface": <inbound_iface_name>
-    ```
+* Use **4** to indicate a rule that describes an inbound socket for connections between applications. This will mean that the "target service" will receive connections through this rule. When using this rule, the target port must be exposed on the target service description and the following field must be added to the rule definition:
 
-  * Use **5** to indicate a rule that describes an outbound socket for connections between applications. This will mean that the "target service" will be able to connect to other applications through this rule using the predefined variable `NALEJ_OUTBOUND_[interface_name]` . When using this rule, the target port must be exposed on the target service description and the following field must be added to the rule definition:
+  * **inbound\_network\_interface**: The name of the inbound network interface that will be linked to this rule.
 
-    * **outbound\_network\_interface**: The name of the outbound network interface that will be linked to this rule
+```javascript
+"access": 4,
+"inbound_net_interface": <inbound_iface_name>
+```
 
-    ```javascript
-    "access": 5,
-    "outbound_net_interface": <outbound_iface_name>
-    ```
+* Use **5** to indicate a rule that describes an outbound socket for connections between applications. This will mean that the "target service" will be able to connect to other applications through this rule using the predefined variable `NALEJ_OUTBOUND_[interface_name]` . When using this rule, the target port must be exposed on the target service description and the following field must be added to the rule definition:
+
+  * **outbound\_network\_interface**: The name of the outbound network interface that will be linked to this rule.
+
+```javascript
+"access": 5,
+"outbound_net_interface": <outbound_iface_name>
+```
 
 Example:
 
@@ -110,25 +110,25 @@ On a descriptor, the user can define interfaces with the following properties:
 
 * **inbound\_net\_interfaces**: An array of inbound network interfaces. Each of them are described just by its **name**. Must be unique between inbound/outbound/ network interfaces.
 
-  ```javascript
-  "inbound_net_interfaces": [
-      {"name": "WORDPRESS_IN"}
-  ]
-  ```
+```javascript
+"inbound_net_interfaces": [
+    {"name": "WORDPRESS_IN"}
+]
+```
 
 * **outbound\_net\_interfaces**: An array of outbound network interfaces. Each of them are described with the following properties:
 
   * **name**: The name of the outbound network interface. Must be unique between inbound/outbound/ network interfaces.
-  * **required**: Boolean flag that indicates if the outbound connection is required by the application. This means that the outbound must be connected on deployment time and the connection cannot be safely removed \(the user can force it through a parameter\). Default value is false.
+  * **required**: Boolean flag that indicates if the outbound connection is required by the application. This means that the outbound must be connected on deployment time and the connection cannot be safely removed \(the user can force it through a parameter\). Default value is *false*.
 
-  ```javascript
-  "outbound_net_interfaces": [
-      {"name": "MYSQL", "required": true},
-      {"name": "EXTERNAL_LOGGER"}
-  ]
-  ```
+```javascript
+"outbound_net_interfaces": [
+    {"name": "MYSQL", "required": true},
+    {"name": "EXTERNAL_LOGGER"}
+]
+```
 
-  To know more about networking, check the Application Networking tutorial [here](../tutorials/appnetworking.md)
+To know more about networking, check the Application Networking tutorial [here](../tutorials/appnetworking.md)
 
 ## Service groups
 
@@ -159,10 +159,13 @@ Where:
 
 * **name** is the name we give to the service group. It must be unique in the context of the application.
 * **services** is the collection of services the group contains. There must be at least one service defined in the group.
-* **specs** defines the deployment specifications for the group. The different parameters here are:
-  * **multicluster\_replica**, which is a boolean that states whether the replicas will be deployed in the same cluster \(=_false_\), or on the contrary they will be deployed into any available cluster \(=_true_\). By default it is set to _false_.
-  * **num\_replicas**, which is the number of replicas of this group that are going to be deployed. These replicas will appear as different instances in the system. By default it is set to 1.
-  * **deployment\_selectors**, which is a collection of labels and values that is checked against the available clusters. Only those clusters with all the labels and values indicated by the deployment\_selectors are considered to be candidates.
+* **specs** defines the deployment specifications for the group. 
+
+The different parameters for the **specs** option are:
+
+* **multicluster\_replica**, which is a boolean that states whether the replicas will be deployed in the same cluster \(=_false_\), or on the contrary they will be deployed into any available cluster \(=_true_\). By default it is set to _false_.
+* **num\_replicas**, which is the number of replicas of this group that are going to be deployed. These replicas will appear as different instances in the system. By default it is set to 1.
+* **deployment\_selectors**, which is a collection of labels and values that is checked against the available clusters. Only those clusters with all the labels and values indicated by the deployment\_selectors are considered to be candidates.
 
 ### Services
 
@@ -207,12 +210,9 @@ Where:
 
 * **service\_name** is the name of the service.
 * **image** is the name of the docker image.
-* **specs** defines the specifications for the service. In it,
-  * **replicas** is the number of replicas of this service to be deployed. These replicas will be part of the same instance in the system \(unlike the replicas at service group level, which will be seen as different instances\).
-* **configs** defines the configuration files that the service may need. In it,
-  * **config\_file\_id** is the identifier of each specific configuration file,
-  * **content** is the content the configuration file should have, and
-  * **mount\_file** is the path where the file should be in the cluster, so the system can create it and fill it with what is in the **content** parameter.
+* **specs** defines the specifications for the service. In it, **replicas** is the number of replicas of this service to be deployed. These replicas will be part of the same instance in the system \(unlike the replicas at service group level, which will be seen as different instances\).
+* **configs** defines the configuration files that the service may need. In it, **config\_file\_id** is the identifier of each specific configuration file, **content** is the content the configuration file should have, and **mount\_file** is the path where the file should be in the cluster, so the system can create it and fill it with what is in the **content** parameter.
+
 * **storage** defines the storage required by the image. It is an optional field.
 * **exposed\_ports** defines the ports that are exposed by the container.
 * **environment\_variables** specifies the environment variables required by the containers.

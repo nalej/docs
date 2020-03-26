@@ -14,30 +14,30 @@ The official installation guide with `kubeadm` can be found [here](https://kube
 
 - To check if there are at least 3 nodes with `STATUS=ready`:
 
-  ```shell
-  kubectl get nodes 
-  ```
+```shell
+kubectl get nodes 
+```
 
 - To check node capacity and system info:
 
-  ```shell
-  kubeckt describe node <node_name>
-  ```
+```shell
+kubeckt describe node <node_name>
+```
 
-  The response to this last command will give us the capacity info:
+The response to this last command will give us the capacity info:
 
-  ```shell
-  cpu: 2
-  memory: 8GB
-  ```
+```shell
+cpu: 2
+memory: 8GB
+```
 
-  And the system info:
+And the system info:
 
-  ```SHELL
-  Kubelet Version: <1.11 or higher>
-  Kube-Proxy Version: <1.11 or higher>
-  OS Image: 18.04.3 LTS
-  ```
+```SHELL
+Kubelet Version: <1.11 or higher>
+Kube-Proxy Version: <1.11 or higher>
+OS Image: 18.04.3 LTS
+```
 
 ## MetalLB
 

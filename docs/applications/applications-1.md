@@ -16,11 +16,7 @@ This screen has the following areas:
 
 * A **summary**, where the number of deployed instances and registered applications are shown.
 * An **app list**, where we can see all the info regarding the registered apps and the deployed instances in the system.
-* The **graph**, where we can see all the info regarding the clusters,  the registered apps and the deployed instances in the system and its connections.
-  * The instances can have different states as deploying, running, queued or error, those are represented with different colors.
-  * The connections between apps are represented with directed arrows \(source to target\).
-
-We will talk about this deployed app list later in the document, and explain its use thoroughly.
+* The **graph**, where we can see all the info regarding the clusters,  the registered apps and the deployed instances in the system and its connections. The instances can have different **states** (*deploying*, *running*, *queued* or *error*), which are represented with different colors. Also, the **connections** between apps are represented with directed arrows \(source to target\).
 
 ## Application deployment
 
@@ -28,7 +24,7 @@ The process of deploying an application is as follows:
 
 ![This is the process to follow when deploying an instance of an application.](../img/app_mgmt_deployment_diagram.png)
 
-So, first you need to create an application descriptor. The documentation for doing so is [over here](app_descriptors.md), but by now let's just say that it should be a JSON file with more or less this aspect:
+First you need to create an application descriptor. The documentation for doing so is [over here](app_descriptors.md), but by now let's just say that it should be a JSON file with more or less this aspect:
 
 ```javascript
 {

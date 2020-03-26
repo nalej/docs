@@ -92,15 +92,16 @@ What do you need to know about this file? Well...
   * `name`, the name you give it.
   * `labels`, in case you want it to have some specific labels.
   * `geolocation`, its location, in case you have several in different places and want to have that extra information registered here.
-* The `content` parameter deserves a longer explanation. When you want your EC to join the Nalej Management Controller \(NMC\), you should request a token. After receiving it, you should convert it to base64 and include in this parameter.
 
-  To convert this file to base64 you can use this command:
+The `content` parameter deserves a longer explanation. When you want your EC to join the Nalej Management Controller \(NMC\), you should request a token. After receiving it, you should convert it to base64 and include in this parameter.
 
-  ```bash
-  cat joinToken.json | base64 | tr -d ‘\n’
-  ```
+To convert this file to base64 you can use this command:
 
-  The result of this command would be what needs to be included in the `cloud-init.yaml` file, in the `content` parameter.
+```bash
+cat joinToken.json | base64 | tr -d ‘\n’
+```
+
+The result of this command would be what needs to be included in the `cloud-init.yaml` file, in the `content` parameter.
 
 When deploying the VM in the cloud, at some point this `cloud-init.yaml` file will be requested, so you only have to upload it. The EC will be configured according to this file, and it will join the NMC with the token included in it.
 

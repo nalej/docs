@@ -16,21 +16,17 @@ _So, the general rule for labels is: DO NOT touch them unless you really know wh
 
 On the web interface, you can display the Resources view by clicking on Resources on the far left column.
 
-![Main view of the Resources section.](../img/res_cmon_main.png)
+![Main view of the Resources section.](../img/res_cmon_main.png "Main view of the Resources section.")
 
-The right section displays a **clusters-instances graph**. On the left part of the screen we can see:
+The right section displays a **clusters-instances graph**. On the left part of the screen we can see a **Summary card** that shows the number of clusters and instances, and a **List card** that shows a list of available clusters.
 
-* A **Summary card** that shows the number of clusters and instances.
+![Resources list](../img/res_cmon_list.png)
 
-* A **List card** that shows a list of available clusters.
+Each row of the list refers to a different cluster, with some information about it:
 
-  <img src="../img/res_cmon_list.png" style="zoom:70%;" />
-
-  Each row of the list refers to a different cluster, with some information about it:
-  
-  * **Name**.
-  * Its **status**.
-  * A list of **labels** associated to each cluster, which we can manage (more on this below in the "[Managing labels](#managing-labels)" section). In the image, this cluster has no labels yet.
+* **Name**.
+* Its **status**.
+* A list of **labels** associated to each cluster, which we can manage (more on this below in the "[Managing labels](#managing-labels)" section). In the image, this cluster has no labels yet.
 
 In the same list, on the far right, each cluster has an **Edit** button. When clicked, a menu appears, with the options **More Info**, **Edit**, **Cordon**, **Uncordon** and **Drain**.
 

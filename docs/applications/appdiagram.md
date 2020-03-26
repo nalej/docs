@@ -22,5 +22,11 @@ You can \(in fact, we encourage you to\) use the rest of the information in the 
 
 ![Information from the services in the instance](../img/app_graph_instance_serviceinfo.png)
 
+## Connections
 
+The arrows pointing from one service to another represent the connections between the services, and the relationships created because of that.
+
+![Connections in the application instance](../img/app_graph_instance_connections.png)
+
+In the case of the app, we can see that in the  group, the "deepdetectserver" service is the target from the connection of "deepdetecttui". Those are grouped in the "core" services group.
 

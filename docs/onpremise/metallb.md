@@ -42,7 +42,7 @@ In BGP mode, all machines in the cluster establish [BGP](https://en.wikipedia.or
 
 The following is a manifest file that describes the configuration of MetalLB, so it can be installed in the system.
 
-```yaml
+```python
 apiVersion: v1
 kind: ConfigMap
 metadata:
@@ -123,7 +123,7 @@ data:
       # (optional) A list of BGP advertisements to make, when
       # protocol=bgp. Each address that gets assigned out of this pool
       # will turn into this many advertisements. For most simple
-      # setups, you'll probably just want one.
+      # setups, you will probably just want one.
       #
       # The default value for this field is a single advertisement with
       # all parameters set to their respective defaults.
@@ -131,7 +131,7 @@ data:
       - # (optional) How much you want to aggregate up the IP address
         # before advertising. For example, advertising 1.2.3.4 with
         # aggregation-length=24 would end up advertising 1.2.3.0/24.
-        # For the majority of setups, you'll want to keep this at the
+        # For the majority of setups, you will want to keep this at the
         # default of 32, which advertises the entire IP address
         # unmodified.
         aggregation-length: 32
@@ -154,7 +154,7 @@ data:
     bgp-communities:
       # no-export is a well-known BGP community that prevents
       # re-advertisement outside of the immediate autonomous system,
-      # but people don't usually recognize its numerical value. :)
+      # but people do not usually recognize its numerical value. :)
       no-export: 65535:65281
 
 ```

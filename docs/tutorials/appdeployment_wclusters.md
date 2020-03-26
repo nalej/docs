@@ -324,16 +324,15 @@ We can see the status of an instance directly in the **Instances** tab, in the c
 
 This view has several sections:
 
-* First, we have the **summary** \(upper-left part of the screen\). This part will tell us the status of the instance and its application of origin, and it also has an **Info** button we can click to find more about the instance. In the summary we can find three tabs: 
-  *  the **Parameters** tab, where the basic and advanced parameters of the instance will appear.
-  * the **Networks** tab, with the inbounds and outbounds connections.
-  * the **Setup** tab, showing the environment variables and other settings.
+* First, we have the **Instance info** \(upper-left part of the screen\). This part will tell us the status of the instance and its application of origin, and it also has an **Info** button we can click to find more about the instance. In the summary we can find three tabs: the **Parameters** tab, where the basic and advanced parameters of the instance will appear; the **Networks** tab, with the inbounds and outbounds connections; and the **Setup** tab, showing the environment variables and other settings.
 * Under the summary we have the **Labels** section, where we can see the labels associated to this app instance.
 * We also have an **Add new connection** button, and an **Undeploy** button to undeploy the instance directly from here.
 * Then we have the **services** section. First we can see a graph that shows us the relationship between the services in the instance, where we can zoom in in case it's necessary \(to help us with the identification, the color of each service depends on its status\). On the upper left part of this section we have the two perspectives we can toggle between. The other perspective is a text view with all the info about the service instances related to this application instance.
-  * The services are visually classified according to their **service group**.
-  * For each service we can see the number of **replicas** that are deployed, the general **status** of the service, the **endpoints** it has, and an **Info** button.
-  * When we click on the **Info** button we open a dialog where we can see even more information, like the environment variables, the labels assigned to the service, or the cluster it's deployed in. 
+
+The services are visually classified according to their **service group**.
+
+* For each service we can see the number of **replicas** that are deployed, the general **status** of the service, the **endpoints** it has, and an **Info** button.
+* When we click on the **Info** button we open a dialog where we can see even more information, like the environment variables, the labels assigned to the service, or the cluster it's deployed in. 
 
 ![Service Info dialog](../img/app_mgmt_instance_serviceinfo.png)
 

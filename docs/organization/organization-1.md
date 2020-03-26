@@ -18,7 +18,7 @@ Here, the information we can see depends on the role we have been assigned, and 
 
 * **Organization info card**. Here you can see the most relevant information related to your company: name, address, contact email, number of members, default settings for the company's applications, and how may user roles are available.
   * Under the **Info** card we can find another one where there are more details about the default settings and the roles, and we can see and modify them. Also, there's a section for the billing information, which is read-only.
-* **Member list**. Here you can find all the members in your organization, with their information: name, role, phone and email, and what their actual position in the company is and where they are located. In the contextual menu (with the three vertical buttons) we can find some actions to do:
+* **Users**. Here you can find all the members in your organization, with their information: name, role, phone and email, and what their actual position in the company is and where they are located. In the contextual menu (with the three vertical buttons) we can find some actions to do:
   * _User info_: this button shows the member card, and gives us the option of editing the user information (password included).
   * _Delete user_: here we can delete the user from the system.
 
@@ -122,27 +122,19 @@ sara@myorg.com         Tester      Sara         Tester      Operator     Madrid,
 
 To edit a specific user's information, we need their email. With that we can:
 
-* Update their information:
+Update their information:
 
-  ```bash
-  ./public-api-cli users update <email-name>@<email-domain>
-  		--lastName lastName
-  		--location NewCity, NewCountry
-  		--name newName
-  		--phone +00 123 456 789
-  		--photoPath /path/to/new/photo
-  		--title newTitleInTheCompany
-  ```
+```bash
+./public-api-cli users update <email-name>@<email-domain> --lastName lastName --location NewCity, NewCountry --name newName --phone +00 123 456 789 --photoPath /path/to/new/photo --title newTitleInTheCompany
+```
 
-* Reset their password \(we also need the current password for this\):
+Reset their password \(we also need the current password for this\):
 
-  ```bash
-  ./public-api-cli users reset-password 
-      <email-name>@<email-domain> 
-      <newpassword>
-  ```
+```bash
+./public-api-cli users reset-password <email-name>@<email-domain> <newpassword>
+```
 
-  For this to work, the new password must not be empty.
+For this to work, the new password must not be empty.
 
 When these operations are successful, the return is an acknowledgment that the operation is done, like:
 
