@@ -16,8 +16,7 @@ The Organization view is the first view presented to you after logging in. Just 
 
 Here, the information we can see depends on the role we have been assigned, and so, if the person logging in is categorized as Owner of the organization, the info shown is this:
 
-* **Organization info card**. Here you can see the most relevant information related to your company: name, address, contact email, number of members, default settings for the company's applications, and how may user roles are available.
-  * Under the **Info** card we can find another one where there are more details about the default settings and the roles, and we can see and modify them. Also, there's a section for the billing information, which is read-only.
+* **Organization info card**. Here you can see the most relevant information related to your company: name, address, contact email, number of members, default settings for the company's applications, and how may user roles are available. Under the **Info** card we can find another one where there are more details about the default settings and the roles, and we can see and modify them. Also, there's a section for the billing information, which is read-only.
 * **Users**. Here you can find all the members in your organization, with their information: name, role, phone and email, and what their actual position in the company is and where they are located. In the contextual menu (with the three vertical buttons) we can find some actions to do:
   * _User info_: this button shows the member card, and gives us the option of editing the user information (password included).
   * _Delete user_: here we can delete the user from the system.
@@ -47,7 +46,7 @@ Here we can find the same information displayed in the web interface, plus the I
 
 ## Creating users
 
-You need to be an Owner of the organization to be able to create, manage or delete a user.
+You need to be a **NalejAdmin** to be able to create or delete a user in the system. An **Owner** can update users and change passwords, but not create or delete users. 
 
 ### Web Interface
 

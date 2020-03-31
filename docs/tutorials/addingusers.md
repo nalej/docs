@@ -4,19 +4,23 @@ As a system owner, you probably have to add new users to the system. First we ne
 
 ## System roles
 
-There are three default roles in the system.
+There are four default roles in the system.
 
-* **Developer**: can add, deploy, manage and remove their own apps from the system. They can also add devices and device groups if their apps need them.
-* **Operator**: can add, deploy, manage and remove apps from the system \(even if the apps are not theirs\), as well as add and manage devices. They can also manage resources.
-* **Owner**: has almighty powers in the system. They can do everything an Operator can do, but they can also manage users and organization info.
+* **Developer**: can add, deploy, manage and remove apps from the system, as well as use the Unified Logging feature. 
+* **Operator**: can manage assets and devices using the Inventory feature, and can also list and update the available clusters.
+* **Owner**: can manage apps, devices and resources, as well as update the organization information.
+* **NalejAdmin**: has almighty powers in the system. This role is reserved for the Nalej field engineer associated to your organization. They can do whatever the owner can, and also add or delete users, deal with cluster provision tasks, and manage ECs and Agents.
 
-Below you can see a table with the edit permissions of each of the user roles in the system.
+Below you can see a table with the managing permissions of each of the user roles in the system.
 
-|  | APPS | Devices | Resources | USERS | ORG. INFO |
-| :--- | :---: | :---: | :---: | :---: | :---: |
-| Developer | Own apps | Own devices | No | No | No |
-| Operator | All apps | All devices | Yes | No | No |
-| Owner | All apps | All devices | Yes | Yes | Yes |
+|  | Apps | Resources | Devices | EC & Agents | Users | Org. Info |
+| :--- | :---: | :---: | :---: | :---: | :---: | :--: |
+| Developer | Yes  |    No     | No | No | No | No |
+| Operator | No |    Yes    | No | No | No | No |
+| *Owner | Yes  | No | Yes | No | Yes | Yes |
+| NalejAdmin | Yes  |    Yes    | Yes | Yes | Yes | Yes |
+
+*This role is not available through the Web Interface.
 
 Now that you know about the roles, let's see how the users are created in the system.
 
