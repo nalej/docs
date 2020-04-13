@@ -2,6 +2,8 @@ site_name: Nalej
 
 nav:
     - Welcome to Nalej: index.md
+    - Nalej Installation: 
+      - Installation with Platformer: 'platformer/platformer.md'
     - Organization:
       - Organization and user management: 'organization/organization-1.md'
     - Infrastructure:

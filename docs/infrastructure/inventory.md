@@ -40,7 +40,33 @@ ASSET    <a_id>     Getxo, ES        l1:v1,l2:v2...   OFFLINE
 
 This table is essentially the same table we can see through the Web Interface, with the **devices**, the **Edge Controllers** and the **assets** in the current organization.
 
-You can also visualize a summary of the organization in terms of storage and computing capacity with:
+The assets can be managed from here, with the `inventory asset` command. 
+
+The system will return the information of the asset with:
+
+```bash
+./public-api-cli inventory asset info [assetID]
+```
+
+We can add or delete labels with:
+
+```bash
+./public-api-cli inventory asset label add [assetID] "label1:value1;label2:value2"
+
+./public-api-cli inventory asset label delete [assetID] "label2:value2"
+```
+
+Please note that the different labels are expressed like pairs `key:value`, and the separator between two labels is `;`.
+
+Lastly, we can update the location of an asset with:
+
+```bash
+./public-api-cli inventory asset update-location [assetID] "Office 23"
+```
+
+That is the asset management provided by the platform. To manage devices and Edge Controllers we encourage you to read the documentation written with that purpose in mind, which is ["Adding, managing and deleting devices"](../devices/devices-1.md) for the former and ["Edge Controllers and Agents"](ecandagents.md) for the latter. However, you will find a brief introduction to the topic of the Edge Controllers and Agents later in this document.
+
+To finish this section, you can also visualize a summary of the organization in terms of storage and computing capacity with:
 
 ```bash
 ./public-api-cli inventory summary

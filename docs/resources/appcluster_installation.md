@@ -76,15 +76,10 @@ To check the availability through the CLI we just have to list the clusters in t
 This will print a response similar to this one:
 
 ```bash
-NAME                   ID                 NODES   
-<cluster_name_1>       <cluster_id_1>     <total_num_nodes>
-<cluster_name_2>       <cluster_id_2>     <total_num_nodes>
-<cluster_name_3>       <cluster_id_3>     <total_num_nodes>
-
-LABELS                                         STATUS
-<label11>:<value11>,<label12>:<value12>        RUNNING
-<label13>:<value13>,<label14>:<value14>        RUNNING
-<label15>:<value15>,<label15>:<value15>        RUNNING
+NAME               ID                                     NODES   LABELS                    STATE       STATUS
+<cluster_name_1>   xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx   3       key1:value1,key2:value2   INSTALLED   ONLINE
+<cluster_name_2>   xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx   1       key3:value3,key4:value4   INSTALLED   ONLINE
+<cluster_name_3>   xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx   4       key5:value5,key6:value6   INSTALLED   ONLINE
 ```
 
 This response is already analyzed in the [Cluster monitoring](resources-1.md) section of the documentation, and it should show the information of the newly installed cluster.

@@ -321,6 +321,7 @@ Where **size** is the size of the storage we want to attach \(in bytes\), and th
 
 * **0**: ephemeral storage.
 * **1**: persistent storage.
+* **4**: Use persistent storage provided by the Nalej storage fabric. This will provide cluster-local persistence in the event of pod/node failure. This storage should be used for persistent applications on baremetal clusters.
 
 ## Example
 

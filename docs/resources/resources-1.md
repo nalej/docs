@@ -25,7 +25,7 @@ The right section displays a **clusters-instances graph**. On the left part of t
 Each row of the list refers to a different cluster, with some information about it:
 
 * **Name**.
-* Its **status**.
+* Its **status**. Clicking on the compass icon on the lower right corner of the screen will show the user the color code this information follows.
 * A list of **labels** associated to each cluster, which we can manage (more on this below in the "[Managing labels](#managing-labels)" section). In the image, this cluster has no labels yet.
 
 In the same list, on the far right, each cluster has an **Edit** button. When clicked, a menu appears, with the options **More Info**, **Edit**, **Cordon**, **Uncordon** and **Drain**.
@@ -49,8 +49,8 @@ In the lower part of the screen we can see another list, this time of nodes. The
 * The **node ID**.
 * The **IP** associated to it.
 * The current **state** of the node.
-* The **labels** it has.
 * Its current **status**.
+* The **labels** it has.
 
 ### Public API CLI
 
@@ -65,15 +65,10 @@ We can also obtain information about our clusters and their nodes through the CL
 This command will return, as usual, a table with some of the information the system has about the clusters in it:
 
 ```bash
-NAME                   ID                 NODES   
-<cluster_name_1>       <cluster_id_1>     <total_num_nodes>
-<cluster_name_2>       <cluster_id_2>     <total_num_nodes>
-<cluster_name_3>       <cluster_id_3>     <total_num_nodes>
-
-LABELS                                        STATUS
-<label11>:<value11>,<label12>:<value12>       RUNNING
-<label13>:<value13>,<label14>:<value14>       RUNNING
-<label15>:<value15>,<label15>:<value15>       RUNNING
+NAME               ID                                     NODES   LABELS                    STATE       STATUS
+<cluster_name_1>   xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx   3       key1:value1,key2:value2   INSTALLED   ONLINE
+<cluster_name_2>   xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx   1       key3:value3,key4:value4   INSTALLED   ONLINE
+<cluster_name_3>   xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx   4       key5:value5,key6:value6   INSTALLED   ONLINE
 ```
 
 This information consists of:
@@ -82,7 +77,20 @@ This information consists of:
 * **ID**, the cluster identifier.
 * **NODES**, the number of nodes in the cluster.
 * **LABELS**, the labels of the cluster.
-* **STATUS**, the status of the cluster. It depends on the status of each node, and it can have the values _running_, _processing_ or _error_.
+* **STATE**, the state of the cluster. It depends on where it is in the installation process.
+* **STATUS**, the status of the cluster. It depends on the operations that are supported by it.
+
+The different **states** a cluster can have are:
+
+- *Provisioning*: The cluster doesn't have infrastructure associated to it yet. 
+- *Installing*: The cluster has infrastructure attached to it, but the Nalej platform needs to be deployed. 
+- *Installed*: The cluster has been installed and can be used to deploy user applications.
+- *Scaling*: The cluster is being scaled by adding or removing nodes to adapt infrastructure to capacity requirements. No new applications will be deployed on the cluster while the scaling is being done.
+- *Error*: A process executed from one of the Nalej components failed. From this state, the user can only remove the cluster and try again.
+- *Uninstalling*: The user has requested to uninstall a cluster
+- *Decommissioning*: The infrastructure associated to this cluster is being liberated.
+
+However, the different **status** a cluster can have are **Online**, **OnlineCordon**, **Offline** and **OfflineCordon**. To read more about the cordoning and uncordoning of a cluster, please go to [Cluster management](cluster_management.md).
 
 We can also choose a cluster and ask for its information with:
 
@@ -100,26 +108,18 @@ Once we know the cluster ID, we can list the nodes belonging to it.
 
 This is the response to the command above:
 
-```javascript
-ID                    IP                 STATE      
-<node_id_1>          <ip_address>        ASSIGNED
-<node_id_2>          <ip_address>        ASSIGNED
-<node_id_3>          <ip_address>        ASSIGNED
-
-LABELS                                         STATUS
-<label3>:<value3>,<label4>:<value4>,...        RUNNING
-<label5>:<value5>,<label6>:<value6>,...        RUNNING
-<label7>:<value7>,<label8>:<value8>,...        RUNNING
+```bash
+ID                                     IP                         STATE      LABELS                        STATUS
+xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx   xxx-nalejpool-xxxxxxxx-1   ASSIGNED   label1:value1;label2:value2   INSTALLING
+xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx   xxx-nalejpool-xxxxxxxx-2   ASSIGNED   label3:value3;label4:value4   INSTALLING
+xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx   xxx-nalejpool-xxxxxxxx-0   ASSIGNED   label1:value1;label6:value6   INSTALLING
 ```
 
 The new variables are:
 
 * **ID**, the node identifier.
 * **IP**, the IP address of the node.
-* **STATE**, the current state of the node regarding its use. The values can be:
-  * _UNREGISTERED_: the details of the node are in the platform, but we haven't perfomed any action with them yet.
-  * _UNASSIGNED_: the node has been prepared, but has not yet been asigned to a cluster.
-  * _ASSIGNED_: the node has been installed and is part of a cluster.
+* **STATE**, the current state of the node regarding its use. The values can be: *UNREGISTERED* (the details of the node are in the platform, but we haven't perfomed any action with them yet), *UNASSIGNED* (the node has been prepared, but has not yet been asigned to a cluster), or *ASSIGNED* (the node has been installed and is part of a cluster).
 * **LABELS**: the labels of the node.
 * **STATUS**, the status of this node, which can be _running_, _processing_, or _error_. If one or more nodes have values other than "_running_", the cluster will show the most serious problem in its _status\_name_ variable.
 
@@ -173,11 +173,13 @@ As you can see, the **clusterID** is included as a parameter \(you can find this
 When executed, this command responds like this:
 
 ```text
-NAME     ID           NODES   LABELS              STATUS
-[name]  [clusterID]   3       k1:v1,cloud:azure   RUNNING
+NAME           ID                                     STATE       STATUS   SEEN
+carmen07app3   4252ab11-1d13-4014-8926-41b4a0aabcff   INSTALLED   ONLINE   2020-04-01 18:24:50 +0200 CEST
+NODES          LABELS                                 MCF
+3              key:value,key1:value1,key2:value2      1
 ```
 
-Here we can see all the information of a cluster, which is its name, its ID, the nodes it has, the labels attached to it \(which will include the recently added\), and its status.
+Here we can see all the information of a cluster, which is its **name**, its **ID**, the number of **nodes** it has, the **labels** attached to it \(which will include the recently added\), the last time it has been consulted (under the **seen** column), its **state** and its **status**. The values in these last two parameters are the same as discussed before in this document.
 
 To delete a label, the procedure is very similar, as well as the command to use:
 

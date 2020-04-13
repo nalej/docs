@@ -324,6 +324,14 @@ ENDPOINTS
 
 will tell us where the instance is deployed, so we can navigate to it and start working.
 
+In case we don't have the ID of the instance we want to access, the command:
+
+```bash
+./public-api-cli app inst list
+```
+
+will return a list of the instances deployed in the platform.
+
 ### Web Interface
 
 We can see the status of an instance directly in the **Instances** tab, in the colored button in the **Status** column of the list. We can also click on an instance to see all the information related to it, or click in the options buttons "more info". This takes us to a new view:
