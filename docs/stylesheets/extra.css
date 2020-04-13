@@ -15,3 +15,7 @@
 .wm-top-logo {
   max-height: 80%;
 }
+
+.wm-page-content a {
+  color: #ff00d3;
+}

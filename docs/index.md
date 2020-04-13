@@ -6,7 +6,7 @@ Welcome to the documentation for the 0.5.0 release of the Nalej system. This doc
 
 Here you can find all about how to install the Nalej platform in your environment.
 
-
+------
 
 Then, the rest of the information is structured in six major areas of knowledge, which are the main sections of the system. They are:
 
@@ -34,7 +34,7 @@ This section will have all the documents related to app deployment, management a
 
 Here you can find the detailed explanation of the application logs: where to find them, how to understand them, and how to use them to your advantage.
 
-
+------
 
 And finally...
 
