@@ -5,7 +5,7 @@ This document is structured to be executed in order. The steps to follow are:
 To install a management cluster:
 
 1. [Install the Certificate Manager.](#install-certificate-manager)
-2. [Create Certificate Issuers.](#create-certificate-issuers)
+2. [Create Certificate Issuers.](#create-certificate-issuers)
 3. [Execute the platform installer.](#install-the-platform)
 4. [Create certificates for ingress.](#create-certificate-for-ingress)
 5. [Create the organization in the platform.](#create-organization-in-the-platform)

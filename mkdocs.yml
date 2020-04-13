@@ -2,8 +2,14 @@ site_name: Nalej
 
 nav:
     - Welcome to Nalej: index.md
-    - Nalej Installation: 
+    - Installation with Platformer: 
       - Installation with Platformer: 'platformer/platformer.md'
+    - On-premise installation:
+      - Getting started: onpremise/prerequisites.md
+      - Kubernetes in Nalej: onpremise/kubernetes.md
+      - Persistent storage: onpremise/storage.md
+      - Installation steps: onpremise/installation.md
+      - More about MetalLB: onpremise/metallb.md
     - Organization:
       - Organization and user management: 'organization/organization-1.md'
     - Infrastructure:
@@ -21,12 +27,6 @@ nav:
       - The Application Graph: applications/appdiagram.md
     - Logs:
       - Unified Logging: logs/unified_logging.md
-    - On-premise:
-      - Getting started: onpremise/prerequisites.md
-      - Kubernetes in Nalej: onpremise/kubernetes.md
-      - Persistent storage: onpremise/storage.md
-      - Installation steps: onpremise/installation.md
-      - More about MetalLB: onpremise/metallb.md
     - Tutorials:
       - Initial login in Nalej: tutorials/initiallogin.md
       - Adding users in the system: tutorials/addingusers.md
