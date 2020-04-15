@@ -26,6 +26,14 @@ To install it in macOS, you can use [Homebrew](https://brew.sh):
 brew install azure-cli
 ```
 
+#### Set your Azure credentials
+
+To allow Platformer to use your Azure credentials, you must need to set up two environment variables:
+
+* `AZURE_USERNAME`, with your Azure account email.
+* `AZURE_PASSWORD`, with your Azure account password.
+
+You can use tools like [envchain](https://github.com/sorah/envchain) to store those environment variables in a secure way.
 
 ### NALEJ Assets
 
