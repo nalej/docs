@@ -43,5 +43,5 @@ theme:
 extra_css: 
   - stylesheets/extra.css
 extra:
-  version: 0.5.0
+  version: 0.5.1
   logo: img/nalej_logo_white.png
