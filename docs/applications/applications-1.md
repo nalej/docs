@@ -1,3 +1,7 @@
+
+
+
+
 # Application deployment, management and removal
 
 This section will have all the documents related to app deployment, management and removal. You will also find what you need about application descriptors: what they are, how to create one, and how to use one in the system.
@@ -271,11 +275,15 @@ The **Deploy** button will be enabled when the information is completely added, 
 
 We can filter the different nodes by **registered** apps, deployed **instances** and **clusters**, and we can also combine the filter function with the search function. 
 
+For example, here we can see the effect of the **Registered** quick filter.
+
 ![Registered quick filter](../img/app_mgmt_quickfilter_registered.png)
+
+We can combine quick filters to see elements from both categories. Here is the result of the combination of the **Registered** and **Instances** quick filters.
 
 ![Registered and instances quick filter](../img/app_mgmt_quickfilter_registered_instances.png)
 
-![Just instances quick filter](../img/app_mgmt_quickfilter_instances.png)
+To see the difference, here we display the graph showing all the entities in the system.
 
 ![Search with no filter](../img/app_mgmt_search_nofilter.png)
 
@@ -334,9 +342,11 @@ will return a list of the instances deployed in the platform.
 
 ### Web Interface
 
-We can see the status of an instance directly in the **Instances** tab, in the colored button in the **Status** column of the list. We can also click on an instance to see all the information related to it, or click in the options buttons "more info". This takes us to a new view:
+We can see the status of an instance directly in the **Instances** tab, in the colored button in the **Status** column of the list. We can also click on an instance to see all the information related to it, or click on the options button and select "More info". This takes us to a new view:
 
 ![Instance view with graph](../img/app_mgmt_instance_graph.png)
+
+This view has all the information related to the instance we selected. The section labeled **Services** can toggle between displaying the information in a graph or in a list, like the image below. We will explain these two modes later.
 
 ![Instance view with services](../img/app_mgmt_instance_services.png)
 

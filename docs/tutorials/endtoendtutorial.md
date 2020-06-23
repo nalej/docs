@@ -208,7 +208,7 @@ All these services need some rules to communicate.
 * MQTT should allow access to Beats to its core instance \(so Beats can collect the messages from the message queue and pass them on to ElasticSearch\). 
 * Lastly, the devices should have access to the gateway instance of MQTT, to be able to send messages.
 
-How can you describe such a complex net of relationships? It would look like this:
+Such a complex net of relationships would look like this in the descriptor file:
 
 ```javascript
  "rules": [
@@ -290,7 +290,7 @@ Here we have a typical declaration for a parameter. In this case, the parameter 
 * a `category`, which is an indication of this parameter being needed for a basic configuration \(0\) or an advanced one \(1\).
 * a flag telling us if the parameter is `required` or optional. In this case, it's optional.
 
-And that's it! You have finished your application descriptor and can now deploy an instance of your application in Nalej. How to do that, you ask? There is a step-by-step tutorial [here](appdeployment_wclusters.md), and you can find more information [here](../applications/applications-1.md) if you have further questions.
+And that's it! You have finished your application descriptor and can now deploy an instance of your application in Nalej. If you have trouble with this part, there is a step-by-step tutorial [here](appdeployment_wclusters.md), and you can find more information [here](../applications/applications-1.md) if you have further questions.
 
 ## Sending telemetry data
 
@@ -354,7 +354,7 @@ So, that would be it! With this, you would have the whole system up and running.
 
 ## Complete example files
 
-In case you got lost somewhere, here you have the files you need for this example. Please read them carefully, because it's probable you will need to modify them with your own information.
+Here you have the files you need for this example. Please read them carefully, because it's probable that you will need to modify them with your own information.
 
 ### Application descriptor
 

@@ -2,64 +2,15 @@
 
 # Application Deployment
 
-So, you just got Nalej and are itching to start working with it, but don't know where to start. No worries! This document will walk you through the process of deploying your very first application with Nalej.
+So, you just got Nalej, successfully [logged in the system](initiallogin.md), and are itching to start working with it, but don't know where to start. No worries! This document will walk you through the process of deploying your very first application with Nalej. 
 
-### Environment setup
+The steps to follow are:
 
-For this tutorial we are assuming that there is at least one deployed cluster, and that you are already registered in the system. Also, to use Nalej through the command-line interface you need to install the `public-api-cli` package that was sent to you by an administrator. This is what will allow us to interact with the system.
+1. Create your own application descriptor. 
+2. Add the application descriptor to the system.
+3. Deploy one (or twenty) application instance(s) from the descriptor.
 
-#### Setting your user options
-
-Is this the very first time you log in the platform? There are some variables that are needed for each interaction, so establishing them before starting means we won't have to write them down in each request. These variables, or options, are the **certificate** you received, and the addresses of the **Nalej login server** and the **Nalej API server**. Gather all this data, go to the folder in your computer where you saved the `public-api-cli` executable, and execute the following instructions
-
-```bash
-./public-api-cli options set 
-    --key=cacert 
-    --value=/Users/youruser/.../certificate.crt
-
-./public-api-cli options set 
-    --key=loginAddress 
-    --value=login.server.nalej.com
-
-./public-api-cli options set 
-    --key=nalejAddress 
-    --value=api.server.nalej.com
-```
-
-To check if these commands have executed correctly and the options are in fact set, you can use the command:
-
-```bash
-./public-api-cli options list
-```
-
-Right now, the responses to the CLI commands will be JSON-formatted documents. If you want to see them in a format that's easier to read, you should add this other option:
-
-```bash
-./public-api-cli options set 
-    --key=output 
-    --value=text
-```
-
-This will return the responses in a more human-readable format. If, however, you happen to need the response of a specific command in a JSON document, just adding --output="JSON" will override this for that command.
-
-### Login
-
-Now you can log in with only your email and password:
-
-```bash
-./public-api-cli login 
-    --email=user@nalej.com 
-    --password=password
-```
-
-This command will exit successfully if you receive a response with your session info, like this one:
-
-```javascript
-EMAIL     ROLE           ORG_ID      EXPIRES
-<email>   <role_name>   <org_id>    <session_expiration_date>
-```
-
-Congratulations! You're in the system. Now, the first thing you should do is create your own application descriptor. Then, you have to add it to the system, and after that the app will be deployed in what we call an instance. Let's go through this process.
+Let's go through this process.
 
 ![This is the process to follow when deploying an instance of an application.](../img/app_mgmt_deployment_diagram.png)
 
@@ -219,6 +170,8 @@ We can click on it to search the file in our file system, or we can just drag it
 
 ### Deploying the associated instance
 
+#### Public API CLI
+
 And how would we deploy that instance? With this other command:
 
 ```bash
@@ -238,7 +191,7 @@ REQUEST        ID          STATUS
 
 Which contains the **request\_id** for the request we just did, the **instance\_id** of the instance we are trying to deploy, and the current **status** of the instance, which in the moment after executing the command is **QUEUED** for deployment.
 
-#### Deploy with connections
+##### Deploy with connections
 
 If you designed your descriptor with outbound network interfaces, you will be able to connect any instance created with it on deployment time to other applications that were described with inbound network interfaces. Be aware that, if any outbound interface was described as required, to describe the connections to those interfaces on deployment time is mandatory.
 
@@ -336,9 +289,9 @@ The services are visually classified according to their **service group**.
 
 ![Service Info dialog](../img/app_mgmt_instance_serviceinfo.png)
 
-![Information for a specific rule](../img/app_mgmt_instance_serviceinfo_rules.png)
-
 * Under the **service groups** we have the **Access rules** section, where the rules for the different service groups in the application are displayed. We can click on the **Info** button of any of them and the full disclosure of the rule will appear.
+
+![Information for a specific rule](../img/app_mgmt_instance_serviceinfo_rules.png)
 
 ### Navigating to the endpoint
 

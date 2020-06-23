@@ -28,5 +28,5 @@ The arrows pointing from one service to another represent the connections betwee
 
 ![Connections in the application instance](../img/app_graph_instance_connections.png)
 
-In the case of the app, we can see that in the  group, the "deepdetectserver" service is the target from the connection of "deepdetecttui". Those are grouped in the "core" services group.
+In the image above, the "deepdetectserver" service is the target of the connection of "deepdetecttui". Those are grouped in the "core" services group.
 

@@ -1,10 +1,8 @@
 # Installing Nalej SDK in a device
 
-What steps do we need to follow if we want to transform a given device into a Nalej device? Let's see...
-
 ## Getting ready
 
-For this tutorial's purposes, we're going to assume that you already have a device group declared in your application, and an actual device. We're also assuming that this device has a running operating system with a Python interpreter.
+For this tutorial's purposes, we're going to assume that you already have a device group declared in your application, and an actual device you want to transform into a Nalej device. We're also assuming that this device has a running operating system with a Python interpreter.
 
 In order to be able to use the Nalej Python SDK, your device needs **Python 3.7** and **PIP 3** \(version 18.1 or higher\). It also needs the following libraries:
 

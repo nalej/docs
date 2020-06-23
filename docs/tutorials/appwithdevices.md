@@ -1,6 +1,6 @@
 # Application with devices
 
-So you have an application that needs some extra devices \(let's say, for example, an app that measures the temperature of a building, and has sensors in every floor of the building\).
+This document will explain how to deploy an application that needs some extra devices in the Nalej platform \(let's say, for example, an app that measures the temperature of a building, and has sensors in every floor of the building\).
 
 _The CLI responses are shown in text format, which can be obtained adding_ `--output="text"` _to the user options. If you need the responses in JSON format, you can get them by adding_ `--output="json"` _at the end of your requests, or as a user option._
 

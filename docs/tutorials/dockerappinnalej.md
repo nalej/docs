@@ -1,12 +1,12 @@
 # Docker Compose application
 
-You have Nalej as your system, but there are some apps that you have in Docker Compose and don't know how to deploy in Nalej. No worries! It's easier than it seems.
+You have Nalej as your system, but there are some apps that you have in Docker Compose and don't know how to deploy in Nalej. Don't worry, it's easier than it seems. Let`s go through it together, shall we?
 
 ## The App Descriptor
 
-The first thing that needs to be tackled is the app descriptor, which is what you need to include the app in the system.
+The first thing that needs to be tackled is the app descriptor, which is what you need to register the application in the system.
 
-[Do you remember how to create your own app descriptor?](../applications/app_descriptors.md) I'm sure you do. I'm also sure you still have nightmares from trying to get the correct structure for your application. The thing is, just by modifying and adding a couple of sections your descriptor will be good to go.
+Do you remember how to [create your own app descriptor](../applications/app_descriptors.md)? Perfect! You just have to modify and add a couple of sections, and your descriptor will be good to go.
 
 So, your app descriptor for a normal app would be something like this:
 
@@ -114,11 +114,11 @@ So, your app descriptor for a normal app would be something like this:
 }
 ```
 
-This is perfect... if this app wasn't in Docker. But it is, and we need to modify the descriptor so it fits our necessities.
+This would be perfect... if this app wasn't in Docker. But it is, so let's modify the descriptor to fit our necessities.
 
 ### Declaring the use of a private image
 
-So, we need to declare that we're going to use a private image, which is somewhere else, and we need to give the system a way to access this resource. This is established in a piece of the JSON that looks like this:
+We need to declare that we're going to use a private image (which is somewhere else), and we need to give the system a way to access this resource. This is established in a piece of the JSON that looks like this:
 
 ```javascript
 {            
@@ -144,9 +144,7 @@ This is the bare minimum and, depending on the application, the only thing you n
 
 ### Passing arguments to the images
 
-Oh, but it's never that easy, isn't it. Your Docker app needs some arguments, and you are sure that we didn't think of _that_ situation, did we. Well, of course we did!
-
-To pass arguments to the docker images, use the **run\_arguments** attribute as in the following example:
+In case your app needs arguments to work, you can use the **run\_arguments** attribute to provide them, as in the following example:
 
 ```javascript
 {       
