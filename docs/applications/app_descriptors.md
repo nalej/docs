@@ -167,7 +167,7 @@ The different parameters for the **specs** option are:
 * **num\_replicas**, which is the number of replicas of this group that are going to be deployed. These replicas will appear as different instances in the system. By default it is set to 1.
 * **deployment\_selectors**, which is a collection of labels and values that is checked against the available clusters. Only those clusters with all the labels and values indicated by the deployment\_selectors are considered to be candidates.
 
-### Services
+## Services
 
 A service defines a component of the application. The elements that describe a service are:
 
@@ -261,7 +261,7 @@ Example:
 },
 ```
 
-## Using private images
+### Using private images
 
 In order to access private images, the user should provide the credentials for downloading them. To use them, add the following options to the service descriptor:
 
@@ -298,7 +298,7 @@ To pass arguments to the docker images, use the **run\_arguments** attribute as 
  },
 ```
 
-## Attaching storage to services
+### Attaching storage to services
 
 To attach storage to a given service, use the following construct:
 
@@ -322,6 +322,53 @@ Where **size** is the size of the storage we want to attach \(in bytes\), and th
 * **0**: ephemeral storage.
 * **1**: persistent storage.
 * **4**: Use persistent storage provided by the Nalej storage fabric. This will provide cluster-local persistence in the event of pod/node failure. This storage should be used for persistent applications on baremetal clusters.
+
+### Parameters
+
+Sometimes the services need some information that changes with each deployment. To achieve that, we can use **parameters**.
+
+The parameters are declared in the definition of the service, and defined after the groups section. A declaration of a parameter looks like this:
+
+```json
+"groups": [
+    {
+      "name": "example-group",
+      "services": [
+        {
+          "name": "example-service",
+          ...
+          "environment_variables": {
+            "URL": ""
+          }
+        }
+      ]
+    }
+  ],
+```
+
+In this example, **URL** is a parameter that has been declared but needs to be defined. This is done in a new *parameters* section.
+
+```json
+ "parameters": [
+    {
+      "name": "Example service URL",
+      "description": "URL needed for the service to work",
+      "path": "groups.0.services.0.environment_variables.URL",
+      "type": 4,
+      "category": 0
+    }
+  ]
+```
+
+Where:
+
+- **name** is a human-readable name for identifying this parameter. It cannot start with the word `NALEJ`.
+- **description** contains the function of the parameter.
+- **path** is the location of the parameter in this descriptor, in the form of `group.`+number of service group+`.services.`+number of service inside the service group+`.`+section where the parameter is declared+`.`+name of the parameter.
+- **type** classifies the parameter depending of the kind of data it has. It can be `0` (boolean), `1` (integer), `2` (float), `3` (enum), `4` (string) or `5` (password).
+- and lastly, **category** determines if the parameter is `0`=**basic** (which means that it needs to be filled every time the application is deployed) or `1`=**advanced** (reserved for low level configuration parameters).
+- If the type of the parameter is `3` (enum), there will be another component of this section, called **enumValues**, containing the values that are allowed for this parameter.
+- Finally, the **required** component indicates if the param must be filled to deploy an instance of the application. The default value is `true`. 
 
 ## Example
 
