@@ -79,9 +79,11 @@ Where:
 "inbound_net_interface": <inbound_iface_name>
 ```
 
-* Use **5** to indicate a rule that describes an outbound socket for connections between applications. This will mean that the "target service" will be able to connect to other applications through this rule using the predefined variable `NALEJ_OUTBOUND_[interface_name]`. When using this rule, the target port must be exposed on the target service description and the following field must be added to the rule definition:
+* Use **5** to indicate a rule that describes an outbound socket for connections between applications. This will mean that the "target service" will be able to connect to other applications through this rule using the predefined variable `NALEJ_OUTBOUND_[interface_name]`.
 
-  * **outbound\_network\_interface**: The name of the outbound network interface that will be linked to this rule.
+When using this type of rule, the target port must be exposed on the target service description and the following field must be added to the rule definition:
+
+* **outbound\_network\_interface**: The name of the outbound network interface that will be linked to this rule.
 
 ```javascript
 "access": 5,
@@ -127,7 +129,9 @@ On a descriptor, the user can define interfaces with the following properties:
 ]
 ```
 
-To know more about networking, check the Application Networking tutorial [here](../tutorials/appnetworking.md)
+
+
+To know more about networking, check the Application Networking tutorial [here](../tutorials/appnetworking.md).
 
 ## Service groups
 
@@ -211,11 +215,28 @@ Where:
 * **image** is the name of the docker image.
 * **specs** defines the specifications for the service. In it, **replicas** is the number of replicas of this service to be deployed. These replicas will be part of the same instance in the system \(unlike the replicas at service group level, which will be seen as different instances\).
 * **configs** defines the configuration files that the service may need. In it, **config\_file\_id** is the identifier of each specific configuration file, **content** is the content the configuration file should have, and **mount\_file** is the path where the file should be in the cluster, so the system can create it and fill it with what is in the **content** parameter.
-
 * **storage** defines the storage required by the image. It is an optional field.
 * **exposed\_ports** defines the ports that are exposed by the container.
 * **environment\_variables** specifies the environment variables required by the containers.
 * **labels** define the labels of the service. The **app** label is mandatory.
+
+Also, for each service there is a predefined variable, starting with `NALEJ_SERV_[service_name]`. This variable contains the internal name of the service, and will allow us to access a service from others (given that we have the appropriate rules to do so).
+
+An example of a `NALEJ_SERV_` variable would be:
+
+```json
+NALEJ_SERV_SIMPLE-MYSQL=simple-mysql-8a430-08eee-d2e0a.service.nalej
+```
+
+And an example of its usage would be:
+
+```json
+"environment_variables": {
+	"WORDPRESS_DB_HOST": "NALEJ_SERV_SIMPLEMYSQL:3306"
+}
+```
+
+
 
 Example:
 
