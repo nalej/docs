@@ -163,7 +163,7 @@ Where:
 
 The different parameters for the **specs** option are:
 
-* **multicluster\_replica**, which is a boolean that states whether the replicas will be deployed in the same cluster \(=_false_\), or on the contrary they will be deployed into any available cluster \(=_true_\). By default it is set to _false_.
+* **multicluster\_replica**, which is a boolean that states whether the service group will be deployed only in this cluster \(=_false_\), or on the contrary it will be deployed into all clusters available \(=_true_\). By default it is set to _false_.
 * **num\_replicas**, which is the number of replicas of this group that are going to be deployed. These replicas will appear as different instances in the system. By default it is set to 1.
 * **deployment\_selectors**, which is a collection of labels and values that is checked against the available clusters. Only those clusters with all the labels and values indicated by the deployment\_selectors are considered to be candidates.
 
