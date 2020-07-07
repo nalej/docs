@@ -22,7 +22,7 @@ The system supports specifying the application structure in the form of an appli
  }
 ```
 
-An application descriptor contains a **name**, a set of **labels** that will be used in the future to facilitate queries, and two main sections: **rules** and **service groups**. The _rules_ define how the different services are connected among themselves, and each _service group_ contains a set of services that need to be deployed in order for the application to work properly.
+An application descriptor contains a **name**, a set of **labels** that will be used in the future to facilitate queries, and two main sections: **rules** and **service groups**. The _rules_ define how the different services are connected among themselves, and each _service group_ contains a set of services that need to be deployed for the application to work properly.
 
 ## Rules
 
@@ -40,7 +40,7 @@ The rule entity determines the connectivity of a service with the others. To spe
 
 Where:
 
-* **name** is the user friendly name of the rule.
+* **name** is the user-friendly name of the rule.
 * **target\_service\_group\_name** contains the name of the group where the service to be accessed can be found.
 * **target\_service\_name** contains the name of the service to be accessed.
 * **target\_port** contains the port that is affected by the current rule.
@@ -79,7 +79,7 @@ Where:
 "inbound_net_interface": <inbound_iface_name>
 ```
 
-* Use **5** to indicate a rule that describes an outbound socket for connections between applications. This will mean that the "target service" will be able to connect to other applications through this rule using the predefined variable `NALEJ_OUTBOUND_[interface_name]` . When using this rule, the target port must be exposed on the target service description and the following field must be added to the rule definition:
+* Use **5** to indicate a rule that describes an outbound socket for connections between applications. This will mean that the "target service" will be able to connect to other applications through this rule using the predefined variable `NALEJ_OUTBOUND_[interface_name]`. When using this rule, the target port must be exposed on the target service description and the following field must be added to the rule definition:
 
   * **outbound\_network\_interface**: The name of the outbound network interface that will be linked to this rule.
 
@@ -116,10 +116,9 @@ On a descriptor, the user can define interfaces with the following properties:
 ]
 ```
 
-* **outbound\_net\_interfaces**: An array of outbound network interfaces. Each of them are described with the following properties:
-
-  * **name**: The name of the outbound network interface. Must be unique between inbound/outbound/ network interfaces.
-  * **required**: Boolean flag that indicates if the outbound connection is required by the application. This means that the outbound must be connected on deployment time and the connection cannot be safely removed \(the user can force it through a parameter\). Default value is *false*.
+* **outbound\_net\_interfaces**: An array of outbound network interfaces. Each of them is described with the following properties:
+* **name**: The name of the outbound network interface. Must be unique between inbound/outbound/ network interfaces.
+  * **required**: Boolean flag that indicates if the outbound connection is required by the application. This means that the outbound must be connected on deployment time and the connection cannot be safely removed \(the user can force it through a parameter\). The default value is *false*.
 
 ```javascript
 "outbound_net_interfaces": [
@@ -132,7 +131,7 @@ To know more about networking, check the Application Networking tutorial [here](
 
 ## Service groups
 
-A service group is a collection of services that can be replicated together. Usually, a service group specifies highly coupled applications, like Wordpress and MySQL. A service group is defined by a **group name**, a list of **services** and **deployment specifications**.
+A service group is a collection of services that can be replicated together. Usually, a service group specifies highly coupled applications, like WordPress and MySQL. A service group is defined by a **group name**, a list of **services**, and **deployment specifications**.
 
 The structure of a service group is as follows:
 
@@ -163,8 +162,8 @@ Where:
 
 The different parameters for the **specs** option are:
 
-* **multicluster\_replica**, which is a boolean that states whether the service group will be deployed only in this cluster \(=_false_\), or on the contrary it will be deployed into all clusters available \(=_true_\). By default it is set to _false_.
-* **num\_replicas**, which is the number of replicas of this group that are going to be deployed. These replicas will appear as different instances in the system. By default it is set to 1.
+* **multicluster\_replica**, which is a boolean that states whether the service group will be deployed only in this cluster \(=_false_\), or on the contrary it will be deployed into all clusters available \(=_true_\). By default, it is set to _false_.
+* **num\_replicas**, which is the number of replicas of this group to be deployed. These replicas will appear as different instances in the system. By default, it is set to 1.
 * **deployment\_selectors**, which is a collection of labels and values that is checked against the available clusters. Only those clusters with all the labels and values indicated by the deployment\_selectors are considered to be candidates.
 
 ## Services
@@ -263,7 +262,7 @@ Example:
 
 ### Using private images
 
-In order to access private images, the user should provide the credentials for downloading them. To use them, add the following options to the service descriptor:
+To access private images, the user should provide the credentials for downloading them. To use them, add the following options to the service descriptor:
 
 ```javascript
 {
@@ -283,7 +282,7 @@ Where:
 
 * **username** and **password** are the credentials to log into the remote repository.
 * **email** is the email of the user. Depending on the type of remote repository, use the email of the user required to log into the system.
-* **docker\_repository** contains the HTTPS url of the remote repository.
+* **docker\_repository** contains the HTTPS URL of the remote repository.
 
 ### Passing arguments to the images
 
@@ -321,7 +320,7 @@ Where **size** is the size of the storage we want to attach \(in bytes\), and th
 
 * **0**: ephemeral storage.
 * **1**: persistent storage.
-* **4**: Use persistent storage provided by the Nalej storage fabric. This will provide cluster-local persistence in the event of pod/node failure. This storage should be used for persistent applications on baremetal clusters.
+* **4**: Use persistent storage provided by the Nalej storage fabric. This will provide cluster-local persistence in the event of pod/node failure. This storage should be used for persistent applications on bare-metal clusters.
 
 ### Parameters
 
@@ -365,14 +364,14 @@ Where:
 - **name** is a human-readable name for identifying this parameter. It cannot start with the word `NALEJ`.
 - **description** contains the function of the parameter.
 - **path** is the location of the parameter in this descriptor, in the form of `group.`+number of service group+`.services.`+number of service inside the service group+`.`+section where the parameter is declared+`.`+name of the parameter.
-- **type** classifies the parameter depending of the kind of data it has. It can be `0` (boolean), `1` (integer), `2` (float), `3` (enum), `4` (string) or `5` (password).
-- and lastly, **category** determines if the parameter is `0`=**basic** (which means that it needs to be filled every time the application is deployed) or `1`=**advanced** (reserved for low level configuration parameters).
+- **type** classifies the parameter depending on the kind of data it has. It can be `0` (boolean), `1` (integer), `2` (float), `3` (enum), `4` (string) or `5` (password).
+- and lastly, **category** determines if the parameter is `0`=**basic** (which means that it needs to be filled every time the application is deployed) or `1`=**advanced** (reserved for low-level configuration parameters).
 - If the type of the parameter is `3` (enum), there will be another component of this section, called **enumValues**, containing the values that are allowed for this parameter.
 - Finally, the **required** component indicates if the param must be filled to deploy an instance of the application. The default value is `true`. 
 
 ## Example
 
-As an example, the following descriptor contains an application composed of mysql and wordpress.
+As an example, the following descriptor contains an application composed of MySQL and WordPress.
 
 ```javascript
 {
