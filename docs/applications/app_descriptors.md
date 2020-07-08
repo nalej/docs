@@ -59,7 +59,7 @@ Where:
 ```
 
 * Use **2** to signal that the service is publicly available.
-* Use **3** to signal that the service is available only for some devices.
+* Use **3** to signal that the service is available only for one or more device groups. This type of rule requires that the device groups are already created before deploying an instance.
 
 ```javascript
 "access": 3,
@@ -81,9 +81,7 @@ Where:
 
 * Use **5** to indicate a rule that describes an outbound socket for connections between applications. This will mean that the "target service" will be able to connect to other applications through this rule using the predefined variable `NALEJ_OUTBOUND_[interface_name]`.
 
-When using this type of rule, the target port must be exposed on the target service description and the following field must be added to the rule definition:
-
-* **outbound\_network\_interface**: The name of the outbound network interface that will be linked to this rule.
+When using this type of rule, the target port must be exposed on the target service description and the rule definition must have the field **outbound\_network\_interface**, which contains the name of the outbound network interface that will be linked to this rule.
 
 ```javascript
 "access": 5,
@@ -93,15 +91,37 @@ When using this type of rule, the target port must be exposed on the target serv
 Example:
 
 ```javascript
-  "rules": [
+{
+...
+  //Defining the interface
+"outbound_net_interfaces": [{"name": "plelastic", "required": true}],
+...
+  
+"rules": [
     {
-      "name": "allow access to wordpress",
-      "target_service_group_name": "g1",
-      "target_service_name": "2",
-      "target_port": 80,
-      "access": 2
+      //Assigning it to a rule 
+      "name": "Elastic Outbound Rule",
+      "target_service_group_name": "gateway",
+      "target_service_name": "localalerts",
+      "target_port": 9200,
+      "outbound_net_interface":"plelastic",
+      "access": 5
     }
   ],
+...
+
+"services": [
+  {
+    ...
+    "run_arguments": [
+      ...
+      //Using it in the definition of a service
+      "--ESAddress",
+      "$(NALEJ_OUTBOUND_PLELASTIC):9200",
+      ...
+    ],
+...
+}
 ```
 
 ## Network interfaces
