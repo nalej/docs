@@ -331,7 +331,7 @@ Where **size** is the size of the storage we want to attach \(in bytes\), and th
 * **1**: persistent storage.
 * **4**: Use persistent storage provided by the Nalej storage fabric. This will provide cluster-local persistence in the event of pod/node failure. This storage should be used for persistent applications on bare-metal clusters.
 
-### Parameters
+## Parameters
 
 Sometimes the services need some information that changes with each deployment. To achieve that, we can use **parameters**.
 
@@ -402,8 +402,6 @@ And an example of its usage would be:
 }
 ```
 
-
-
 #### `NALEJ_OUTBOUND_[interface_name]`
 
 This variable contains the internal address of an outbound socket for connections between applications.  It is used only when there is a type **5** rule in the descriptor, that is, a rule declaring that a service in the descriptor has an outbound network interface. 
@@ -420,8 +418,6 @@ An example of its use would be as an argument to be passed to the docker image, 
 ```
 
 In this case, the descriptor must contain a declaration of the outbound network interface, which must be called `plelastic`, and then a rule authorizing the outbound connection for the service this `run_arguments` section belongs to.
-
-
 
 #### `NALEJ_DG_SHARED_SECRETS`
 
