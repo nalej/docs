@@ -25,7 +25,7 @@ nav:
       - Deployment, management and removal: applications/applications-1.md
       - Application descriptor: applications/app_descriptors.md
       - The Application Graph: applications/appdiagram.md
-	  - Application networking: applications/appnetworking.md
+      - Application networking: applications/appnetworking.md
     - Logs:
       - Unified Logging: logs/unified_logging.md
     - Tutorials:
