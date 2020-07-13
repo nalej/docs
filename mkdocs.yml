@@ -25,13 +25,13 @@ nav:
       - Deployment, management and removal: applications/applications-1.md
       - Application descriptor: applications/app_descriptors.md
       - The Application Graph: applications/appdiagram.md
+	  - Application networking: application/appnetworking.md
     - Logs:
       - Unified Logging: logs/unified_logging.md
     - Tutorials:
       - Initial login in Nalej: tutorials/initiallogin.md
       - Adding users in the system: tutorials/addingusers.md
       - Application deployment: tutorials/appdeployment_wclusters.md
-      - Application networking: tutorials/appnetworking.md
       - Docker Compose application: tutorials/dockerappinnalej.md
       - Application with devices: tutorials/appwithdevices.md
       - Installing Nalej SDK in a device: tutorials/installingsdkindevice.md

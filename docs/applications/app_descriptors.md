@@ -104,24 +104,10 @@ Example:
       "target_service_group_name": "gateway",
       "target_service_name": "localalerts",
       "target_port": 9200,
-      "outbound_net_interface":"plelastic",
-      "access": 5
+      "access": 5,
+      "outbound_net_interface":"plelastic"
     }
-  ],
-...
-
-"services": [
-  {
-    ...
-    "run_arguments": [
-      ...
-      //Using it in the definition of a service
-      "--ESAddress",
-      "$(NALEJ_OUTBOUND_PLELASTIC):9200",
-      ...
-    ],
-...
-}
+  ]
 ```
 
 ## Network interfaces
@@ -239,24 +225,6 @@ Where:
 * **exposed\_ports** defines the ports that are exposed by the container.
 * **environment\_variables** specifies the environment variables required by the containers.
 * **labels** define the labels of the service. The **app** label is mandatory.
-
-Also, for each service there is a predefined variable, starting with `NALEJ_SERV_[service_name]`. This variable contains the internal name of the service, and will allow us to access a service from others (given that we have the appropriate rules to do so).
-
-An example of a `NALEJ_SERV_` variable would be:
-
-```json
-NALEJ_SERV_SIMPLE-MYSQL=simple-mysql-8a430-08eee-d2e0a.service.nalej
-```
-
-And an example of its usage would be:
-
-```json
-"environment_variables": {
-	"WORDPRESS_DB_HOST": "NALEJ_SERV_SIMPLEMYSQL:3306"
-}
-```
-
-
 
 Example:
 
@@ -409,6 +377,57 @@ Where:
 - and lastly, **category** determines if the parameter is `0`=**basic** (which means that it needs to be filled every time the application is deployed) or `1`=**advanced** (reserved for low-level configuration parameters).
 - If the type of the parameter is `3` (enum), there will be another component of this section, called **enumValues**, containing the values that are allowed for this parameter.
 - Finally, the **required** component indicates if the param must be filled to deploy an instance of the application. The default value is `true`. 
+
+
+
+### Predefined environment variables
+
+The platform automatically generates several environment variables that can be used for referring to certain information in the descriptor.
+
+#### `NALEJ_SERV_[service_name]`
+
+For each service there is a predefined variable, starting with `NALEJ_SERV_[service_name]`. This variable contains the internal name of the service, and will allow us to access a service from others (given that we have the appropriate rules to do so).
+
+An example of a `NALEJ_SERV_` variable would be:
+
+```json
+NALEJ_SERV_SIMPLE-MYSQL=simple-mysql-8a430-08eee-d2e0a.service.nalej
+```
+
+And an example of its usage would be:
+
+```json
+"environment_variables": {
+	"WORDPRESS_DB_HOST": "NALEJ_SERV_SIMPLEMYSQL:3306"
+}
+```
+
+
+
+#### `NALEJ_OUTBOUND_[interface_name]`
+
+This variable contains the internal address of an outbound socket for connections between applications.  It is used only when there is a type **5** rule in the descriptor, that is, a rule declaring that a service in the descriptor has an outbound network interface. 
+
+An example of its use would be as an argument to be passed to the docker image, like so:
+
+```json
+"run_arguments": [
+      ...
+      "--ESAddress",
+      "$(NALEJ_OUTBOUND_PLELASTIC):9200",
+      ...
+    ]
+```
+
+In this case, the descriptor must contain a declaration of the outbound network interface, which must be called `plelastic`, and then a rule authorizing the outbound connection for the service this `run_arguments` section belongs to.
+
+
+
+#### `NALEJ_DG_SHARED_SECRETS`
+
+This variable is used when implementing a JWT authentication for the devices in a device group. It contains the shared secrets so they aren't in plain text in the descriptor.
+
+
 
 ## Example
 
