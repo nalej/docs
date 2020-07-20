@@ -1,4 +1,6 @@
-# Session 2: Rules and connections
+# Descriptor Creation Course
+
+## Session 2: Rules and connections
 
 The application we're going to be working with in this session is the Pinger ([pinger.json](desc101-pinger.json)). Please download the file and work on it to complete the exercise below.
 

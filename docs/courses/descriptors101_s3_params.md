@@ -1,4 +1,6 @@
-# Session 3: Parameters
+# Descriptor Creation Course
+
+## Session 3: Parameters
 
 The application we're going to be working with in this session is the Metric Exposer ([metric-exposer.json](desc101-metric-exposer.json)). Please download the file and work on it to complete the exercise below.
 
