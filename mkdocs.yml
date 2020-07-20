@@ -36,6 +36,10 @@ nav:
       - Application with devices: tutorials/appwithdevices.md
       - Installing Nalej SDK in a device: tutorials/installingsdkindevice.md
       - How to use a Raspberry Pi as a device: tutorials/endtoendtutorial.md
+    - Descriptor creation course:
+      - Session 1 - services: courses/descriptors101_s1_services.md-
+      - Session 2 - rules and connections: courses/descriptors101_s2_rules.md
+      - Session 3 - parameters: courses/descriptors101_s3_params.md
     - Protocol buffer documentation: 'https://protodocs.nalej.com/protodoc/index.html'
 
 theme:
