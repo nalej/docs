@@ -1,0 +1,57 @@
+{
+  "name": "Pinger",
+  "labels": {
+    "app": "ping"
+  },
+  "rules": [
+    {
+      "name": "Ping inwards",
+      "target_service_group_name": "ping-group",
+      "target_service_name": "ping",
+      "target_port": 666,
+      "access": 4,
+      "inbound_net_interface": "in"
+    },
+    //create the rule for the ping outwards
+  ],
+  "inbound_net_interfaces": [
+    {"name": "in"}
+  ],
+  //create the definition of the outbound interface
+  "groups": [
+    {
+      "name": "ping-group",
+      "services": [
+        {
+          "name": "ping",
+          "image": "nalej/pinger:v1.0.0",
+          "specs": {
+            "replicas": 1
+          },
+          "environment_variables": {
+            "PING_ADDRESS": "NALEJ_OUTBOUND_OUT"
+          },
+          "exposed_ports": [
+            {
+              "name": "to-create-proxy",
+              "internal_port": 666,
+              "exposed_port": 666
+            }
+          ],
+          "labels": {
+            "app": "ping"
+          }
+        }
+      ]
+    }
+  ],
+  "parameters": [
+    {
+      "name": "Ping address",
+      "description": "Ping destination address",
+      "path": "groups.0.services.0.environment_variables.PING_ADDRESS",
+      "type": 4,
+      "category": 0
+    }
+  ]
+}

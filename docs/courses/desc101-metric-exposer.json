@@ -1,0 +1,43 @@
+{
+  "name": "Metric-exposer",
+  "labels": {
+    "app": "prometheus"
+  },
+  "groups": [
+    {
+      "name": "metric-exposer-group",
+      "services": [
+        {
+          "name": "metricexposer",
+          "image": "nalej/metrics-exposer:v1.0.0",
+          "specs": {
+            "replicas": 1
+          },
+          "labels": {
+            "app": "prometheus"
+          },
+          "environment_variables": {
+            "RW_URL": "",
+            "RW_USERNAME": "",
+            "RW_PASSWORD":  "",
+            "SCRAPE_METRICS_PATH": "/metrics",
+            "SCRAPE_TARGET_HOST":  "",
+            "SCRAPE_CA_FILE":  "",
+            "SCRAPE_CERT_FILE":  "",
+            "SCRAPE_KEY_FILE":  ""
+          }
+        }
+      ]
+    }
+  ],
+  "parameters": [
+    {
+      "name": "Remote write URL",
+      "description": "Target URL for the remote write configuration",
+      "path": "groups.0.services.0.environment_variables.RW_URL",
+      "type": 4,
+      "category": 0
+    },
+    //define the rest of the parameters needed in this descriptor
+  ]
+}
