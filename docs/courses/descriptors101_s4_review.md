@@ -10,9 +10,7 @@ In this session we will use the skills that we learned before and complete a dro
 
 In this scenario there will be two main service groups: the **core** group, which will be in the cloud, and the **gateway** group, which will be nearer the drones (it can be deployed in a machine inside a truck, for example, so that truck can follow the drones' flight). We can deploy different gateways, so that drones can connect to the best one in terms of latency. This scenario allows bidirectional communication between the drones and the supporting services, and the information will be stored in ElasticSearch and displayed via Kibana.
 
-![](../img/courses-desc101-drone-graph.png)
-
-
+![DroneDemo graph](../img/courses_desc101_drone_graph.png)
 
 ### Data Flow 
 
