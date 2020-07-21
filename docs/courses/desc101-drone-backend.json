@@ -1,0 +1,122 @@
+{
+  "name": "DroneBackendLocal",
+  "labels": {
+    "app": "drone"
+  },
+//do you need an inbound or outbound socket?
+  "rules": [
+    {
+      "name": "Allow global alerts to access core mqtt",
+      //
+    },
+    {
+      "name": "Allow local alerts to access gateway mqtt",
+      //
+    },
+    {
+      "name": "Allow local alerts to access core mqtt",
+      //
+    },
+    {
+      "name": "allow access to mqtt from device groups",
+      //
+    },
+    {
+      "name": "Elastic Outbound Rule",
+      //
+    }
+  ],
+  "groups": [
+    {
+      "name": "core",
+      "services": [
+        {
+          "name": "globalalerts",
+          "image": "nalejdemo/global-alerts:v0.0.1",
+          "run_arguments": [
+            "run",
+            "--debug",
+            "--GlobalMQTTAddress",
+            "$(NALEJ_SERV_COREMQTT):1883",
+            "--GlobalMQTTUsername",
+            "globalalerts",
+            "--GlobalMQTTPassword",
+            "$(NALEJ_SERV_GLOBALALERTS)"
+          ],
+         //there is one replica of this service and it deploys after coremqtt
+        },
+        {
+          "name": "coremqtt",
+		  "image": "nalejdemo/vernemq-erlio:1.10",
+         //there is one replica of this service
+		 //the port (internal and exposed) is tcp 1883
+		 //there are two variables needed:
+		 //"NALEJ_TRUSTED_USER": "globalalerts",
+         //"NALEJ_TRUSTED_PASSWORD": "NALEJ_SERV_GLOBALALERTS"
+        }
+      ]
+    },
+    {
+      "name": "gateway",
+      "services": [
+        {
+          "name": "localalerts",
+          "image": "nalejdemo/local-alerts:v0.0.2",
+          "run_arguments": [
+            "run",
+            "--debug",
+            "--DroneMQTTAddress",
+            "$(NALEJ_SERV_MQTT):1883",
+            "--DroneMQTTUsername",
+            "localalerts",
+            "--DroneMQTTPassword",
+            "$(NALEJ_SERV_LOCALALERTS)",
+            "--GlobalMQTTAddress",
+            "$(NALEJ_SERV_COREMQTT):1883",
+            "--GlobalMQTTUsername",
+            "globalalerts",
+            "--GlobalMQTTPassword",
+            "$(NALEJ_SERV_GLOBALALERTS)",
+            "--ESAddress",
+            "$(NALEJ_OUTBOUND_PLELASTIC):9200",
+            "--clientID",
+            "$(CLUSTER_ID)-localalerts"
+          ],
+          "specs": {
+            "replicas": 1
+          },
+          "deploy_after": [
+            "mqtt"
+          ],
+          "exposed_ports": [
+            {
+              "name": "default",
+              "internal_port": 40123,
+              "exposed_port": 40123
+            }
+          ]
+        },
+        {
+          "name": "mqtt",
+		  "image": "nalejdemo/vernemq-erlio:1.10",
+         //there is one replica of this service 
+		 //the port is the same as in coremqtt
+		 //the variables are again NALEJ_TRUSTED_USER and PASSWORD but the values are
+		 //localalerts and
+		 //NALEJ_SERV_LOCALALERTS
+        }
+      ],
+     //if there were replicas of this service group, they could be deployed into any cluster available.
+    }
+  ],
+  "parameters":[
+    {
+      "name": "device_group",
+      "description": "Authorized device group",
+      "path": "rules.3.device_group_names.0",
+      "type": 4,
+      "category": 0,
+      "required": true
+    }
+  ]
+}

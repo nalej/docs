@@ -18,6 +18,9 @@ The system supports specifying the application structure in the form of an appli
                 ...
             ]
         }
+    ],
+    "parameters":[
+      ...
     ]
  }
 ```
@@ -90,7 +93,7 @@ When using this type of rule, the target port must be exposed on the target serv
 
 Example:
 
-```javascript
+```json
 {
 ...
   //Defining the interface
@@ -196,6 +199,7 @@ A service defines a component of the application. The elements that describe a s
       ],
     "storage": [
         {
+          	"size": <available_space_for_service>,
             "mount_path": <path_to_be_mounted>
         }
     ],
@@ -203,7 +207,13 @@ A service defines a component of the application. The elements that describe a s
         {
             "name": <port_name>,
             "internal_port": <port_number>,
-            "exposed_port": <port_number>
+            "exposed_port": <port_number>,
+          	"endpoints":[
+          		{
+          			"type": <type_of_endpoint>,
+          			"path": <path_to_be_accessed>
+        			}
+          	]
         }
     ],
     "environment_variables": {
@@ -217,12 +227,12 @@ A service defines a component of the application. The elements that describe a s
 
 Where:
 
-* **service\_name** is the name of the service.
+* **name** is the name of the service.
 * **image** is the name of the docker image.
 * **specs** defines the specifications for the service. In it, **replicas** is the number of replicas of this service to be deployed. These replicas will be part of the same instance in the system \(unlike the replicas at service group level, which will be seen as different instances\).
 * **configs** defines the configuration files that the service may need. In it, **config\_file\_id** is the identifier of each specific configuration file, **content** is the content the configuration file should have, and **mount\_file** is the path where the file should be in the cluster, so the system can create it and fill it with what is in the **content** parameter.
 * **storage** defines the storage required by the image. It is an optional field.
-* **exposed\_ports** defines the ports that are exposed by the container.
+* **exposed\_ports** defines the ports that are exposed by the container. This is an Enum variable with each port, which has its **name**, **internal port**, **exposed port** and, optionally, the list of **endpoints** for it. An endpoint is defined by its **type** (currently, the platform only supports type `2`, for a webpage to be exposed on the port), and the **path** to be accessed from it.
 * **environment\_variables** specifies the environment variables required by the containers.
 * **labels** define the labels of the service. The **app** label is mandatory.
 
@@ -431,68 +441,38 @@ As an example, the following descriptor contains an application composed of MySQ
 
 ```javascript
 {
-  "name": "Sample application",
+  "name": "Simple wordpress",
+  "description": "Wordpress with a mySQL database"
   "labels": {
-    "app": "simple-app"
+    "app": "simple-wordpress-mysql"
   },
   "rules": [
     {
       "name": "allow access to wordpress",
-      "target_service_group_name": "g1",
-      "target_service_name": "2",
+      "target_service_group_name": "group1",
+      "target_service_name": "simplewordpress",
       "target_port": 80,
       "access": 2
+    },
+    {
+      "name": "allow access to mysql",
+      "target_service_group_name": "group1",
+      "target_service_name": "simplemysql",
+      "target_port": 3306,
+      "access": 1,
+      "auth_service_group_name": "group1",
+      "auth_services": [
+        "simplewordpress"
+        ]
     }
   ],
   "groups": [
     {
-      "name": "g1",
+      "name": "group1",
       "services": [
         {
-          "name": "simple-mysql",
-          "image": "mysql:5.6",
-          "specs": {
-            "replicas": 1
-          },
-          "configs": [
-        {
-          "config_file_name": "saludo",
-          "content": "SG9sYQo=",
-          "mount_path": "/config/saludo.conf"
-        },
-        {
-          "config_file_name": "despedida",
-          "content": "QWRpb3MK",
-          "mount_path": "/config/despedida.conf"
-        }
-      ],
-          "storage": [
-            {
-              "size": 104857600,
-              "mount_path": "/tmp"
-            }
-          ],
-          "exposed_ports": [
-            {
-              "name": "mysqlport",
-              "internal_port": 3316,
-              "exposed_port": 3316
-            }
-          ],
-          "environment_variables": {
-            "MYSQL_ROOT_PASSWORD": "pass"
-          },
-          "labels": {
-            "app": "simple-mysql",
-            "component": "simple-app"
-          }
-        },
-        {
-          "name": "simple-wordpress",
+          "name": "simplewordpress",
           "image": "wordpress:5.0.0",
-          "specs": {
-            "replicas": 1
-          },
           "storage": [
             {
               "size": 104857600,
@@ -513,21 +493,42 @@ As an example, the following descriptor contains an application composed of MySQ
             }
           ],
           "environment_variables": {
-            "WORDPRESS_DB_HOST": "SIMPLE-MYSQL:3316",
-            "WORDPRESS_DB_PASSWORD": "pass"
+            "WORDPRESS_DB_HOST": "NALEJ_SERV_SIMPLEMYSQL:3306",
+            "WORDPRESS_DB_PASSWORD": "root"
           },
+          "deploy_after": [
+            "simplemysql"
+          ],
           "labels": {
             "app": "simple-wordpress",
             "component": "simple-app"
+          }
+        },
+        {
+          "name": "simplemysql",
+          "image": "mysql:5.6",
+          "storage": [
+            {
+              "size": 104857600,
+              "mount_path": "/tmp"
+            }
+          ],
+          "exposed_ports": [
+            {
+              "name": "mysqlport",
+              "internal_port": 3306,
+              "exposed_port": 3306
+            }
+          ],
+          "environment_variables": {
+            "MYSQL_ROOT_PASSWORD": "root"
           },
-          "deploy_after": [
-            "1"
-          ]
+          "labels": {
+            "app": "simple-mysql",
+            "component": "simple-app"
+          }
         }
-      ],
-      "specs": {
-        "replicas": 1
-      }
+      ]
     }
   ]
 }

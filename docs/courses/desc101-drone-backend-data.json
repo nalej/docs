@@ -1,0 +1,98 @@
+{
+  "name": "DroneBackendES",
+  "labels": {
+    "app": "drone"
+  },
+  "inbound_net_interfaces": [
+	  {
+		  "name": "elastic"
+		  }
+	  ],
+  "rules": [
+    {
+      "name": "Allow public access to kibana",
+      "target_service_group_name": "core",
+      "target_service_name": "kibana",
+      "target_port": 5601,
+      "access": 2
+    },
+    {
+      "name": "Allow kibana access to elastic",
+      "target_service_group_name": "core",
+      "target_service_name": "elastic",
+      "target_port": 9200,
+      "access": 1,
+      "auth_service_group_name": "core",
+      "auth_services": [
+        "kibana"
+      ]
+    },
+    {
+      "name": "Elastic Search Inbound Rule",
+      "target_service_group_name": "core",
+      "target_service_name": "elastic",
+      "target_port": 9200,
+      "access": 4,
+      "inbound_net_interface":"elastic"
+    }
+  ],
+  "groups": [
+    {
+      "name": "core",
+      "services": [
+        {
+          "name": "kibana",
+          "image": "docker.elastic.co/kibana/kibana:6.4.2",
+          "specs": {
+            "replicas": 1
+          },
+          "exposed_ports": [
+            {
+              "name": "public",
+              "internal_port": 5601,
+              "exposed_port": 5601,
+              "endpoints": [
+                {
+                  "type": 2,
+                  "path": "/"
+                }
+              ]
+            }
+          ],
+          "environment_variables": {
+            "ELASTICSEARCH_URL": "http://NALEJ_SERV_ELASTIC:9200"
+          },
+          "deploy_after": [
+            "elastic"
+          ]
+        },
+        {
+          "name": "elastic",
+          "image": "docker.elastic.co/elasticsearch/elasticsearch:6.4.2",
+          "storage": [
+            {
+              "size": 104857600,
+              "mount_path": "/usr/share/elasticsearch/data"
+            }
+          ],
+          "specs": {
+            "replicas": 1
+          },
+          "exposed_ports": [
+            {
+              "name": "elasticport",
+              "internal_port": 9200,
+              "exposed_port": 9200
+            }
+          ],
+          "environment_variables": {
+            "cluster.name": "elastic-cluster",
+            "bootstrap.memory_lock": "true",
+            "ES_JAVA_OPTS": "-Xms512m -Xmx512m",
+            "discovery.type": "single-node"
+          }
+        }
+      ]
+    }
+  ]
+}

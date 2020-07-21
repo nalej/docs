@@ -1,0 +1,74 @@
+{
+  "name": "Virtual-Drone",
+  "description": "Virtual drone for the drone demo",
+  "labels": {
+    "app": "drone"
+  },
+  "groups": [
+    {
+      "name": "dronegroup",
+      "services": [
+        {
+          "name": "drone",
+          "description": "Simulated drone",
+          "image": "nalej/drone:v0.0.2",
+          "environment_variables": {
+            "NALEJ_PLATFORM": "platform",
+            "ORGANIZATION_ID": "org",
+            "DEVICE_GROUP_NAME": "drone",
+            "DEVICE_GROUP_ID": "groupId",
+            "DEVICE_GROUP_API_KEY": "API-KEY"
+          },
+          "specs": {
+            "replicas": 1
+          }
+        }
+      ],
+      "specs": {
+        "replicas": 1
+      }
+    }
+  ],
+  "parameters":[
+    {
+      "name":"platform",
+      "description": "platform url",
+      "path":"groups.0.services.0.environment_variables.NALEJ_PLATFORM",
+      "type": 4,
+      "category":0,
+      "required": true
+    },
+    {
+      "name":"organizationID",
+      "description": "organization identifier",
+      "path":"groups.0.services.0.environment_variables.ORGANIZATION_ID",
+      "type": 4,
+      "category":0,
+      "required": true
+    },
+    {
+      "name":"deviceGroupName",
+      "description": "device group name",
+      "path":"groups.0.services.0.environment_variables.DEVICE_GROUP_NAME",
+      "type": 4,
+      "category":0,
+      "required": false
+    },
+    {
+      "name":"deviceGroupID",
+      "description": "device group identifier",
+      "path":"groups.0.services.0.environment_variables.DEVICE_GROUP_ID",
+      "type": 4,
+      "category":0,
+      "required": true
+    },
+    {
+      "name":"deviceGroupAPIKEY",
+      "description": "device group API key",
+      "path":"groups.0.services.0.environment_variables.DEVICE_GROUP_API_KEY",
+      "type": 4,
+      "category":0,
+      "required": true
+    }
+  ]
+}
