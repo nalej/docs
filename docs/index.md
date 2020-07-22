@@ -22,7 +22,7 @@ Infrastructure management, with the Inventory as its main feature. Dive into thi
 
 All the information related to cluster monitoring will be available in this section. There is also a tutorial on how to install an application cluster in your system.
 
-## [Devices](devices-1.md)
+## [Devices](devices/devices-1.md)
 
 Everything you need to know about device management and support is in this section.
 

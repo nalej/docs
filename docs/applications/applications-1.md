@@ -1,7 +1,3 @@
-
-
-
-
 # Application deployment, management and removal
 
 This section will have all the documents related to app deployment, management and removal. You will also find what you need about application descriptors: what they are, how to create one, and how to use one in the system.
@@ -227,7 +223,7 @@ Using the flag `--connections` you will be able to describe the connections to o
     --connections <outbound_iface_name>,<target_inst_id>,<target_inbound_iface_name>#...
 ```
 
-To know more about connections and networking, check the Application Networking tutorial [here](../tutorials/appnetworking.md).
+To know more about connections and networking, check the Application Networking tutorial [here](appnetworking.md).
 
 #### Web Interface
 

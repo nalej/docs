@@ -140,7 +140,7 @@ On a descriptor, the user can define interfaces with the following properties:
 
 
 
-To know more about networking, check the Application Networking tutorial [here](../tutorials/appnetworking.md).
+To know more about networking, check the Application Networking tutorial [here](appnetworking.md).
 
 ## Service groups
 

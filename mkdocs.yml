@@ -36,6 +36,7 @@ nav:
       - Application with devices: tutorials/appwithdevices.md
       - Installing Nalej SDK in a device: tutorials/installingsdkindevice.md
       - How to use a Raspberry Pi as a device: tutorials/endtoendtutorial.md
+      - MQTT, and what we use it for: tutorials/mqtt.md
     - Courses:
       - Descriptor creation - 1 - services: courses/descriptors101_s1_services.md
       - Descriptor creation - 2 - rules and connections: courses/descriptors101_s2_rules.md

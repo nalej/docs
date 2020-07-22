@@ -18,13 +18,13 @@ We are using a custom plugin for authentication. Its main functionality is to us
 
 Let's see a little example of an application that uses MQTT to connect a device with an application.
 
-![App instance diagram](../.gitbook/assets/mqtt_example_appinstance_diagram.png)
+![App instance diagram](../img/tut_mqtt_example_appinstance_diagram.png)
 
 This is a simple example that has a thermometer functionality. It has a device that measures the temperature, and it sends the data to our application, which then displays it in a user-friendly manner. This example is thoroughly explained [in another tutorial](endtoendtutorial.md), and in case you want to try it yourself you only need a Raspberry Pi with a temperature sensor and a tinkering mood.
 
 So, the application flow is as follows:
 
-![Application flow](../.gitbook/assets/endtoend_app_flow.png)
+![Application flow](../img/tut_mqtt_endtoend_app_flow.png)
 
 The device sends the temperature to the MQTT server, and there is a little Elastic service (MQTTBeat) listening on that queue so it receives every message. It then receives the data and sends it to Elastic, which then processes it and sends the result to Kibana to be displayed.
 
