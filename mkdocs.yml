@@ -45,8 +45,13 @@ nav:
 
 theme:
   name: windmill
+  
 extra_css: 
   - stylesheets/extra.css
+  
 extra:
   version: 0.5.1
   logo: img/nalej_logo_white.png
+
+markdown_extensions:
+  - attr_list

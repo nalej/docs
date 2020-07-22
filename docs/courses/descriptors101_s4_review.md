@@ -163,7 +163,7 @@ An example for this would be the localalerts service:
 
 ## Exercises
 
-Download the following files: [drone-backend.json](desc101-drone-backend.json), [drone-backend-data.json](desc101-drone-backend-data.json), [drone.json](desc101-drone.json) and [kibana-dashboard.json](desc101-kibana-dashboard.json). We will be working with the first file, and you will need all of them to deploy the scenario in the platform.
+Download the following files: [drone-backend.json](desc101-drone-backend.json){target=_blank}, [drone-backend-data.json](desc101-drone-backend-data.json), [drone.json](desc101-drone.json) and [kibana-dashboard.json](desc101-kibana-dashboard.json). We will be working with the first file, and you will need all of them to deploy the scenario in the platform.
 
 ### Rules
 
