@@ -1,6 +1,4 @@
-# Descriptor Creation Course
-
-## Session 4: Knowledge review
+# Session 4: Knowledge review
 
 The application we're going to be working with in this session is the Drone Scenario. Please download the required files and work on them to complete the exercises below.
 
@@ -12,9 +10,9 @@ In this scenario there will be two main service groups: the **core** group, whic
 
 ![DroneDemo graph](../img/courses_desc101_drone_graph.png)
 
-### Data Flow 
+## Data Flow 
 
-#### Drones to GlobalAlerts
+### Drones to GlobalAlerts
 
 1. A **drone** sends an MQTT message with all the telemetry data to an MQTT broker of the gateways group.
 2. A **localalerts** **service** that is subscribed to that broker receives the message.
@@ -23,7 +21,7 @@ In this scenario there will be two main service groups: the **core** group, whic
 5. The **globalalerts** **service**, which is subscribed to the coreMQTT broker, receives the information of the drone acceleration.
 6. Now the **globalalerts** **service** can analyze the acceleration information.
 
-#### GlobalAlerts to Drones
+### GlobalAlerts to Drones
 
 7. The **globalalerts** **service** analyzes the acceleration data, creates a self destruction action, and sends that action in an MQTT message to the coreMQTT broker.
 8. The **localalerts** **service**, being subscribed to the coreMQTT broker, receives the action.
@@ -32,13 +30,13 @@ In this scenario there will be two main service groups: the **core** group, whic
 
 
 
-### Components of the descriptor
+## Components of the descriptor
 
-#### App information
+### App information
 
 This component is very straightforward, with the name of the application, the description, and the labels that allow us to identify the app in the system.
 
-#### Rules
+### Rules
 
 For this scenario to work we need three types of rules.
 

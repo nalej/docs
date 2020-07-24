@@ -1,8 +1,6 @@
-# Descriptor Creation Course
+# Session 3: Parameters
 
-## Session 3: Parameters
-
-The application we're going to be working with in this session is the Metric Exposer ([metric-exposer.json](desc101-metric-exposer.json)). Please download the file and work on it to complete the exercise below.
+The application we're going to be working with in this session is the Metric Exposer ([metric-exposer.json](https://github.com/nalej/docs/blob/master/docs/courses/desc101-files/desc101-metric-exposer.json)). Please download the file and work on it to complete the exercise below.
 
 ------
 
@@ -78,4 +76,4 @@ The **type**, on the other hand, indicates what kind of content the parameter ha
 
 ## Exercise
 
-Knowing all this, your task for this session is to complete the Metric Exposer descriptor ([metric-exposer.json](desc101-metric-exposer.json)) with the rest of the parameters.
+Knowing all this, your task for this session is to complete the Metric Exposer descriptor ([metric-exposer.json](https://github.com/nalej/docs/blob/master/docs/courses/desc101-files/desc101-metric-exposer.json)) with the rest of the parameters.

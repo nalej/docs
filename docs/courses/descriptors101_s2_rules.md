@@ -1,8 +1,6 @@
-# Descriptor Creation Course
+# Session 2: Rules and connections
 
-## Session 2: Rules and connections
-
-The application we're going to be working with in this session is the Pinger ([pinger.json](desc101-pinger.json)). Please download the file and work on it to complete the exercise below.
+The application we're going to be working with in this session is the Pinger ([pinger.json](https://github.com/nalej/docs/blob/master/docs/courses/desc101-files/desc101-pinger.json)). Please download the file and work on it to complete the exercise below.
 
 ------
 
@@ -46,5 +44,5 @@ In this case, the **access** value is **4**, which indicates an inbound connecti
 
 ## Exercise
 
-The exercise for this session is to complete the Pinger descriptor ([pinger.json](desc101-pinger.json)) with the information needed for an outbound socket.
+The exercise for this session is to complete the Pinger descriptor ([pinger.json](https://github.com/nalej/docs/blob/master/docs/courses/desc101-files/desc101-pinger.json)) with the information needed for an outbound socket.
 
