@@ -38,10 +38,11 @@ nav:
       - How to use a Raspberry Pi as a device: tutorials/endtoendtutorial.md
       - MQTT, and what we use it for: tutorials/mqtt.md
     - Courses:
-      - Descriptor creation - 1 - services: courses/descriptors101_s1_services.md
-      - Descriptor creation - 2 - rules and connections: courses/descriptors101_s2_rules.md
-      - Descriptor creation - 3 - parameters: courses/descriptors101_s3_params.md
-      - Descriptor creation - 4 - review: courses/descriptors101_s4_review.md
+      - Descriptor creation:
+        - Session 1 - services: courses/descriptors101_s1_services.md
+        - Session 2 - rules and connections: courses/descriptors101_s2_rules.md
+        - Session 3 - parameters: courses/descriptors101_s3_params.md
+        - Session 4 - review: courses/descriptors101_s4_review.md
     - Protocol buffer documentation: 'https://protodocs.nalej.com/protodoc/index.html'
 
 theme:
