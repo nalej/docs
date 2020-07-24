@@ -163,7 +163,7 @@ An example for this would be the localalerts service:
 
 ## Exercises
 
-Download the following files: [drone-backend.json](desc101-drone-backend.json){target=_blank}, [drone-backend-data.json](desc101-drone-backend-data.json){target=_blank}, [drone.json](desc101-drone.json){target=_blank} and [kibana-dashboard.json](desc101-kibana-dashboard.json){target=_blank}. We will be working with the first file, and you will need all of them to deploy the scenario in the platform.
+Download the following files: [drone-backend.json](https://github.com/nalej/docs/blob/master/docs/courses/desc101-files/desc101-drone-backend.json){target=_blank}, [drone-backend-data.json](https://github.com/nalej/docs/blob/master/docs/courses/desc101-files/desc101-drone-backend-data.json){target=_blank}, [drone.json](https://github.com/nalej/docs/blob/master/docs/courses/desc101-files/desc101-drone.json){target=_blank} and [kibana-dashboard.json](https://github.com/nalej/docs/blob/master/docs/courses/desc101-files/desc101-kibana-dashboard.json){target=_blank}. We will be working with the first file, and you will need all of them to deploy the scenario in the platform.
 
 ### Rules
 
@@ -175,4 +175,4 @@ Complete the definition of the rest of the drone management services needed for 
 
 ### Deployment
 
-Follow the [DroneDemo](desc101-dronedemo.pdf) tutorial with the descriptor you have completed and the rest of the files you downloaded before.
+Follow the [DroneDemo](desc101-files/desc101-dronedemo.pdf) tutorial with the descriptor you have completed and the rest of the files you downloaded before.
