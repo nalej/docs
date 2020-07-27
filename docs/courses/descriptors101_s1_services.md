@@ -1,6 +1,6 @@
 # Session 1: Services
 
-The application we're going to be working with in this session is the WordPress + MySQL ([wp_mysql.json](https://github.com/nalej/docs/blob/master/docs/courses/desc101-files/desc101-wordpress-mysql.json)). Please download the file and work on it to complete the exercise below.
+The application we're going to be working with in this session is the WordPress + MySQL ([wp_mysql.json](https://github.com/nalej/docs/blob/master/docs/courses/desc101-files/desc101-wordpress-mysql.json){target=_blank}). Please download the file and work on it to complete the exercise below.
 
 ------
 
@@ -124,7 +124,7 @@ There are more attributes that can be used in the definition of a service. If yo
 
 ## Exercise
 
-The exercise for this session is to complete the [wp_mysql.json](https://github.com/nalej/docs/blob/master/docs/courses/desc101-files/desc101-wordpress-mysql.json) file with the definition of the MySQL service, which must contain the following:
+The exercise for this session is to complete the [wp_mysql.json](https://github.com/nalej/docs/blob/master/docs/courses/desc101-files/desc101-wordpress-mysql.json){target=_blank} file with the definition of the MySQL service, which must contain the following:
 
 - **Image:** mysql:5.6
 - **Storage** size: 104857600, mounted at /tmp
