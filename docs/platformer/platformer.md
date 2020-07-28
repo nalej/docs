@@ -2,17 +2,29 @@
 
 ## Prerequisites
 
+We used a computer with macOS Catalina and the [Homebrew package manager](https://brew.sh). 
+
 ### Python 3.7
 
 You need at least Python 3.7 installed on your computer to use this tool. This is the default version for macOS Catalina and newer Linux distributions (for additional platforms and versions, please check the [Python downloads page](https://www.python.org/downloads/release/python-377/)).
+
+To check the version installed in your computer please execute:
+
+```zsh
+python3 --version
+```
+
+To install Python 3.7 or higher:
+
+```zsh
+brew install python3
+```
 
 ### KubeCTL
 
 For the Platformer tool to interact with the underlying Kubernetes cluster, you will need the KubeCTL binaries.
 
-To install it in macOS, you can use [Homebrew](https://brew.sh):
-
-```shell
+```zsh
 brew install kubectl
 ```
 
@@ -20,41 +32,111 @@ brew install kubectl
 
 To deploy a platform in Azure and to download the required assets, you will need the Azure CLI.
 
-To install it in macOS, you can use [Homebrew](https://brew.sh):
-
 ```shell
 brew install azure-cli
 ```
 
 #### Set your Azure credentials
 
-To allow Platformer to use your Azure credentials, you must need to set up two environment variables:
+If you're using Azure, your Azure Cloud Admin has probably provided you with an Azure account email and password. To allow Platformer to use your Azure credentials, you must set up two environment variables in your system:
 
 * `AZURE_USERNAME`, with your Azure account email.
 * `AZURE_PASSWORD`, with your Azure account password.
 
 You can use tools like [envchain](https://github.com/sorah/envchain) to store those environment variables in a secure way.
 
-### NALEJ Assets
+#### Login in Azure
 
-To be able to deploy a platform, you will need the required assets. To download them, just execute:
+After setting your credentials, you need to:
 
-```shell
-az storage blob download-batch --source https://nalejartifacts.blob.core.windows.net/v050 --destination /tmp
+1. close the console and open it again. 
+2. log in Azure, executing:
+
+```bash
+az login
 ```
 
-You can change the destination path to another folder in your system.
+This command will open a browser window, ask for your Azure credentials, and then redirect back to the console, where all the subscriptions you have access to will appear. These subscriptions look like this:
+
+```json
+[
+  {
+    "cloudName": "AzureCloud",
+    "homeTenantId": "xxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+    "id": "xxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+    "isDefault": false,
+    "managedByTenants": [],
+    "name": "Master subscription",
+    "state": "Enabled",
+    "tenantId": "xxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+    "user": {
+      "name": "user@company.com",
+      "type": "user"
+    }
+  },
+  {
+    "cloudName": "AzureCloud",
+    "homeTenantId": "xxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+    "id": "xxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+    "isDefault": true,
+    "managedByTenants": [],
+    "name": "Microsoft Azure Sponsorship",
+    "state": "Disabled",
+    "tenantId": "xxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+    "user": {
+      "name": "user@company.com",
+      "type": "user"
+    }
+  }
+]
+```
+
+Here we can see two subscriptions. One of the problems that can arise in this phase is that, looking at the `state` attribute, the default subscription is `disabled` (as we can see above). If this happens, we need to change to another one that is  `enabled`, and we will do it with:
+
+```bash
+az account set --subscription "Name of enabled subscription"
+```
+
+
+
+### NALEJ Assets
+
+Once you are logged in to an enabled suscription, you will need the required assets to deploy a platform. To download them, just execute:
+
+```shell
+az storage blob download-batch --source https://nalejartifacts.blob.core.windows.net/v051 --destination /tmp
+```
+
+We recommend that you change the destination folder for a new one created in your user folder.
+
+```bash
+mkdir assets
+
+az storage blob download-batch --source https://nalejartifacts.blob.core.windows.net/v051 --destination assets
+```
+
+
 
 
 ## Install Platformer
 
-You can install the Platformer tool from the Python official repository with `pip3`:
+Now it's time to install the Platformer tool from the Python official repository. But first, we need to check our package administration tool. We can use `pip` or `pip3`, and the difference resides in the version of Python the command is using. To be sure we're using the correct command, we need to execute:
+
+```bash
+pip --version
+
+pip3 --version
+```
+
+The responses to these two commands will tell us the command's version of Python, and we will choose the command that uses Python 3.7 or higher. In this tutorial we will be using `pip3`.
+
+
 
 ```shell
 pip3 install --user nalej-platformer
 ```
 
-Please make sure that `pip3` is the correct command in your system, or if you need to use `pip` instead.
+Please make sure that `pip3` is the correct command in your system, or if you need to use `pip` instead. 
 
 ## The platform plan file
 
