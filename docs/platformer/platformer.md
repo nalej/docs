@@ -2,11 +2,11 @@
 
 ## Prerequisites
 
-We used a computer with macOS Catalina and the [Homebrew package manager](https://brew.sh). 
+For this tutorial we used a computer with macOS Catalina 10.15.5 and the [Homebrew package manager](https://brew.sh). 
 
 ### Python 3.7
 
-You need at least Python 3.7 installed on your computer to use this tool. This is the default version for macOS Catalina and newer Linux distributions (for additional platforms and versions, please check the [Python downloads page](https://www.python.org/downloads/release/python-377/)).
+You need at least Python 3.7 installed on your computer to use Platformer. This is the default version for macOS Catalina and newer Linux distributions (for additional platforms and versions, please check the [Python downloads page](https://www.python.org/downloads/release/python-377/)).
 
 To check the version installed in your computer please execute:
 
@@ -110,12 +110,14 @@ az storage blob download-batch --source https://nalejartifacts.blob.core.windows
 We recommend that you change the destination folder for a new one created in your user folder.
 
 ```bash
-mkdir assets
-
-az storage blob download-batch --source https://nalejartifacts.blob.core.windows.net/v051 --destination assets
+az storage blob download-batch --source https://nalejartifacts.blob.core.windows.net/v051 --destination <ASSETS_PATH>
 ```
 
+It's time to give execution permissions to the binaries you just downloaded, getting into the assets folder and executing:
 
+```bash
+chmod -R +x binaries
+```
 
 
 ## Install Platformer
@@ -130,13 +132,11 @@ pip3 --version
 
 The responses to these two commands will tell us the command's version of Python, and we will choose the command that uses Python 3.7 or higher. In this tutorial we will be using `pip3`.
 
-
-
 ```shell
 pip3 install --user nalej-platformer
 ```
 
-Please make sure that `pip3` is the correct command in your system, or if you need to use `pip` instead. 
+
 
 ## The platform plan file
 
@@ -272,7 +272,11 @@ nalej-platformer --resources <ASSETS_PATH> apply <PLAN_FILE>
 
 You may need to replace the `ASSETS_PATH` with the path where you downloaded the Nalej assets, and the `PLAN_FILE` with the path to the plan file.
 
+It takes between 20 and 25 minutes to deploy and validate the provision and installation of each cluster, depending on the time it takes to Azure to process the commands that Platformer sends. For example, for an architecture of one Management Cluster and two Application Clusters, the whole process could take a bit more than an hour.
+
 Once Platformer finishes, the platform is deployed and ready to use. The information needed to access the platform (the URLs) will be stored in the plan file.
+
+
 
 ## Plan file examples
 
