@@ -2,7 +2,7 @@
 
 ## Prerequisites
 
-For this tutorial we used a computer with macOS Catalina 10.15.5 and the [Homebrew package manager](https://brew.sh). 
+For this tutorial we used a computer with macOS Catalina 10.15.5 and the [Homebrew package manager](https://brew.sh). These steps will create a Kubernetes cluster as part of the installation process, so you don't need to already have one.
 
 ### Python 3.7
 
@@ -19,6 +19,14 @@ To install Python 3.7 or higher:
 ```zsh
 brew install python3
 ```
+
+After installing, please make sure that you have the Python `bin` folder in your local path. To check that, execute:
+
+```bash
+echo $PATH
+```
+
+If you can't see the `bin` folder in this environment variable (the path would look like this: `/Users/user/Library/Python/3.7/bin`), include it before going any further. 
 
 ### KubeCTL
 
@@ -47,7 +55,7 @@ You can use tools like [envchain](https://github.com/sorah/envchain) to store th
 
 #### Login in Azure
 
-After setting your credentials, you need to:
+After setting up your credentials, you need to:
 
 1. close the console and open it again. 
 2. log in Azure, executing:
@@ -135,6 +143,8 @@ The responses to these two commands will tell us the command's version of Python
 ```shell
 pip3 install --user nalej-platformer
 ```
+
+Please remember to NOT use `sudo pip install`, and manage your dependencies correctly (you can find more information about this topic [here](https://dev.to/elabftw/stop-using-sudo-pip-install-52mn)).
 
 
 
@@ -260,7 +270,7 @@ This section defines required information for deploying the platform in Azure.
 - **resourceGroup**: The Azure resource group where the cluster will be deployed.
 - **vmSize**: The Azure virtual machine size for the cluster nodes.
 
-## Using Platfomer
+## Using Platformer
 
 Once you have Platformer installed and a plan file defined, you can execute the Platformer tool to create your Nalej platform.
 
