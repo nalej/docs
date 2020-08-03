@@ -150,7 +150,7 @@ Please remember to NOT use `sudo pip install`, and manage your dependencies corr
 
 ## The platform plan file
 
-To define the platform you want to deploy using Nalej, Platformer uses a YAML **plan file** where all the required information for a platform is defined.
+To define the platform you want to deploy using Nalej, Platformer uses a YAML **plan file** where all the required information for a platform is defined. We recommend to keep a copy of the plan file as a backup, in case something goes wrong during the installation.
 
 The file is divided in three different parts: **management**, **organization** and **application**.
 
@@ -401,4 +401,36 @@ application:
 ```
 
 The two organizations here are called `Example` and `Example 2`, the two application clusters are called `app1-example` and `app2-example`, and each organization owns one cluster.
+
+
+
+## Troubleshooting
+
+The process described here is complex and depends on agents we have no control over, like Azure. That's why it's not uncommon to run into some problems while trying to deploy the platform.
+
+***Timeouts***
+
+This installation relies on a third party (in this case, Azure) to execute the commands we send and respond within a time frame. If, for whatever reason, that third party takes longer than the time frame established, the platformer will assume the connection is lost and stop the process. So yeah, you might do everything correctly and the installation can still fail. 
+
+
+
+When the installation fails, there are some things to take into account before trying again, and all of them are related to the Plan file, which **should not be reused**.
+
+***Installation fails before installing the management cluster***
+
+In this case, Azure already has tried to deploy the structure in the Plan file, but hasn't succeded. If we try to start the process again with the same Plan file, Azure will process it and see that the clusters have the same name as before. This will lead to a Certificate Manager error (`The Azure Certificate Manager has reached its resource limits`), since Azure will consider that those clusters already have resources assigned to them.
+
+*How to fix this*
+
+Changing the cluster names in the Plan file will let Azure differentiate between installations, and not assume that the same cluster is trying to hog the available resources.
+
+
+
+***Installation fails after installing the management cluster***
+
+Let's say that the management cluster has been installed correctly, and the process stops before installing all the application clusters. At this point, the management cluster has modified the plan file to include the IPs and hostnames that the application clusters will use. This information is not valid anymore, so if we try to reuse this Plan file again, odds are the Platformer will fail spectacularly.
+
+*How to fix this*
+
+If you have a backup Plan file, as we recommended, it's time to use it. This backup file will not have the information that the management cluster adds, so it will be perfect for starting over. Just remember to change the cluster names, as we said before, to avoid running into problems with the Azure Certificate Manager.
 
