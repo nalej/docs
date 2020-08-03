@@ -47,6 +47,23 @@ NUM.USERS   NUM.ROLES   NUM.SETTINGS
 
 Here we can find the same information displayed in the web interface, plus the ID: the name, email, complete address, the number of users in the organization, the number of roles available, and the default settings established for the applications in this company.
 
+## System roles
+
+There are four default roles in the system:
+
+* **Developer**: can add, deploy, manage and remove apps from the system, as well as use the Unified Logging feature. 
+* **Operator**: can manage assets and devices using the Inventory feature, and can also list and update the available clusters.
+* **Owner**: can manage apps, devices and resources, as well as update the organization information.
+* **NalejAdmin**: has almighty powers in the system. This role is reserved for the Nalej field engineer associated to your organization. They can do whatever the owner can, and also add or delete users, deal with cluster provision tasks, and manage ECs and Agents.
+
+Below you can see a chart with the managing permissions of each of the user roles in the system.
+
+![Chart of users permissions](../img/org_userchart.jpg)
+
+*This role is not available through the Web Interface.
+
+Now that you know about the roles, let's see how the users are created in the system.
+
 ## Creating users
 
 You need to be a **NalejAdmin** to be able to create or delete a user in the system. An **Owner** can update users and change passwords, but not create or delete users. 

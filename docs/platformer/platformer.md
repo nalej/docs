@@ -418,7 +418,7 @@ When the installation fails, there are some things to take into account before t
 
 #### ***Installation fails before installing the management cluster***
 
-In this case, Azure already has tried to deploy the structure in the Plan file, but hasn't succeded. If we try to start the process again with the same Plan file, Azure will process it and see that the clusters have the same name as before. This will lead to a Certificate Manager error (`The Azure Certificate Manager has reached its resource limits`), since Azure will consider that those clusters already have resources assigned to them.
+In this case, Azure already has tried to deploy the structure in the Plan file, but hasn't succeded. If we try to start the process again with the same Plan file, Azure will process it and see that the clusters have the same name as before. This will lead to a Certificate Manager error, since Azure will consider that those clusters already have resources assigned to them.
 
 *How to fix this*
 

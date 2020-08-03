@@ -4,21 +4,16 @@ As a system owner, you probably have to add new users to the system. First we ne
 
 ## System roles
 
-There are four default roles in the system.
+There are four default roles in the system:
 
 * **Developer**: can add, deploy, manage and remove apps from the system, as well as use the Unified Logging feature. 
 * **Operator**: can manage assets and devices using the Inventory feature, and can also list and update the available clusters.
 * **Owner**: can manage apps, devices and resources, as well as update the organization information.
 * **NalejAdmin**: has almighty powers in the system. This role is reserved for the Nalej field engineer associated to your organization. They can do whatever the owner can, and also add or delete users, deal with cluster provision tasks, and manage ECs and Agents.
 
-Below you can see a table with the managing permissions of each of the user roles in the system.
+Below you can see a chart with the managing permissions of each of the user roles in the system.
 
-|  | Apps | Resources | Devices | EC & Agents | Users | Org. Info |
-| :--- | :---: | :---: | :---: | :---: | :---: | :--: |
-| Developer | Yes  |    No     | No | No | No | No |
-| Operator | No |    Yes    | No | No | No | No |
-| *Owner | Yes  | No | Yes | No | Yes | Yes |
-| NalejAdmin | Yes  |    Yes    | Yes | Yes | Yes | Yes |
+![Chart of users permissions](../img/org_userchart.jpg)
 
 *This role is not available through the Web Interface.
 
