@@ -408,7 +408,7 @@ The two organizations here are called `Example` and `Example 2`, the two applica
 
 The process described here is complex and depends on agents we have no control over, like Azure. That's why it's not uncommon to run into some problems while trying to deploy the platform.
 
-***Timeouts***
+#### ***Timeouts***
 
 This installation relies on a third party (in this case, Azure) to execute the commands we send and respond within a time frame. If, for whatever reason, that third party takes longer than the time frame established, the platformer will assume the connection is lost and stop the process. So yeah, you might do everything correctly and the installation can still fail. 
 
@@ -416,7 +416,7 @@ This installation relies on a third party (in this case, Azure) to execute the c
 
 When the installation fails, there are some things to take into account before trying again, and all of them are related to the Plan file, which **should not be reused**.
 
-***Installation fails before installing the management cluster***
+#### ***Installation fails before installing the management cluster***
 
 In this case, Azure already has tried to deploy the structure in the Plan file, but hasn't succeded. If we try to start the process again with the same Plan file, Azure will process it and see that the clusters have the same name as before. This will lead to a Certificate Manager error (`The Azure Certificate Manager has reached its resource limits`), since Azure will consider that those clusters already have resources assigned to them.
 
@@ -426,7 +426,7 @@ Changing the cluster names in the Plan file will let Azure differentiate between
 
 
 
-***Installation fails after installing the management cluster***
+#### ***Installation fails after installing the management cluster***
 
 Let's say that the management cluster has been installed correctly, and the process stops before installing all the application clusters. At this point, the management cluster has modified the plan file to include the IPs and hostnames that the application clusters will use. This information is not valid anymore, so if we try to reuse this Plan file again, odds are the Platformer will fail spectacularly.
 
