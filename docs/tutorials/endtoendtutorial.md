@@ -18,7 +18,7 @@ You receive your brand new Raspberry Pi with your DHT-22 sensor \([which you hav
 
 First, you need to get everything ready for your device, and that means that you need to create a new device group for your device to belong to.
 
-You can follow [this tutorial](../../devices/devices-1#adding-a-device-group) to add a new device group in the system, or you can also use an already existent device group if you wish. Then, the information you need for registering your device in the system can be obtained following [this other tutorial](../../devices/devices-1#getting-device-related-information).
+You can [add a new device group in the system](../../devices/devices-1#adding-a-device-group) following the instructions in the documentation, or you can also use an already existent device group if you wish. Then, the information you need for registering your device in the system can be obtained following [this other tutorial](../../devices/devices-1#getting-device-related-information).
 
 > DISCLAIMER: by now, the information needed to register a device is only available through the Public API CLI. So, although the tutorials show how to add or manage device groups through the Web Interface too, we recommend doing it through the Public API CLI, so the gathering of information is more straightforward.
 
