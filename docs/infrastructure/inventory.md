@@ -83,7 +83,7 @@ which tells you the resources available in the organization \(number of CPUs, st
 
 ## What is an Edge Controller, and why do I need one?
 
-An Edge Controller \(EC\) is a component installed in your organization. Its mission is to serve as an entry point for the Nalej Management Cluster, so it can receive data from the hardware installed there. More information about Edge Controllers can be found in [this document](/ECandagents.md), where there's a more thorough explanation.
+An Edge Controller \(EC\) is a component installed in your organization. Its mission is to serve as an entry point for the Nalej Management Cluster, so it can receive data from the hardware installed there. More information about Edge Controllers can be found in [the Edge Controller and Agents documentation](ecandagents.md), where there's a more thorough explanation.
 
 ### How can I install an Edge Controller in my organization?
 
@@ -148,7 +148,7 @@ agentport: XXXX
 
 ## What is an Agent, then?
 
-As we stated before, an **Agent** is a service installed in a piece of hardware in the client's side, and it lets the platform know about the client's hardware. To know more about agents, please take a look at [this document](https://github.com/nalej/docs/tree/1d3cb20d7b4c95a84830c5ff938d6791d9357889/infrastructure/ECandagents.md), where there's a more thorough explanation.
+As we stated before, an **Agent** is a service installed in a piece of hardware in the client's side, and it lets the platform know about the client's hardware. To know more about agents, please take a look at [the Edge Controller and Agents documentation](ecandagents.md), where there's a more thorough explanation.
 
 ### I have a server in my organization, how can I install an Agent in it?
 

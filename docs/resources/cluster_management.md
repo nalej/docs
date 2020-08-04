@@ -116,7 +116,7 @@ Once the cluster is safe \(and/or the problems are fixed\), we could `uncordon` 
 
 ### Reserving a cluster for some specific services
 
-The first thing we must do is to assure that the cluster is labeled with the **cluster selector** that we're going to register in the application descriptor.
+The first thing we must do is to assure that the cluster is labeled with the **deployment selectors** that we're going to register in the application descriptor. The paramenter **`deployment_selectors`** is a collection of labels and values in the definition of a service group that is checked against the available clusters. Only those clusters with all the labels and values indicated in it are considered to be candidates for the deployment of the services in the service group.
 
 Once that is done, the next step is to `cordon` the cluster and `drain` it of the services that are already running there. We want it to be exclusive for our new services that we're about to deploy.
 
