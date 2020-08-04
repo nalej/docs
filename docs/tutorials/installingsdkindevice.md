@@ -12,7 +12,7 @@ In order to be able to use the Nalej Python SDK, your device needs **Python 3.7*
 
 ## Installing the SDK
 
-Now, to install the SDK you first need to download the source code from the GitHub repository \([here](https://github.com/nalej/nalej-iot-device-sdk-python>)\). After doing that, once in the SDK folder, there are two ways of installing the SDK, which are:
+Now, to install the SDK you first need to download the source code from the GitHub repository \([here](https://github.com/nalej/nalej-iot-device-sdk-python)\). After doing that, once in the SDK folder, there are two ways of installing the SDK, which are:
 
 ```text
 python3 setup.py install
