@@ -4,11 +4,11 @@
 }
 
 .wm-top-container {
-	background-color: #444 !important;
+	background-color: #0b132b !important; /*NALEJ dark blue*/
 }
 
 .wm-toc-li.wm-current, .wm-toc-li.wm-current:hover {
-  background-color: #ff00d3;
+  background-color: #3f41ff; /*pink: #ff00d3*/
   color: white;
 }
 
@@ -17,5 +17,5 @@
 }
 
 .wm-page-content a {
-  color: #ff00d3;
+  color: #3f41ff;/*pink: #ff00d3*/
 }

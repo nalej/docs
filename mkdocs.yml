@@ -1,59 +1,60 @@
-site_name: Nalej
+site_name: NALEJ
 
 nav:
-    - Welcome to Nalej: index.md
-      - Installation with Platformer: 
-        - Installation with Platformer: 'platformer/platformer.md'
-      - On-premise installation:
-        - Getting started: onpremise/prerequisites.md
-        - Kubernetes in Nalej: onpremise/kubernetes.md
-        - Persistent storage: onpremise/storage.md
-        - Installation steps: onpremise/installation.md
-        - More about MetalLB: onpremise/metallb.md
-      - Organization:
-        - Organization and user management: 'organization/organization-1.md'
-      - Infrastructure:
-        - The inventory: infrastructure/inventory.md
-        - Edge Controllers and Agents: infrastructure/ecandagents.md
-      - Resources:
-        - Cluster monitoring: resources/resources-1.md
-        - Application cluster installation: resources/appcluster_installation.md
-        - Cluster management: resources/cluster_management.md
-      - Devices:
-        - Adding, managing and deleting devices: devices/devices-1.md
-      - Apps:
-        - Deployment, management and removal: applications/applications-1.md
-        - Application descriptor: applications/app_descriptors.md
-        - The Application Graph: applications/appdiagram.md
-        - Application networking: applications/appnetworking.md
-      - Logs:
-        - Unified Logging: logs/unified_logging.md
-      - Tutorials:
-        - Initial login in Nalej: tutorials/initiallogin.md
-        - Adding users in the system: tutorials/addingusers.md
-        - Application deployment: tutorials/appdeployment_wclusters.md
-        - Docker Compose application: tutorials/dockerappinnalej.md
-        - Application with devices: tutorials/appwithdevices.md
-        - Installing Nalej SDK in a device: tutorials/installingsdkindevice.md
-        - How to use a Raspberry Pi as a device: tutorials/endtoendtutorial.md
-        - MQTT, and what we use it for: tutorials/mqtt.md
-      - Courses:
-        - Descriptor creation:
-          - Session 1 - services: courses/descriptors101_s1_services.md
-          - Session 2 - rules and connections: courses/descriptors101_s2_rules.md
-          - Session 3 - parameters: courses/descriptors101_s3_params.md
-          - Session 4 - review: courses/descriptors101_s4_review.md
-      - Protocol buffer documentation: 'https://protodocs.nalej.com/protodoc/index.html'
+    - Welcome to NALEJ®: index.md
+    - Installation with Platformer: 
+      - Installation with Platformer: 'platformer/platformer.md'
+    - On-premise installation:
+      - Getting started: onpremise/prerequisites.md
+      - Kubernetes in Nalej: onpremise/kubernetes.md
+      - Persistent storage: onpremise/storage.md
+      - Installation steps: onpremise/installation.md
+      - More about MetalLB: onpremise/metallb.md
+    - Organization:
+      - Organization and user management: 'organization/organization-1.md'
+    - Infrastructure:
+      - The inventory: infrastructure/inventory.md
+      - Edge Controllers and Agents: infrastructure/ecandagents.md
+    - Resources:
+      - Cluster monitoring: resources/resources-1.md
+      - Application cluster installation: resources/appcluster_installation.md
+      - Cluster management: resources/cluster_management.md
+    - Devices:
+      - Adding, managing and deleting devices: devices/devices-1.md
+    - Apps:
+      - Deployment, management and removal: applications/applications-1.md
+      - Application descriptor: applications/app_descriptors.md
+      - The Application Graph: applications/appdiagram.md
+      - Application networking: applications/appnetworking.md
+    - Logs:
+      - Unified Logging: logs/unified_logging.md
+    - Tutorials:
+      - Initial login in Nalej: tutorials/initiallogin.md
+      - Adding users in the system: tutorials/addingusers.md
+      - Application deployment: tutorials/appdeployment_wclusters.md
+      - Docker Compose application: tutorials/dockerappinnalej.md
+      - Application with devices: tutorials/appwithdevices.md
+      - Installing Nalej SDK in a device: tutorials/installingsdkindevice.md
+      - How to use a Raspberry Pi as a device: tutorials/endtoendtutorial.md
+      - MQTT, and what we use it for: tutorials/mqtt.md
+    - Courses:
+      - Descriptor creation:
+        - Session 1 - services: courses/descriptors101_s1_services.md
+        - Session 2 - rules and connections: courses/descriptors101_s2_rules.md
+        - Session 3 - parameters: courses/descriptors101_s3_params.md
+        - Session 4 - review: courses/descriptors101_s4_review.md
+    - Protocol buffer documentation: 'https://protodocs.nalej.com/protodoc/index.html'
 
 theme:
   name: windmill
+  custom_dir: custom_theme/
   
 extra_css: 
   - stylesheets/extra.css
   
 extra:
   version: 0.5.1
-  logo: img/nalej_logo_white.png
+  logo: img/nalej_logo.png
 
 markdown_extensions:
   - attr_list

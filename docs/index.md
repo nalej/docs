@@ -1,10 +1,10 @@
-# Welcome to NALEJ
+# Welcome to NALEJ®
 
-Welcome to the documentation for the 0.5.1 release of the NALEJ system. This documentation is structured as follows:
+Welcome to the documentation for the 0.5.1 release of the NALEJ® system. This documentation is structured as follows:
 
 ## [Installation](platformer/platformer.md)
 
-Here you can find all about how to install the NALEJ platform in your environment. We offer documentation about how to install the platform [with the Platformer tool](platformer/platformer.md), and also a more in-depth explanation on how to proceed when installing the platform [on your own premises](onpremise/prerequisites.md).
+Here you can find all about how to install the Nalej platform in your environment. We offer documentation about how to install the platform [with the Platformer tool](platformer/platformer.md), and also a more in-depth explanation on how to proceed when installing the platform [on your own premises](onpremise/prerequisites.md).
 
 ------
 
@@ -16,7 +16,7 @@ Here you will find all there is to know about to user management, as well as rol
 
 ## [Infrastructure](infrastructure/inventory.md)
 
-Infrastructure management, with the Inventory as its main feature. Dive into this section to know how you can use it to improve management in NALEJ.
+Infrastructure management, with the Inventory as its main feature. Dive into this section to know how you can use it to improve management in Nalej.
 
 ## [Resources](resources/resources-1.md)
 
@@ -40,7 +40,7 @@ And finally...
 
 ## [Tutorials](tutorials/initiallogin.md)
 
-We also prepared some documents to get you started easily with NALEJ. If everything else seems overwhelming, start here!
+We also prepared some documents to get you started easily with Nalej. If everything else seems overwhelming, start here!
 
 ## [Courses](courses/descriptors101_s1_services.md)
 
