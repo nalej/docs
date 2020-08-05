@@ -4,7 +4,7 @@ The application we're going to be working with in this session is the WordPress 
 
 ------
 
-This is the first session in the descriptor creation workshop. In this session, we will describe the parts of a descriptor and define our first service. For more information on this topic, please refer to the main [documentation about descriptors](../../applications/app_descriptors/#example).
+This is the first session in the descriptor creation workshop. In this session, we will describe the parts of a descriptor and define our first service. For more information on this topic, please refer to the main [documentation about descriptors](../applications/app_descriptors.md), in the Apps section.
 
 ### Structure of an application descriptor
 
