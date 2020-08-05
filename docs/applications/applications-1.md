@@ -348,7 +348,11 @@ This view has all the information related to the instance we selected. The secti
 
 This view has several sections:
 
-First, we have the **summary** \(upper-left part of the screen\). This part will tell us the name of the instance, its status and its application of origin. Here we also have its parameters, its connections and the environment variables it needs to set up. If we click on the **More info** button, we can find its ID, the service groups it has, and the service instances it has deployed.
+![Instance info](../img/app_mgmt_instance_info.png)
+
+First, we have the **summary** \(upper-left part of the screen\). This part will tell us the name of the instance, its status and its application of origin. Here we also have its parameters, its connections and the environment variables it needs to set up. If we click on the **Info** button (the blue round button with an `i` in the upper right part of the section), we can find its ID, the service groups it has, and the service instances it has deployed.
+
+![Instance labels](../img/app_mgmt_instance_labels.png)
 
 Under the summary we have the **Labels** section, where we can see the labels associated to this app instance.
 
@@ -358,7 +362,11 @@ Then we can see two buttons:
 
 Then we have the **services** section. 
 
+![Instance services graph](../img/app_mgmt_instance_services_graph.png)
+
 First we can see a graph that shows us the relationship between the services in the instance, where we can zoom in in case it's necessary. The color of each service depends on its status, and the connections are also painted according to their status (blue if they are active, dark grey if they are not). 
+
+![Instance services list, with the toggle button highlighted](../img/app_mgmt_instance_services_list.png)
 
 On the upper right part of this section we have the two perspectives we can toggle between. The other perspective is a text view with all the info about the service instances related to this application instance \(there is a tab with all the services, and then there is a tab for each service group\). 
 
