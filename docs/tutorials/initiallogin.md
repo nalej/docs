@@ -60,8 +60,8 @@ Once you enter, you can see the platform structure at a glance, and start intera
 
 The different views of the system are accessible through the column in the far left part of the screen (with a dark background). The views you can navigate to are:
 
-- **Organization**, which contains a view of all members of the organization and its subscription plan.
-- **Infrastructure**, where you can interact with the Inventory.
+- **[Organization](../organization/organization-1.md)**, which contains a view of all members of the organization and its subscription plan.
+- [**Infrastructure**](../infrastructure/inventory.md), where you can interact with the Inventory.
 - **Resources**, where you can manage the clusters in the system, and the nodes associated to them.
 - **Devices**,  where you can see all the devices in the system and the device groups that contain them.
 - **Applications**, where you can interact with the registered and deployed apps.
