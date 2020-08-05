@@ -120,7 +120,7 @@ The service, on the other hand, can have a lot more attributes. Not all of them 
 - **`deploy_after`**: sometimes a service needs some other service to be deployed first. The WordPress service uses a predefined environment variable that contains info about the MySQL service (its address in the platform). This variable needs to be filled before deploying the service, so the WordPress service needs to be deployed after the MySQL service.
 - **`labels`**: as we said before, these labels allow us to identify the application in the system.
 
-There are more attributes that can be used in the definition of a service. If you want to know more, please read the [Service Groups](../../applications/app_descriptors/#service-groups) and the [Services](../../applications/app_descriptors/#services) sections of the documentation.
+There are more attributes that can be used in the definition of a service. If you want to know more, please read the [Service Groups](../applications/app_descriptors.md#service-groups) and the [Services](../applications/app_descriptors.md#services) sections of the documentation.
 
 ## Exercise
 

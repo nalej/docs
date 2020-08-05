@@ -14,7 +14,7 @@ Each rule has at least the following components:
 - **target_port**: port of the target service that will be used for the connection.
 - **access**: the kind of connection that this rule regulates.
 
-Depending on the value in the **access** parameter, the rule will need other specific fields or not. You can find all the possibilities [in the "Rules" section of the documentation on application descriptors](applications/app_descriptors/#rules), but in this tutorial we will focus on the use case of the Pinger service.
+Depending on the value in the **access** parameter, the rule will need other specific fields or not. You can find all the possibilities [in the "Rules" section of the documentation on application descriptors](../applications/app_descriptors.md#rules), but in this tutorial we will focus on the use case of the Pinger service.
 
 The Pinger service will need an outbound socket to send pings, and an inbound socket to receive the response to said pings. So, first you need to create the sockets, and then you need the rules to control the connections through them.
 
