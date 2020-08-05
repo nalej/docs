@@ -360,7 +360,7 @@ Then we can see two buttons:
 * **Add new connections**, which opens a dialog to add a new connection to this instance.
 * **Undeploy**, to undeploy the instance directly from here \(we will talk about this [later in this document](#undeploying-the-instance)\).
 
-Then we have the **services** section. 
+Then we have the **Services** section. 
 
 ![Instance services graph](../img/app_mgmt_instance_services_graph.png)
 
