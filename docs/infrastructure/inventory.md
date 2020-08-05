@@ -87,7 +87,10 @@ An Edge Controller \(EC\) is a component installed in your organization. Its mis
 
 ### How can I install an Edge Controller in my organization?
 
-First, you need to ask for an Edge Controller to the Nalej Management. This EC is a light Virtual Machine \(VM\), which will be installed in the client cloud. Right now the only supported system is Azure, although Nalej is working to adapt its technology to other systems. Since it's a VM, it can also be installed in a physical server in the client side.
+First, you need to ask for an Edge Controller to the Nalej Management. This EC is a light Virtual Machine \(VM\), and can be installed in two ways:
+
+- It can be installed **in the client cloud**. Right now the only supported cloud provider is **Azure**, although Nalej is working to adapt its technology to other providers. 
+- Since it's a VM, it can also be installed **in a physical server** in the client side.
 
 To deploy the EC in the cloud, you need to generate a `cloud-init.yaml` file. This file would look like this:
 

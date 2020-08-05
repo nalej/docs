@@ -1,4 +1,4 @@
-# Application Networking
+# Application networking
 
 The Nalej platform allows the user to create point-to-point secure connections between deployed applications. If you want to connect applications, this is your section.
 
