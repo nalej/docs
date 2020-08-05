@@ -1,6 +1,6 @@
 # How to use a Raspberry Pi as a device in your Nalej app
 
-I know you have been fascinated with Nalej's possibilities from the get-go, and more so since you learned that you could use that Raspberry Pi you've been waiting for an excuse to buy. If you needed a sign to move it from the wishlist to the shopping cart, this is it: in this easy tutorial, we're going to show you how to install, configure and use a device in a Nalej application.
+I know you have been fascinated with Nalej's possibilities from the get-go, and more so since you learned that you could use that Raspberry Pi you've been waiting for an excuse to buy. If you needed a sign to move it from the wishlist to the shopping cart, this is it: in this easy and comprehensive tutorial, we're going to show you how to install, configure and use a device in a Nalej application.
 
 ## The Scenario
 
