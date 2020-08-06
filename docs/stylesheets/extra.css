@@ -54,14 +54,6 @@
 	padding: 10px;
 	
 }
-.admonition-title::before {
-  margin-left: 0.25em;
-  font-size: 2em;
-  vertical-align: middle;
-  font-family: "Font Awesome 5 Free";
-  font-weight: 900;
-  content: "\f249";
-}
 
 
 /*customizing material
