@@ -2,14 +2,16 @@
 
 # Adding, managing and deleting devices
 
-What is a device for Nalej? The system understands the concept of **device** as an abstract entity that the user can manage as part of the applications installed in the cluster.
+What is a device for Nalej? The system understands the concept of **device** as an abstract entity that the user can manage as part of the applications installed in the cluster. 
 
-!!! note "Re: CLI responses"
+!!! note
     The CLI responses are shown in this document with the text format, which can be obtain adding `--output="text"` to the user options. If you need the responses in JSON format, you can get them by adding `--output="json"` at the end of your requests, or as a user option.
 
 ## Adding a device group
 
 ### Web Interface
+
+As with the rest of the sections, we can find the Device view in the left-hand column. We'll analyze the parts of this view in the [Getting device-related information](#getting-device-related-information) section.
 
 We can add a new device group easily, clicking on the option **"Add group"** in the main view \(or in a group view\).
 
@@ -25,7 +27,7 @@ To create a device group, we need:
 * The **group device availability**.
 * If the **devices** are **enabled by default**.
 
-Once the group is created, it will be displayed on the devices list.
+Once the group is created, it will be displayed on the devices list, located in the main view.
 
 ![](../img/dev_addgroup_groupcreated.png)
 
@@ -104,7 +106,7 @@ ID      NAME              API_KEY        ENABLED   DEV_ENABLED
 
 ### Web Interface
 
-As with the rest of the sections, we can find the Device view in the left-hand column.
+This is the main page of the Device section:
 
 ![Devices view](../img/dev_main.png)
 
@@ -120,7 +122,7 @@ The lower part of the screen is a list of devices divided by groups, with the fo
 * its current **status**.
 * any associated **labels** it may have.
 
-Each group, in the grey background row, has its own **Options** button. Clicking on it we can see more information related to the group, we can access its configuration settings (which will be explained in the [Configuration of a device group](#configuration-of-a-device-group) section of this document), or we can delete it.
+Each group, in the grey background row, has its own **Options** button. Clicking on it we can see more information related to the group, we can access its configuration settings (as we saw in the [Configuration of a device group](#configuration-of-a-device-group) section of this document), or we can delete it.
 
 ![Devices group options](../img/dev_groupoptions.png)
 
