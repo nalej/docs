@@ -59,5 +59,3 @@ extra:
 markdown_extensions:
   - attr_list #to open link in new tab
   - admonition #for notes in doc
-  - pymdownx.details
-  - pymdownx.superfences
