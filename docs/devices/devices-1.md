@@ -4,7 +4,101 @@
 
 What is a device for Nalej? The system understands the concept of **device** as an abstract entity that the user can manage as part of the applications installed in the cluster.
 
-_The CLI responses are shown in this document with the text format, which can be obtain adding_ `--output="text"` _to the user options. If you need the responses in JSON format, you can get them by adding_ `--output="json"` _at the end of your requests, or as a user option._
+!!! note "titulo"
+The CLI responses are shown in this document with the text format, which can be obtain adding `--output="text"` to the user options. If you need the responses in JSON format, you can get them by adding `--output="json"` at the end of your requests, or as a user option.
+
+## Adding a device group
+
+### Web Interface
+
+We can add a new device group easily, clicking on the option **"Add group"** in the main view \(or in a group view\).
+
+![The Add Group option in the main Devices view](../img/dev_addgroup_button.png)
+
+This opens a dialog like the one below:
+
+![Add group dialog](../img/dev_addgroup_dialog.png)
+
+To create a device group, we need:
+
+* A **group name**.
+* The **group device availability**.
+* If the **devices** are **enabled by default**.
+
+Once the group is created, it will be displayed on the devices list.
+
+![](../img/dev_addgroup_groupcreated.png)
+
+### Public API CLI
+
+To add a device group through the CLI, the command needed is:
+
+```bash
+./public-api-cli devicegroup add
+    --name <devgroup_name>
+    --disabled
+    --enabled
+    --disabledDefaultConnectivity
+    --enabledDefaultConnectivity
+```
+
+We don't need all these parameters, but we need:
+
+* the **name** of the group.
+* a flag indicating if the group is **enabled** or **disabled**.
+* a flag indicating the default connectivity for the devices joining the group, whether it is enabled \(**enabledDefaultConnectivity**\) or disabled \(**disabledDefaultConnectivity**\).
+
+The response to this command is something like this:
+
+```javascript
+ID      NAME              API_KEY        ENABLED   DEV_ENABLED
+<id>    <devgroup_name>   <id_api_key>   true      true
+```
+
+This includes all the information related to the device group, which is, its **id**, its **name**, its **API key**, whether it is **enabled**, and whether the devices will be **enabled** by default when joining the group.
+
+## Configuration of a device group
+
+### Web Interface
+
+In the main view, we can easily access the configuration of a specific device group by clicking on the **Configuration** button in the Options menu.
+
+![Device group configuration option](../img/dev_configgroup_button.png)
+
+The only options that can be changed in a group are:
+
+* The **group device availability**.
+* If the **devices** are **enabled by default**.
+
+![Device group configuration dialog](../img/dev_configgroup_dialog.png)
+
+### Public API CLI
+
+To update the configuration of a device group, the command to use is:
+
+```bash
+./public-api-cli devicegroup update
+    --deviceGroupId <devgroup_id>
+    --disable
+    --enable
+    --disableDefaultConnectivity
+    --enableDefaultConnectivity
+```
+
+This information is very similar to what we need to create the group.
+
+* **deviceGroupId** \(when we create a group we need a **name** instead\).
+* a flag indicating if we want to **enable** or **disable** the group.
+* a flag indicating how to change the default connectivity for the devices joining the group, whether we want to enable it \(**enableDefaultConnectivity**\) or disable it \(**disableDefaultConnectivity**\).
+
+The result of executing this command is the same as with the `devicegroup add` command but with the updated information:
+
+```javascript
+ID      NAME              API_KEY        ENABLED   DEV_ENABLED
+<id>    <devgroup_name>   <id_api_key>   true      true
+```
+
+
 
 ## Getting device-related information
 
@@ -101,97 +195,6 @@ The result to this command is the device information in a list, like so:
 ```javascript
 ID            DATE              STATUS    LABELS   ENABLED
 <dev_id2>     <reg_date>        OFFLINE            false
-```
-
-## Adding a device group
-
-### Web Interface
-
-We can add a new device group easily, clicking on the option **"Add group"** in the main view \(or in a group view\).
-
-![The Add Group option in the main Devices view](../img/dev_addgroup_button.png)
-
-This opens a dialog like the one below:
-
-![Add group dialog](../img/dev_addgroup_dialog.png)
-
-To create a device group, we need:
-
-* A **group name**.
-* The **group device availability**.
-* If the **devices** are **enabled by default**.
-
-Once the group is created, it will be displayed on the devices list.
-
-![](../img/dev_addgroup_groupcreated.png)
-
-### Public API CLI
-
-To add a device group through the CLI, the command needed is:
-
-```bash
-./public-api-cli devicegroup add
-    --name <devgroup_name>
-    --disabled
-    --enabled
-    --disabledDefaultConnectivity
-    --enabledDefaultConnectivity
-```
-
-We don't need all these parameters, but we need:
-
-* the **name** of the group.
-* a flag indicating if the group is **enabled** or **disabled**.
-* a flag indicating the default connectivity for the devices joining the group, whether it is enabled \(**enabledDefaultConnectivity**\) or disabled \(**disabledDefaultConnectivity**\).
-
-The response to this command is something like this:
-
-```javascript
-ID      NAME              API_KEY        ENABLED   DEV_ENABLED
-<id>    <devgroup_name>   <id_api_key>   true      true
-```
-
-This includes all the information related to the device group, which is, its **id**, its **name**, its **API key**, whether it is **enabled**, and whether the devices will be **enabled** by default when joining the group.
-
-## Configuration of a device group
-
-### Web Interface
-
-In the main view, we can easily access the configuration of a specific device group by clicking on the **Configuration** button in the Options menu.
-
-![Device group configuration option](../img/dev_configgroup_button.png)
-
-The only options that can be changed in a group are:
-
-* The **group device availability**.
-* If the **devices** are **enabled by default**.
-
-![Device group configuration dialog](../img/dev_configgroup_dialog.png)
-
-### Public API CLI
-
-To update the configuration of a device group, the command to use is:
-
-```bash
-./public-api-cli devicegroup update
-    --deviceGroupId <devgroup_id>
-    --disable
-    --enable
-    --disableDefaultConnectivity
-    --enableDefaultConnectivity
-```
-
-This information is very similar to what we need to create the group.
-
-* **deviceGroupId** \(when we create a group we need a **name** instead\).
-* a flag indicating if we want to **enable** or **disable** the group.
-* a flag indicating how to change the default connectivity for the devices joining the group, whether we want to enable it \(**enableDefaultConnectivity**\) or disable it \(**disableDefaultConnectivity**\).
-
-The result of executing this command is the same as with the `devicegroup add` command but with the updated information:
-
-```javascript
-ID      NAME              API_KEY        ENABLED   DEV_ENABLED
-<id>    <devgroup_name>   <id_api_key>   true      true
 ```
 
 ## Deleting a device group
