@@ -22,15 +22,49 @@
 
 
 .admonition {
-  padding: 15px;
-  margin-bottom: 20px;
-  border: 1px solid transparent;
-  border-radius: 4px;
-  text-align: left;
+    padding: 15px;
+    margin: 20px;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    text-align: left;
+}
+
+.admonition.note { /* csslint allow: adjoining-classes */
+    color: #3a87ad;
+    background-color: #d9edf7;
+    border-color: #bce8f1;
+}
+
+.admonition.warning { /* csslint allow: adjoining-classes */
+    color: #c09853;
+    background-color: #fcf8e3;
+    border-color: #fbeed5;
+}
+
+.admonition.danger { /* csslint allow: adjoining-classes */
+    color: #b94a48;
+    background-color: #f2dede;
+    border-color: #eed3d7;
+}
+
+.admonition-title{
+    font-weight: bold;
+    text-align: left;
+	background-color: #ffffff;
+	padding: 10px;
+	
+}
+.admonition-title::before {
+  margin-left: 0.25em;
+  font-size: 2em;
+  vertical-align: middle;
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+  content: "\f249";
 }
 
 
-/*customizing material*/
+/*customizing material
 :root {
   
   --md-primary-fg-color:        #3f41ff;
@@ -40,5 +74,5 @@
   --md-accent-fg-color:                #3f41ff;
   --md-accent-fg-color--transparent:   #3f41ff;
 
-}
+}*/
 
