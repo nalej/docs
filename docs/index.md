@@ -4,7 +4,7 @@ Welcome to the documentation for the 0.5.1 release of the NALEJ® system. This d
 
 ## [Installation](platformer/platformer.md)
 
-Here you can find all about how to install the Nalej platform in your environment. We offer documentation about how to install the platform [with the Platformer tool](platformer/platformer.md), and also a more in-depth explanation on how to proceed when installing the platform [on your own premises](onpremise/prerequisites.md).
+Here you can find all about how to install the Nalej platform in your environment. We offer documentation about how to install the platform [with the Platformer tool](installation/platformer/platformer.md), and also a more in-depth explanation on how to proceed when installing the platform [on your own premises](installation/onpremise/prerequisites.md).
 
 ------
 
