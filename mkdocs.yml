@@ -2,14 +2,15 @@ site_name: NALEJ
 
 nav:
     - Welcome to NALEJ®: index.md
-    - Installation with Platformer: 
-      - Installation with Platformer: 'platformer/platformer.md'
-    - On-premise installation:
-      - Getting started: onpremise/prerequisites.md
-      - Kubernetes in Nalej: onpremise/kubernetes.md
-      - Persistent storage: onpremise/storage.md
-      - Installation steps: onpremise/installation.md
-      - More about MetalLB: onpremise/metallb.md
+    - Platform installation: 
+      - Installation with Platformer: 'installation/platformer/platformer.md'
+      - On-premise installation:
+        - Getting started: installation/onpremise/prerequisites.md
+        - Kubernetes in Nalej: installation/onpremise/kubernetes.md
+        - Persistent storage: installation/onpremise/storage.md
+        - Installation steps: installation/onpremise/installation.md
+        - More about MetalLB: installation/onpremise/metallb.md
+      - Uninstalling Nalej: installation/uninstall.md
     - Organization:
       - Organization and user management: 'organization/organization-1.md'
     - Infrastructure:
