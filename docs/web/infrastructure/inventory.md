@@ -14,72 +14,9 @@ The Inventory is the main view of the Infrastructure section. It consists of a l
 
 The main objective of this section is the monitorization of the hardware that's already registered in the platform, so we can have, in one place, the status and availability of every piece of hardware connected to it.
 
-![The inventory](../img/infra_inv_main.png)
+![The inventory](../../img/infra_inv_main.png)
 
 On the left column, we can also see a summary of the resources in the organization, which tells you the resources available in the organization \(number of CPUs, storage in GB, and RAM availability in GB\).
-
-### Public API CLI
-
-To access the Inventory list through the CLI, you just need to execute:
-
-```bash
-./public-api-cli inventory list
-```
-
-This will produce a table with the following data:
-
-```bash
-TYPE     ID         LOCATION         LABELS           STATUS
-DEVICE   <dev_id>   Madrid, Spain    sprint14:demo    OFFLINE
-...
-EC       <ec_id>    Demoland                          OFFLINE
-...
-ASSET    <a_id>     Getxo, ES        l1:v1,l2:v2...   OFFLINE
-...
-```
-
-This table is essentially the same table we can see through the Web Interface, with the **devices**, the **Edge Controllers** and the **assets** in the current organization.
-
-The assets can be managed from here, with the `inventory asset` command. 
-
-The system will return the information of the asset with:
-
-```bash
-./public-api-cli inventory asset info [assetID]
-```
-
-We can add or delete labels with:
-
-```bash
-./public-api-cli inventory asset label add [assetID] "label1:value1;label2:value2"
-
-./public-api-cli inventory asset label delete [assetID] "label2:value2"
-```
-
-Please note that the different labels are expressed like pairs `key:value`, and the separator between two labels is `;`.
-
-Lastly, we can update the location of an asset with:
-
-```bash
-./public-api-cli inventory asset update-location [assetID] "Office 23"
-```
-
-That is the asset management provided by the platform. To manage devices and Edge Controllers we encourage you to read the documentation written with that purpose in mind, which is ["Adding, managing and deleting devices"](../devices/devices-1.md) for the former and ["Edge Controllers and Agents"](ecandagents.md) for the latter. However, you will find a brief introduction to the topic of the Edge Controllers and Agents later in this document.
-
-To finish this section, you can also visualize a summary of the organization in terms of storage and computing capacity with:
-
-```bash
-./public-api-cli inventory summary
-```
-
-This returns a table like this one:
-
-```bash
-CPUs   STORAGE (GB)   RAM (GB)
-25     1346           66
-```
-
-which tells you the resources available in the organization \(number of CPUs, storage in GB, and RAM availability in GB\).
 
 ## What is an Edge Controller, and why do I need one?
 
@@ -157,25 +94,22 @@ As we stated before, an **Agent** is a service installed in a piece of hardware 
 
 You can use a token procedure, similar to what we used before to register the EC in the Nalej Management Cluster. In this case, the Agent will ask the EC for a token and, upon receiving it, will use said token to join the EC.
 
-> In the future, there will be a **discovery** feature where the Agents will be installed automatically, so this process is invisible to the user.
->
-> There will also be a feature where the asset can register manually to the EC, withouth having an Agent actively monitoring the asset. This will be useful for network hardware, for example, and will align with Nalej's intention of having this view as a complete inventory of the organization's assets.
+!!! note
+    In the future, there will be a **discovery** feature where the Agents will be installed automatically, so this process is invisible to the user. There will also be a feature where the asset can register manually to the EC, withouth having an Agent actively monitoring the asset. This will be useful for network hardware, for example, and will align with Nalej's intention of having this view as a complete inventory of the organization's assets.
 
 ## Managing labels
 
 Regarding the **labels** of the ECs, Assets and devices, although adding and/or deleting them is not encouraged, we can do it easily, and the procedure for clusters and nodes is very similar.
 
-### Web Interface
-
 At the end of the label list there is a `+` button to **add** new labels.
 
-![Add labels dialog](../img/infra_inv_addlabel.png)
+![Add labels dialog](../../img/infra_inv_addlabel.png)
 
 After clicking on that button, we can see a form where we can enter the name and value of the label, and we can save or discard this new information.
 
 If, however, in the list of labels we click on one or more labels \(selecting them\), this `+` button changes its function to **delete**, and its image to one of a bin, so we can delete the selected labels.
 
-![Select label for deleting them](../img/infra_inv_labels.png)
+![Select label for deleting them](../../img/infra_inv_labels.png)
 
 As stated above, please handle these features with care.
 

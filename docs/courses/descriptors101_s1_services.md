@@ -4,7 +4,7 @@ The application we're going to be working with in this session is the WordPress 
 
 ------
 
-This is the first session in the descriptor creation workshop. In this session, we will describe the parts of a descriptor and define our first service. For more information on this topic, please refer to the main [documentation about descriptors](../applications/app_descriptors.md), in the Apps section.
+This is the first session in the descriptor creation workshop. In this session, we will describe the parts of a descriptor and define our first service. For more information on this topic, please refer to the main [documentation about descriptors](../cli/applications/app_descriptors.md), in the Apps section.
 
 ### Structure of an application descriptor
 
@@ -120,7 +120,7 @@ The service, on the other hand, can have a lot more attributes. Not all of them 
 - **`deploy_after`**: sometimes a service needs some other service to be deployed first. The WordPress service uses a predefined environment variable that contains info about the MySQL service (its address in the platform). This variable needs to be filled before deploying the service, so the WordPress service needs to be deployed after the MySQL service.
 - **`labels`**: as we said before, these labels allow us to identify the application in the system.
 
-There are more attributes that can be used in the definition of a service. If you want to know more, please read the [Service Groups](../applications/app_descriptors.md#service-groups) and the [Services](../applications/app_descriptors.md#services) sections of the documentation.
+There are more attributes that can be used in the definition of a service. If you want to know more, please read the [Service Groups](../cli/applications/app_descriptors.md#service-groups) and the [Services](../cli/applications/app_descriptors.md#services) sections of the documentation.
 
 ## Exercise
 

@@ -4,7 +4,7 @@ The Nalej platform allows the user to create point-to-point secure connections b
 
 ## How it works
 
-![Application Network Diagram](../img/tutorial_appnet_functionality_diagram.png)
+![Application Network Diagram](../../img/tutorial_appnet_functionality_diagram.png)
 
 To create a private connection between service applications, the Nalej platform provides the Application Network solution. With this, you can establish point-to-point secure connections between services dynamically. Let's introduce the important terms to ramp up:
 
@@ -19,8 +19,6 @@ You can also create a **service mesh** using outbounds and inbounds on all your 
 ## Know how
 
 ### Show network interfaces
-
-#### Public API CLI
 
 You can list all the available \(connectable\) network interfaces through the CLI. Just use the commands `appnet outbound available` or `appnet inbound available` to get a list of all the available outbound or inbound network interfaces in your organization. The command:
 
@@ -50,8 +48,6 @@ eb945169-448e-4c4b-8f74-2f43c5fdca87   EXAMPLE_SINK    in_iface
 
 ### Show connections
 
-#### Public API CLI
-
 To list the connections of an organization, invoke the CLI with the command `appnet list`.
 
 ```bash
@@ -76,18 +72,6 @@ The possible statuses are:
 * **TERMINATED**: When an application is being undeployed for any reason, this status will raise before deleting the connection.
 * **ERROR**: If something failed when establishing the connection and the failure cannot be reversed or retry to connect.
 
-#### Web interface
-
-When you open the Applications view, the deployment graph will show the active connections as arrowed lines between applications.
-
-![Main view of applications showing connections](../img/tutorial_appnet_main_page.png)
-
-If you click on the **Manage connections** button, it will show the **Manage connections** modal window.
-
-![Manage connections modal window](../img/tutorial_appnet_manage_connections_list.png)
-
-The list will show all the connections. If the source interface name shows an asterisk `*`, that means that the outbound interface is marked as **required**.
-
 ### Create a new connection between applications
 
 Some **rules** must be observed when creating a connection:
@@ -97,8 +81,6 @@ Some **rules** must be observed when creating a connection:
 * One outbound network interface can only be connected to one, and only one, inbound network interface.
 * One inbound network interface can be attached to multiple outbound network interfaces.
 * The target port listed in the rule that describes the interface will be the port opened for the connection.
-
-#### Public API CLI
 
 To create a new connection, you must invoke the CLI with the command `appnet add`. You will need to specify the following parameters:
 
@@ -117,21 +99,7 @@ To create a new connection, you must invoke the CLI with the command `appnet add
 
 Be aware that the request is asynchronous. The platform will answer with a `RESULT OK` message if the request was accepted and it will do its best to create the connection as soon as possible. Run the command `appnet list` to check on the connection status.
 
-#### Web interface
-
-![Manage connections window to add connection](../img/tutorial_appnet_manage_connections_list_add.png)
-
-On the **Manage connections** window, click on the **Add new connection** button to open the **Add new connection** dialog.
-
-![Add new connection dialog](../img/tutorial_appnet_add_connection.png)
-
-Here you can define the source instance, the outbound network interface name, the target instance, and the inbound network interface name. Then just click on the button **Add new connection** to send an asynchronous message to the platform to create the connection.
-
-When the connection is established, the main graph will show the connection with an arrowed edge between the instances.
-
 ### Remove a connection
-
-#### Public API CLI
 
 To remove a connection, you must invoke the CLI with the command `appnet remove`. You will need to specify the following parameters:
 
@@ -149,10 +117,3 @@ To remove a connection, you must invoke the CLI with the command `appnet remove`
 ```
 
 Be aware that the request is asynchronous. The platform will answer with a `RESULT OK` message if the request was accepted and it will do its best to remove the connection as soon as possible. Run the command `appnet list` to check on the connection status. If the outbound network interface of the connection is marked as **required**, you will need to use the `--force` flag to remove it. Be aware that the connection was marked as required for some reason.
-
-#### Web interface
-
-![Manage connections window to remove connection](../img/tutorial_appnet_manage_connections_list_remove.png)
-
-On the **Manage connections** window, click on the **Disconnect** button to remove that connection. The platform will show a confirmation popup to avoid accidental remotions.
-

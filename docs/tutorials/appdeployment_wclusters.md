@@ -130,7 +130,7 @@ This example is the output of the following command:
     help > appDescExample.json
 ```
 
-It creates a basic application descriptor for you \(called `appDescExample.json`in this case\), with a Wordpress instance and a mySQL database associated to it. To learn more about them, please read [this document](../applications/app_descriptors.md), where you can find an extensive tutorial on how to make your own.
+It creates a basic application descriptor for you \(called `appDescExample.json`in this case\), with a Wordpress instance and a mySQL database associated to it. To learn more about them, please read [this document](../cli/applications/app_descriptors.md), where you can find an extensive tutorial on how to make your own.
 
 ### Adding the application descriptor to the system
 
@@ -204,7 +204,7 @@ Using the flag `--connections` you will be able to describe the connections to o
     --connections <outbound_iface_name>,<target_inst_id>,<target_inbound_iface_name>#...
 ```
 
-To know more about connections and networking, check the Application Networking tutorial [here](../applications/appnetworking.md).
+To know more about connections and networking, check the Application Networking tutorial [here](../web/applications/appnetworking.md).
 
 #### Web Interface
 

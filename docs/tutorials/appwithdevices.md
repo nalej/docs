@@ -2,7 +2,8 @@
 
 This document will explain how to deploy an application that needs some extra devices in the Nalej platform \(let's say, for example, an app that measures the temperature of a building, and has sensors in every floor of the building\).
 
-_The CLI responses are shown in text format, which can be obtained adding_ `--output="text"` _to the user options. If you need the responses in JSON format, you can get them by adding_ `--output="json"` _at the end of your requests, or as a user option._
+!!! note
+    The CLI responses are shown in text format, which can be obtained adding `--output="text"` to the user options. If you need the responses in JSON format, you can get them by adding `--output="json"` at the end of your requests, or as a user option.
 
 ## Creating a new device group in the system
 
@@ -63,7 +64,7 @@ Each device will register automatically through the installed Nalej SDK, but the
 
 As we just saw, this data can be easily obtained asking for the device group information through the CLI or the Web Interface. Once it is in the SDK, the devices will register in the correct device group, and the structure for our app will be in place.
 
-To see if the devices are up and running, you can check their status through the web interface or the public API CLI, as explained [in this document](../devices/devices-1.md).
+To see if the devices are up and running, you can check their status through the web interface or the public API CLI, as explained [in this document (web)](../web/devices/dev_deploy_mgmt_removal.md) and [in this other document (CLI)](../cli/devices/dev_deploy_mgmt_removal.md)
 
 ## Creating the application descriptor
 
@@ -93,5 +94,5 @@ As you can see, each service using the device group will need a new rule, specif
 
 ## Adding & deploying the app to the system
 
-Once this is done, the only thing left to do is adding the application to the system and deploying an instance of it. These steps are the same for every application, so our suggestion is to check out our [Application deployment](appdeployment_wclusters.md) tutorial to see how to do it.
+Once this is done, the only thing left to do is adding the application to the system and deploying an instance of it. These steps are the same for every application, so our suggestion is to check out the application deployment documentation (through [web interface](../web/applications/app_deploy_mgmt_removal.md) and [CLI](../cli/applications/app_deploy_mgmt_removal.md)) to see how to do it.
 

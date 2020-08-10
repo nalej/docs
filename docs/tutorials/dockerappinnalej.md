@@ -6,7 +6,7 @@ You have Nalej as your platform, but there are some apps that you have in a Dock
 
 The first thing that needs to be tackled is the app descriptor, which is what you need to register the application in the system.
 
-Do you remember how to [create your own app descriptor](../applications/app_descriptors.md)? Perfect! You just have to modify and add a couple of sections, and your descriptor will be good to go.
+Do you remember how to [create your own app descriptor](../cli/applications/app_descriptors.md)? Perfect! You just have to modify and add a couple of sections, and your descriptor will be good to go.
 
 So, your app descriptor for a normal app would be something like this:
 

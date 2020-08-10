@@ -55,18 +55,6 @@ The response to this command looks like this:
 
 ## Is the cluster running?
 
-We can check if the installation was successful and the cluster is up and running through the Web Interface and through the CLI.
-
-### Web Interface
-
-We just have to navigate to the Resources view.
-
-![Main view of the resources section.](../img/res_cins_main.png)
-
-Here, we can see the available application clusters in the system, and our brand new cluster should appear on the list and in the graph. For more information on how to manage this new cluster, please check the [Cluster monitoring](resources-1.md) section of the documentation.
-
-### Public API CLI
-
 To check the availability through the CLI we just have to list the clusters in the system with the command:
 
 ```bash
@@ -82,5 +70,5 @@ NAME               ID                                     NODES   LABELS        
 <cluster_name_3>   xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx   4       key5:value5,key6:value6   INSTALLED   ONLINE
 ```
 
-This response is already analyzed in the [Cluster monitoring](resources-1.md) section of the documentation, and it should show the information of the newly installed cluster.
+This response is already analyzed in the [Cluster monitoring](cluster_monitoring.md) section of the documentation, and it should show the information of the newly installed cluster.
 

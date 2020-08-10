@@ -24,38 +24,6 @@ For this to work it's **mandatory** that the **cluster is in the `cordon` state*
 
 ## Managing the cluster
 
-### Web Interface
-
-All these operations are done from the Resources view.
-
-To **cordon** a cluster, choose the cluster from the cluster list, and chooose "Cordon" from the contextual menu.
-
-![Contextual menu](../img/cluster_mgmt_menu.png)
-
-After a confirmation dialog, you will see a message on the upper right part of the view acknowledging the operation. There are visual cues that indicate the user that the cluster is cordoned: in the graph, the cordoned cluster is colored in grey with a green border, instead of completely green; also, in the cluster list, the Status button of the cordoned cluster is grey with a green border, instead of green.
-
-![Cluster cordoned message](../img/cluster_mgmt_cordonmessage.png)
-
-To **uncordon** a cordoned cluster, you should choose the "Uncordon" option from the contextual menu, as we did when cordoning it. This will trigger, again, a confirmation dialog, and after that a message will appear to announce that the operation has been executed.
-
-![Uncordon cluster message](../img/cluster_mgmt_uncordonmessage.png)
-
-The cluster goes back to being fully green, since it is uncordoned and online, instead of grey with a green border.
-
-To **drain** a cordoned cluster, again you choose the option in the contextual menu, and again a confirmation dialog appears and a message saying the operation has been executed is shown.
-
-![Drain cordoned cluster message](../img/cluster_mgmt_drainmessage.png)
-
-The state of the cluster doesn't change (it is still cordoned), but the applications deployed in it are undeploying and deploying in another cluster. This process takes some time, and while it happens the state of the applications will vary in the graph.
-
-After some time, the graph will look like this:
-
-![Drained cluster](../img/cluster_mgmt_drainedcluster.png)
-
-The cordoned cluster is empty, and the applications that once were deployed in it have been moved to another one.
-
-### Public API CLI
-
 To **cordon** a cluster, please execute:
 
 ```bash

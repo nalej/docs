@@ -51,7 +51,7 @@ Once we have declared them in the body of the `services` section, we need to def
     },
 ```
 
-This structure is thoroughly explained [in the Application Descriptor documentation](../applications/app_descriptors.md#parameters). We will talk again about two of the components, for the sake of clarity.
+This structure is thoroughly explained [in the Application Descriptor documentation](../cli/applications/app_descriptors.md#parameters). We will talk again about two of the components, for the sake of clarity.
 
 The **path** indicates where in the descriptor the parameter is declared. This appears as :
 

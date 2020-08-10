@@ -11,24 +11,43 @@ nav:
         - Installation steps: installation/onpremise/installation.md
         - More about MetalLB: installation/onpremise/metallb.md
       - Uninstalling Nalej: installation/uninstall.md
-    - Organization:
-      - Organization and user management: 'organization/organization-1.md'
-    - Infrastructure:
-      - The inventory: infrastructure/inventory.md
-      - Edge Controllers and Agents: infrastructure/ecandagents.md
-    - Resources:
-      - Cluster monitoring: resources/resources-1.md
-      - Application cluster installation: resources/appcluster_installation.md
-      - Cluster management: resources/cluster_management.md
-    - Devices:
-      - Adding, managing and deleting devices: devices/devices-1.md
-    - Apps:
-      - Deployment, management and removal: applications/applications-1.md
-      - Application descriptor: applications/app_descriptors.md
-      - The Application Graph: applications/appdiagram.md
-      - Application networking: applications/appnetworking.md
-    - Logs:
-      - Unified Logging: logs/unified_logging.md
+    - Using Web Interface:
+      - Organization:
+        - Organization and user management: 'web/organization/org_user_mgmt.md'
+      - Infrastructure:
+        - The inventory: web/infrastructure/inventory.md
+        - Edge Controllers and Agents: web/infrastructure/ecandagents.md
+      - Resources:
+        - Cluster monitoring: web/resources/cluster_monitoring.md
+        - Application cluster installation: web/resources/appcluster_installation.md
+        - Cluster management: web/resources/cluster_management.md
+      - Devices:
+        - Adding, managing and deleting devices: web/devices/dev_deploy_mgmt_removal.md
+      - Apps:
+        - Deployment, management and removal: web/applications/app_deploy_mgmt_removal.md
+        - Application descriptor: web/applications/app_descriptors.md
+        - The Application Graph: web/applications/appdiagram.md
+        - Application networking: web/applications/appnetworking.md
+      - Logs:
+        - Unified Logging: web/logs/unified_logging.md
+    - Using Public API CLI:
+      - Organization:
+        - Organization and user management: 'cli/organization/org_user_mgmt.md'
+      - Infrastructure:
+        - The inventory: cli/infrastructure/inventory.md
+        - Edge Controllers and Agents: cli/infrastructure/ecandagents.md
+      - Resources:
+        - Cluster monitoring: cli/resources/cluster_monitoring.md
+        - Application cluster installation: cli/resources/appcluster_installation.md
+        - Cluster management: cli/resources/cluster_management.md
+      - Devices:
+        - Adding, managing and deleting devices: cli/devices/dev_deploy_mgmt_removal.md
+      - Apps:
+        - Deployment, management and removal: cli/applications/app_deploy_mgmt_removal.md
+        - Application descriptor: cli/applications/app_descriptors.md
+        - Application networking: cli/applications/appnetworking.md
+      - Logs:
+        - Unified Logging: cli/logs/unified_logging.md
     - Tutorials:
       - Initial login in Nalej: tutorials/initiallogin.md
       - Adding users in the system: tutorials/addingusers.md

@@ -18,9 +18,10 @@ You receive your brand new Raspberry Pi with your DHT-22 sensor \([which you hav
 
 First, you need to get everything ready for your device, and that means that you need to create a new device group for your device to belong to.
 
-You can [add a new device group in the system](../../devices/devices-1#adding-a-device-group) following the instructions in the documentation, or you can also use an already existent device group if you wish. Then, the information you need for registering your device in the system can be obtained following [this other tutorial](../../devices/devices-1#getting-device-related-information).
+You can [add a new device group in the system](../cli/devices/dev_deploy_mgmt_removal.md#adding-a-device-group) following the instructions in the documentation, or you can also use an already existent device group if you wish. Then, the information you need for registering your device in the system can be obtained following [this other tutorial](../cli/devices/dev_deploy_mgmt_removal.md#getting-device-related-information).
 
-> DISCLAIMER: by now, the information needed to register a device is only available through the Public API CLI. So, although the tutorials show how to add or manage device groups through the Web Interface too, we recommend doing it through the Public API CLI, so the gathering of information is more straightforward.
+!!! note "Disclaimer"
+    By now, the information needed to register a device is only available through the Public API CLI. Therefore, we recommend adding and managing the device groups through the Public API CLI, so the gathering of information is more straightforward.
 
 ### Getting ready for the SDK
 
@@ -290,7 +291,7 @@ Here we have a typical declaration for a parameter. In this case, the parameter 
 * a `category`, which is an indication of this parameter being needed for a basic configuration \(0\) or an advanced one \(1\).
 * a flag telling us if the parameter is `required` or optional. In this case, it's optional.
 
-And that's it! You have finished your application descriptor and can now deploy an instance of your application in Nalej. If you have trouble with this part, there is a step-by-step tutorial [here](appdeployment_wclusters.md), and you can find more information [here](../applications/applications-1.md) if you have further questions.
+And that's it! You have finished your application descriptor and can now deploy an instance of your application in Nalej. If you have trouble with this part, there is a step-by-step tutorial [here](appdeployment_wclusters.md), and you can find more information [here](../cli/applications/app_deploy_mgmt_removal.md) if you have further questions.
 
 ## Sending telemetry data
 
