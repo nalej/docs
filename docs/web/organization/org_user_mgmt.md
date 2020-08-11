@@ -69,20 +69,3 @@ To delete a user, click on the **Delete user** option of that user's contextual 
 ![Delete user in user info dialog](../../img/org_deleteuser.png)
 
 A message will appear on the browser asking you to confirm the action and, after confirming, another message will appear on the upper right part of the screen acknowledging the deletion.
-
-### Public API CLI
-
-To delete a user, execute the following command:
-
-```bash
-./public-api-cli users delete 
-    --email=<email-name>@<email-domain>
-```
-
-When this operation exits successfully, the return is:
-
-```text
-RESULT
-OK
-```
-

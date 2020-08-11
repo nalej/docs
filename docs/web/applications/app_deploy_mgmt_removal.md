@@ -133,29 +133,6 @@ This is the descriptor of a WordPress server with an associated MySQL database. 
 
 ### Adding the application to the system
 
-#### Public API CLI
-
-Let's suppose you have the application descriptor already covered, and you want to deploy your application now. As stated before, the next step of the process is adding the application to the system. That will be done with the command:
-
-```bash
-./public-api-cli app desc add 
-    /pathtodescriptor
-```
-
-It returns a table like this:
-
-```bash
-DESCRIPTOR                  ID          LABELS
-SARA - simple application   <desc_id>   <label:value>
-
-NAME                  IMAGE            LABELS
-[Group] application   ===
-simple-mysql          <serv1_img>      <l1:v1>,<l2:v2>
-simple-wordpress      <serv2_img>      <l3:v3>,<l4:v4>
-```
-
-with an application **descriptor ID** inside, which we will need for deploying an instance of this application.
-
 So, the descriptor is ready and you are already in the Application view of the web interface. Where to go from here? Great question!
 
 In the Application view, we can see the already deployed applications in the lower part of the screen, in the Applications list. There, we need to click on the **Registered** tab, and then we can see the **Register application** button. Please click on it.
