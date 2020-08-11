@@ -299,3 +299,32 @@ This, if executed successfully, will return an acknowledgment:
 RESULT
 OK
 ```
+
+
+
+## Troubleshooting
+
+### Cannot load application descriptor
+
+_I got in the system! But now there's something wrong with the application descriptor. The message is_ `cannot load application descriptor`. _What can it possibly mean?_
+
+It can mean that the path to the application descriptor is not right. It can also mean that the application descriptor you're trying to use is empty. Check both possibilities, just in case.
+
+### Cannot add a new application descriptor
+
+_Now there's another error related to the application descriptor. The message now is_ `cannot add a new application descriptor`. _I'm sure about the path and the file has something in it, so it should work, right?_
+
+Not necessarily. The format of the application descriptor must be correct. If there's something essential missing \(like the name of the application to deploy, for example\), it won't work. Compare your application descriptor with the one shown above as an example, and check if there is something missing.
+
+### Cannot deploy application
+
+_I got the descriptorID! But when I try to deploy an instance of the app, there's a message that says:_ `cannot deploy application`. _Please tell me the truth, does the system hate me?_
+
+I seriously doubt so \(but we will check its feelings matrix, just in case\). The problem may have appeared because the descriptorID is not correct. Copy and paste it exactly as it is returned from the `app desc add` command.
+
+### Error 404 when trying to access the endpoint
+
+_Everything went ok, and I fixed all the problems that have appeared until now. But as I was ready to access the endpoint, a_ `404 Not Found` _hit me from out of nowhere. I'm determined to do this. What's happening now?_
+
+There are several variables that can be the issue here, but I'm sure you have already checked any connectivity problems that may be happening. If everything seems fine and it should be working, please get the instance info again with `app inst get` and check if the status is still `"RUNNING"`.
+

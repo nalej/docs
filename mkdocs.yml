@@ -51,7 +51,6 @@ nav:
     - Tutorials:
       - Initial login in Nalej: tutorials/initiallogin.md
       - Adding users in the system: tutorials/addingusers.md
-      - Application deployment: tutorials/appdeployment_wclusters.md
       - Docker Compose application: tutorials/dockerappinnalej.md
       - Application with devices: tutorials/appwithdevices.md
       - Installing Nalej SDK in a device: tutorials/installingsdkindevice.md
