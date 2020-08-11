@@ -73,7 +73,7 @@ extra_css:
   - stylesheets/extra.css
   
 extra:
-  version: 0.5.1
+  version: 0.6.0
   logo: img/nalej_logo.png
 
 markdown_extensions:
