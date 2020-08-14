@@ -176,5 +176,5 @@ This is also valid whenever you need to pass arguments to images in the platform
 
 ## Adding & deploying the app to the system
 
-Once this is done, the only thing left to do is adding the application to the system and deploying an instance of it. These steps are the same for every application, so our suggestion is to check out our [Application deployment](appdeployment_wclusters.md) tutorial to see how to do it.
+Once this is done, the only thing left to do is adding the application to the system and deploying an instance of it. These steps are the same for every application, so our suggestion is to check out the application deployment documentation (using [web](../web/applications/app_deploy_mgmt_removal.md) or [CLI](../cli/applications/app_deploy_mgmt_removal.md)) to see how to do it.
 

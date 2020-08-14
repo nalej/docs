@@ -112,7 +112,7 @@ Now go to the **EC2** section. The next steps will be executed here. The views w
 
 To delete the **Load Balancers**, we first go to the corresponding view.
 
-![EC2 Load Balancers main page](../img/uninst_aws_EC2_loadbalancer.png)
+![EC2 Load Balancers main page](../img/uninst_aws_ec2_loadbalancer.png)
 
 The cluster names are in tags, so you can search by tag and find the Load Balancers that were assigned to the clusters you have already deleted. Select them and delete them. 
 

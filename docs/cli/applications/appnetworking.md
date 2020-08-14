@@ -4,7 +4,7 @@ The Nalej platform allows the user to create point-to-point secure connections b
 
 ## How it works
 
-![Application Network Diagram](../../img/tutorial_appnet_functionality_diagram.png)
+![Application Network Diagram](../../img/app_network_functionality_diagram.png)
 
 To create a private connection between service applications, the Nalej platform provides the Application Network solution. With this, you can establish point-to-point secure connections between services dynamically. Let's introduce the important terms to ramp up:
 

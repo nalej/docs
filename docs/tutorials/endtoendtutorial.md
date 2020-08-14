@@ -291,7 +291,7 @@ Here we have a typical declaration for a parameter. In this case, the parameter 
 * a `category`, which is an indication of this parameter being needed for a basic configuration \(0\) or an advanced one \(1\).
 * a flag telling us if the parameter is `required` or optional. In this case, it's optional.
 
-And that's it! You have finished your application descriptor and can now deploy an instance of your application in Nalej. If you have trouble with this part, there is a step-by-step tutorial [here](appdeployment_wclusters.md), and you can find more information [here](../cli/applications/app_deploy_mgmt_removal.md) if you have further questions.
+And that's it! You have finished your application descriptor and can now deploy an instance of your application in Nalej. If you have trouble with this part, you can check the application deployment documentation (using [web](../web/applications/app_deploy_mgmt_removal.md) and [CLI](../web/applications/app_deploy_mgmt_removal.md)).
 
 ## Sending telemetry data
 
