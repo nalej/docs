@@ -169,21 +169,17 @@ With all these actions we arrive to the same dialog, which looks like this:
 
 Here we need to choose the application we want an instance of (from the drop down menu), and write the name of the new instance. If we clicked on the **Deploy** button in the **Registered** list or in the **Actions** menu, now the instance will already be established.
 
-- If the app does not require parameters or connections, after we complete this menu and hit **Next**, the buttons will change and a **Deploy** button will appear. Clicking on it will make the instance deploy and appear in the **Instance** list.
+- If the app does not require parameters or connections, after we choose the registered app the **Next** button will change into a **Deploy** button. Clicking on it will make the instance deploy and appear in the **Instance** list.
 
 ![Basic params](../../img/app_mgmt_deploy_basicinfo.png)
 
 - If the app has parameters, once we hit **Next**, the next step in line (parameters) will be highlighted, and we will need to fill the basic and/or advance information required for this app. With an application that does not require additional connections, hitting **Next** will change the buttons again, and the **Deploy** button will appear.
 
-![Basic parameters](../../img/app_mgmt_deploy_paramsdefault.png)
-
-![Advanced params](../../img/app_mgmt_deploy_paramsadvanced.png)
+![Parameters for deploy.](../../img/app_mgmt_deploy_params.png)
 
 - Lastly, if there is any required connection, we will have to fill the required information for them in the third step.
 
 ![App connections options for deploy](../../img/app_mgmt_deploy_connections.png)
-
-![](../../img/app_mgmt_deploy_connections_filled.png)
 
 The **Deploy** button will be enabled when the information is completely added, allowing the user to finally deploy the instance.
 
@@ -276,6 +272,8 @@ Also, the system won't let you delete an application while it has deployed insta
 To delete the application from the system, we just need to go to the **Registered** tab in the Application list, and look for the application. Then, in the **Actions** menu, we click on the **Delete** option.
 
 <!-- imagen: borrado desde la lista de apps registradas --> 
+
+![Deleting an application from the system](../../img/app_mgmt_delete_fromregisteredlist.png)
 
 We can also delete it from its information view. Once in it, we need to click the **Delete** button on the lower right part of the view, beside the "Deploy" button.
 

@@ -68,3 +68,4 @@ If, however, in the list of labels we click on one or more labels \(thus selecti
 ![Deleting labels](../../img/res_cmon_selectlabelfromcluster.png)
 
 As stated above, please handle these features with care.
+

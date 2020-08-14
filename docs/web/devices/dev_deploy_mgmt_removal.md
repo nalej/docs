@@ -27,8 +27,6 @@ To create a device group, we need:
 
 Once the group is created, it will be displayed on the devices list, located in the main view.
 
-![](../../img/dev_addgroup_groupcreated.png)
-
 ## Configuration of a device group
 
 In the main view, we can easily access the configuration of a specific device group by clicking on the **Configuration** button in the Options menu.
@@ -45,8 +43,6 @@ The only options that can be changed in a group are:
 
 
 ## Getting device-related information
-
-### Web Interface
 
 This is the main page of the Device section:
 
@@ -74,7 +70,7 @@ When we choose the **More info** option, a dialog appears, where we can find the
 
 We can also search by any text string included in any part of the device information \(for example, we can search the term "`online`" to see which devices are online at any given moment, or a specific date of inclusion in the system\).
 
-![Using the Search option with the string "471"](../../img/dev_search.png)
+![Using the Search option with the string "kuard"](../../img/dev_search.png)
 
 ## Deleting a device group
 

@@ -37,7 +37,11 @@ Once here, we can easily find the EC we want to manage, and:
 * Check its basic information \(ID, geolocation, status\).
 * Add or delete labels \(the same way as in the rest of the views\).
 
-We can also access the **Actions** menu \(the three dots icon in the far right column\) and find several more options, like:
+We can also access the **Actions** menu \(the three dots icon in the far right column\) 
+
+![All the info about the EC](../../img/infra_eca_actionsmenu.png)
+
+Here we will find several more options, like:
 
 **More info**
 
@@ -59,7 +63,7 @@ This allows us to install an agent directly from the EC. For this, we need:
 
 ![Agent joint token](../../img/infra_eca_agenttoken.png)
 
-This view shows the certificate \(and when it expires\) and the token needed for an agent to join this EC.
+This view shows the certificate (and its expiration date) and the token needed for an agent to join this EC.
 
 **Unlink EC**
 
@@ -78,7 +82,11 @@ Once we find the asset where our agent is installed, we can:
 * get the asset ID, its geolocation and its status \(in a first glance\).
 * add and delete tags \(using the same procedure as in other parts of the web interface\).
 
-Also, in the far right column we can click on the three dots icon to access the **Actions** menu, which allows us access to the following:
+Also, in the far right column we can click on the three dots icon to access the **Actions** menu.
+
+![Agent info view](../../img/infra_eca_agent_actionsmenu.png)
+
+This enables the access to the following:
 
 **More info**
 
@@ -105,4 +113,16 @@ Here we can see the information obtained from the last operation the asset execu
 ![Uninstall agent](../../img/infra_eca_uninstallagent.png)
 
 As with the ECs, this option prompts a browser dialog for us to confirm the action, and when we do, the agent gets uninstalled and the asset disappears from the list.
+
+## Managing devices
+
+You can also see the devices connected to the system here. As with the rest of the elements in this list, each device has an **Actions** menu.
+
+![Uninstall agent](../../img/infra_eca_actionsdevices.png)
+
+From this menu you can click on **More info** and check the extended information of the device:
+
+![Uninstall agent](../../img/infra_eca_devices_moreinfo.png)
+
+You can also click on **Toggle enablement**, which lets you enable or disable the device, and on **Unlink device**, which unlinks the device and the EC. Both these actions trigger a confirmation menu from the browser before executing.
 
