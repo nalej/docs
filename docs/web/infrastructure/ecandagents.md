@@ -47,7 +47,7 @@ Here we will find several more options, like:
 
 ![All the info about the EC](../../img/infra_eca_ecinfo.png)
 
-Here we can see, apart from the information we already had, the list of assets attached to a specific EC.
+Here we can see the information we already had, and the list of assets attached to a specific EC.
 
 **Install agent**
 
@@ -61,9 +61,9 @@ This allows us to install an agent directly from the EC. For this, we need:
 
 **Create agent token**
 
-![Agent joint token](../../img/infra_eca_agenttoken.png)
+<!-- ![Agent joint token](../../img/infra_eca_agenttoken.png) -->
 
-This view shows the certificate (and its expiration date) and the token needed for an agent to join this EC.
+Clicking this option will show a dialog with the certificate (and its expiration date), and the text token needed for an agent to join this EC.
 
 **Unlink EC**
 

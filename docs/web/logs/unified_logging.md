@@ -18,7 +18,7 @@ The Logs view can be found at the very end of the list in the far left side of t
 
 Here you can find the logs of all the instances deployed in the organization you belong to. This is obviously unmanageable by itself, so we provide several tools to find your way through it. 
 
-On the left side of the logs (which are in dark background) , you can find the **search and filters** menu. The **Search** option uses a _string_ as a parameter, and looks for that _string_ in the logs, the name of the services, instances and applications, the IDs... basically everywhere.
+On the left side of the logs (which are in dark background) , you can find the **search and filters** menu. The **Search** option uses a _string_ as a parameter, and looks for that _string_ in the logs, the name of the services, instances and applications, the IDs... basically everywhere. For example, in the following image we filtered the messages to use only the ones related to the `elastic` service, and then we searched for the string `error`. Instead of the thousands of logs available, we got those two, which describe the two errors from the service.
 
 ![Search by string](../../img/logs_searchbystring.png) 
 

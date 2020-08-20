@@ -44,15 +44,11 @@ The cluster goes back to being fully green, since it is uncordoned and online, i
 
 To **drain** a cordoned cluster, again you choose the option in the contextual menu, and again a confirmation dialog appears and a message saying the operation has been executed is shown.
 
-![Drain cordoned cluster message](../../img/cluster_mgmt_drainmessage.png)
+The state of the cluster doesn't change (it is still cordoned), but the applications deployed in it are undeploying and deploying in another cluster. This process takes some time, and while it happens the state of the applications will vary in the graph. After some time, the cordoned cluster will be empty, and the applications that once were deployed in it will be in another one.
 
-The state of the cluster doesn't change (it is still cordoned), but the applications deployed in it are undeploying and deploying in another cluster. This process takes some time, and while it happens the state of the applications will vary in the graph.
-
-After some time, the graph will look like this:
+In this example the cluster `app3london104` has been cordoned and drained, and then put in the `offline` state. That would be the proper procedure to follow when something's wrong with a cluster and we want to check what's going on with it.
 
 ![Drained cluster](../../img/cluster_mgmt_drainedcluster.png)
-
-The cordoned cluster is empty, and the applications that once were deployed in it have been moved to another one.
 
 ## Deployment restrictions
 
