@@ -1,6 +1,6 @@
 # Welcome to NALEJ®
 
-Welcome to the documentation for the 0.5.1 release of the NALEJ® system. This documentation is structured as follows:
+Welcome to the documentation for the 0.6.0 release of the NALEJ® system. This documentation is structured as follows:
 
 ## [Installation](installation/platformer/platformer.md)
 
