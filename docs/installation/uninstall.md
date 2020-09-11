@@ -6,6 +6,8 @@ Sometimes things don't go as expected and we need to uninstall the platform, for
 
 We installed the platform in several clusters and everything went well. We have been working on our application clusters and management cluster for a while, and now we want to uninstall everything and free our resources.
 
+### In Azure
+
 To uninstall the platform from an application cluster (which will be referred as *decommission* a cluster), you need to execute:
 
 ```bash
@@ -37,8 +39,48 @@ Where:
 
 - `azureCredentialsPath`  is the path for the Azure credentials file.
 - `name` is the name of the management cluster we want to decommission.
-- `platform` indicates the target platform determining the provider (which can be AZURE or BAREMETAL).
+- `platform` indicates the target platform determining the provider (which can be AZURE, AWS, AWS_GOV_CLOUD or BAREMETAL).
 - `resourceGroup` is the resource group of the cluster (only for Azure).
+
+And that should do it. After these two commands end their execution, the platform will be uninstalled from your system.
+
+### In AWS
+
+To uninstall the platform from an application cluster (which will be referred as *decommission* a cluster), you need to execute:
+
+```bash
+public-api-cli cluster decommission 00630f9c-59fe-408a-829c-6dc67c2b98e7 
+      --targetPlatform AWS 
+      --awsRegion eu-west-1 
+      --awsDnsName aws.company.com
+      --awsHostedZoneId X00000000X000XX00XXXX
+```
+
+Where the parameter is the cluster ID of the cluster we want to decommission, and:
+
+- `target_platform` indicates the cloud provider where the cluster is hosted.
+- `awsRegion` is the region/zone where the cluster is deployed (required for AWS or AWS_GOV_CLOUD).
+- `awsDnsName` is the name of the DNS zone where the entries are stored.
+- `awsHostedZoneId` is the Identifier associated with the DNS name. 
+
+After decommissioning all the application clusters, the management cluster is next. For this we need to use the `provisioner-cli`, executing:
+
+```bash
+provisioner-cli decommission 
+      --name management-cluster 
+      --awsHostedZoneId X00000000X000XX00XXXX 
+      --awsRegion eu-west-1 
+      --platform AWS  
+      --dnsZoneName aws.company.com
+```
+
+Where:
+
+- `name` is the name of the management cluster we want to decommission. Bear in mind that this name may include a prefix (`mngt-`) that must not be included here. Please use the name given to the cluster in the provisioning phase.
+- `awsHostedZoneId` is the Identifier associated with the DNS name.
+- `awsRegion` is the region/zone where the cluster is deployed (required for AWS or AWS_GOV_CLOUD).
+- `platform` indicates the target platform determining the provider (which can be AZURE, AWS, AWS_GOV_CLOUD or BAREMETAL).
+- `dnsZoneName` is the name of the DNS zone where the entries are stored.
 
 And that should do it. After these two commands end their execution, the platform will be uninstalled from your system.
 
@@ -90,7 +132,15 @@ In the **Elastic Kubernetes Services** view, go to the **Clusters** option.
 
 ![Elastic Kubernetes Services](../img/uninst_aws_kubernetes.png)
 
-Once there, you will see a list of the clusters. Locate the ones you don't want anymore, select them and delete them.
+Once there, you will see a list of the clusters. To take down the clusters, you will first need to delete the nodegroups in them. Choose a cluster, and click on it to see the detailed view.
+
+![Elastic Kubernetes Services](../img/uninst_aws_deleting_node_groups.png)
+
+Once in this view, choose the **Compute** tab. Here you will find a list of the node groups that belong to the cluster. Select them all and thelete them.
+
+After that, go back to the **Clusters** view, select the (now empty) cluster, and delete them.
+
+Repeat this process with each cluster you want to take down.
 
 #### Step 2: delete the DNS records
 
