@@ -136,7 +136,7 @@ Once there, you will see a list of the clusters. To take down the clusters, you 
 
 ![Elastic Kubernetes Services](../img/uninst_aws_deleting_node_groups.png)
 
-Once in this view, choose the **Compute** tab. Here you will find a list of the node groups that belong to the cluster. Select them all and thelete them.
+Once in this view, choose the **Compute** tab. Here you will find a list of the node groups that belong to the cluster. Select them all and delete them.
 
 After that, go back to the **Clusters** view, select the (now empty) cluster, and delete them.
 
