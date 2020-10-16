@@ -5,7 +5,7 @@ nav:
     - Platform installation: 
       - Installation with Platformer: 
         - Using Azure: 'installation/platformer/azure-platformer.md'
-        - Using AWS: 'installation/platformer/aws-platformer.md'		
+        - Using AWS: 'installation/platformer/aws-platformer.md'
       - On-premise installation:
         - Getting started: installation/onpremise/prerequisites.md
         - Kubernetes in Nalej: installation/onpremise/kubernetes.md
