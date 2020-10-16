@@ -3,7 +3,9 @@ site_name: NALEJ
 nav:
     - Welcome to NALEJ®: index.md
     - Platform installation: 
-      - Installation with Platformer: 'installation/platformer/platformer.md'
+      - Installation with Platformer: 
+        - Using Azure: 'installation/platformer/azure-platformer.md'
+        - Using AWS: 'installation/platformer/aws-platformer.md'		
       - On-premise installation:
         - Getting started: installation/onpremise/prerequisites.md
         - Kubernetes in Nalej: installation/onpremise/kubernetes.md
