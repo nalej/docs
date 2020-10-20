@@ -132,6 +132,9 @@ Again, under IAM you go to the Roles section and create a new Role. This time, y
 
 ## Installing Platformer
 
+note Deprecated information!
+    Currently, the `platformer` package in `pip` is not updated. Please ask for the updated package to the Nalej team, and install it with `python setup.py install`.
+
 Now it's time to install the Platformer tool from the Python official repository. But first, we need to check our package administration tool. We can use `pip` or `pip3`, and the difference resides in the version of Python the command is using. To be sure we're using the correct command, we need to execute:
 
 ```bash
