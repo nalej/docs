@@ -310,7 +310,7 @@ Once Platformer finishes, the platform is deployed and ready to use. The informa
 
 
 
-## Special information for AWSGov
+## AWSGov: Special information
 
 If you are deploying the platform for AWSGov, there are some modifications to be made to this process.
 
