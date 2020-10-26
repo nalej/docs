@@ -49,8 +49,8 @@ The AWS Access Key and Secret Access Key can be created from the AWS Management 
 To establish them as variables in your system, please execute the following (changing the values to yours):
 
 ```bash
- export AWS_SECRET_ACCESS_KEY=+WZX1Y90Z2X2345YabcY6defXYZghijkXYZl78mn
- export AWS_ACCESS_KEY_ID=ASDFASDFASDFASDFASD3
+ export AWS_SECRET_ACCESS_KEY=XXXXXXXXXXXXXXX
+ export AWS_ACCESS_KEY_ID=XXXXXXXXXXXXXXX
 ```
 
 ### AWS CLI
