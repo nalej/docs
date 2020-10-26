@@ -151,7 +151,146 @@ pip3 install --user nalej-platformer
 
 Please remember to NOT use `sudo pip install`, and manage your dependencies correctly (you can find more information about this topic [here](https://dev.to/elabftw/stop-using-sudo-pip-install-52mn)).
 
+## The platform plan file
 
+To define the platform you want to deploy using Nalej, Platformer uses a YAML **plan file** where all the required information for a platform is defined. We recommend to keep a copy of the plan file as a backup, in case something goes wrong during the installation.
+
+The file is divided in three different parts: **management**, **organization** and **application**.
+
+### Management
+
+This section defines the required information for the management cluster.
+
+```yaml
+management:
+  aws:
+    awsEksSecurityGroup: xx-00x00xx0xx0x00x0
+    awsHostedZoneID: Z00427232C000TM14LMST
+    awsNodeRole: arn:aws:iam::396651306611:role/EKSNodeGroupRole
+    awsNodeType: t3a.medium
+    awsRegion: eu-west-2
+    controlPlaneRole: arn:aws:iam::396651306611:role/EKSClusterRole
+    dnsZoneName: aws.nalejlabs.io
+    privateSubnets: subnet-0d63cb0f7d7b32875,subnet-0a87c5184dd9d7522
+    publicSubnets: subnet-03c570fa33be1ded9
+    route53Region: eu-west-2
+    vpcID: vpc-0c836f541e9afe76f
+  environment: development
+  kubernetes:
+    nodes: 5
+    version: 1.16
+  name: mymanager
+```
+
+The parameters in this section are:
+
+#### name
+
+This is the name of the cluster, and some resources will use this parameter to create their names.
+
+#### environment
+
+You can choose what kind of environment is in deployment (the options are: *production*, *staging* and *development*). This is mainly to tell Nalej what type of TLS certificates will be in use and other parameters related to this.
+
+#### kubernetes
+
+This section defines the underlying Kubernetes requirements for the management cluster.
+
+- **nodes**: You can choose how many nodes the management cluster will have. The minimum node count is 3.
+- **version**: You can choose the Kubernetes version from the ones available at the cloud provider.
+
+#### aws
+
+This section defines required information for deploying the platform in AWS:
+
+- **awsEksSecurityGroup**: the EKS security group ID.
+- **awsHostedZoneID**: the hosted zone ID.
+- **awsNodeRole**: the EKS Node Group Role you created before.
+- **awsNodeType**: the type of machine that will be reserved. For more information regarding this paramenter, please take a look at the [official Amazon EC2 Instance Types documentation](https://aws.amazon.com/ec2/instance-types/).
+- **awsRegion**: the region where the clusters will be located.
+- **controlPlaneRole**: the EKS Cluster Role you created before.
+- **dnsZoneName**: This is the DNS Zone that Nalej will use to register the required DNS records. This DNS Zone must be registered on your AWS account.
+- **privateSubnets**: The private subnets available. There must be two. 
+- **publicSubnets**: The public subnets available.
+- **route53Region**: The Route 53 region should be the same in the management cluster and in the application clusters. If you want them to be different, be aware that you will need to modify the Route 53 configuration in order to make it work.
+- **vpcID**: The VPC where the subnets are declared.
+
+### Organization
+
+This section defines the list of organizations that will be created in the platform.
+
+```yaml
+organization:
+- name: Example Org
+  users:
+    nalejAdmin:
+      email: admin@example.com
+      name: Example admin
+      password: password
+    owner:
+      email: owner@example.com
+      name: Example owner
+      password: password
+```
+
+This is how the Organization section looks like. You can create as many organizations as you need, adding them as a list in this scheme.
+
+#### name
+
+Name of the organization.
+
+#### users
+
+This section defines the two main users for this organization, the **Nalej Administrator** and the **Organization Owner**. For both users you need to define their name, email and password.
+
+**IMPORTANT**: The password is stored in this file in plain text, but these password are not transferred or stored anywhere else. We encourage you to secure this file properly.
+
+### Application
+
+This section defines the list of application clusters that will be deployed for the platform.
+
+```yaml
+application:
+- aws:
+    awsEksSecurityGroup: sg-0314a6d6451927f41
+    awsHostedZoneID: Z00427232C000TM14LMST
+    awsNodeRole: arn:aws:iam::396651306611:role/EKSNodeGroupRole
+    awsNodeType: t3a.medium
+    awsRegion: eu-west-2
+    controlPlaneRole: arn:aws:iam::396651306611:role/EKSClusterRole
+    dnsZoneName: aws.nalejlabs.io
+    privateSubnets: subnet-0c606fc07b8b2dcea,subnet-09be4d63bf4992908
+    publicSubnets: subnet-0d90fb2b7d51660c2
+    route53Region: eu-west-2
+    vpcID: vpc-05140aa4172996ef6
+  environment: development
+  kubernetes:
+    nodes: 3
+    version: 1.16
+  name: mycluster1
+  organization: Nalej
+```
+
+This is how the Application section looks like. You can create as many application clusters as you may need, adding them as a list in this scheme.
+
+#### name
+
+Name of this application cluster.
+
+#### organization
+
+This is the name of the organization that owns this application cluster. This name needs to match one of the organizations defined in the Organization section.
+
+#### kubernetes
+
+This section defines the underlying Kubernetes requirements for the management cluster.
+
+- **nodes**: You can choose how many nodes the management cluster will have. The minimum node count is 3.
+- **version**: You can choose the Kubernetes version from the ones available at the cloud provider.
+
+#### aws
+
+This section defines required information for deploying the platform in AWS. These parameters should coincide with the parameters already defined in the management section. If they do not, please be aware that there will be conflicts in the configuration of AWS that you will need to address.
 
 ## Using Platformer
 
@@ -163,8 +302,190 @@ To launch Platfomer, you only need to execute the following command:
 nalej-platformer --platform AWS --resources <ASSETS_PATH> apply <PLAN_FILE.yaml>
 ```
 
-You may need to replace the `ASSETS_PATH` with the path where you downloaded the Nalej assets, and the `PLAN_FILE` with the path to the plan file.
+You need to replace the `ASSETS_PATH` with the path where you downloaded the Nalej assets, and the `PLAN_FILE` with the path to the plan file.
 
 It takes between 20 and 25 minutes to deploy and validate the provision and installation of each cluster, depending on the time it takes to AWS to process the commands that Platformer sends. For example, for an architecture of one Management Cluster and two Application Clusters, the whole process could take a bit more than an hour.
 
 Once Platformer finishes, the platform is deployed and ready to use. The information needed to access the platform (the URLs) will be stored in the plan file.
+
+
+
+## Special information for AWSGov
+
+If you are deploying the platform for AWSGov, there are some modifications to be made to this process.
+
+### Platform plan file
+
+The platform plan file is a bit different, because every time `aws:` appears (in the management and application sections, at the beginning of the description of each cluster) it has to be substituted by `awsGov:`. The rest of the platform plan stays the same.
+
+### Environment variables
+
+Apart from including `AWS_SECRET_ACCESS_KEY` and `AWS_ACCESS_KEY_ID`, you will need two variables more, which are `AWS_STANDARD_SECRET_ACCESS_KEY` and `AWS_STANDARD_ACCESS_KEY`. You will have access to these two variables when you have access to the AWS Gov environment.
+
+To establish them as variables in your system, please execute the following (changing the values to yours):
+
+```bash
+ export AWS_SECRET_ACCESS_KEY=XXXXXXXXXXXXXXX
+ export AWS_ACCESS_KEY_ID=XXXXXXXXXXXXXXX
+ export AWS_STANDARD_SECRET_ACCESS_KEY=XXXXXXXXXXXX
+ export AWS_STANDARD_ACCESS_KEY=XXXXXXXXXXXXXXX
+```
+
+### Using Platformer
+
+Once Platformer is installed, the plan file is checked, and the environment variables are in place, to launch Platfomer, you only need to execute the following command:
+
+```shell
+nalej-platformer --platform AWSGOV --resources <ASSETS_PATH> apply <GOV_PLAN_FILE.yaml>
+```
+
+You need to replace the `ASSETS_PATH` with the path where you downloaded the Nalej assets, and the `GOV_PLAN_FILE` with the path to the plan file.
+
+## Plan file examples
+
+For an architecture of two application clusters and one management cluster in one organization, these are the plan files for AWS and AWSGov.
+
+### AWS plan file
+
+```yaml
+application:
+- aws:
+    awsEksSecurityGroup: sg-XXXXXXXXXXXXXX
+    awsHostedZoneID: XXXXXXXXXXXXXX
+    awsNodeRole: arn:aws:iam::XXXXXXXXXXXXXX:role/EKSNodeGroupRole
+    awsNodeType: t3a.medium
+    awsRegion: eu-west-2
+    controlPlaneRole: arn:aws:iam::XXXXXXXXXXXXXX:role/EKSClusterRole
+    dnsZoneName: aws.XXXXXXXXXXXXXX.com
+    privateSubnets: subnet-XXXXXXXXXXXXXX,subnet-YYYYYYYYYYYYYY
+    publicSubnets: subnet-ZZZZZZZZZZZZZZZ
+    route53Region: eu-west-2
+    vpcID: vpc-XXXXXXXXXXXXXX
+  environment: development
+  kubernetes:
+    nodes: 3
+    version: 1.16
+  name: mycluster1
+  organization: Nalej
+- aws:
+    awsEksSecurityGroup: sg-XXXXXXXXXXXXXX
+    awsHostedZoneID: XXXXXXXXXXXXXX
+    awsNodeRole: arn:aws:iam::XXXXXXXXXXXXXX:role/EKSNodeGroupRole
+    awsNodeType: t3a.medium
+    awsRegion: eu-west-1
+    controlPlaneRole: arn:aws:iam::XXXXXXXXXXXXXX:role/EKSClusterRole
+    dnsZoneName: aws.nalejlabs.io
+    privateSubnets: subnet-XXXXXXXXXXXXXX,subnet-YYYYYYYYYYYYYY
+    publicSubnets: subnet-ZZZZZZZZZZZZZZZ
+    route53Region: eu-west-2
+    vpcID: vpc-XXXXXXXXXXXXXX
+  environment: development
+  kubernetes:
+    nodes: 3
+    version: 1.16
+  name: mycluster2
+  organization: Nalej
+management:
+  aws:
+    awsEksSecurityGroup: sg-XXXXXXXXXXXXXX
+    awsHostedZoneID: XXXXXXXXXXXXXX
+    awsNodeRole: arn:aws:iam::XXXXXXXXXXXXXX:role/EKSNodeGroupRole
+    awsNodeType: t3a.medium
+    awsRegion: eu-west-2
+    controlPlaneRole: arn:aws:iam::XXXXXXXXXXXXXX:role/EKSClusterRole
+    dnsZoneName: aws.nalejlabs.io
+    privateSubnets: subnet-XXXXXXXXXXXXXX,subnet-YYYYYYYYYYYYYY
+    publicSubnets: subnet-ZZZZZZZZZZZZZZZ
+    route53Region: eu-west-2
+    vpcID: vpc-XXXXXXXXXXXXXX
+  environment: development
+  kubernetes:
+    nodes: 5
+    version: 1.16
+  name: mymanager
+organization:
+- name: Nalej
+  users:
+    nalejAdmin:
+      email: admin@nalej.tech
+      name: Example Administrator
+      password: password
+    owner:
+      email: owner@nalej.tech
+      name: Example Owner
+      password: password
+```
+
+
+
+### AWSGov plan file
+
+```yaml
+application:
+- awsGov:
+    awsEksSecurityGroup: sg-XXXXXXXXXXXXXX
+    awsHostedZoneID: XXXXXXXXXXXXXX
+    awsNodeRole: arn:aws:iam::XXXXXXXXXXXXXX:role/EKSNodeGroupRole
+    awsNodeType: t3a.medium
+    awsRegion: eu-west-2
+    controlPlaneRole: arn:aws:iam::XXXXXXXXXXXXXX:role/EKSClusterRole
+    dnsZoneName: aws.XXXXXXXXXXXXXX.com
+    privateSubnets: subnet-XXXXXXXXXXXXXX,subnet-YYYYYYYYYYYYYY
+    publicSubnets: subnet-ZZZZZZZZZZZZZZZ
+    route53Region: eu-west-2
+    vpcID: vpc-XXXXXXXXXXXXXX
+  environment: development
+  kubernetes:
+    nodes: 3
+    version: 1.16
+  name: mycluster1
+  organization: Nalej
+- awsGov:
+    awsEksSecurityGroup: sg-XXXXXXXXXXXXXX
+    awsHostedZoneID: XXXXXXXXXXXXXX
+    awsNodeRole: arn:aws:iam::XXXXXXXXXXXXXX:role/EKSNodeGroupRole
+    awsNodeType: t3a.medium
+    awsRegion: eu-west-1
+    controlPlaneRole: arn:aws:iam::XXXXXXXXXXXXXX:role/EKSClusterRole
+    dnsZoneName: aws.nalejlabs.io
+    privateSubnets: subnet-XXXXXXXXXXXXXX,subnet-YYYYYYYYYYYYYY
+    publicSubnets: subnet-ZZZZZZZZZZZZZZZ
+    route53Region: eu-west-2
+    vpcID: vpc-XXXXXXXXXXXXXX
+  environment: development
+  kubernetes:
+    nodes: 3
+    version: 1.16
+  name: mycluster2
+  organization: Nalej
+management:
+  awsGov:
+    awsEksSecurityGroup: sg-XXXXXXXXXXXXXX
+    awsHostedZoneID: XXXXXXXXXXXXXX
+    awsNodeRole: arn:aws:iam::XXXXXXXXXXXXXX:role/EKSNodeGroupRole
+    awsNodeType: t3a.medium
+    awsRegion: eu-west-2
+    controlPlaneRole: arn:aws:iam::XXXXXXXXXXXXXX:role/EKSClusterRole
+    dnsZoneName: aws.nalejlabs.io
+    privateSubnets: subnet-XXXXXXXXXXXXXX,subnet-YYYYYYYYYYYYYY
+    publicSubnets: subnet-ZZZZZZZZZZZZZZZ
+    route53Region: eu-west-2
+    vpcID: vpc-XXXXXXXXXXXXXX
+  environment: development
+  kubernetes:
+    nodes: 5
+    version: 1.16
+  name: mymanager
+organization:
+- name: Nalej
+  users:
+    nalejAdmin:
+      email: admin@nalej.tech
+      name: Example Administrator
+      password: password
+    owner:
+      email: owner@nalej.tech
+      name: Example Owner
+      password: password
+```
+
