@@ -179,11 +179,48 @@ If there is a required parameter that you haven't provided, the response will lo
 
 In this example, the instance required an outbound connection that wasn't filled, so the command returned with a fatal error.
 
+##### Deploy with parameters
+
+Does the application you're trying to deploy need parameters? To answer this question, get the descriptor ID, and then execute:
+
+```bash
+./public-api-cli app desc info [descriptor_id]
+```
+
+This will return the information related to that descriptor:
+
+```bash
+DESCRIPTOR          ID                                     LABELS
+DescriptorExample   [descriptor_id]									  		 label1:value1,l2:v2
+
+PARAM NAME          DESCRIPTION                            DEFAULT VALUE
+device_group        Authorized device group                devices
+
+NAME                IMAGE                                  LABELS
+[Group] group1      ===
+service1		        example/service1image:1.0
+service2		        example/service2image:1.0
+[Group] group2      ===
+service3		        example/service3image:1.0
+service4		        example/service4image:1.0
+```
+
+In this example, the descriptor needs a parameter called `device_group` to be able to deploy an instance.  Now that we know that, we should create a device group in the platform (or use one that's already created), and then deploy the instance with:
+
+```bash
+./public-api-cli app inst deploy 
+    [descriptor_id]
+    [name-app]
+    --params device_group=newDeviceGroup
+```
+
+
+
 ##### Deploy with connections
 
 If you designed your descriptor with outbound network interfaces, you will be able to connect any instance created with it on deployment time to other applications that were described with inbound network interfaces. Be aware that, if any outbound interface was described as required, to describe the connections to those interfaces on deployment time is mandatory.
 
-Using the flag `--connections` you will be able to describe the connections to other applications. The connection is defined using the **outbound network interface name** that you want to connect, the **instance id** of the target application, and the **inbound network interface name** of that application to create a point to point connection. These fields must be concatenated using the comma `,` character. If you want to define more that one connection, concatenate the definitions using the sharp `#` character as separator.
+Using the flag `--connections` you will be able to describe the connections to other applications. The connection is defined using the **outbound network interface name** that you want to connect, the **instance id** of the target application, and the **inbound network interface name** of that application to create a point to point connection. These fields must be concatenated using the comma `,` character, with no spaces around it. If you want to define more that one connection, concatenate the definitions using the sharp `#` character as separator.
 
 ```bash
 ./public-api-cli app inst deploy
