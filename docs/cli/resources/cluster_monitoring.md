@@ -62,6 +62,8 @@ We can also choose a cluster and ask for its information with:
     [clusterID]
 ```
 
+The response for this command has almost the same information as the one for `cluster list`, and it also includes the last time that the cluster information has been seen. It also includes the `MCF` (MillicoresConversionFactor): depending on where you deploy the cluster, to obtain the aggregated CPU metrics, you must adjust this for accuracy. This is a variable that's established by the operator of the organization, and its default value is 1. 
+
 Once we know the cluster ID, we can list the nodes belonging to it.
 
 ```javascript
